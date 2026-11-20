@@ -387,3 +387,33 @@ def test_live_check_failure_does_not_block(client, monkeypatch):
     recs = {x["product_id"]: x for x in _price_recs(r.json())}
     assert recs[SOFA]["status"] == "check_failed" and "network down" in recs[SOFA]["why"]
     assert recs[SOFA]["input"]["live_price_usd"] is None and recs[TABLE]["status"] == "price_same"
+
+def test_bag_check_passes_when_items_and_money_match(client):
+    real = "ikea-glostad-sofa-knisa-dark-gray-40595942"
+    pid, cat = _plan_with_cart([real])
+    price = cat[real]["price_usd"]
+    bag = {"lines": [{"itemNo": cat[real]["article_number"], "name": "GLOSTAD", "qty": 1, "lineTotal": price}],
+           "productsTotal": price}
+    r = client.post(f"/api/plan/{pid}/bag", json=bag)
+    assert r.status_code == 200
+    p = r.json()
+    assert p["cart"]["bag"]["verdict"] == "PASS" and p["cart"]["bag"]["bag_total_usd"] == price
+    assert p["cart"]["no_purchase"] is True
+    rec = [a for a in p["audit"] if a.get("status") == "bag_pass"]
+    assert len(rec) == 1 and rec[0]["step"] == "cart" and rec[0]["source"]["kind"] == "browser"
+    assert "Nothing is bought" in rec[0]["why"]
+
+
+def test_bag_check_fails_on_a_price_difference_and_an_extra_item(client):
+    real = "ikea-glostad-sofa-knisa-dark-gray-40595942"
+    pid, cat = _plan_with_cart([real])
+    price = cat[real]["price_usd"]
+    bag = {"lines": [{"itemNo": cat[real]["article_number"], "qty": 1, "lineTotal": price + 14},
+                     {"itemNo": "704.378.14", "qty": 1, "lineTotal": 9.99}],
+           "productsTotal": price + 14 + 9.99}
+    p = client.post(f"/api/plan/{pid}/bag", json=bag).json()
+    assert p["cart"]["bag"]["verdict"] == "FAIL"
+    assert any(d.get("unexpected") for d in p["cart"]["bag"]["item_diff"])
+    assert p["cart"]["bag"]["price_deltas"][0]["delta_usd"] == 14
+    assert [a["status"] for a in p["audit"] if a["step"] == "cart"][-1] == "bag_fail"
+    assert client.post("/api/plan/nope/bag", json=bag).status_code == 404

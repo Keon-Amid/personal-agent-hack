@@ -15,6 +15,20 @@ async function problem(res: Response): Promise<string> {
   try {
     const body = (await res.json()) as { detail?: unknown }
     if (typeof body.detail === 'string') return body.detail
+    // approve answers 409 with what changed on IKEA.com since the agent picked (a price moved, a page is gone)
+    if (body.detail && typeof body.detail === 'object') {
+      const d = body.detail as {
+        error?: string
+        changes?: { name?: string; status?: string; catalog_price_usd?: number; live_price_usd?: number }[]
+      }
+      const changes = (d.changes ?? [])
+        .map((c) => {
+          const price = c.live_price_usd != null ? ' ($' + c.catalog_price_usd + ' is now $' + c.live_price_usd + ')' : ''
+          return (c.name ?? 'An item') + ': ' + (c.status ?? 'changed') + price
+        })
+        .join('; ')
+      return [d.error, changes].filter(Boolean).join(' ')
+    }
   } catch {
     /* not JSON */
   }

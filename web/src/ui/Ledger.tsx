@@ -50,6 +50,8 @@ function toRow(r: AuditRecord): Row {
       icon: ShieldCheck,
       tone: r.status === 'verified' ? 'fits' : 'unsure',
     }
+  if (r.step === 'cart' && r.status === 'bag_pass') return { ...base, title: 'Your IKEA bag is filled and checked', source: 'Browser agent on ikea.com', icon: ShoppingBag, tone: 'fits' }
+  if (r.step === 'cart' && r.status === 'bag_fail') return { ...base, title: 'Your IKEA bag does not match', source: 'Browser agent on ikea.com', icon: X, tone: 'nofit' }
   if (r.step === 'cart' && r.status === 'approved') return { ...base, title: 'You approved the cart', source: 'You', icon: Check, tone: 'fits' }
   if (r.step === 'cart' && /withdrawn/.test(r.decision)) return { ...base, title: 'Approval withdrawn', source: 'Cart', icon: ShoppingBag, tone: 'unsure' }
   if (r.step === 'cart') return { ...base, title: 'Added to the cart', source: 'Claude', icon: ShoppingBag }
@@ -209,7 +211,7 @@ export default function Ledger() {
     if (jumped) {
       el.scrollTop = 0
       stick.current = false
-    } else if ((stick.current && stage === 'running') || audit[audit.length - 1]?.source.kind === 'you' || audit[audit.length - 1]?.status === 'approved') {
+    } else if ((stick.current && stage === 'running') || audit[audit.length - 1]?.source.kind === 'you' || /^(approved|bag_)/.test(audit[audit.length - 1]?.status ?? '')) {
       el.scrollTo({ top: el.scrollHeight, behavior: 'smooth' })
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps

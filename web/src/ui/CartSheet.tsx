@@ -160,8 +160,8 @@ export default function CartSheet() {
               It is in the audit trail. Nothing is ordered until you pay on IKEA.com.
             </p>
             <p className="mt-1.5 text-xs leading-relaxed text-fg-3">
-              With Claude in Chrome connected, ask it to add this cart to your IKEA bag: it opens each page and presses
-              Add to bag, and stops before checkout.
+              Next: the browser agent adds each piece to your real IKEA bag, reads the bag back, and the result shows
+              up here. It stops before checkout.
             </p>
           </div>
         ) : (
@@ -169,9 +169,43 @@ export default function CartSheet() {
             Approving records your OK in the audit trail. No order is placed: you pay on IKEA.com.
           </p>
         )}
+        {plan.cart.bag && (
+          <div
+            className={cn(
+              'mt-2 rounded-sm px-2.5 py-2 ring-1 ring-inset',
+              plan.cart.bag.verdict === 'PASS' ? 'bg-fits/8 ring-fits/25' : 'bg-nofit/8 ring-nofit/25',
+            )}
+            role="status"
+          >
+            <p className="flex items-center gap-1.5 text-sm font-medium text-fg">
+              <VerdictIcon verdict={plan.cart.bag.verdict === 'PASS' ? 'fits' : 'no_fit'} size={14} />
+              {plan.cart.bag.verdict === 'PASS' ? 'Your IKEA bag matches this cart' : 'Your IKEA bag does not match this cart'}
+            </p>
+            <p className="mt-1 text-xs leading-relaxed text-fg-2">
+              {plan.cart.bag.verdict === 'PASS' ? (
+                <>
+                  <span className="num">{plan.cart.bag.item_count}</span> items, IKEA's own total{' '}
+                  <span className="num">{usd(plan.cart.bag.bag_total_usd)}</span>, read back from ikea.com at{' '}
+                  <span className="num">{clock(plan.cart.bag.checked_at).slice(0, 5)}</span>. Nothing is bought until you pay.
+                </>
+              ) : (
+                plan.cart.bag.reasons.join('; ')
+              )}
+            </p>
+            <a
+              href="https://www.ikea.com/us/en/shoppingcart/"
+              target="_blank"
+              rel="noreferrer"
+              className="mt-1.5 inline-flex items-center gap-0.5 text-xs text-fg underline decoration-line-2 hover:decoration-fg"
+            >
+              Open my IKEA bag
+              <ArrowUpRight size={12} strokeWidth={2} aria-hidden />
+            </a>
+          </div>
+        )}
         {problem && (
           <p className="mt-2 text-xs text-nofit" role="alert">
-            {problem} Try again.
+            {problem} The cart shows the current prices; approve again to accept them.
           </p>
         )}
         {approval ? (

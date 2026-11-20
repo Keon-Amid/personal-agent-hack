@@ -51,7 +51,7 @@ def load_dotenv(path: Path = REPO / ".env") -> None:
 load_dotenv()
 
 from agent import agent as agent_mod  # noqa: E402  (after .env, so the agent's child process sees the keys)
-from agent import quiz, store, tools  # noqa: E402
+from agent import bag_reconcile, quiz, store, tools  # noqa: E402
 from agent.types import DELIVERY_NOTE, SLOTS, audit, now_ts  # noqa: E402
 from data import fetch_ikea  # noqa: E402
 
@@ -88,6 +88,19 @@ class PlanRequest(BaseModel):
 
 class SwapRequest(BaseModel):
     slot: str
+
+
+class BagLine(BaseModel):
+    itemNo: str
+    name: str | None = None
+    qty: int = 1
+    lineTotal: float | str | None = None
+
+
+class BagRequest(BaseModel):
+    """readBag() from scripts/ikea_bag.js, run by the browser agent on ikea.com/us/en/shoppingcart/."""
+    lines: list[BagLine] = []
+    productsTotal: float | str | None = None
 
 
 class QuizRequest(BaseModel):
@@ -427,6 +440,50 @@ def approve(pid: str) -> dict:
         for c in plan["cart"]["items"]]
     plan["action"] = {"kind": "shopping_list", "mocked_checkout": True,
                       "note": "No order is placed. Open each IKEA link to buy."}
+    return plan
+
+
+@app.post("/api/plan/{pid}/bag")
+def check_bag(pid: str, req: BagRequest) -> dict:
+    """The browser agent filled the person's real IKEA bag and read it back; check it against the cart.
+
+    Items AND money (agent.bag_reconcile): every cart item in the bag once, nothing extra, the bag's total equal
+    to the cart's total, and within the plan's whole-room budget if it has one. The result is stored on
+    cart.bag and written to the audit trail. Nothing is bought.
+    """
+    _require_finished(pid, "check the bag")
+    catalog = _products()
+    bag = req.model_dump()
+    out: dict = {}
+
+    def mutate(plan: dict) -> None:
+        cart = plan["cart"]
+        selection = [{"item_no": (catalog.get(c["product_id"]) or {}).get("article_number") or "", "qty": 1,
+                      "price_usd": c.get("price_usd")} for c in cart.get("items") or []]
+        if not selection:
+            raise HTTPException(409, "the cart is empty; nothing to check the bag against")
+        budget = (plan.get("budget") or {}).get("total_usd")
+        res = bag_reconcile.reconcile(selection, bag, budget)
+        ok = res["verdict"] == "PASS"
+        cart["bag"] = {"verdict": res["verdict"], "checked_at": now_ts(), "bag_total_usd": res["bag_total_usd"],
+                       "expected_total_usd": res["expected_total_usd"], "item_count": len(bag["lines"]),
+                       "item_diff": res["item_diff"], "price_deltas": res["price_deltas"], "reasons": res["reasons"]}
+        cart["no_purchase"] = True
+        total = res["bag_total_usd"]
+        why = (f"{len(selection)} items in the IKEA bag, each at the right quantity; IKEA's total ${total:.2f} "
+               f"matches the cart. Nothing is bought until the person pays on IKEA.com." if ok else
+               "The IKEA bag does not match the cart: " + "; ".join(res["reasons"]) + ".")
+        plan.setdefault("audit", []).append(audit(
+            "cart", source={"kind": "browser", "site": "ikea.com", "read_by": "scripts/ikea_bag.js readBag()"},
+            decision="IKEA bag filled and checked" if ok else "IKEA bag does not match the cart",
+            status="bag_pass" if ok else "bag_fail", why=why,
+            input={"bag_total_usd": total, "expected_total_usd": res["expected_total_usd"],
+                   "item_diff": res["item_diff"], "price_deltas": res["price_deltas"]}))
+        out.update(res)
+
+    store.update(pid, mutate)
+    plan = get_plan(pid)
+    plan["bag_check"] = out
     return plan
 
 

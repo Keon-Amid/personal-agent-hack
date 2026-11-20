@@ -145,10 +145,42 @@ export async function approveCart(): Promise<void> {
     return
   }
   const before = s.plan
-  const next = await approvePlan(before.plan_id)
+  let next: LivePlan
+  try {
+    next = await approvePlan(before.plan_id)
+  } catch (err) {
+    // The server may have updated prices before refusing; show the cart as it now stands.
+    const now = await fetchPlan(before.plan_id).catch(() => null)
+    if (now) {
+      const merged = settle(now, before, before.style.style_text)
+      useApp.setState((st) => ({ plan: merged, audit: [...st.audit, ...merged.audit.slice(before.audit.length)] }))
+    }
+    throw err
+  }
   const merged = settle(next, before, before.style.style_text)
   const fresh = (merged.audit ?? []).slice(before.audit.length)
   useApp.setState((st) => ({ plan: merged, audit: [...st.audit, ...fresh] }))
+}
+
+let planTimer: ReturnType<typeof setInterval> | null = null
+/** A finished live plan can still change (the browser agent's bag check, a swap from Claude Desktop). */
+function watchPlan() {
+  if (planTimer) clearInterval(planTimer)
+  planTimer = setInterval(async () => {
+    const s = useApp.getState()
+    if (s.runMode !== 'live' || s.stage !== 'done' || !s.plan) return
+    try {
+      const next = await fetchPlan(s.plan.plan_id)
+      const cur = useApp.getState()
+      if (!next || !cur.plan || cur.plan.plan_id !== next.plan_id) return
+      const known = cur.plan.audit?.length ?? 0
+      if ((next.audit?.length ?? 0) <= known) return
+      const merged = settle(next, cur.plan, cur.plan.style.style_text)
+      useApp.setState({ plan: merged, audit: [...cur.audit, ...merged.audit.slice(known)] })
+    } catch {
+      /* the server may be restarting; try again next tick */
+    }
+  }, 3000)
 }
 
 let watching = false
@@ -156,6 +188,7 @@ let watching = false
 export function watchServer() {
   if (watching) return
   watching = true
+  watchPlan()
   const tick = async () => {
     useApp.getState().setServer(await probeServer())
     setTimeout(tick, document.hidden ? 15000 : 5000)

@@ -101,6 +101,15 @@ export interface Cart {
   no_purchase?: boolean
   /** Set when the person approves the cart (POST /api/plan/{id}/approve, or locally in replay). */
   approval?: { approved: boolean; approved_at: string; total_usd: number; item_count: number } | null
+  /** The person's real IKEA bag, read back by the browser agent and checked by the server (POST /api/plan/{id}/bag). */
+  bag?: {
+    verdict: 'PASS' | 'FAIL'
+    checked_at: string
+    bag_total_usd: number | null
+    expected_total_usd: number
+    item_count: number
+    reasons: string[]
+  } | null
 }
 
 export interface AuditSource {
