@@ -116,7 +116,7 @@ def _ask_claude(messages: list[dict], model: str) -> tuple[dict, dict]:
            "--tools", "", "--no-session-persistence"]
     cmd += ["--model", model if model and model != "claude" else os.environ.get("LAYOUT_CLAUDE_MODEL", "sonnet")]
     t0 = time.monotonic()
-    proc = subprocess.run(cmd, capture_output=True, text=True, timeout=480, cwd=str(ROOT))
+    proc = subprocess.run(cmd, capture_output=True, text=True, timeout=480, cwd=str(ROOT), stdin=subprocess.DEVNULL)  # else `claude -p` can wait on stdin
     ms = round((time.monotonic() - t0) * 1000)
     if proc.returncode != 0:
         raise RuntimeError(f"claude -p failed: {(proc.stderr or proc.stdout)[-300:]}")
