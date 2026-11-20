@@ -33,7 +33,7 @@ const sourceWords = (m: Measurement, overridden: boolean) => {
 const measureLabel: Record<MeasureKey, string> = {
   wall: 'Wall',
   depth: 'Depth',
-  door_width: 'Door width',
+  door_width: 'Door',
   door_height: 'Door height',
 }
 
@@ -64,7 +64,7 @@ function Measure({ k, m }: { k: MeasureKey; m: Measurement }) {
         aria-expanded={open}
         title={`${measureLabel[k]}: ${sourceWords(m, override !== undefined)}. Click to enter your own measurement.`}
         className={cn(
-          'flex h-7 items-center gap-1.5 rounded-sm px-2 text-xs transition-colors duration-150',
+          'flex h-7 items-center gap-1.5 whitespace-nowrap rounded-sm px-2 text-xs transition-colors duration-150',
           open ? 'bg-ice/12 text-fg ring-1 ring-inset ring-ice/50' : 'text-fg-2 hover:bg-white/6 hover:text-fg',
         )}
       >
@@ -89,7 +89,7 @@ function Measure({ k, m }: { k: MeasureKey; m: Measurement }) {
             className="glass-solid absolute left-0 top-9 z-30 w-[264px] origin-top-left rounded-md p-3"
           >
             <label htmlFor={`measure-${k}`} className="block text-sm font-medium text-fg">
-              Measure the {measureLabel[k].toLowerCase()}
+              Measure the {k === 'door_width' ? 'door width' : measureLabel[k].toLowerCase()}
             </label>
             <p className="mt-1 text-xs leading-relaxed text-fg-2">
               The agent used <span className="num text-fg">{inches(m.value_in)} in</span>, {sourceWords(m, false)}. A tape
@@ -183,8 +183,8 @@ export default function TopBar() {
         </button>
         <span className="mx-2 h-4 w-px bg-line-2" aria-hidden />
         <div className="mr-1 flex items-baseline gap-2 whitespace-nowrap">
-          <span className="text-sm font-medium text-fg">{demo?.title ?? modelLabel ?? 'Your room'}</span>
-          <span className="text-xs text-fg-3">{demo?.note ?? (modelLabel ? 'Your scan' : 'Typed measurements')}</span>
+          <span className="max-w-[230px] truncate text-sm font-medium text-fg">{demo?.title ?? modelLabel ?? 'Your room'}</span>
+          <span className="hidden text-xs text-fg-3 min-[1560px]:inline">{demo?.note ?? (modelLabel ? 'Your scan' : 'Typed measurements')}</span>
         </div>
         <span className="mx-1 h-4 w-px bg-line-2" aria-hidden />
         <Measure k="wall" m={plan.room.wall} />
@@ -202,9 +202,9 @@ export default function TopBar() {
               : (server.note ?? 'This replays an agent run the team recorded today. The records, numbers and checks are real; only the waiting is shortened. Start the agent server and this switches to live by itself.')
           }
         >
-          <span className="glass flex h-10 cursor-default items-center gap-2 rounded-md px-3 text-xs text-fg-2" tabIndex={0}>
+          <span className="glass flex h-10 cursor-default items-center gap-2 whitespace-nowrap rounded-md px-3 text-xs text-fg-2" tabIndex={0}>
             <span className={cn('h-1.5 w-1.5 rounded-full', live ? 'bg-fits' : 'bg-unsure')} aria-hidden />
-            {live ? (hasRun ? 'Live agent run' : 'Live agent ready') : 'Replay of a real run'}
+            {live ? (hasRun ? 'Live run' : 'Live agent ready') : 'Replay of a real run'}
           </span>
         </Tip>
         <div className="glass flex h-10 items-center gap-0.5 rounded-md p-1" role="group" aria-label="Camera view">

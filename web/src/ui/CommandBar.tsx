@@ -184,17 +184,17 @@ export default function CommandBar() {
                 {total} pieces, <span className="num">{usd(sum)}</span>
               </div>
               <div className="truncate text-xs text-fg-2">
+                {budget !== null && (
+                  <span className={cn(over ? 'text-nofit' : 'text-fits')}>
+                    {over ? `${usd(sum - budget)} over` : `${usd(budget - sum)} under`} your budget.{' '}
+                  </span>
+                )}
                 {allFit ? 'Every piece fits. ' : `${plan.items.filter((i) => i.fit.verdict !== 'fits').length} need attention. `}
                 <span className="num">{claims}</span> claims verified by Senso
                 {rejected > 0 && (
                   <>
-                    , <span className="num">{rejected}</span> rejected on the numbers
+                    , <span className="num">{rejected}</span> rejected
                   </>
-                )}
-                {budget !== null && (
-                  <span className={cn(over ? 'text-nofit' : 'text-fits')}>
-                    , {over ? `${usd(sum - budget)} over` : `${usd(budget - sum)} under`} budget
-                  </span>
                 )}
               </div>
             </div>
