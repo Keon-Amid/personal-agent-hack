@@ -1,0 +1,101 @@
+{
+ "ikea-glostad-sofa-knisa-dark-gray-40595942": {
+  "file": "ikea-glostad-sofa-knisa-dark-gray-40595942.glb",
+  "source": "AI-generated from the IKEA photo (Hyper3D Rodin Gen-2.5-Low)",
+  "rot_y_deg": 0,
+  "stretch_w_d_h": [
+   1.07,
+   1.04,
+   0.9
+  ],
+  "bytes": 1010484
+ },
+ "ikea-poang-armchair-birch-veneer-knisa-light-beige-59305928": {
+  "file": "ikea-poang-armchair-birch-veneer-knisa-light-beige-59305928.glb",
+  "source": "AI-generated from the IKEA photo (Hyper3D Rodin Gen-2.5-Low)",
+  "rot_y_deg": 0,
+  "stretch_w_d_h": [
+   0.92,
+   1.06,
+   1.02
+  ],
+  "bytes": 951372
+ },
+ "ikea-lack-coffee-table-black-brown-46-1-2x30-3-4-00104291": {
+  "file": "ikea-lack-coffee-table-black-brown-46-1-2x30-3-4-00104291.glb",
+  "source": "AI-generated from the IKEA photo (Hyper3D Rodin Gen-2.5-Low)",
+  "rot_y_deg": 90,
+  "stretch_w_d_h": [
+   1.06,
+   0.99,
+   0.95
+  ],
+  "bytes": 694328
+ },
+ "ikea-barlast-floor-lamp-black-white-59-70437814": {
+  "file": "ikea-barlast-floor-lamp-black-white-59-70437814.glb",
+  "source": "AI-generated from the IKEA photo (Hyper3D Rodin Gen-2.5-Low)",
+  "rot_y_deg": 0,
+  "stretch_w_d_h": [
+   1.01,
+   0.81,
+   1.22
+  ],
+  "bytes": 609468
+ },
+ "ikea-akterspring-floor-lamp-opal-glass-brass-plated-64-00618808": {
+  "file": "ikea-akterspring-floor-lamp-opal-glass-brass-plated-64-00618808.glb",
+  "source": "AI-generated from the IKEA photo (Hyper3D Rodin Gen-2.5-Low)",
+  "rot_y_deg": 90,
+  "stretch_w_d_h": [
+   1.08,
+   0.98,
+   0.95
+  ],
+  "bytes": 468680
+ },
+ "ikea-borgeby-coffee-table-birch-veneer-27-1-2-70389356": {
+  "file": "ikea-borgeby-coffee-table-birch-veneer-27-1-2-70389356.glb",
+  "source": "AI-generated from the IKEA photo (Hyper3D Rodin Gen-2.5-Low)",
+  "rot_y_deg": 0,
+  "stretch_w_d_h": [
+   0.99,
+   0.99,
+   1.01
+  ],
+  "bytes": 595960
+ },
+ "ikea-gullvalla-sofa-silkeryd-dark-gray-beige-70618503": {
+  "file": "ikea-gullvalla-sofa-silkeryd-dark-gray-beige-70618503.glb",
+  "source": "AI-generated from the IKEA photo (Hyper3D Rodin Gen-2.5-Low)",
+  "rot_y_deg": 0,
+  "stretch_w_d_h": [
+   1.04,
+   0.93,
+   1.02
+  ],
+  "bytes": 907356
+ },
+ "ikea-kivik-sofa-tibbleby-beige-gray-39440593": {
+  "file": "ikea-kivik-sofa-tibbleby-beige-gray-39440593.glb",
+  "source": "AI-generated from the IKEA photo (Hyper3D Rodin Gen-2.5-Low)",
+  "rot_y_deg": 0,
+  "stretch_w_d_h": [
+   1.07,
+   0.97,
+   0.97
+  ],
+  "bytes": 1048720
+ },
+ "ikea-ostavall-adjustable-coffee-table-black-35-3-8-40534152": {
+  "file": "ikea-ostavall-adjustable-coffee-table-black-35-3-8-40534152.glb",
+  "source": "AI-generated from the IKEA photo (Hyper3D Rodin Gen-2.5-Low)",
+  "rot_y_deg": 90,
+  "stretch_w_d_h": [
+   0.92,
+   1.06,
+   1.03
+  ],
+  "bytes": 781376
+ }
+}

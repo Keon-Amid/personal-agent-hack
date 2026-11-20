@@ -150,6 +150,15 @@ One backend, two front doors. The tools enforce the rules; the model only orders
 - **Plan** = `contracts/plan.live.json` shape: `plan_id, plan_url, room, style, items[] (slot, product, style rank/scores,
   fit {verdict, results}, senso {check_id, accuracy_pct, claims}, why, why_source, rejected[]), cart {items, total_usd,
   delivery_note, no_purchase: true}, audit[]`. Plans persist as JSON in `~/.cache/room-furnisher/plans/` (shared across processes).
+- **Persona quiz (optional input, keon's screen):** `agent/quiz.json` = 5 questions (3 photo choices with `image_url`,
+  `ref_url` = the Pinterest / Google Images page it came from, and a psychology reference each). `agent.quiz.score({question_id:
+  option_id}) -> {style, style_scores, style_text, budget_usd, trace}`; pass `style_text` and `budget_usd` straight to
+  `run_agent`. `style` is always one of `sie.STYLES`; a quiz `style_text` replaces the style detected from the photo.
+  `agent.quiz.catalog_support(style) -> {slots: {slot: [{id, name, score}]}, covered, summary}` reads alistair's
+  `product_styles` (≥0.05) to say how well our 48 products cover that style. Today: traditional 5/5 slots, warm minimal
+  4/5, scandinavian and dark modern 3/5, mid-century / industrial / coastal 1/5, bohemian 0/5. Picks still happen
+  (ranking is relative); the UI should show the summary instead of implying a perfect match.
+  Images are hotlinked, owned by their sources; swap for IKEA photos before any public use beyond the demo.
 
 ### Scanned room + rearranging: `fit/scan.py`, `fit/layout.py` (owner: alistair) — DRAFT, confirm
 `assets/room_scan_roomplan.glb` is a Polycam **Floorplan** (Apple RoomPlan) scan of the room we're in: every wall, the
@@ -179,3 +188,12 @@ Rules: chairs may tuck under tables, anything may stand on a rug, rugs keep 6 in
 (bottom > 24 in) skip floor checks, `clearance` < 18 in → `unsure`. Real results: KIVIK at the door → "blocks the 32 in
 door swing" + "corner outside the walls"; table pushed back → hits the L-shape notch; `find_spot(KIVIK)` → flush on
 the 146 in wall.
+
+### HTTP API for the web app: `agent/server.py` (owner: brendan; kyle handed the backend over) — DRAFT, confirm
+`python -m agent.server --port 8000` (stdlib, no new dependency). CORS for http://localhost:5173 (`WEB_ORIGIN`).
+- `POST /api/plan` `{room: {wall, depth, door_width, door_height}, style_text, budget_usd, scan_path?, scan_wall?}`
+  → `202 {plan_id, plan_url}` at once; the agent runs in the background (claude -p + the MCP tools).
+  `scan_path` (e.g. `assets/room_scan_roomplan.glb`) replaces the room numbers; `room` values then override the scan.
+- `GET /api/plan/{id}` → the Plan (`contracts/plan.live.json` shape) with `items[]`, `audit[]` and `cart` growing while
+  it runs, plus `status: running | done | error` and `error`. keon polls every second. Live test: done in ~70 s.
+- `GET /api/health` → `{ok: true}`. Swap and quiz endpoints: later.
