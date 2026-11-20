@@ -97,5 +97,27 @@
    1.03
   ],
   "bytes": 781376
+ },
+ "ikea-arstid-floor-lamp-brass-white-60321324": {
+  "file": "ikea-arstid-floor-lamp-brass-white-60321324.glb",
+  "source": "AI-generated from the IKEA photo (Hyper3D Rodin Gen-2.5-Low)",
+  "rot_y_deg": 0,
+  "stretch_w_d_h": [
+   0.93,
+   0.92,
+   1.17
+  ],
+  "bytes": 440696
+ },
+ "ikea-gryteryd-recliner-rocker-armchair-hakebo-beige-20613904": {
+  "file": "ikea-gryteryd-recliner-rocker-armchair-hakebo-beige-20613904.glb",
+  "source": "AI-generated from the IKEA photo (Hyper3D Rodin Gen-2.5-Low)",
+  "rot_y_deg": 0,
+  "stretch_w_d_h": [
+   1.03,
+   1.0,
+   0.97
+  ],
+  "bytes": 891708
  }
 }
