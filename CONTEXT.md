@@ -4,7 +4,57 @@ For the team's Claude sessions: read this before doing anything. Facts below wer
 
 ## Team
 Keon, Brendan, Alistair, Kyle. Repo: https://github.com/Keon-Amid/personal-agent-hack (Keon's account).
-Keon usually owns the frontend, demo page, README, pitch and the demo itself. The other lanes get decided in hour 0.
+Keon is on UI. The other lanes below are proposed; confirm them in CONTRACT.md.
+
+## The plan (chosen 12:30; details still need to go in CONTRACT.md)
+**A room-furnishing shopping agent with 3D rendering.** The person uploads a photo of an empty or ugly room. The agent works out the room's size and style, picks real products with real dimensions, **proves each one fits and is allowed**, shows the result as a 3D room, and builds a real cart that the person approves.
+
+It's inspired by "people-coming-over", which won the grand prize at an earlier event run by these organizers (https://github.com/Nela62/peoplecomingover). That project was a chat window + vision model + product search + a browser agent buying from a **mock** store. It had no 3D, no fit checks and no audit trail. **Don't copy it.** These are the differences:
+- **Not a chat app.** The screen is the room plus the audit trail.
+- **Verified fit.** Real product W×D×H is checked against the wall, the floor and the doorway. "Sofa B is 3 inches too wide" is our negative control on stage.
+- **Rules.** Lease, dorm or fire-code rules live in a Senso KB. Senso fact-checks each pick before it goes in the cart.
+- **Audit trail on every item:** why it was picked, its source page, the fit math, Senso's verdict and the price.
+- **Real cart, held for approval.** No fake store. If an action is mocked, label it.
+
+**Still undecided: the specific person.** Options: a college student furnishing a dorm (the school publishes room sizes and banned items), a renter on a fixed budget with lease limits, or a refugee resettlement caseworker with a required-items list and a per-family budget (verify the facts first). Pick one in CONTRACT.md.
+
+### Sponsors
+| Sponsor | Role in our app |
+|---|---|
+| **Senso** (core, biggest prize) | KB of product specs and room rules. `senso_check_text` verifies each "fits and is allowed" claim before carting, and that verdict goes in the audit trail. |
+| **Superlinked SIE** (core, 2 prizes) | Extracts dimensions from product pages, matches style to the room, reranks candidates with visible scores. |
+| **Amplitude** (easy add, UI lane) | A few UI events: item swapped, cart approved. |
+| Firedrill (if time) | Rehearse the checkout in a simulation before the real cart. Event code `TOKENSAND`. |
+| Cognee (if time) | Remembers taste, budget and room measurements across sessions. |
+| Arcee (maybe) | Cheap open model for bulk extraction, framed around their cost/quality "Pareto frontier" prize. |
+| Skip | Guild and Persona (access may be sales-gated), SingleStore (overlaps with the core), Airbyte (no data source). |
+
+### Stack
+- **Frontend:** React + Vite + TypeScript + **React Three Fiber** (`@react-three/fiber`, `@react-three/drei`).
+- **Furniture models:** one generic low-poly model per category (Kenney Furniture Kit, kenney.nl, or Poly Pizza), **scaled to each real product's dimensions**. No per-product models needed.
+- **Room:** a room box built from measurements (walls, door, window). The vision model estimates size from the photo using a reference object such as a door or a sheet of paper. Full 3D reconstruction from a photo is out of scope. Stretch: an iPhone Pro LiDAR scan exported as a 3D file (test the export first).
+- **Backend:** Python + FastAPI. Claude handles vision and agent reasoning.
+- **Data:** about 40 real products with real dimensions (IKEA pages list them) in a JSON file, built in the first hour.
+- **Demo video:** QuickTime or Loom.
+
+### Timeline (submission 16:30)
+| Time | Goal |
+|---|---|
+| 12:30–12:50 | CONTRACT.md: the person, the room, budget and rules, the audit-record shape, the frontend↔backend API. Make a fake data file so every lane can start. Keys. |
+| 12:50–14:30 | Everyone builds against the fake data. |
+| **14:30** | First full run: photo → agent → 3D room → cart |
+| **15:30** | Demo works end to end. Polish and record the video. |
+| 16:00 | Freeze. Make the repo public. |
+| 16:15 | Submit (15 minutes of buffer) |
+
+### Lanes (proposed)
+- **Keon, UI:** 3D room view, item cards, audit-trail timeline, approve-cart panel, Amplitude events.
+- **Brendan, agent:** photo → room size and style → needs list → picks → Senso check → writes the audit records.
+- **Alistair, data + fit:** product catalog, dimension extraction (Superlinked), fit math (wall, floor, doorway clearance), price vs. quality options chart.
+- **Kyle, backend + glue:** FastAPI, loading the Senso KB, the real cart action, deploy, submission and video.
+
+### Team Slack (agentchat)
+Agents post status to the team channel with `~/team-kit/bin/agentchat` (`merged`, `touched`, `contract`, `blocked`). New member setup: get invited to the Slack workspace and the agent channel, get access to the private `EdanBarrios/team-kit` repo (Edan owns it), clone it to `~/team-kit`, run `cp .env.example .env`, and fill in the bot token (sent by DM, never pasted in a channel or repo), the channel ID and your lowercase name. Test with `bin/agentchat merged "test: hello from <name>"`. Hold off on `install.sh`: the kit's rules are still written for the Archil event.
 
 ## The event
 - **Personal Agents Hackathon** by tokens&, held at AWS Builder Loft, San Francisco, Fri Nov 20, 2026. In person only.
@@ -88,5 +138,5 @@ Most of them are sponsor people, so real use of their tool counts for a lot.
 - **Check setup first:** API keys, repo access, Node 22+, Python. Do it in the first 15 minutes.
 - **Never commit secrets.** Keys go in `.env` (gitignored).
 
-## Ideas
+## Ideas (earlier shortlist)
 See `IDEAS.md`.

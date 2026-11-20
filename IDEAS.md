@@ -1,5 +1,7 @@
 # Ideas (nothing decided until it's in CONTRACT.md)
 
+> **Update 12:30:** the team picked the 3D room-furnishing idea. See "The plan" in CONTEXT.md. The ideas below are the earlier shortlist.
+
 The challenge says **shopping agent with an audit trail**: real context, a real action, and visible steps behind each decision. Past winners at this organizer and similar events share a few traits. They lead with **one specific person who isn't in SF**, an **action you can check** (an email sent, a claim filed, a cart built), and **a number** (dollars recovered, errors caught). They lose when they're a chat box with a recommendation at the end. Past tokens& winners we shouldn't copy: FDA recall alerts, scam-inbox shield, pharmacy price finder, senior check-in calls, wildfire family alerts.
 
 ## Real winners these ideas are based on
