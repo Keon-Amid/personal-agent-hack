@@ -1,10 +1,10 @@
 // The 3D room: a box built from the room's measurements, a door, and each item at real size.
 // Everything inside <group scale={IN}> is authored in inches.
 
-import { useEffect, useMemo } from 'react'
+import { Suspense, useEffect, useMemo } from 'react'
 import { Canvas, useThree } from '@react-three/fiber'
-import { Html, OrbitControls } from '@react-three/drei'
-import { Vector3, type PerspectiveCamera } from 'three'
+import { Html, OrbitControls, useGLTF } from '@react-three/drei'
+import { FrontSide, MeshStandardMaterial, Vector3, type Mesh, type PerspectiveCamera } from 'three'
 import { Furniture, fmt } from './Furniture'
 import { autoLayout } from './layout'
 import { useModelManifest } from './Model'
@@ -18,6 +18,30 @@ type Props = {
   selected?: string | null // slot to highlight
   onSelect?: (slot: string | null) => void // an item was clicked, or null for empty space
   modelsUrl?: string | null // folder holding index.json and the .glb files; null = simple shapes only
+  scan?: RoomScan | null // a scan of the real room, drawn instead of the box built from measurements
+}
+
+// A scan of the real room (metres, Y up) and where the room sits in it. The numbers come from
+// scripts/scan_align.py: the back-left floor corner of the room, in the scan's own coordinates.
+export type RoomScan = { url: string; corner_m: [number, number, number]; ceiling_in?: number }
+
+function ScanMesh({ scan }: { scan: RoomScan }) {
+  const { scene } = useGLTF(scan.url)
+  const object = useMemo(() => {
+    const root = scene.clone(true)
+    // One-sided, so the walls and ceiling between the camera and the room are not drawn and you can see in.
+    const material = new MeshStandardMaterial({ color: '#d9d5cc', roughness: 0.95, flatShading: true, side: FrontSide })
+    root.traverse((o) => {
+      if ((o as Mesh).isMesh) {
+        ;(o as Mesh).material = material
+        o.receiveShadow = true
+      }
+    })
+    return root
+  }, [scene])
+  const [x, y, z] = scan.corner_m
+  const M = 1 / IN // metres to inches: this sits inside the inches group
+  return <primitive object={object} scale={M} position={[-x * M, -y * M, -z * M]} />
 }
 
 export function describe(m: Measurement): string {
@@ -76,12 +100,12 @@ function Label({ pos, children }: { pos: [number, number, number]; children: Rea
   )
 }
 
-export function RoomScene({ room, items, selected = null, onSelect = () => {}, modelsUrl = '/models/' }: Props) {
+export function RoomScene({ room, items, selected = null, onSelect = () => {}, modelsUrl = '/models/', scan = null }: Props) {
   const auto = useMemo(() => autoLayout(room, items), [room, items])
   const models = useModelManifest(modelsUrl ? modelsUrl + 'index.json' : null)
   const W = room.wall.value_in
   const D = room.depth.value_in
-  const H = room.ceiling_in ?? 96
+  const H = scan?.ceiling_in ?? room.ceiling_in ?? 96
   const doorWall = room.door_wall ?? 'right'
   const dw = room.door_width.value_in
   const dh = room.door_height.value_in
@@ -119,6 +143,12 @@ export function RoomScene({ room, items, selected = null, onSelect = () => {}, m
       />
 
       <group scale={IN} position={[(-W / 2) * IN, 0, (-D / 2) * IN]}>
+        {scan ? (
+          <Suspense fallback={null}>
+            <ScanMesh scan={scan} />
+          </Suspense>
+        ) : (
+        <>
         {/* floor */}
         <mesh position={[W / 2, 0, D / 2]} rotation={[-Math.PI / 2, 0, 0]} receiveShadow>
           <planeGeometry args={[W, D]} />
@@ -139,6 +169,8 @@ export function RoomScene({ room, items, selected = null, onSelect = () => {}, m
         <Label pos={doorLabel.pos}>
           Door {fmt(dw)} × {fmt(dh)} in
         </Label>
+        </>
+        )}
 
         {/* how far off an estimated measurement may be: the wall could be anywhere inside the band */}
         {room.wall.error_in > 0 && (

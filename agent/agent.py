@@ -70,12 +70,22 @@ def mcp_config() -> dict:
     return cfg
 
 
-def build_prompt(plan_id: str, budget_usd: float | None) -> str:
+def build_prompt(plan_id: str, budget_usd: float | None, budget_total_usd: float | None = None) -> str:
     text = PROMPT.read_text().replace("{{plan_id}}", plan_id)
+    lines = []
     if budget_usd is not None:
         b = f"{float(budget_usd):g}"
-        text = text.replace("{{budget_line}}", f"The person's budget is ${b} per item: pass budget_usd={b} to every pick.")
-        text = text.replace("{{budget_arg}}", f", budget_usd={b}")
+        lines.append(f"The person's budget is ${b} per item: pass budget_usd={b} to every pick.")
+    if budget_total_usd is not None:
+        t = f"{float(budget_total_usd):g}"
+        lines.append(f"The person's total budget is ${t} for the whole room. Split it across the five slots before "
+                     f"picking (a sofa needs the biggest share, a lamp the smallest) and pass each slot's share as "
+                     f"budget_usd, so a big early pick doesn't leave nothing for the rest.")
+    if lines:
+        lines.append("The tools enforce the budget: pick never returns a pricier item and cart_add refuses one.")
+        text = text.replace("{{budget_line}}", " ".join(lines))
+        text = text.replace("{{budget_arg}}", ", budget_usd=<that slot's share>" if budget_total_usd is not None
+                            and budget_usd is None else f", budget_usd={float(budget_usd):g}" if budget_usd is not None else "")
     else:
         text = text.replace("{{budget_line}}", "No budget was given: call pick without budget_usd.")
         text = text.replace("{{budget_arg}}", "")
@@ -163,7 +173,8 @@ def _records_for(event: dict, calls: dict) -> list[dict]:
 
 def run_agent(room_input: dict, photo_b64: str | None = None, style_text: str | None = None,
               budget_usd: float | None = None, on_event: Callable[[dict], None] | None = None,
-              scan_path: str | None = None, scan_wall: str | None = None, plan_id: str | None = None) -> dict:
+              budget_total_usd: float | None = None, scan_path: str | None = None,
+              scan_wall: str | None = None, plan_id: str | None = None) -> dict:
     """Furnish a room end to end and return the Plan (agent.tools.get_plan).
 
     room_input: exact inches the person measured, {"wall", "depth", "door_width", "door_height"} (any subset;
@@ -182,12 +193,14 @@ def run_agent(room_input: dict, photo_b64: str | None = None, style_text: str | 
             except Exception:  # a broken listener must not kill the run
                 pass
 
+    if budget_usd is not None or budget_total_usd is not None:  # enforced by the tools, not just the prompt
+        tools.set_budget(pid, total_usd=budget_total_usd, per_item_usd=budget_usd)
     out = tools.analyze_room(pid, photo_b64=photo_b64, style_text=style_text, exact=_exact(room_input),
                              scan_path=scan_path, scan_wall=scan_wall)
     if not out.get("ok", True):
         raise AgentError(out.get("error", "analyze_room failed"), pid)
 
-    cmd = build_command(build_prompt(pid, budget_usd))
+    cmd = build_command(build_prompt(pid, budget_usd, budget_total_usd))
     emit(audit("agent", source={"kind": "template"}, decision="start Claude Code agent",
                input={"tools": ALLOWED_TOOLS, "budget_usd": budget_usd},
                why="Headless Claude Code with only the room_furnisher tools; the tools enforce fit and Senso checks.",

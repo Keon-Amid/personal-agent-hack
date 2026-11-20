@@ -334,5 +334,180 @@
   "kb_node_id": "ed9b3a19-cd9f-450c-9d15-41635fbc8d75",
   "content_id": "30e13c1a-64ae-4b0f-8907-61e9c13d05d7",
   "status": "complete"
+ },
+ "ikea-morabo-sofa-grann-bomstad-black-metal-09316670": {
+  "title": "IKEA 093.166.70 MORABO Sofa - Grann/Bomstad black/metal",
+  "sha256": "fa44d4760effe0a916b1178c356851dc006a2384cdf6e513b5bcfb8f1d533cef",
+  "kb_node_id": "551402c2-ee01-4b22-941f-4ba1d9451748",
+  "content_id": "304f5ef6-d4cb-420b-b9c1-bf49175390fc",
+  "status": "complete"
+ },
+ "ikea-saltmyran-sofa-oreryd-blue-70618522": {
+  "title": "IKEA 706.185.22 SALTMYRAN Sofa - Öreryd blue",
+  "sha256": "4470e8fc893d045a33d217f69d8793affc525d7f94fdb65decfd8dc9567b8878",
+  "kb_node_id": "6e2ba23d-6f01-4726-b7da-7ab4edd1fba0",
+  "content_id": "6e9866ad-2ce2-420a-8509-6521a7ea1988",
+  "status": "complete"
+ },
+ "ikea-saltsjobaden-3-seat-sofa-blekinge-white-79579192": {
+  "title": "IKEA 795.791.92 SALTSJÖBADEN 3-seat sofa - Blekinge white",
+  "sha256": "b7618eaf7fa0d5c7d5a65b7d8978e63680eba79e165d9945e14eee610525e569",
+  "kb_node_id": "971430bc-83a6-4aa1-84aa-4af42f50f8f6",
+  "content_id": "da4e2bce-51e4-4fd5-8028-d086c5fd1bb8",
+  "status": "complete"
+ },
+ "ikea-slatorp-sofa-hakebo-dark-gray-30594387": {
+  "title": "IKEA 305.943.87 SLATORP Sofa - Hakebo dark gray",
+  "sha256": "e17cd3d4a7ee482dd037781a83b9704f7e178af56d4a86aaa29debf69ec73253",
+  "kb_node_id": "2eed7a66-787f-4f0b-abd7-91e6eb333799",
+  "content_id": "bcf87422-838b-4708-ae0e-0b58bf663105",
+  "status": "complete"
+ },
+ "ikea-stockholm-2025-3-seat-sofa-alhamn-beige-69574294": {
+  "title": "IKEA 695.742.94 STOCKHOLM 2025 3-seat sofa - Alhamn beige",
+  "sha256": "a7f37be3c9027763255a06d2f5d262d35f58a3e58ec4c9f1cbeb0c4543b492f0",
+  "kb_node_id": "c74e4411-5268-4891-9ab6-a7c158691413",
+  "content_id": "15478294-a3fb-4c6b-9b55-2efa59116566",
+  "status": "complete"
+ },
+ "ikea-herrakra-armchair-diserod-dark-yellow-40535547": {
+  "title": "IKEA 405.355.47 HERRÅKRA Armchair - Diseröd dark yellow",
+  "sha256": "719042a612dc071f0b7ba6830aac5fd691af9b170ccf62aec282d295a33842e7",
+  "kb_node_id": "2a84bfff-6867-458b-b55c-669baf171c98",
+  "content_id": "a010b187-30a8-48fd-97ce-11b1ea4e2e20",
+  "status": "complete"
+ },
+ "ikea-morabo-armchair-gunnared-dark-gray-metal-79318307": {
+  "title": "IKEA 793.183.07 MORABO Armchair - Gunnared dark gray/metal",
+  "sha256": "63eb1dd6bd0ad8e231a7100abdce851b44e09af7eede6ad375f9eeb68c022d5e",
+  "kb_node_id": "279b9466-91fd-4c76-ad97-099dd72bc2f6",
+  "content_id": "08b7bfca-2730-4e39-b984-26b033cf1945",
+  "status": "complete"
+ },
+ "ikea-persbol-armchair-birch-tibbleby-beige-gray-20525926": {
+  "title": "IKEA 205.259.26 PERSBOL Armchair - birch/Tibbleby beige/gray",
+  "sha256": "5104b6e52e0371e21f4cdb7b3e66e346778694ec0ec96fa759e285e68a88197a",
+  "kb_node_id": "80fd3d06-b1eb-4615-a421-4411b17d49ca",
+  "content_id": "1a16710b-f7eb-4be0-81db-7b15e0ae582c",
+  "status": "complete"
+ },
+ "ikea-rocksjon-armchair-blekinge-white-69508850": {
+  "title": "IKEA 695.088.50 ROCKSJÖN Armchair - Blekinge white",
+  "sha256": "1f650c692ebb63b2990de8ffbc1e483f2724ba9b5ecc8c83adeebe493c4df896",
+  "kb_node_id": "a21b0d9a-a74b-4033-b534-ce270cbb3db9",
+  "content_id": "40138871-fdf1-4a00-8fd4-e05b01fb5b6c",
+  "status": "complete"
+ },
+ "ikea-saltsjobaden-armchair-blekinge-white-39622710": {
+  "title": "IKEA 396.227.10 SALTSJÖBADEN Armchair - Blekinge white",
+  "sha256": "7c76b4b911edb3d6bc90c75b5625e3754da5bbe1f3dcd7331d5f7d9c0dea1bbd",
+  "kb_node_id": "dfdf87e1-b0ab-48cf-baf2-777a284a5695",
+  "content_id": "1f35dc6b-af16-4d82-b173-f0936507108e",
+  "status": "complete"
+ },
+ "ikea-stockholm-2025-coffee-table-oak-veneer-glass-20586552": {
+  "title": "IKEA 205.865.52 STOCKHOLM 2025 Coffee table - oak veneer glass",
+  "sha256": "5a572ccfa8acda399a84112dd564c35fbca5d2e74d09e2dec8d70fa3857203ee",
+  "kb_node_id": "3ab12582-a92c-415a-8e12-ce4b13b28f3d",
+  "content_id": "ecea0b75-4aa4-4af2-946b-0de3e8e5549e",
+  "status": "complete"
+ },
+ "ikea-torsjo-coffee-table-gold-effect-glass-34-5-8-50590406": {
+  "title": "IKEA 505.904.06 TORSJÖ Coffee table - gold effect/glass 34 5/8 \"",
+  "sha256": "cd511a002792a32a52b15f47f5fe327c119cb6ead3355fc78917905758644eaf",
+  "kb_node_id": "1fc2f5a7-571d-45f5-a765-33c0aa6f4d3a",
+  "content_id": "f8934fb0-aca4-4435-a953-08e0afb79d42",
+  "status": "complete"
+ },
+ "ikea-tranered-coffee-table-dark-brown-35-3-8x35-3-8-10608998": {
+  "title": "IKEA 106.089.98 TRANERED Coffee table - dark-brown 35 3/8x35 3/8 \"",
+  "sha256": "4ca54dda8cf50541c44e953895f2d79e9056db0d224cf7eb460ad567c7011590",
+  "kb_node_id": "35d002bc-5842-4642-bffb-154b2b951f9d",
+  "content_id": "77698de1-4c14-469b-ad4e-226256ab1c79",
+  "status": "complete"
+ },
+ "ikea-ugglerum-coffee-table-walnut-veneer-51-1-8x25-5-8-60627980": {
+  "title": "IKEA 606.279.80 UGGLERUM Coffee table - walnut veneer 51 1/8x25 5/8 \"",
+  "sha256": "27ed49f7c0c79585300784b501727970fda088c0e2b6b328a05c4264a9ee389a",
+  "kb_node_id": "433c5a30-46ac-4fab-b6ce-d53c957c12e2",
+  "content_id": "361499bf-f46d-4b88-be2b-c2d069a5244b",
+  "status": "complete"
+ },
+ "ikea-vittsjo-coffee-table-black-brown-glass-29-1-2-80213309": {
+  "title": "IKEA 802.133.09 VITTSJÖ Coffee table - black-brown/glass 29 1/2 \"",
+  "sha256": "3c6a4a969ab834ac298746fd18cc1045b872bace161df6c7689d45d1094c1f5b",
+  "kb_node_id": "f0d01dfe-2cf6-4fff-b011-4f45ebe183d1",
+  "content_id": "98e2a881-fdb4-42aa-8913-2e07d7c971e4",
+  "status": "complete"
+ },
+ "ikea-lokaltag-rug-10623220": {
+  "title": "IKEA 106.232.20 LOKALTÅG Rug, low pile - beige/gray 5 ' 3 \"x7 ' 7 \"",
+  "sha256": "d544afc0f256ff19fa62b9a450dd161b56dc4ce40d5e07875672a09d679e3c2a",
+  "kb_node_id": "809114e1-fcab-4b6e-b47a-cdd6e29f394f",
+  "content_id": "8ba3aa8a-3230-47fb-bfe2-295699a3b9ba",
+  "status": "complete"
+ },
+ "ikea-markblamme-rug-90625705": {
+  "title": "IKEA 906.257.05 MARKBLÅMME Rug, low pile - multicolor/check pattern 5 ' 3 \"x7 ' 7 \"",
+  "sha256": "73f270ba136bd7c715fb691838e0fb60d6b804f6b12b6f27df7fcbe6411d963d",
+  "kb_node_id": "a0ac4027-71f2-44a9-b42e-7840f08f7abe",
+  "content_id": "e7c546a5-b00d-4d83-a8ae-c2cd68a0f28e",
+  "status": "complete"
+ },
+ "ikea-ridstig-rug-10603335": {
+  "title": "IKEA 106.033.35 RIDSTIG Rug, flatwoven - off-white/green 6 ' 7 \"x9 ' 10 \"",
+  "sha256": "b013127e9f1a22b7415d6d0117a96913070f706ca70b46b2d4d611ea925c2a9b",
+  "kb_node_id": "c1ff42c6-ac8a-4408-9d8c-94347b3dbc8b",
+  "content_id": "a7b04b28-ec55-40bc-9579-fda196971028",
+  "status": "complete"
+ },
+ "ikea-starreklinte-rug-20569133": {
+  "title": "IKEA 205.691.33 STARREKLINTE Rug, flatwoven - natural/black 3 ' 11 \"x5 ' 11 \"",
+  "sha256": "d5d00c38874ffae40d414f523ac1d7c14deef739da1fdaf81f3db6ce083c5150",
+  "kb_node_id": "753cbd6f-98f6-4dc3-aadf-4f386e14a17a",
+  "content_id": "acd4c00d-e3d0-428b-8ba4-2c2ea05c8984",
+  "status": "complete"
+ },
+ "ikea-stockholm-2025-rug-40593815": {
+  "title": "IKEA 405.938.15 STOCKHOLM 2025 Rug, flatwoven - white/brown/light blue handwoven 5 ' 7 \"x7 ' 10 \"",
+  "sha256": "c0e590fbd6ddbd3e5e32da9766c24a1445e619819021b0dd6e612ad439976c8b",
+  "kb_node_id": "bd969569-3ac4-431a-b4f4-d13a39dc2ee6",
+  "content_id": "ddb1ea4b-f21c-46bc-bf8a-84d485b27a2e",
+  "status": "complete"
+ },
+ "ikea-evedal-floor-lamp-marble-gray-60357916": {
+  "title": "IKEA 603.579.16 EVEDAL Floor lamp - marble/gray",
+  "sha256": "9386ee25bfefbf5c7e1a8d2fdc7c1a3a2cdfe8f992e45018a121658a5d769508",
+  "kb_node_id": "cbc718c9-4735-44e7-9a37-a122da0bf999",
+  "content_id": "b913a913-75fe-4816-98e8-79a8ef01fb6c",
+  "status": "complete"
+ },
+ "ikea-flyghojd-floor-lamp-brass-beige-70524444": {
+  "title": "IKEA 705.244.44 FLYGHÖJD Floor lamp - brass/beige",
+  "sha256": "a2bd135ffc98aab5850e70e0552aa88671178cd0d9a02d44a0ea3858b138b522",
+  "kb_node_id": "a7d14a1a-cca7-4413-b4d6-848405a95ed4",
+  "content_id": "b2f953b8-9da6-4231-9162-b11fcd067312",
+  "status": "complete"
+ },
+ "ikea-lauters-floor-lamp-ash-white-00405048": {
+  "title": "IKEA 004.050.48 LAUTERS Floor lamp - ash/white",
+  "sha256": "d99fbf0039a3d0acd26bc673306981df8b833aa2cf19ef276a39ac464eaf00b8",
+  "kb_node_id": "8ac3a1c5-1b44-4afc-aa66-faa1d28e02fa",
+  "content_id": "41134416-016d-4c44-a464-187ea531cded",
+  "status": "complete"
+ },
+ "ikea-okensand-floor-lamp-beech-white-90541536": {
+  "title": "IKEA 905.415.36 ÖKENSAND Floor lamp - beech/white",
+  "sha256": "5a309884b50b1b0634d10aa98a0cfcf0e9565777d200b3312dc69060808059d4",
+  "kb_node_id": "fc207f0a-9707-4e7f-b04b-0af2b3a2a6c7",
+  "content_id": "34fac23e-25a1-4e00-80b7-c3b3ca462ab0",
+  "status": "complete"
+ },
+ "ikea-ringsta-skaftet-floor-lamp-white-nickel-plated-59387448": {
+  "title": "IKEA 593.874.48 RINGSTA / SKAFTET Floor lamp - white/nickel plated",
+  "sha256": "8ecd67533aa37b3d53b83f1141e7efa266bdb26b71956ab69fa02f522065f662",
+  "kb_node_id": "1d627850-355a-4c29-b900-f4f509f1fb06",
+  "content_id": "65512d79-5ed0-4a47-a53b-09aaff1218ec",
+  "status": "complete"
  }
 }

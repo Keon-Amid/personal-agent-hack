@@ -22,7 +22,7 @@ def required(td) -> set[str]:
 
 
 class ToolSpecs(unittest.TestCase):
-    NAMES = ["analyze_room", "style_match", "fit_options", "pick", "senso_check", "swap", "cart_add", "get_plan"]
+    NAMES = ["analyze_room", "style_match", "fit_options", "pick", "senso_check", "swap", "cart_add", "set_budget", "get_plan"]
 
     def test_names_match_functions(self):
         self.assertEqual([s["name"] for s in tools.TOOL_SPECS], self.NAMES)

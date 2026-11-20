@@ -1,0 +1,38 @@
+{
+ "about": "Where the room sits in the scan's own coordinates (metres, Y up). Written by scripts/scan_align.py.",
+ "scan": "room_scan_geometry.glb",
+ "plan": "plan.room_scan.json",
+ "points": 63959,
+ "orientation": "wall_along_x",
+ "floor_m": -1.03,
+ "ceiling_m": 2.01,
+ "wall_ends_m": [
+  -2.51,
+  2.39
+ ],
+ "depth_ends_m": [
+  -1.81,
+  1.63
+ ],
+ "back_wall_m": -1.81,
+ "back_wall_is_low_end": true,
+ "measured_in": {
+  "wall": 192.9,
+  "depth": 135.4,
+  "ceiling": 119.7
+ },
+ "plan_in": {
+  "wall": 192.0,
+  "depth": 135.0
+ },
+ "wall_points": {
+  "side_walls": [
+   283,
+   221
+  ],
+  "long_walls": [
+   316,
+   231
+  ]
+ }
+}

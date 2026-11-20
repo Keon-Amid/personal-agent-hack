@@ -1,4 +1,57 @@
-# web/ — the 3D room renderer
+# web/ — the app
+
+A shopping agent that furnishes a scanned room with real IKEA pieces and shows the measurement behind every choice.
+
+```bash
+cd web && npm install && npm run dev      # http://localhost:5173
+```
+
+## What you can do
+
+1. **Start**: drop a `.glb` room scan (Polycam on an iPhone Pro), or open one of today's rooms.
+2. **Describe the room you want** in the bar at the bottom and press Enter. The agent's steps stream into the
+   **audit trail** on the left while each piece lands in the 3D room.
+3. **Click a piece** (in the room or the trail): fit checks with their maths, Senso's claims with the quoted source,
+   what was rejected first, and the alternatives as a price-against-rating chart. Swap to any that fits.
+4. **Measure**: click Wall, Depth or Door width in the top bar and type a tape measurement. Every piece is re-checked,
+   the change is logged, and anything that no longer fits turns red with a one-click swap.
+5. **Cart**: IKEA links, the total, and the audit trail as a JSON download. No purchase is made.
+
+Keys: `⌘K` describe, `←` `→` step through pieces, `1` `2` `3` views, `esc` close.
+
+## Where the data comes from
+
+| On screen | Source |
+|---|---|
+| Plans, audit records, Senso claims | `contracts/plan.*.json`: recorded runs of `agent.agent.run_agent` |
+| Products, prices, sizes, ratings, photos | `data/products.json` |
+| Alternatives and their fit checks | `src/fixtures/options.*.json`, written by `python3 web/scripts/make_options.py` from `fit.options` |
+| The room | `assets/room_scan_roomplan.glb` (Polycam Floorplan scan), or drawn from a plan's typed measurements |
+| Product 3D models | `public/models/` (see below); anything without one is a plain shape at the listed size |
+
+**Replay or live.** By default (`VITE_API=mock`) the app replays a recorded run: same records, same order, same text,
+with the waiting shortened. The pill in the top bar says so. `VITE_API=live` calls the agent server instead
+(`POST /api/plan`, then `GET /api/plan/{id}` polled once a second; see `src/api/live.ts`). That server is not built yet.
+
+Computed in the browser, and labelled as yours in the trail: a tape measurement re-checks each piece from the
+`need_in` its fit result already carries (same comparison as `fit/checks.py`), and a swap takes its fit checks from
+`fit.options`. A swapped piece shows "Not checked by Senso yet" until the agent runs again.
+
+Deep links: `/plan/<plan_id>` opens a finished plan. `?at=ready|run|done`, `?sel=<slot>`, `?cam=iso|top|front`,
+`?cart=1` set the first view (handy for rehearsing).
+
+## Layout
+
+- `src/ui/`: the panels (start screen, top bar, audit trail, item panel, cart, command bar)
+- `src/scene/`: the 3D room the app draws (scan parsing, layout, furniture, camera)
+- `src/store.ts`: one store; `applyRecord` is the only place a run changes what is shown
+- `src/api/`: `mock.ts` (replay) and `live.ts` (agent server), same interface
+- `src/styles/tokens.css`: colours, type, radii
+- `src/room3d/` + `src/Harness.tsx`: kyle's standalone renderer and its test page, at **`/harness`**
+
+---
+
+# The standalone 3D renderer (`src/room3d/`)
 
 `src/room3d/` draws the room: a box built from the room's measurements, each picked product at its real
 IKEA width × depth × height, and the fit verdict as the outline colour (green fits, amber unsure, red does not fit).
@@ -19,10 +72,10 @@ const plan = fromAgentPlan(agentPlan, catalogById, 'label')   // agent.run_agent
 ## Run
 
 ```bash
-cd web && npm install && npm run dev      # http://localhost:5173
+cd web && npm install && npm run dev      # http://localhost:5173/harness
 ```
 
-The page is a **test harness** for the renderer, not the app's UI. Its plan picker draws the agent's runs in
+The page at `/harness` is a **test harness** for the renderer, not the app's UI. Its plan picker draws the agent's runs in
 `contracts/` and a fit-only demo run (`python3 scripts/demo_plan.py` writes `public/demo-plan.json`).
 
 ## Product models (image → 3D)
@@ -44,3 +97,10 @@ Honesty rules the renderer follows:
 - The label on a model says it is AI-generated from the IKEA photo and scaled to the listed size.
 - `stretch_w_d_h` in `index.json` records how far the generated shape's own proportions were from the listed
   size. Thin, tall items (floor lamps) are the weak case.
+
+## The scanned room
+
+`<RoomScene scan={{ url, corner_m, ceiling_in }} />` draws a scan of the real room instead of the box built from
+measurements. `python3 scripts/scan_align.py` finds the floor and wall planes in `assets/room_scan_geometry.glb`
+and writes `assets/room_scan_geometry.align.json`; `corner_m` is the room's back-left floor corner from that file.
+The harness turns the scan on for `plan.room_scan.json`. `?clean` hides the harness panel for screenshots.

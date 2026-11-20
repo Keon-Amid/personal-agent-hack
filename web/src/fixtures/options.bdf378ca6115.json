@@ -1,0 +1,3760 @@
+{
+ "sofa": [
+  {
+   "id": "ikea-glostad-sofa-knisa-dark-gray-40595942",
+   "name": "GLOSTAD Sofa - Knisa dark gray",
+   "price_usd": 199.0,
+   "rating": 4.0,
+   "review_count": 90,
+   "image_url": "https://www.ikea.com/us/en/images/products/glostad-sofa-knisa-dark-gray__1234948_pe917261_s5.jpg",
+   "source_url": "https://www.ikea.com/us/en/p/glostad-sofa-knisa-dark-gray-40595942/",
+   "fit": "fits",
+   "fit_results": [
+    {
+     "check": "wall",
+     "verdict": "fits",
+     "math": "width 70.125 in \u2264 192 in (user)",
+     "need_in": 70.12,
+     "available": {
+      "value_in": 192.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 121.88
+    },
+    {
+     "check": "floor",
+     "verdict": "fits",
+     "math": "depth 30.75 in + walkway 36 in = 66.75 in \u2264 135 in (user)",
+     "need_in": 66.75,
+     "available": {
+      "value_in": 135.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 68.25
+    },
+    {
+     "check": "doorway_width",
+     "verdict": "fits",
+     "math": "box 1/1 smallest side 7.5 in \u2264 69 in (user)",
+     "need_in": 7.5,
+     "available": {
+      "value_in": 69.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 61.5
+    },
+    {
+     "check": "doorway_height",
+     "verdict": "fits",
+     "math": "box 1/1 middle side 25.5 in \u2264 92 in (user)",
+     "need_in": 25.5,
+     "available": {
+      "value_in": 92.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 66.5
+    }
+   ],
+   "best_value": true,
+   "why": "best value: nothing that fits is cheaper and better rated"
+  },
+  {
+   "id": "ikea-saltmyran-sofa-oreryd-blue-70618522",
+   "name": "SALTMYRAN Sofa - \u00d6reryd blue",
+   "price_usd": 399.0,
+   "rating": 4.1,
+   "review_count": 37,
+   "image_url": "https://www.ikea.com/us/en/images/products/saltmyran-sofa-oereryd-blue__1578447_pe1034090_s5.jpg",
+   "source_url": "https://www.ikea.com/us/en/p/saltmyran-sofa-oereryd-blue-70618522/",
+   "fit": "fits",
+   "fit_results": [
+    {
+     "check": "wall",
+     "verdict": "fits",
+     "math": "width 73.625 in \u2264 192 in (user)",
+     "need_in": 73.62,
+     "available": {
+      "value_in": 192.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 118.38
+    },
+    {
+     "check": "floor",
+     "verdict": "fits",
+     "math": "depth 31.125 in + walkway 36 in = 67.125 in \u2264 135 in (user)",
+     "need_in": 67.12,
+     "available": {
+      "value_in": 135.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 67.88
+    },
+    {
+     "check": "doorway_width",
+     "verdict": "fits",
+     "math": "box 1/1 smallest side 12.25 in \u2264 69 in (user)",
+     "need_in": 12.25,
+     "available": {
+      "value_in": 69.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 56.75
+    },
+    {
+     "check": "doorway_height",
+     "verdict": "fits",
+     "math": "box 1/1 middle side 25.5 in \u2264 92 in (user)",
+     "need_in": 25.5,
+     "available": {
+      "value_in": 92.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 66.5
+    }
+   ],
+   "best_value": true,
+   "why": "best value: nothing that fits is cheaper and better rated"
+  },
+  {
+   "id": "ikea-gullvalla-sofa-silkeryd-dark-gray-beige-70618503",
+   "name": "GULLVALLA Sofa - Silkeryd dark gray-beige",
+   "price_usd": 449.0,
+   "rating": 4.6,
+   "review_count": 20,
+   "image_url": "https://www.ikea.com/us/en/images/products/gullvalla-sofa-silkeryd-dark-gray-beige__1578444_pe1034087_s5.jpg",
+   "source_url": "https://www.ikea.com/us/en/p/gullvalla-sofa-silkeryd-dark-gray-beige-70618503/",
+   "fit": "fits",
+   "fit_results": [
+    {
+     "check": "wall",
+     "verdict": "fits",
+     "math": "width 71.625 in \u2264 192 in (user)",
+     "need_in": 71.62,
+     "available": {
+      "value_in": 192.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 120.38
+    },
+    {
+     "check": "floor",
+     "verdict": "fits",
+     "math": "depth 32.625 in + walkway 36 in = 68.625 in \u2264 135 in (user)",
+     "need_in": 68.62,
+     "available": {
+      "value_in": 135.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 66.38
+    },
+    {
+     "check": "doorway_width",
+     "verdict": "fits",
+     "math": "box 1/1 smallest side 13.75 in \u2264 69 in (user)",
+     "need_in": 13.75,
+     "available": {
+      "value_in": 69.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 55.25
+    },
+    {
+     "check": "doorway_height",
+     "verdict": "fits",
+     "math": "box 1/1 middle side 25.5 in \u2264 92 in (user)",
+     "need_in": 25.5,
+     "available": {
+      "value_in": 92.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 66.5
+    }
+   ],
+   "best_value": true,
+   "why": "best value: nothing that fits is cheaper and better rated"
+  },
+  {
+   "id": "ikea-saltsjobaden-3-seat-sofa-blekinge-white-79579192",
+   "name": "SALTSJ\u00d6BADEN 3-seat sofa - Blekinge white",
+   "price_usd": 499.0,
+   "rating": 4.3,
+   "review_count": 61,
+   "image_url": "https://www.ikea.com/us/en/images/products/saltsjoebaden-3-seat-sofa-blekinge-white__1578240_pe1033908_s5.jpg",
+   "source_url": "https://www.ikea.com/us/en/p/saltsjoebaden-3-seat-sofa-blekinge-white-s79579192/",
+   "fit": "fits",
+   "fit_results": [
+    {
+     "check": "wall",
+     "verdict": "fits",
+     "math": "width 80.75 in \u2264 192 in (user)",
+     "need_in": 80.75,
+     "available": {
+      "value_in": 192.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 111.25
+    },
+    {
+     "check": "floor",
+     "verdict": "fits",
+     "math": "depth 34.625 in + walkway 36 in = 70.625 in \u2264 135 in (user)",
+     "need_in": 70.62,
+     "available": {
+      "value_in": 135.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 64.38
+    },
+    {
+     "check": "doorway_width",
+     "verdict": "fits",
+     "math": "box 1/5 smallest side 18.5 in \u2264 69 in (user)",
+     "need_in": 18.5,
+     "available": {
+      "value_in": 69.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 50.5
+    },
+    {
+     "check": "doorway_height",
+     "verdict": "fits",
+     "math": "box 1/5 middle side 33.75 in \u2264 92 in (user)",
+     "need_in": 33.75,
+     "available": {
+      "value_in": 92.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 58.25
+    },
+    {
+     "check": "doorway_width",
+     "verdict": "fits",
+     "math": "box 2/5 smallest side 11.25 in \u2264 69 in (user)",
+     "need_in": 11.25,
+     "available": {
+      "value_in": 69.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 57.75
+    },
+    {
+     "check": "doorway_height",
+     "verdict": "fits",
+     "math": "box 2/5 middle side 18.75 in \u2264 92 in (user)",
+     "need_in": 18.75,
+     "available": {
+      "value_in": 92.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 73.25
+    },
+    {
+     "check": "doorway_width",
+     "verdict": "fits",
+     "math": "box 3/5 smallest side 3.5 in \u2264 69 in (user)",
+     "need_in": 3.5,
+     "available": {
+      "value_in": 69.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 65.5
+    },
+    {
+     "check": "doorway_height",
+     "verdict": "fits",
+     "math": "box 3/5 middle side 14.75 in \u2264 92 in (user)",
+     "need_in": 14.75,
+     "available": {
+      "value_in": 92.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 77.25
+    },
+    {
+     "check": "doorway_width",
+     "verdict": "fits",
+     "math": "box 4/5 smallest side 2.25 in \u2264 69 in (user)",
+     "need_in": 2.25,
+     "available": {
+      "value_in": 69.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 66.75
+    },
+    {
+     "check": "doorway_height",
+     "verdict": "fits",
+     "math": "box 4/5 middle side 5 in \u2264 92 in (user)",
+     "need_in": 5.0,
+     "available": {
+      "value_in": 92.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 87.0
+    },
+    {
+     "check": "doorway_width",
+     "verdict": "fits",
+     "math": "box 5/5 smallest side 2.25 in \u2264 69 in (user)",
+     "need_in": 2.25,
+     "available": {
+      "value_in": 69.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 66.75
+    },
+    {
+     "check": "doorway_height",
+     "verdict": "fits",
+     "math": "box 5/5 middle side 5 in \u2264 92 in (user)",
+     "need_in": 5.0,
+     "available": {
+      "value_in": 92.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 87.0
+    }
+   ],
+   "best_value": false,
+   "why": "GULLVALLA Sofa is $449 and rated 4.6"
+  },
+  {
+   "id": "ikea-kivik-sofa-tibbleby-beige-gray-39440593",
+   "name": "KIVIK Sofa - Tibbleby beige/gray",
+   "price_usd": 799.0,
+   "rating": 4.1,
+   "review_count": 570,
+   "image_url": "https://www.ikea.com/us/en/images/products/kivik-sofa-tibbleby-beige-gray__1577303_pe1033081_s5.jpg",
+   "source_url": "https://www.ikea.com/us/en/p/kivik-sofa-tibbleby-beige-gray-s39440593/",
+   "fit": "fits",
+   "fit_results": [
+    {
+     "check": "wall",
+     "verdict": "fits",
+     "math": "width 89.75 in \u2264 192 in (user)",
+     "need_in": 89.75,
+     "available": {
+      "value_in": 192.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 102.25
+    },
+    {
+     "check": "floor",
+     "verdict": "fits",
+     "math": "depth 37.375 in + walkway 36 in = 73.375 in \u2264 135 in (user)",
+     "need_in": 73.38,
+     "available": {
+      "value_in": 135.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 61.62
+    },
+    {
+     "check": "doorway_width",
+     "verdict": "fits",
+     "math": "box 1/3 smallest side 19.75 in \u2264 69 in (user)",
+     "need_in": 19.75,
+     "available": {
+      "value_in": 69.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 49.25
+    },
+    {
+     "check": "doorway_height",
+     "verdict": "fits",
+     "math": "box 1/3 middle side 37.5 in \u2264 92 in (user)",
+     "need_in": 37.5,
+     "available": {
+      "value_in": 92.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 54.5
+    },
+    {
+     "check": "doorway_width",
+     "verdict": "fits",
+     "math": "box 2/3 smallest side 11 in \u2264 69 in (user)",
+     "need_in": 11.0,
+     "available": {
+      "value_in": 69.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 58.0
+    },
+    {
+     "check": "doorway_height",
+     "verdict": "fits",
+     "math": "box 2/3 middle side 36.25 in \u2264 92 in (user)",
+     "need_in": 36.25,
+     "available": {
+      "value_in": 92.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 55.75
+    },
+    {
+     "check": "doorway_width",
+     "verdict": "fits",
+     "math": "box 3/3 smallest side 3.5 in \u2264 69 in (user)",
+     "need_in": 3.5,
+     "available": {
+      "value_in": 69.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 65.5
+    },
+    {
+     "check": "doorway_height",
+     "verdict": "fits",
+     "math": "box 3/3 middle side 14.75 in \u2264 92 in (user)",
+     "need_in": 14.75,
+     "available": {
+      "value_in": 92.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 77.25
+    }
+   ],
+   "best_value": false,
+   "why": "GULLVALLA Sofa is $449 and rated 4.6"
+  },
+  {
+   "id": "ikea-uppland-sofa-blekinge-white-19384116",
+   "name": "UPPLAND Sofa - Blekinge white",
+   "price_usd": 899.0,
+   "rating": 3.6,
+   "review_count": 183,
+   "image_url": "https://www.ikea.com/us/en/images/products/uppland-sofa-blekinge-white__1578502_pe1034145_s5.jpg",
+   "source_url": "https://www.ikea.com/us/en/p/uppland-sofa-blekinge-white-s19384116/",
+   "fit": "fits",
+   "fit_results": [
+    {
+     "check": "wall",
+     "verdict": "fits",
+     "math": "width 88.25 in \u2264 192 in (user)",
+     "need_in": 88.25,
+     "available": {
+      "value_in": 192.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 103.75
+    },
+    {
+     "check": "floor",
+     "verdict": "fits",
+     "math": "depth 36.25 in + walkway 36 in = 72.25 in \u2264 135 in (user)",
+     "need_in": 72.25,
+     "available": {
+      "value_in": 135.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 62.75
+    },
+    {
+     "check": "doorway_width",
+     "verdict": "fits",
+     "math": "box 1/2 smallest side 19.25 in \u2264 69 in (user)",
+     "need_in": 19.25,
+     "available": {
+      "value_in": 69.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 49.75
+    },
+    {
+     "check": "doorway_height",
+     "verdict": "fits",
+     "math": "box 1/2 middle side 36.25 in \u2264 92 in (user)",
+     "need_in": 36.25,
+     "available": {
+      "value_in": 92.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 55.75
+    },
+    {
+     "check": "doorway_width",
+     "verdict": "fits",
+     "math": "box 2/2 smallest side 4 in \u2264 69 in (user)",
+     "need_in": 4.0,
+     "available": {
+      "value_in": 69.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 65.0
+    },
+    {
+     "check": "doorway_height",
+     "verdict": "fits",
+     "math": "box 2/2 middle side 14.75 in \u2264 92 in (user)",
+     "need_in": 14.75,
+     "available": {
+      "value_in": 92.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 77.25
+    }
+   ],
+   "best_value": false,
+   "why": "GLOSTAD Sofa is $199 and rated 4"
+  },
+  {
+   "id": "ikea-lillesater-sofa-axvall-off-white-40619085",
+   "name": "LILLES\u00c4TER Sofa - Axvall off-white",
+   "price_usd": 999.0,
+   "rating": 4.0,
+   "review_count": 31,
+   "image_url": "https://www.ikea.com/us/en/images/products/lillesaeter-sofa-axvall-off-white__1576111_pe1032230_s5.jpg",
+   "source_url": "https://www.ikea.com/us/en/p/lillesaeter-sofa-axvall-off-white-40619085/",
+   "fit": "fits",
+   "fit_results": [
+    {
+     "check": "wall",
+     "verdict": "fits",
+     "math": "width 79.125 in \u2264 192 in (user)",
+     "need_in": 79.12,
+     "available": {
+      "value_in": 192.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 112.88
+    },
+    {
+     "check": "floor",
+     "verdict": "fits",
+     "math": "depth 35.375 in + walkway 36 in = 71.375 in \u2264 135 in (user)",
+     "need_in": 71.38,
+     "available": {
+      "value_in": 135.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 63.62
+    },
+    {
+     "check": "doorway_width",
+     "verdict": "fits",
+     "math": "box 1/4 smallest side 17.25 in \u2264 69 in (user)",
+     "need_in": 17.25,
+     "available": {
+      "value_in": 69.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 51.75
+    },
+    {
+     "check": "doorway_height",
+     "verdict": "fits",
+     "math": "box 1/4 middle side 32.5 in \u2264 92 in (user)",
+     "need_in": 32.5,
+     "available": {
+      "value_in": 92.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 59.5
+    },
+    {
+     "check": "doorway_width",
+     "verdict": "fits",
+     "math": "box 2/4 smallest side 17.25 in \u2264 69 in (user)",
+     "need_in": 17.25,
+     "available": {
+      "value_in": 69.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 51.75
+    },
+    {
+     "check": "doorway_height",
+     "verdict": "fits",
+     "math": "box 2/4 middle side 32.5 in \u2264 92 in (user)",
+     "need_in": 32.5,
+     "available": {
+      "value_in": 92.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 59.5
+    },
+    {
+     "check": "doorway_width",
+     "verdict": "fits",
+     "math": "box 3/4 smallest side 18.5 in \u2264 69 in (user)",
+     "need_in": 18.5,
+     "available": {
+      "value_in": 69.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 50.5
+    },
+    {
+     "check": "doorway_height",
+     "verdict": "fits",
+     "math": "box 3/4 middle side 28.5 in \u2264 92 in (user)",
+     "need_in": 28.5,
+     "available": {
+      "value_in": 92.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 63.5
+    },
+    {
+     "check": "doorway_width",
+     "verdict": "fits",
+     "math": "box 4/4 smallest side 18.5 in \u2264 69 in (user)",
+     "need_in": 18.5,
+     "available": {
+      "value_in": 69.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 50.5
+    },
+    {
+     "check": "doorway_height",
+     "verdict": "fits",
+     "math": "box 4/4 middle side 28.5 in \u2264 92 in (user)",
+     "need_in": 28.5,
+     "available": {
+      "value_in": 92.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 63.5
+    }
+   ],
+   "best_value": false,
+   "why": "GLOSTAD Sofa is $199 and rated 4"
+  },
+  {
+   "id": "ikea-hyltarp-sofa-gransel-gray-89514930",
+   "name": "HYLTARP Sofa - Gransel gray",
+   "price_usd": 1249.0,
+   "rating": 4.1,
+   "review_count": 143,
+   "image_url": "https://www.ikea.com/us/en/images/products/hyltarp-sofa-gransel-gray__1577693_pe1033440_s5.jpg",
+   "source_url": "https://www.ikea.com/us/en/p/hyltarp-sofa-gransel-gray-s89514930/",
+   "fit": "fits",
+   "fit_results": [
+    {
+     "check": "wall",
+     "verdict": "fits",
+     "math": "width 91.375 in \u2264 192 in (user)",
+     "need_in": 91.38,
+     "available": {
+      "value_in": 192.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 100.62
+    },
+    {
+     "check": "floor",
+     "verdict": "fits",
+     "math": "depth 36.625 in + walkway 36 in = 72.625 in \u2264 135 in (user)",
+     "need_in": 72.62,
+     "available": {
+      "value_in": 135.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 62.38
+    },
+    {
+     "check": "doorway_width",
+     "verdict": "fits",
+     "math": "box 1/3 smallest side 14 in \u2264 69 in (user)",
+     "need_in": 14.0,
+     "available": {
+      "value_in": 69.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 55.0
+    },
+    {
+     "check": "doorway_height",
+     "verdict": "fits",
+     "math": "box 1/3 middle side 32.25 in \u2264 92 in (user)",
+     "need_in": 32.25,
+     "available": {
+      "value_in": 92.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 59.75
+    },
+    {
+     "check": "doorway_width",
+     "verdict": "fits",
+     "math": "box 2/3 smallest side 17.75 in \u2264 69 in (user)",
+     "need_in": 17.75,
+     "available": {
+      "value_in": 69.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 51.25
+    },
+    {
+     "check": "doorway_height",
+     "verdict": "fits",
+     "math": "box 2/3 middle side 31 in \u2264 92 in (user)",
+     "need_in": 31.0,
+     "available": {
+      "value_in": 92.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 61.0
+    },
+    {
+     "check": "doorway_width",
+     "verdict": "fits",
+     "math": "box 3/3 smallest side 4.5 in \u2264 69 in (user)",
+     "need_in": 4.5,
+     "available": {
+      "value_in": 69.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 64.5
+    },
+    {
+     "check": "doorway_height",
+     "verdict": "fits",
+     "math": "box 3/3 middle side 14.75 in \u2264 92 in (user)",
+     "need_in": 14.75,
+     "available": {
+      "value_in": 92.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 77.25
+    }
+   ],
+   "best_value": false,
+   "why": "GULLVALLA Sofa is $449 and rated 4.6"
+  },
+  {
+   "id": "ikea-kivik-sofa-grann-bomstad-black-80519531",
+   "name": "KIVIK Sofa - Grann/Bomstad black",
+   "price_usd": 1299.0,
+   "rating": 4.2,
+   "review_count": 70,
+   "image_url": "https://www.ikea.com/us/en/images/products/kivik-sofa-grann-bomstad-black__0137863_pe296632_s5.jpg",
+   "source_url": "https://www.ikea.com/us/en/p/kivik-sofa-grann-bomstad-black-80519531/",
+   "fit": "fits",
+   "fit_results": [
+    {
+     "check": "wall",
+     "verdict": "fits",
+     "math": "width 89.375 in \u2264 192 in (user)",
+     "need_in": 89.38,
+     "available": {
+      "value_in": 192.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 102.62
+    },
+    {
+     "check": "floor",
+     "verdict": "fits",
+     "math": "depth 37.375 in + walkway 36 in = 73.375 in \u2264 135 in (user)",
+     "need_in": 73.38,
+     "available": {
+      "value_in": 135.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 61.62
+    },
+    {
+     "check": "doorway_width",
+     "verdict": "fits",
+     "math": "box 1/2 smallest side 22.5 in \u2264 69 in (user)",
+     "need_in": 22.5,
+     "available": {
+      "value_in": 69.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 46.5
+    },
+    {
+     "check": "doorway_height",
+     "verdict": "fits",
+     "math": "box 1/2 middle side 36.5 in \u2264 92 in (user)",
+     "need_in": 36.5,
+     "available": {
+      "value_in": 92.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 55.5
+    },
+    {
+     "check": "doorway_width",
+     "verdict": "fits",
+     "math": "box 2/2 smallest side 11 in \u2264 69 in (user)",
+     "need_in": 11.0,
+     "available": {
+      "value_in": 69.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 58.0
+    },
+    {
+     "check": "doorway_height",
+     "verdict": "fits",
+     "math": "box 2/2 middle side 35.5 in \u2264 92 in (user)",
+     "need_in": 35.5,
+     "available": {
+      "value_in": 92.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 56.5
+    }
+   ],
+   "best_value": false,
+   "why": "GULLVALLA Sofa is $449 and rated 4.6"
+  },
+  {
+   "id": "ikea-morabo-sofa-grann-bomstad-black-metal-09316670",
+   "name": "MORABO Sofa - Grann/Bomstad black/metal",
+   "price_usd": 1349.0,
+   "rating": 4.4,
+   "review_count": 98,
+   "image_url": "https://www.ikea.com/us/en/images/products/morabo-sofa-grann-bomstad-black-metal__1576905_pe1032802_s5.jpg",
+   "source_url": "https://www.ikea.com/us/en/p/morabo-sofa-grann-bomstad-black-metal-s09316670/",
+   "fit": "fits",
+   "fit_results": [
+    {
+     "check": "wall",
+     "verdict": "fits",
+     "math": "width 81.125 in \u2264 192 in (user)",
+     "need_in": 81.12,
+     "available": {
+      "value_in": 192.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 110.88
+    },
+    {
+     "check": "floor",
+     "verdict": "fits",
+     "math": "depth 36.25 in + walkway 36 in = 72.25 in \u2264 135 in (user)",
+     "need_in": 72.25,
+     "available": {
+      "value_in": 135.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 62.75
+    },
+    {
+     "check": "doorway_width",
+     "verdict": "fits",
+     "math": "box 1/2 smallest side 21 in \u2264 69 in (user)",
+     "need_in": 21.0,
+     "available": {
+      "value_in": 69.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 48.0
+    },
+    {
+     "check": "doorway_height",
+     "verdict": "fits",
+     "math": "box 1/2 middle side 36.5 in \u2264 92 in (user)",
+     "need_in": 36.5,
+     "available": {
+      "value_in": 92.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 55.5
+    },
+    {
+     "check": "doorway_width",
+     "verdict": "fits",
+     "math": "box 2/2 smallest side 2.25 in \u2264 69 in (user)",
+     "need_in": 2.25,
+     "available": {
+      "value_in": 69.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 66.75
+    },
+    {
+     "check": "doorway_height",
+     "verdict": "fits",
+     "math": "box 2/2 middle side 7.75 in \u2264 92 in (user)",
+     "need_in": 7.75,
+     "available": {
+      "value_in": 92.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 84.25
+    }
+   ],
+   "best_value": false,
+   "why": "GULLVALLA Sofa is $449 and rated 4.6"
+  },
+  {
+   "id": "ikea-stockholm-2025-3-seat-sofa-alhamn-beige-69574294",
+   "name": "STOCKHOLM 2025 3-seat sofa - Alhamn beige",
+   "price_usd": 1899.0,
+   "rating": 3.7,
+   "review_count": 48,
+   "image_url": "https://www.ikea.com/us/en/images/products/stockholm-2025-3-seat-sofa-alhamn-beige__1577937_pe1033679_s5.jpg",
+   "source_url": "https://www.ikea.com/us/en/p/stockholm-2025-3-seat-sofa-alhamn-beige-s69574294/",
+   "fit": "fits",
+   "fit_results": [
+    {
+     "check": "wall",
+     "verdict": "fits",
+     "math": "width 95.625 in \u2264 192 in (user)",
+     "need_in": 95.62,
+     "available": {
+      "value_in": 192.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 96.38
+    },
+    {
+     "check": "floor",
+     "verdict": "fits",
+     "math": "depth 39 in + walkway 36 in = 75 in \u2264 135 in (user)",
+     "need_in": 75.0,
+     "available": {
+      "value_in": 135.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 60.0
+    },
+    {
+     "check": "doorway_width",
+     "verdict": "fits",
+     "math": "box 1/3 smallest side 28.25 in \u2264 69 in (user)",
+     "need_in": 28.25,
+     "available": {
+      "value_in": 69.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 40.75
+    },
+    {
+     "check": "doorway_height",
+     "verdict": "fits",
+     "math": "box 1/3 middle side 35.75 in \u2264 92 in (user)",
+     "need_in": 35.75,
+     "available": {
+      "value_in": 92.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 56.25
+    },
+    {
+     "check": "doorway_width",
+     "verdict": "fits",
+     "math": "box 2/3 smallest side 28.25 in \u2264 69 in (user)",
+     "need_in": 28.25,
+     "available": {
+      "value_in": 69.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 40.75
+    },
+    {
+     "check": "doorway_height",
+     "verdict": "fits",
+     "math": "box 2/3 middle side 36 in \u2264 92 in (user)",
+     "need_in": 36.0,
+     "available": {
+      "value_in": 92.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 56.0
+    },
+    {
+     "check": "doorway_width",
+     "verdict": "fits",
+     "math": "box 3/3 smallest side 28.25 in \u2264 69 in (user)",
+     "need_in": 28.25,
+     "available": {
+      "value_in": 69.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 40.75
+    },
+    {
+     "check": "doorway_height",
+     "verdict": "fits",
+     "math": "box 3/3 middle side 29.25 in \u2264 92 in (user)",
+     "need_in": 29.25,
+     "available": {
+      "value_in": 92.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 62.75
+    }
+   ],
+   "best_value": false,
+   "why": "GLOSTAD Sofa is $199 and rated 4"
+  },
+  {
+   "id": "ikea-slatorp-sofa-hakebo-dark-gray-30594387",
+   "name": "SLATORP Sofa - Hakebo dark gray",
+   "price_usd": null,
+   "rating": 2.9,
+   "review_count": 34,
+   "image_url": "https://www.ikea.com/us/en/images/products/slatorp-sofa-hakebo-dark-gray__1578008_pe1033711_s5.jpg",
+   "source_url": "https://www.ikea.com/us/en/p/slatorp-sofa-hakebo-dark-gray-30594387/",
+   "fit": "fits",
+   "fit_results": [
+    {
+     "check": "wall",
+     "verdict": "fits",
+     "math": "width 96.875 in \u2264 192 in (user)",
+     "need_in": 96.88,
+     "available": {
+      "value_in": 192.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 95.12
+    },
+    {
+     "check": "floor",
+     "verdict": "fits",
+     "math": "depth 37.375 in + walkway 36 in = 73.375 in \u2264 135 in (user)",
+     "need_in": 73.38,
+     "available": {
+      "value_in": 135.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 61.62
+    },
+    {
+     "check": "doorway_width",
+     "verdict": "fits",
+     "math": "box 1/2 smallest side 15 in \u2264 69 in (user)",
+     "need_in": 15.0,
+     "available": {
+      "value_in": 69.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 54.0
+    },
+    {
+     "check": "doorway_height",
+     "verdict": "fits",
+     "math": "box 1/2 middle side 30.25 in \u2264 92 in (user)",
+     "need_in": 30.25,
+     "available": {
+      "value_in": 92.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 61.75
+    },
+    {
+     "check": "doorway_width",
+     "verdict": "fits",
+     "math": "box 2/2 smallest side 19 in \u2264 69 in (user)",
+     "need_in": 19.0,
+     "available": {
+      "value_in": 69.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 50.0
+    },
+    {
+     "check": "doorway_height",
+     "verdict": "fits",
+     "math": "box 2/2 middle side 30.25 in \u2264 92 in (user)",
+     "need_in": 30.25,
+     "available": {
+      "value_in": 92.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 61.75
+    }
+   ],
+   "best_value": false,
+   "why": "not ranked: no price on the page"
+  }
+ ],
+ "armchair": [
+  {
+   "id": "ikea-poang-armchair-birch-veneer-knisa-light-beige-59305928",
+   "name": "PO\u00c4NG Armchair - birch veneer/Knisa light beige",
+   "price_usd": 149.0,
+   "rating": 4.5,
+   "review_count": 1369,
+   "image_url": "https://www.ikea.com/us/en/images/products/poaeng-armchair-birch-veneer-knisa-light-beige__0571500_pe666933_s5.jpg",
+   "source_url": "https://www.ikea.com/us/en/p/poaeng-armchair-birch-veneer-knisa-light-beige-s59305928/",
+   "fit": "fits",
+   "fit_results": [
+    {
+     "check": "wall",
+     "verdict": "fits",
+     "math": "width 26.75 in \u2264 192 in (user)",
+     "need_in": 26.75,
+     "available": {
+      "value_in": 192.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 165.25
+    },
+    {
+     "check": "floor",
+     "verdict": "fits",
+     "math": "depth 32.25 in + walkway 36 in = 68.25 in \u2264 135 in (user)",
+     "need_in": 68.25,
+     "available": {
+      "value_in": 135.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 66.75
+    },
+    {
+     "check": "doorway_width",
+     "verdict": "fits",
+     "math": "box 1/2 smallest side 2.75 in \u2264 69 in (user)",
+     "need_in": 2.75,
+     "available": {
+      "value_in": 69.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 66.25
+    },
+    {
+     "check": "doorway_height",
+     "verdict": "fits",
+     "math": "box 1/2 middle side 26.25 in \u2264 92 in (user)",
+     "need_in": 26.25,
+     "available": {
+      "value_in": 92.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 65.75
+    },
+    {
+     "check": "doorway_width",
+     "verdict": "fits",
+     "math": "box 2/2 smallest side 9.75 in \u2264 69 in (user)",
+     "need_in": 9.75,
+     "available": {
+      "value_in": 69.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 59.25
+    },
+    {
+     "check": "doorway_height",
+     "verdict": "fits",
+     "math": "box 2/2 middle side 9.75 in \u2264 92 in (user)",
+     "need_in": 9.75,
+     "available": {
+      "value_in": 92.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 82.25
+    }
+   ],
+   "best_value": true,
+   "why": "best value: nothing that fits is cheaper and better rated"
+  },
+  {
+   "id": "ikea-herrakra-armchair-diserod-dark-yellow-40535547",
+   "name": "HERR\u00c5KRA Armchair - Diser\u00f6d dark yellow",
+   "price_usd": 199.99,
+   "rating": 4.5,
+   "review_count": 146,
+   "image_url": "https://www.ikea.com/us/en/images/products/herrakra-armchair-diseroed-dark-yellow__1213667_pe911203_s5.jpg",
+   "source_url": "https://www.ikea.com/us/en/p/herrakra-armchair-diseroed-dark-yellow-40535547/",
+   "fit": "fits",
+   "fit_results": [
+    {
+     "check": "wall",
+     "verdict": "fits",
+     "math": "width 28 in \u2264 192 in (user)",
+     "need_in": 28.0,
+     "available": {
+      "value_in": 192.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 164.0
+    },
+    {
+     "check": "floor",
+     "verdict": "fits",
+     "math": "depth 26 in + walkway 36 in = 62 in \u2264 135 in (user)",
+     "need_in": 62.0,
+     "available": {
+      "value_in": 135.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 73.0
+    },
+    {
+     "check": "doorway_width",
+     "verdict": "fits",
+     "math": "box 1/1 smallest side 15.75 in \u2264 69 in (user)",
+     "need_in": 15.75,
+     "available": {
+      "value_in": 69.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 53.25
+    },
+    {
+     "check": "doorway_height",
+     "verdict": "fits",
+     "math": "box 1/1 middle side 22.25 in \u2264 92 in (user)",
+     "need_in": 22.25,
+     "available": {
+      "value_in": 92.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 69.75
+    }
+   ],
+   "best_value": false,
+   "why": "PO\u00c4NG Armchair is $149 and rated 4.5"
+  },
+  {
+   "id": "ikea-persbol-armchair-birch-tibbleby-beige-gray-20525926",
+   "name": "PERSBOL Armchair - birch/Tibbleby beige/gray",
+   "price_usd": 249.0,
+   "rating": 4.5,
+   "review_count": 142,
+   "image_url": "https://www.ikea.com/us/en/images/products/persbol-armchair-birch-tibbleby-beige-gray__1123949_pe874927_s5.jpg",
+   "source_url": "https://www.ikea.com/us/en/p/persbol-armchair-birch-tibbleby-beige-gray-20525926/",
+   "fit": "fits",
+   "fit_results": [
+    {
+     "check": "wall",
+     "verdict": "fits",
+     "math": "width 27.125 in \u2264 192 in (user)",
+     "need_in": 27.12,
+     "available": {
+      "value_in": 192.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 164.88
+    },
+    {
+     "check": "floor",
+     "verdict": "fits",
+     "math": "depth 27.5 in + walkway 36 in = 63.5 in \u2264 135 in (user)",
+     "need_in": 63.5,
+     "available": {
+      "value_in": 135.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 71.5
+    },
+    {
+     "check": "doorway_width",
+     "verdict": "fits",
+     "math": "box 1/1 smallest side 12 in \u2264 69 in (user)",
+     "need_in": 12.0,
+     "available": {
+      "value_in": 69.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 57.0
+    },
+    {
+     "check": "doorway_height",
+     "verdict": "fits",
+     "math": "box 1/1 middle side 28.25 in \u2264 92 in (user)",
+     "need_in": 28.25,
+     "available": {
+      "value_in": 92.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 63.75
+    }
+   ],
+   "best_value": false,
+   "why": "PO\u00c4NG Armchair is $149 and rated 4.5"
+  },
+  {
+   "id": "ikea-saltsjobaden-armchair-blekinge-white-39622710",
+   "name": "SALTSJ\u00d6BADEN Armchair - Blekinge white",
+   "price_usd": 299.0,
+   "rating": 4.2,
+   "review_count": 11,
+   "image_url": "https://www.ikea.com/us/en/images/products/saltsjoebaden-armchair-blekinge-white__1498218_pe1006254_s5.jpg",
+   "source_url": "https://www.ikea.com/us/en/p/saltsjoebaden-armchair-blekinge-white-s39622710/",
+   "fit": "fits",
+   "fit_results": [
+    {
+     "check": "wall",
+     "verdict": "fits",
+     "math": "width 36.625 in \u2264 192 in (user)",
+     "need_in": 36.62,
+     "available": {
+      "value_in": 192.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 155.38
+    },
+    {
+     "check": "floor",
+     "verdict": "fits",
+     "math": "depth 34.625 in + walkway 36 in = 70.625 in \u2264 135 in (user)",
+     "need_in": 70.62,
+     "available": {
+      "value_in": 135.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 64.38
+    },
+    {
+     "check": "doorway_width",
+     "verdict": "fits",
+     "math": "box 1/4 smallest side 18.5 in \u2264 69 in (user)",
+     "need_in": 18.5,
+     "available": {
+      "value_in": 69.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 50.5
+    },
+    {
+     "check": "doorway_height",
+     "verdict": "fits",
+     "math": "box 1/4 middle side 33.75 in \u2264 92 in (user)",
+     "need_in": 33.75,
+     "available": {
+      "value_in": 92.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 58.25
+    },
+    {
+     "check": "doorway_width",
+     "verdict": "fits",
+     "math": "box 2/4 smallest side 2 in \u2264 69 in (user)",
+     "need_in": 2.0,
+     "available": {
+      "value_in": 69.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 67.0
+    },
+    {
+     "check": "doorway_height",
+     "verdict": "fits",
+     "math": "box 2/4 middle side 14.75 in \u2264 92 in (user)",
+     "need_in": 14.75,
+     "available": {
+      "value_in": 92.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 77.25
+    },
+    {
+     "check": "doorway_width",
+     "verdict": "fits",
+     "math": "box 3/4 smallest side 1.5 in \u2264 69 in (user)",
+     "need_in": 1.5,
+     "available": {
+      "value_in": 69.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 67.5
+    },
+    {
+     "check": "doorway_height",
+     "verdict": "fits",
+     "math": "box 3/4 middle side 2.75 in \u2264 92 in (user)",
+     "need_in": 2.75,
+     "available": {
+      "value_in": 92.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 89.25
+    },
+    {
+     "check": "doorway_width",
+     "verdict": "fits",
+     "math": "box 4/4 smallest side 1.5 in \u2264 69 in (user)",
+     "need_in": 1.5,
+     "available": {
+      "value_in": 69.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 67.5
+    },
+    {
+     "check": "doorway_height",
+     "verdict": "fits",
+     "math": "box 4/4 middle side 2.75 in \u2264 92 in (user)",
+     "need_in": 2.75,
+     "available": {
+      "value_in": 92.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 89.25
+    }
+   ],
+   "best_value": false,
+   "why": "PO\u00c4NG Armchair is $149 and rated 4.5"
+  },
+  {
+   "id": "ikea-gryteryd-recliner-rocker-armchair-hakebo-beige-20613904",
+   "name": "GRYTERYD Recliner rocker armchair - Hakebo beige",
+   "price_usd": 399.0,
+   "rating": null,
+   "review_count": 0,
+   "image_url": "https://www.ikea.com/us/en/images/products/gryteryd-recliner-rocker-armchair-hakebo-beige__1426044_pe979668_s5.jpg",
+   "source_url": "https://www.ikea.com/us/en/p/gryteryd-recliner-rocker-armchair-hakebo-beige-20613904/",
+   "fit": "fits",
+   "fit_results": [
+    {
+     "check": "wall",
+     "verdict": "fits",
+     "math": "width 29.875 in \u2264 192 in (user)",
+     "need_in": 29.88,
+     "available": {
+      "value_in": 192.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 162.12
+    },
+    {
+     "check": "floor",
+     "verdict": "fits",
+     "math": "depth 37 in + walkway 36 in = 73 in \u2264 135 in (user)",
+     "need_in": 73.0,
+     "available": {
+      "value_in": 135.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 62.0
+    },
+    {
+     "check": "doorway_width",
+     "verdict": "fits",
+     "math": "box 1/1 smallest side 28.25 in \u2264 69 in (user)",
+     "need_in": 28.25,
+     "available": {
+      "value_in": 69.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 40.75
+    },
+    {
+     "check": "doorway_height",
+     "verdict": "fits",
+     "math": "box 1/1 middle side 31 in \u2264 92 in (user)",
+     "need_in": 31.0,
+     "available": {
+      "value_in": 92.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 61.0
+    }
+   ],
+   "best_value": false,
+   "why": "not ranked: 0 reviews (need 10)"
+  },
+  {
+   "id": "ikea-morabo-armchair-gunnared-dark-gray-metal-79318307",
+   "name": "MORABO Armchair - Gunnared dark gray/metal",
+   "price_usd": 399.0,
+   "rating": 4.5,
+   "review_count": 28,
+   "image_url": "https://www.ikea.com/us/en/images/products/morabo-armchair-gunnared-dark-gray-metal__0602085_pe680153_s5.jpg",
+   "source_url": "https://www.ikea.com/us/en/p/morabo-armchair-gunnared-dark-gray-metal-s79318307/",
+   "fit": "fits",
+   "fit_results": [
+    {
+     "check": "wall",
+     "verdict": "fits",
+     "math": "width 35.875 in \u2264 192 in (user)",
+     "need_in": 35.88,
+     "available": {
+      "value_in": 192.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 156.12
+    },
+    {
+     "check": "floor",
+     "verdict": "fits",
+     "math": "depth 36.25 in + walkway 36 in = 72.25 in \u2264 135 in (user)",
+     "need_in": 72.25,
+     "available": {
+      "value_in": 135.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 62.75
+    },
+    {
+     "check": "doorway_width",
+     "verdict": "fits",
+     "math": "box 1/2 smallest side 20.75 in \u2264 69 in (user)",
+     "need_in": 20.75,
+     "available": {
+      "value_in": 69.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 48.25
+    },
+    {
+     "check": "doorway_height",
+     "verdict": "fits",
+     "math": "box 1/2 middle side 36.5 in \u2264 92 in (user)",
+     "need_in": 36.5,
+     "available": {
+      "value_in": 92.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 55.5
+    },
+    {
+     "check": "doorway_width",
+     "verdict": "fits",
+     "math": "box 2/2 smallest side 2.25 in \u2264 69 in (user)",
+     "need_in": 2.25,
+     "available": {
+      "value_in": 69.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 66.75
+    },
+    {
+     "check": "doorway_height",
+     "verdict": "fits",
+     "math": "box 2/2 middle side 7.75 in \u2264 92 in (user)",
+     "need_in": 7.75,
+     "available": {
+      "value_in": 92.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 84.25
+    }
+   ],
+   "best_value": false,
+   "why": "PO\u00c4NG Armchair is $149 and rated 4.5"
+  },
+  {
+   "id": "ikea-arnasvall-recliner-rocker-and-swivel-armchair-hakebo-beige-50613912",
+   "name": "ARN\u00c4SVALL Recliner rocker and swivel armchair - Hakebo beige",
+   "price_usd": 499.0,
+   "rating": null,
+   "review_count": 0,
+   "image_url": "https://www.ikea.com/us/en/images/products/arnaesvall-recliner-rocker-and-swivel-armchair-hakebo-beige__1426047_pe979671_s5.jpg",
+   "source_url": "https://www.ikea.com/us/en/p/arnaesvall-recliner-rocker-and-swivel-armchair-hakebo-beige-50613912/",
+   "fit": "fits",
+   "fit_results": [
+    {
+     "check": "wall",
+     "verdict": "fits",
+     "math": "width 35.875 in \u2264 192 in (user)",
+     "need_in": 35.88,
+     "available": {
+      "value_in": 192.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 156.12
+    },
+    {
+     "check": "floor",
+     "verdict": "fits",
+     "math": "depth 36.625 in + walkway 36 in = 72.625 in \u2264 135 in (user)",
+     "need_in": 72.62,
+     "available": {
+      "value_in": 135.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 62.38
+    },
+    {
+     "check": "doorway_width",
+     "verdict": "fits",
+     "math": "box 1/1 smallest side 32.5 in \u2264 69 in (user)",
+     "need_in": 32.5,
+     "available": {
+      "value_in": 69.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 36.5
+    },
+    {
+     "check": "doorway_height",
+     "verdict": "fits",
+     "math": "box 1/1 middle side 32.5 in \u2264 92 in (user)",
+     "need_in": 32.5,
+     "available": {
+      "value_in": 92.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 59.5
+    }
+   ],
+   "best_value": false,
+   "why": "not ranked: 0 reviews (need 10)"
+  },
+  {
+   "id": "ikea-ekenaset-armchair-jonsbyn-black-80539015",
+   "name": "EKEN\u00c4SET Armchair - Jonsbyn black",
+   "price_usd": null,
+   "rating": 4.2,
+   "review_count": 32,
+   "image_url": "https://www.ikea.com/us/en/images/products/ekenaeset-armchair-jonsbyn-black__1109680_pe870147_s5.jpg",
+   "source_url": "https://www.ikea.com/us/en/p/ekenaeset-armchair-jonsbyn-black-80539015/",
+   "fit": "fits",
+   "fit_results": [
+    {
+     "check": "wall",
+     "verdict": "fits",
+     "math": "width 25.25 in \u2264 192 in (user)",
+     "need_in": 25.25,
+     "available": {
+      "value_in": 192.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 166.75
+    },
+    {
+     "check": "floor",
+     "verdict": "fits",
+     "math": "depth 30.75 in + walkway 36 in = 66.75 in \u2264 135 in (user)",
+     "need_in": 66.75,
+     "available": {
+      "value_in": 135.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 68.25
+    },
+    {
+     "check": "doorway_width",
+     "verdict": "fits",
+     "math": "box 1/1 smallest side 14.5 in \u2264 69 in (user)",
+     "need_in": 14.5,
+     "available": {
+      "value_in": 69.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 54.5
+    },
+    {
+     "check": "doorway_height",
+     "verdict": "fits",
+     "math": "box 1/1 middle side 26 in \u2264 92 in (user)",
+     "need_in": 26.0,
+     "available": {
+      "value_in": 92.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 66.0
+    }
+   ],
+   "best_value": false,
+   "why": "not ranked: no price on the page"
+  },
+  {
+   "id": "ikea-rocksjon-armchair-blekinge-white-69508850",
+   "name": "ROCKSJ\u00d6N Armchair - Blekinge white",
+   "price_usd": null,
+   "rating": 3.5,
+   "review_count": 80,
+   "image_url": "https://www.ikea.com/us/en/images/products/rocksjoen-armchair-blekinge-white__1247358_pe922626_s5.jpg",
+   "source_url": "https://www.ikea.com/us/en/p/rocksjoen-armchair-blekinge-white-s69508850/",
+   "fit": "fits",
+   "fit_results": [
+    {
+     "check": "wall",
+     "verdict": "fits",
+     "math": "width 29.875 in \u2264 192 in (user)",
+     "need_in": 29.88,
+     "available": {
+      "value_in": 192.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 162.12
+    },
+    {
+     "check": "floor",
+     "verdict": "fits",
+     "math": "depth 30.75 in + walkway 36 in = 66.75 in \u2264 135 in (user)",
+     "need_in": 66.75,
+     "available": {
+      "value_in": 135.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 68.25
+    },
+    {
+     "check": "doorway_width",
+     "verdict": "fits",
+     "math": "box 1/2 smallest side 23.75 in \u2264 69 in (user)",
+     "need_in": 23.75,
+     "available": {
+      "value_in": 69.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 45.25
+    },
+    {
+     "check": "doorway_height",
+     "verdict": "fits",
+     "math": "box 1/2 middle side 28.75 in \u2264 92 in (user)",
+     "need_in": 28.75,
+     "available": {
+      "value_in": 92.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 63.25
+    },
+    {
+     "check": "doorway_width",
+     "verdict": "fits",
+     "math": "box 2/2 smallest side 1.5 in \u2264 69 in (user)",
+     "need_in": 1.5,
+     "available": {
+      "value_in": 69.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 67.5
+    },
+    {
+     "check": "doorway_height",
+     "verdict": "fits",
+     "math": "box 2/2 middle side 14.5 in \u2264 92 in (user)",
+     "need_in": 14.5,
+     "available": {
+      "value_in": 92.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 77.5
+    }
+   ],
+   "best_value": false,
+   "why": "not ranked: no price on the page"
+  }
+ ],
+ "coffee_table": [
+  {
+   "id": "ikea-lack-coffee-table-black-brown-46-1-2x30-3-4-00104291",
+   "name": "LACK Coffee table - black-brown 46 1/2x30 3/4 \"",
+   "price_usd": 49.99,
+   "rating": 4.5,
+   "review_count": 1201,
+   "image_url": "https://www.ikea.com/us/en/images/products/lack-coffee-table-black-brown__57537_pe163119_s5.jpg",
+   "source_url": "https://www.ikea.com/us/en/p/lack-coffee-table-black-brown-00104291/",
+   "fit": "fits",
+   "fit_results": [
+    {
+     "check": "wall",
+     "verdict": "fits",
+     "math": "width 30.75 in \u2264 192 in (user)",
+     "need_in": 30.75,
+     "available": {
+      "value_in": 192.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 161.25
+    },
+    {
+     "check": "floor",
+     "verdict": "fits",
+     "math": "depth 46.5 in + walkway 36 in = 82.5 in \u2264 135 in (user)",
+     "need_in": 82.5,
+     "available": {
+      "value_in": 135.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 52.5
+    },
+    {
+     "check": "doorway_width",
+     "verdict": "fits",
+     "math": "box 1/1 smallest side 2.75 in \u2264 69 in (user)",
+     "need_in": 2.75,
+     "available": {
+      "value_in": 69.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 66.25
+    },
+    {
+     "check": "doorway_height",
+     "verdict": "fits",
+     "math": "box 1/1 middle side 31.25 in \u2264 92 in (user)",
+     "need_in": 31.25,
+     "available": {
+      "value_in": 92.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 60.75
+    }
+   ],
+   "best_value": true,
+   "why": "best value: nothing that fits is cheaper and better rated"
+  },
+  {
+   "id": "ikea-vittsjo-coffee-table-black-brown-glass-29-1-2-80213309",
+   "name": "VITTSJ\u00d6 Coffee table - black-brown/glass 29 1/2 \"",
+   "price_usd": 99.99,
+   "rating": 4.7,
+   "review_count": 734,
+   "image_url": "https://www.ikea.com/us/en/images/products/vittsjoe-coffee-table-black-brown-glass__0135348_pe292039_s5.jpg",
+   "source_url": "https://www.ikea.com/us/en/p/vittsjoe-coffee-table-black-brown-glass-80213309/",
+   "fit": "fits",
+   "fit_results": [
+    {
+     "check": "wall",
+     "verdict": "fits",
+     "math": "width 29.5 in \u2264 192 in (user)",
+     "need_in": 29.5,
+     "available": {
+      "value_in": 192.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 162.5
+    },
+    {
+     "check": "floor",
+     "verdict": "fits",
+     "math": "depth 29.5 in + walkway 36 in = 65.5 in \u2264 135 in (user)",
+     "need_in": 65.5,
+     "available": {
+      "value_in": 135.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 69.5
+    },
+    {
+     "check": "doorway_width",
+     "verdict": "fits",
+     "math": "box 1/1 smallest side 1.75 in \u2264 69 in (user)",
+     "need_in": 1.75,
+     "available": {
+      "value_in": 69.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 67.25
+    },
+    {
+     "check": "doorway_height",
+     "verdict": "fits",
+     "math": "box 1/1 middle side 30.25 in \u2264 92 in (user)",
+     "need_in": 30.25,
+     "available": {
+      "value_in": 92.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 61.75
+    }
+   ],
+   "best_value": true,
+   "why": "best value: nothing that fits is cheaper and better rated"
+  },
+  {
+   "id": "ikea-torsjo-coffee-table-gold-effect-glass-34-5-8-50590406",
+   "name": "TORSJ\u00d6 Coffee table - gold effect/glass 34 5/8 \"",
+   "price_usd": 169.99,
+   "rating": 4.9,
+   "review_count": 81,
+   "image_url": "https://www.ikea.com/us/en/images/products/torsjoe-coffee-table-gold-effect-glass__1362929_pe955365_s5.jpg",
+   "source_url": "https://www.ikea.com/us/en/p/torsjoe-coffee-table-gold-effect-glass-50590406/",
+   "fit": "fits",
+   "fit_results": [
+    {
+     "check": "wall",
+     "verdict": "fits",
+     "math": "width 34.625 in \u2264 192 in (user)",
+     "need_in": 34.62,
+     "available": {
+      "value_in": 192.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 157.38
+    },
+    {
+     "check": "floor",
+     "verdict": "fits",
+     "math": "depth 34.625 in + walkway 36 in = 70.625 in \u2264 135 in (user)",
+     "need_in": 70.62,
+     "available": {
+      "value_in": 135.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 64.38
+    },
+    {
+     "check": "doorway_width",
+     "verdict": "fits",
+     "math": "box 1/1 smallest side 3 in \u2264 69 in (user)",
+     "need_in": 3.0,
+     "available": {
+      "value_in": 69.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 66.0
+    },
+    {
+     "check": "doorway_height",
+     "verdict": "fits",
+     "math": "box 1/1 middle side 35.25 in \u2264 92 in (user)",
+     "need_in": 35.25,
+     "available": {
+      "value_in": 92.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 56.75
+    }
+   ],
+   "best_value": true,
+   "why": "best value: nothing that fits is cheaper and better rated"
+  },
+  {
+   "id": "ikea-borgeby-coffee-table-birch-veneer-27-1-2-70389356",
+   "name": "BORGEBY Coffee table - birch veneer 27 1/2 \"",
+   "price_usd": 199.99,
+   "rating": 4.4,
+   "review_count": 405,
+   "image_url": "https://www.ikea.com/us/en/images/products/borgeby-coffee-table-birch-veneer__0987623_pe817609_s5.jpg",
+   "source_url": "https://www.ikea.com/us/en/p/borgeby-coffee-table-birch-veneer-70389356/",
+   "fit": "fits",
+   "fit_results": [
+    {
+     "check": "wall",
+     "verdict": "fits",
+     "math": "width 27.5 in \u2264 192 in (user)",
+     "need_in": 27.5,
+     "available": {
+      "value_in": 192.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 164.5
+    },
+    {
+     "check": "floor",
+     "verdict": "fits",
+     "math": "depth 27.5 in + walkway 36 in = 63.5 in \u2264 135 in (user)",
+     "need_in": 63.5,
+     "available": {
+      "value_in": 135.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 71.5
+    },
+    {
+     "check": "doorway_width",
+     "verdict": "fits",
+     "math": "box 1/1 smallest side 5.75 in \u2264 69 in (user)",
+     "need_in": 5.75,
+     "available": {
+      "value_in": 69.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 63.25
+    },
+    {
+     "check": "doorway_height",
+     "verdict": "fits",
+     "math": "box 1/1 middle side 28.25 in \u2264 92 in (user)",
+     "need_in": 28.25,
+     "available": {
+      "value_in": 92.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 63.75
+    }
+   ],
+   "best_value": false,
+   "why": "LACK Coffee table is $49.99 and rated 4.5"
+  },
+  {
+   "id": "ikea-ortrask-coffee-table-black-ash-veneer-43-1-4x26-3-4-30635849",
+   "name": "\u00d6RTR\u00c4SK Coffee table - black ash veneer 43 1/4x26 3/4 \"",
+   "price_usd": 199.99,
+   "rating": 3.5,
+   "review_count": 4,
+   "image_url": "https://www.ikea.com/us/en/images/products/oertraesk-coffee-table-black-ash-veneer__1543874_pe1018964_s5.jpg",
+   "source_url": "https://www.ikea.com/us/en/p/oertraesk-coffee-table-black-ash-veneer-30635849/",
+   "fit": "fits",
+   "fit_results": [
+    {
+     "check": "wall",
+     "verdict": "fits",
+     "math": "width 26.75 in \u2264 192 in (user)",
+     "need_in": 26.75,
+     "available": {
+      "value_in": 192.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 165.25
+    },
+    {
+     "check": "floor",
+     "verdict": "fits",
+     "math": "depth 43.25 in + walkway 36 in = 79.25 in \u2264 135 in (user)",
+     "need_in": 79.25,
+     "available": {
+      "value_in": 135.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 55.75
+    },
+    {
+     "check": "doorway_width",
+     "verdict": "fits",
+     "math": "box 1/1 smallest side 3 in \u2264 69 in (user)",
+     "need_in": 3.0,
+     "available": {
+      "value_in": 69.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 66.0
+    },
+    {
+     "check": "doorway_height",
+     "verdict": "fits",
+     "math": "box 1/1 middle side 28.75 in \u2264 92 in (user)",
+     "need_in": 28.75,
+     "available": {
+      "value_in": 92.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 63.25
+    }
+   ],
+   "best_value": false,
+   "why": "not ranked: 4 reviews (need 10)"
+  },
+  {
+   "id": "ikea-ostavall-adjustable-coffee-table-black-35-3-8-40534152",
+   "name": "\u00d6STAVALL Adjustable coffee table - black 35 3/8 \"",
+   "price_usd": 199.99,
+   "rating": 4.0,
+   "review_count": 275,
+   "image_url": "https://www.ikea.com/us/en/images/products/oestavall-adjustable-coffee-table-black__1213707_pe911231_s5.jpg",
+   "source_url": "https://www.ikea.com/us/en/p/oestavall-adjustable-coffee-table-black-40534152/",
+   "fit": "fits",
+   "fit_results": [
+    {
+     "check": "wall",
+     "verdict": "fits",
+     "math": "width 24.75 in \u2264 192 in (user)",
+     "need_in": 24.75,
+     "available": {
+      "value_in": 192.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 167.25
+    },
+    {
+     "check": "floor",
+     "verdict": "fits",
+     "math": "depth 35.375 in + walkway 36 in = 71.375 in \u2264 135 in (user)",
+     "need_in": 71.38,
+     "available": {
+      "value_in": 135.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 63.62
+    },
+    {
+     "check": "doorway_width",
+     "verdict": "fits",
+     "math": "box 1/2 smallest side 2.5 in \u2264 69 in (user)",
+     "need_in": 2.5,
+     "available": {
+      "value_in": 69.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 66.5
+    },
+    {
+     "check": "doorway_height",
+     "verdict": "fits",
+     "math": "box 1/2 middle side 25.25 in \u2264 92 in (user)",
+     "need_in": 25.25,
+     "available": {
+      "value_in": 92.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 66.75
+    },
+    {
+     "check": "doorway_width",
+     "verdict": "fits",
+     "math": "box 2/2 smallest side 1.75 in \u2264 69 in (user)",
+     "need_in": 1.75,
+     "available": {
+      "value_in": 69.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 67.25
+    },
+    {
+     "check": "doorway_height",
+     "verdict": "fits",
+     "math": "box 2/2 middle side 28.25 in \u2264 92 in (user)",
+     "need_in": 28.25,
+     "available": {
+      "value_in": 92.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 63.75
+    }
+   ],
+   "best_value": false,
+   "why": "BORGEBY Coffee table is $199.99 and rated 4.4"
+  },
+  {
+   "id": "ikea-tranered-coffee-table-dark-brown-35-3-8x35-3-8-10608998",
+   "name": "TRANERED Coffee table - dark-brown 35 3/8x35 3/8 \"",
+   "price_usd": 199.99,
+   "rating": 3.7,
+   "review_count": 39,
+   "image_url": "https://www.ikea.com/us/en/images/products/tranered-coffee-table-dark-brown__1478959_pe999902_s5.jpg",
+   "source_url": "https://www.ikea.com/us/en/p/tranered-coffee-table-dark-brown-10608998/",
+   "fit": "fits",
+   "fit_results": [
+    {
+     "check": "wall",
+     "verdict": "fits",
+     "math": "width 35.375 in \u2264 192 in (user)",
+     "need_in": 35.38,
+     "available": {
+      "value_in": 192.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 156.62
+    },
+    {
+     "check": "floor",
+     "verdict": "fits",
+     "math": "depth 35.375 in + walkway 36 in = 71.375 in \u2264 135 in (user)",
+     "need_in": 71.38,
+     "available": {
+      "value_in": 135.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 63.62
+    },
+    {
+     "check": "doorway_width",
+     "verdict": "fits",
+     "math": "box 1/2 smallest side 2.5 in \u2264 69 in (user)",
+     "need_in": 2.5,
+     "available": {
+      "value_in": 69.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 66.5
+    },
+    {
+     "check": "doorway_height",
+     "verdict": "fits",
+     "math": "box 1/2 middle side 35 in \u2264 92 in (user)",
+     "need_in": 35.0,
+     "available": {
+      "value_in": 92.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 57.0
+    },
+    {
+     "check": "doorway_width",
+     "verdict": "fits",
+     "math": "box 2/2 smallest side 2.25 in \u2264 69 in (user)",
+     "need_in": 2.25,
+     "available": {
+      "value_in": 69.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 66.75
+    },
+    {
+     "check": "doorway_height",
+     "verdict": "fits",
+     "math": "box 2/2 middle side 18.5 in \u2264 92 in (user)",
+     "need_in": 18.5,
+     "available": {
+      "value_in": 92.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 73.5
+    }
+   ],
+   "best_value": false,
+   "why": "BORGEBY Coffee table is $199.99 and rated 4.4"
+  },
+  {
+   "id": "ikea-ugglerum-coffee-table-walnut-veneer-51-1-8x25-5-8-60627980",
+   "name": "UGGLERUM Coffee table - walnut veneer 51 1/8x25 5/8 \"",
+   "price_usd": 199.99,
+   "rating": 3.6,
+   "review_count": 19,
+   "image_url": "https://www.ikea.com/us/en/images/products/ugglerum-coffee-table-walnut-veneer__1489735_pe1003955_s5.jpg",
+   "source_url": "https://www.ikea.com/us/en/p/ugglerum-coffee-table-walnut-veneer-60627980/",
+   "fit": "fits",
+   "fit_results": [
+    {
+     "check": "wall",
+     "verdict": "fits",
+     "math": "width 25.625 in \u2264 192 in (user)",
+     "need_in": 25.62,
+     "available": {
+      "value_in": 192.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 166.38
+    },
+    {
+     "check": "floor",
+     "verdict": "fits",
+     "math": "depth 51.125 in + walkway 36 in = 87.125 in \u2264 135 in (user)",
+     "need_in": 87.12,
+     "available": {
+      "value_in": 135.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 47.88
+    },
+    {
+     "check": "doorway_width",
+     "verdict": "fits",
+     "math": "box 1/1 smallest side 3 in \u2264 69 in (user)",
+     "need_in": 3.0,
+     "available": {
+      "value_in": 69.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 66.0
+    },
+    {
+     "check": "doorway_height",
+     "verdict": "fits",
+     "math": "box 1/1 middle side 29 in \u2264 92 in (user)",
+     "need_in": 29.0,
+     "available": {
+      "value_in": 92.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 63.0
+    }
+   ],
+   "best_value": false,
+   "why": "BORGEBY Coffee table is $199.99 and rated 4.4"
+  },
+  {
+   "id": "ikea-stockholm-2025-coffee-table-oak-veneer-glass-20586552",
+   "name": "STOCKHOLM 2025 Coffee table - oak veneer glass",
+   "price_usd": 299.99,
+   "rating": 4.3,
+   "review_count": 58,
+   "image_url": "https://www.ikea.com/us/en/images/products/stockholm-2025-coffee-table-oak-veneer-glass__1362696_pe955296_s5.jpg",
+   "source_url": "https://www.ikea.com/us/en/p/stockholm-2025-coffee-table-oak-veneer-glass-20586552/",
+   "fit": "fits",
+   "fit_results": [
+    {
+     "check": "wall",
+     "verdict": "fits",
+     "math": "width 38.25 in \u2264 192 in (user)",
+     "need_in": 38.25,
+     "available": {
+      "value_in": 192.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 153.75
+    },
+    {
+     "check": "floor",
+     "verdict": "fits",
+     "math": "depth 38.25 in + walkway 36 in = 74.25 in \u2264 135 in (user)",
+     "need_in": 74.25,
+     "available": {
+      "value_in": 135.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 60.75
+    },
+    {
+     "check": "doorway_width",
+     "verdict": "fits",
+     "math": "box 1/1 smallest side 4 in \u2264 69 in (user)",
+     "need_in": 4.0,
+     "available": {
+      "value_in": 69.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 65.0
+    },
+    {
+     "check": "doorway_height",
+     "verdict": "fits",
+     "math": "box 1/1 middle side 39.75 in \u2264 92 in (user)",
+     "need_in": 39.75,
+     "available": {
+      "value_in": 92.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 52.25
+    }
+   ],
+   "best_value": false,
+   "why": "BORGEBY Coffee table is $199.99 and rated 4.4"
+  }
+ ],
+ "rug": [
+  {
+   "id": "ikea-starreklinte-rug-20569133",
+   "name": "STARREKLINTE Rug, flatwoven - natural/black 3 ' 11 \"x5 ' 11 \"",
+   "price_usd": 39.99,
+   "rating": 4.1,
+   "review_count": 52,
+   "image_url": "https://www.ikea.com/us/en/images/products/starreklinte-rug-flatwoven-natural-black__1205718_pe907217_s5.jpg",
+   "source_url": "https://www.ikea.com/us/en/p/starreklinte-rug-flatwoven-natural-black-20569133/",
+   "fit": "fits",
+   "fit_results": [
+    {
+     "check": "rug_width",
+     "verdict": "fits",
+     "math": "rug 71 in + 2 x 6 in margin (turned 90\u00b0) = 83 in \u2264 192 in (user)",
+     "need_in": 83.0,
+     "available": {
+      "value_in": 192.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 109.0
+    },
+    {
+     "check": "rug_depth",
+     "verdict": "fits",
+     "math": "rug 47 in + 2 x 6 in margin (turned 90\u00b0) = 59 in \u2264 135 in (user)",
+     "need_in": 59.0,
+     "available": {
+      "value_in": 135.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 76.0
+    },
+    {
+     "check": "doorway_width",
+     "verdict": "fits",
+     "math": "box 1/1 smallest side 3.25 in \u2264 69 in (user)",
+     "need_in": 3.25,
+     "available": {
+      "value_in": 69.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 65.75
+    },
+    {
+     "check": "doorway_height",
+     "verdict": "fits",
+     "math": "box 1/1 middle side 13.25 in \u2264 92 in (user)",
+     "need_in": 13.25,
+     "available": {
+      "value_in": 92.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 78.75
+    }
+   ],
+   "best_value": true,
+   "why": "best value: nothing that fits is cheaper and better rated"
+  },
+  {
+   "id": "ikea-arende-rug-00576436",
+   "name": "\u00c4RENDE Rug, high pile - gray 5 ' 3 \"x7 ' 7 \"",
+   "price_usd": 69.99,
+   "rating": 4.3,
+   "review_count": 283,
+   "image_url": "https://www.ikea.com/us/en/images/products/aerende-rug-high-pile-gray__1389856_pe965285_s5.jpg",
+   "source_url": "https://www.ikea.com/us/en/p/aerende-rug-high-pile-gray-00576436/",
+   "fit": "fits",
+   "fit_results": [
+    {
+     "check": "rug_width",
+     "verdict": "fits",
+     "math": "rug 91 in + 2 x 6 in margin (turned 90\u00b0) = 103 in \u2264 192 in (user)",
+     "need_in": 103.0,
+     "available": {
+      "value_in": 192.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 89.0
+    },
+    {
+     "check": "rug_depth",
+     "verdict": "fits",
+     "math": "rug 63 in + 2 x 6 in margin (turned 90\u00b0) = 75 in \u2264 135 in (user)",
+     "need_in": 75.0,
+     "available": {
+      "value_in": 135.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 60.0
+    },
+    {
+     "check": "doorway_width",
+     "verdict": "fits",
+     "math": "box 1/1 smallest side 7.5 in \u2264 69 in (user)",
+     "need_in": 7.5,
+     "available": {
+      "value_in": 69.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 61.5
+    },
+    {
+     "check": "doorway_height",
+     "verdict": "fits",
+     "math": "box 1/1 middle side 7.5 in \u2264 92 in (user)",
+     "need_in": 7.5,
+     "available": {
+      "value_in": 92.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 84.5
+    }
+   ],
+   "best_value": true,
+   "why": "best value: nothing that fits is cheaper and better rated"
+  },
+  {
+   "id": "ikea-lokaltag-rug-10623220",
+   "name": "LOKALT\u00c5G Rug, low pile - beige/gray 5 ' 3 \"x7 ' 7 \"",
+   "price_usd": 79.99,
+   "rating": 4.5,
+   "review_count": 97,
+   "image_url": "https://www.ikea.com/us/en/images/products/lokaltag-rug-low-pile-beige-gray__1513913_pe1010753_s5.jpg",
+   "source_url": "https://www.ikea.com/us/en/p/lokaltag-rug-low-pile-beige-gray-10623220/",
+   "fit": "fits",
+   "fit_results": [
+    {
+     "check": "rug_width",
+     "verdict": "fits",
+     "math": "rug 91 in + 2 x 6 in margin (turned 90\u00b0) = 103 in \u2264 192 in (user)",
+     "need_in": 103.0,
+     "available": {
+      "value_in": 192.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 89.0
+    },
+    {
+     "check": "rug_depth",
+     "verdict": "fits",
+     "math": "rug 63 in + 2 x 6 in margin (turned 90\u00b0) = 75 in \u2264 135 in (user)",
+     "need_in": 75.0,
+     "available": {
+      "value_in": 135.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 60.0
+    },
+    {
+     "check": "doorway_width",
+     "verdict": "fits",
+     "math": "box 1/1 smallest side 3.25 in \u2264 69 in (user)",
+     "need_in": 3.25,
+     "available": {
+      "value_in": 69.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 65.75
+    },
+    {
+     "check": "doorway_height",
+     "verdict": "fits",
+     "math": "box 1/1 middle side 15.5 in \u2264 92 in (user)",
+     "need_in": 15.5,
+     "available": {
+      "value_in": 92.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 76.5
+    }
+   ],
+   "best_value": true,
+   "why": "best value: nothing that fits is cheaper and better rated"
+  },
+  {
+   "id": "ikea-ridstig-rug-10603335",
+   "name": "RIDSTIG Rug, flatwoven - off-white/green 6 ' 7 \"x9 ' 10 \"",
+   "price_usd": 99.99,
+   "rating": 3.6,
+   "review_count": 33,
+   "image_url": "https://www.ikea.com/us/en/images/products/ridstig-rug-flatwoven-off-white-green__1377922_pe961027_s5.jpg",
+   "source_url": "https://www.ikea.com/us/en/p/ridstig-rug-flatwoven-off-white-green-10603335/",
+   "fit": "fits",
+   "fit_results": [
+    {
+     "check": "rug_width",
+     "verdict": "fits",
+     "math": "rug 118 in + 2 x 6 in margin (turned 90\u00b0) = 130 in \u2264 192 in (user)",
+     "need_in": 130.0,
+     "available": {
+      "value_in": 192.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 62.0
+    },
+    {
+     "check": "rug_depth",
+     "verdict": "fits",
+     "math": "rug 79 in + 2 x 6 in margin (turned 90\u00b0) = 91 in \u2264 135 in (user)",
+     "need_in": 91.0,
+     "available": {
+      "value_in": 135.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 44.0
+    },
+    {
+     "check": "doorway_width",
+     "verdict": "fits",
+     "math": "box 1/1 smallest side 5 in \u2264 69 in (user)",
+     "need_in": 5.0,
+     "available": {
+      "value_in": 69.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 64.0
+    },
+    {
+     "check": "doorway_height",
+     "verdict": "fits",
+     "math": "box 1/1 middle side 20.75 in \u2264 92 in (user)",
+     "need_in": 20.75,
+     "available": {
+      "value_in": 92.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 71.25
+    }
+   ],
+   "best_value": false,
+   "why": "\u00c4RENDE Rug, high pile is $69.99 and rated 4.3"
+  },
+  {
+   "id": "ikea-lohals-rug-50277393",
+   "name": "LOHALS Rug, flatwoven - natural 5 ' 3 \"x7 ' 7 \"",
+   "price_usd": 129.99,
+   "rating": 4.5,
+   "review_count": 2629,
+   "image_url": "https://www.ikea.com/us/en/images/products/lohals-rug-flatwoven-natural__0280221_pe419173_s5.jpg",
+   "source_url": "https://www.ikea.com/us/en/p/lohals-rug-flatwoven-natural-50277393/",
+   "fit": "fits",
+   "fit_results": [
+    {
+     "check": "rug_width",
+     "verdict": "fits",
+     "math": "rug 91 in + 2 x 6 in margin (turned 90\u00b0) = 103 in \u2264 192 in (user)",
+     "need_in": 103.0,
+     "available": {
+      "value_in": 192.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 89.0
+    },
+    {
+     "check": "rug_depth",
+     "verdict": "fits",
+     "math": "rug 63 in + 2 x 6 in margin (turned 90\u00b0) = 75 in \u2264 135 in (user)",
+     "need_in": 75.0,
+     "available": {
+      "value_in": 135.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 60.0
+    },
+    {
+     "check": "doorway_width",
+     "verdict": "fits",
+     "math": "box 1/1 smallest side 7 in \u2264 69 in (user)",
+     "need_in": 7.0,
+     "available": {
+      "value_in": 69.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 62.0
+    },
+    {
+     "check": "doorway_height",
+     "verdict": "fits",
+     "math": "box 1/1 middle side 7 in \u2264 92 in (user)",
+     "need_in": 7.0,
+     "available": {
+      "value_in": 92.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 85.0
+    }
+   ],
+   "best_value": false,
+   "why": "LOKALT\u00c5G Rug, low pile is $79.99 and rated 4.5"
+  },
+  {
+   "id": "ikea-markblamme-rug-90625705",
+   "name": "MARKBL\u00c5MME Rug, low pile - multicolor/check pattern 5 ' 3 \"x7 ' 7 \"",
+   "price_usd": 149.99,
+   "rating": 4.7,
+   "review_count": 27,
+   "image_url": "https://www.ikea.com/us/en/images/products/markblamme-rug-low-pile-multicolor-check-pattern__1468724_pe996250_s5.jpg",
+   "source_url": "https://www.ikea.com/us/en/p/markblamme-rug-low-pile-multicolor-check-pattern-90625705/",
+   "fit": "fits",
+   "fit_results": [
+    {
+     "check": "rug_width",
+     "verdict": "fits",
+     "math": "rug 91 in + 2 x 6 in margin (turned 90\u00b0) = 103 in \u2264 192 in (user)",
+     "need_in": 103.0,
+     "available": {
+      "value_in": 192.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 89.0
+    },
+    {
+     "check": "rug_depth",
+     "verdict": "fits",
+     "math": "rug 63 in + 2 x 6 in margin (turned 90\u00b0) = 75 in \u2264 135 in (user)",
+     "need_in": 75.0,
+     "available": {
+      "value_in": 135.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 60.0
+    },
+    {
+     "check": "doorway_width",
+     "verdict": "fits",
+     "math": "box 1/1 smallest side 6.25 in \u2264 69 in (user)",
+     "need_in": 6.25,
+     "available": {
+      "value_in": 69.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 62.75
+    },
+    {
+     "check": "doorway_height",
+     "verdict": "fits",
+     "math": "box 1/1 middle side 6.25 in \u2264 92 in (user)",
+     "need_in": 6.25,
+     "available": {
+      "value_in": 92.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 85.75
+    }
+   ],
+   "best_value": true,
+   "why": "best value: nothing that fits is cheaper and better rated"
+  },
+  {
+   "id": "ikea-grejsimojs-rug-00602001",
+   "name": "GREJSIMOJS Rug, high pile - green 5 ' 0 \"x7 ' 1 \"",
+   "price_usd": 159.99,
+   "rating": 4.8,
+   "review_count": 56,
+   "image_url": "https://www.ikea.com/us/en/images/products/grejsimojs-rug-high-pile-green__1450783_pe990412_s5.jpg",
+   "source_url": "https://www.ikea.com/us/en/p/grejsimojs-rug-high-pile-green-00602001/",
+   "fit": "fits",
+   "fit_results": [
+    {
+     "check": "rug_width",
+     "verdict": "fits",
+     "math": "rug 85 in + 2 x 6 in margin (turned 90\u00b0) = 97 in \u2264 192 in (user)",
+     "need_in": 97.0,
+     "available": {
+      "value_in": 192.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 95.0
+    },
+    {
+     "check": "rug_depth",
+     "verdict": "fits",
+     "math": "rug 60 in + 2 x 6 in margin (turned 90\u00b0) = 72 in \u2264 135 in (user)",
+     "need_in": 72.0,
+     "available": {
+      "value_in": 135.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 63.0
+    },
+    {
+     "check": "doorway_width",
+     "verdict": "fits",
+     "math": "box 1/1 smallest side 7.5 in \u2264 69 in (user)",
+     "need_in": 7.5,
+     "available": {
+      "value_in": 69.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 61.5
+    },
+    {
+     "check": "doorway_height",
+     "verdict": "fits",
+     "math": "box 1/1 middle side 7.5 in \u2264 92 in (user)",
+     "need_in": 7.5,
+     "available": {
+      "value_in": 92.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 84.5
+    }
+   ],
+   "best_value": true,
+   "why": "best value: nothing that fits is cheaper and better rated"
+  },
+  {
+   "id": "ikea-lohals-rug-00277395",
+   "name": "LOHALS Rug, flatwoven - natural 6 ' 7 \"x9 ' 10 \"",
+   "price_usd": 179.99,
+   "rating": 4.5,
+   "review_count": 2629,
+   "image_url": "https://www.ikea.com/us/en/images/products/lohals-rug-flatwoven-natural__0280230_pe419175_s5.jpg",
+   "source_url": "https://www.ikea.com/us/en/p/lohals-rug-flatwoven-natural-00277395/",
+   "fit": "fits",
+   "fit_results": [
+    {
+     "check": "rug_width",
+     "verdict": "fits",
+     "math": "rug 118 in + 2 x 6 in margin (turned 90\u00b0) = 130 in \u2264 192 in (user)",
+     "need_in": 130.0,
+     "available": {
+      "value_in": 192.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 62.0
+    },
+    {
+     "check": "rug_depth",
+     "verdict": "fits",
+     "math": "rug 79 in + 2 x 6 in margin (turned 90\u00b0) = 91 in \u2264 135 in (user)",
+     "need_in": 91.0,
+     "available": {
+      "value_in": 135.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 44.0
+    },
+    {
+     "check": "doorway_width",
+     "verdict": "fits",
+     "math": "box 1/1 smallest side 8.25 in \u2264 69 in (user)",
+     "need_in": 8.25,
+     "available": {
+      "value_in": 69.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 60.75
+    },
+    {
+     "check": "doorway_height",
+     "verdict": "fits",
+     "math": "box 1/1 middle side 8.25 in \u2264 92 in (user)",
+     "need_in": 8.25,
+     "available": {
+      "value_in": 92.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 83.75
+    }
+   ],
+   "best_value": false,
+   "why": "GREJSIMOJS Rug, high pile is $159.99 and rated 4.8"
+  },
+  {
+   "id": "ikea-jarnvag-rug-00623466",
+   "name": "J\u00c4RNV\u00c4G Rug, low pile - ornament pattern beige/dark beige 7 ' 10 \"x10 '",
+   "price_usd": 229.99,
+   "rating": 4.5,
+   "review_count": 206,
+   "image_url": "https://www.ikea.com/us/en/images/products/jaernvaeg-rug-low-pile-ornament-pattern-beige-dark-beige__1435118_pe983706_s5.jpg",
+   "source_url": "https://www.ikea.com/us/en/p/jaernvaeg-rug-low-pile-ornament-pattern-beige-dark-beige-00623466/",
+   "fit": "fits",
+   "fit_results": [
+    {
+     "check": "rug_width",
+     "verdict": "fits",
+     "math": "rug 120 in + 2 x 6 in margin (turned 90\u00b0) = 132 in \u2264 192 in (user)",
+     "need_in": 132.0,
+     "available": {
+      "value_in": 192.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 60.0
+    },
+    {
+     "check": "rug_depth",
+     "verdict": "fits",
+     "math": "rug 94 in + 2 x 6 in margin (turned 90\u00b0) = 106 in \u2264 135 in (user)",
+     "need_in": 106.0,
+     "available": {
+      "value_in": 135.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 29.0
+    },
+    {
+     "check": "doorway_width",
+     "verdict": "fits",
+     "math": "box 1/1 smallest side 7 in \u2264 69 in (user)",
+     "need_in": 7.0,
+     "available": {
+      "value_in": 69.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 62.0
+    },
+    {
+     "check": "doorway_height",
+     "verdict": "fits",
+     "math": "box 1/1 middle side 7 in \u2264 92 in (user)",
+     "need_in": 7.0,
+     "available": {
+      "value_in": 92.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 85.0
+    }
+   ],
+   "best_value": false,
+   "why": "GREJSIMOJS Rug, high pile is $159.99 and rated 4.8"
+  },
+  {
+   "id": "ikea-halved-rug-20328228",
+   "name": "HALVED Rug, flatwoven - handmade multicolor 5 ' 7 \"x7 ' 10 \"",
+   "price_usd": 249.99,
+   "rating": 4.5,
+   "review_count": 254,
+   "image_url": "https://www.ikea.com/us/en/images/products/halved-rug-flatwoven-handmade-multicolor__0603024_pe680632_s5.jpg",
+   "source_url": "https://www.ikea.com/us/en/p/halved-rug-flatwoven-handmade-multicolor-20328228/",
+   "fit": "fits",
+   "fit_results": [
+    {
+     "check": "rug_width",
+     "verdict": "fits",
+     "math": "rug 94 in + 2 x 6 in margin (turned 90\u00b0) = 106 in \u2264 192 in (user)",
+     "need_in": 106.0,
+     "available": {
+      "value_in": 192.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 86.0
+    },
+    {
+     "check": "rug_depth",
+     "verdict": "fits",
+     "math": "rug 67 in + 2 x 6 in margin (turned 90\u00b0) = 79 in \u2264 135 in (user)",
+     "need_in": 79.0,
+     "available": {
+      "value_in": 135.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 56.0
+    },
+    {
+     "check": "doorway_width",
+     "verdict": "fits",
+     "math": "box 1/1 smallest side 4.75 in \u2264 69 in (user)",
+     "need_in": 4.75,
+     "available": {
+      "value_in": 69.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 64.25
+    },
+    {
+     "check": "doorway_height",
+     "verdict": "fits",
+     "math": "box 1/1 middle side 18 in \u2264 92 in (user)",
+     "need_in": 18.0,
+     "available": {
+      "value_in": 92.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 74.0
+    }
+   ],
+   "best_value": false,
+   "why": "GREJSIMOJS Rug, high pile is $159.99 and rated 4.8"
+  },
+  {
+   "id": "ikea-onsevig-rug-10559894",
+   "name": "ONSEVIG Rug, low pile - multicolor 7 ' 10 \"x9 ' 10 \"",
+   "price_usd": 249.99,
+   "rating": 4.6,
+   "review_count": 628,
+   "image_url": "https://www.ikea.com/us/en/images/products/onsevig-rug-low-pile-multicolor__0941458_pe795476_s5.jpg",
+   "source_url": "https://www.ikea.com/us/en/p/onsevig-rug-low-pile-multicolor-10559894/",
+   "fit": "fits",
+   "fit_results": [
+    {
+     "check": "rug_width",
+     "verdict": "fits",
+     "math": "rug 118 in + 2 x 6 in margin (turned 90\u00b0) = 130 in \u2264 192 in (user)",
+     "need_in": 130.0,
+     "available": {
+      "value_in": 192.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 62.0
+    },
+    {
+     "check": "rug_depth",
+     "verdict": "fits",
+     "math": "rug 94 in + 2 x 6 in margin (turned 90\u00b0) = 106 in \u2264 135 in (user)",
+     "need_in": 106.0,
+     "available": {
+      "value_in": 135.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 29.0
+    },
+    {
+     "check": "doorway_width",
+     "verdict": "fits",
+     "math": "box 1/1 smallest side 7 in \u2264 69 in (user)",
+     "need_in": 7.0,
+     "available": {
+      "value_in": 69.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 62.0
+    },
+    {
+     "check": "doorway_height",
+     "verdict": "fits",
+     "math": "box 1/1 middle side 7 in \u2264 92 in (user)",
+     "need_in": 7.0,
+     "available": {
+      "value_in": 92.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 85.0
+    }
+   ],
+   "best_value": false,
+   "why": "GREJSIMOJS Rug, high pile is $159.99 and rated 4.8"
+  },
+  {
+   "id": "ikea-stockholm-2025-rug-40593815",
+   "name": "STOCKHOLM 2025 Rug, flatwoven - white/brown/light blue handwoven 5 ' 7 \"x7 ' 10 \"",
+   "price_usd": 399.99,
+   "rating": 4.6,
+   "review_count": 25,
+   "image_url": "https://www.ikea.com/us/en/images/products/stockholm-2025-rug-flatwoven-white-brown-light-blue-handwoven__1290826_pe934757_s5.jpg",
+   "source_url": "https://www.ikea.com/us/en/p/stockholm-2025-rug-flatwoven-white-brown-light-blue-handwoven-40593815/",
+   "fit": "fits",
+   "fit_results": [
+    {
+     "check": "rug_width",
+     "verdict": "fits",
+     "math": "rug 94 in + 2 x 6 in margin (turned 90\u00b0) = 106 in \u2264 192 in (user)",
+     "need_in": 106.0,
+     "available": {
+      "value_in": 192.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 86.0
+    },
+    {
+     "check": "rug_depth",
+     "verdict": "fits",
+     "math": "rug 67 in + 2 x 6 in margin (turned 90\u00b0) = 79 in \u2264 135 in (user)",
+     "need_in": 79.0,
+     "available": {
+      "value_in": 135.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 56.0
+    },
+    {
+     "check": "doorway_width",
+     "verdict": "fits",
+     "math": "box 1/1 smallest side 4 in \u2264 69 in (user)",
+     "need_in": 4.0,
+     "available": {
+      "value_in": 69.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 65.0
+    },
+    {
+     "check": "doorway_height",
+     "verdict": "fits",
+     "math": "box 1/1 middle side 18.25 in \u2264 92 in (user)",
+     "need_in": 18.25,
+     "available": {
+      "value_in": 92.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 73.75
+    }
+   ],
+   "best_value": false,
+   "why": "GREJSIMOJS Rug, high pile is $159.99 and rated 4.8"
+  }
+ ],
+ "floor_lamp": [
+  {
+   "id": "ikea-barlast-floor-lamp-black-white-59-70437814",
+   "name": "BARLAST Floor lamp - black/white 59 \"",
+   "price_usd": 9.99,
+   "rating": 3.7,
+   "review_count": 1212,
+   "image_url": "https://www.ikea.com/us/en/images/products/barlast-floor-lamp-black-white__0957676_pe805130_s5.jpg",
+   "source_url": "https://www.ikea.com/us/en/p/barlast-floor-lamp-black-white-70437814/",
+   "fit": "fits",
+   "fit_results": [
+    {
+     "check": "wall",
+     "verdict": "fits",
+     "math": "width 13 in \u2264 192 in (user)",
+     "need_in": 13.0,
+     "available": {
+      "value_in": 192.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 179.0
+    },
+    {
+     "check": "floor",
+     "verdict": "fits",
+     "math": "depth 13 in + walkway 36 in = 49 in \u2264 135 in (user)",
+     "need_in": 49.0,
+     "available": {
+      "value_in": 135.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 86.0
+    },
+    {
+     "check": "doorway_width",
+     "verdict": "fits",
+     "math": "box 1/1 smallest side 3 in \u2264 69 in (user)",
+     "need_in": 3.0,
+     "available": {
+      "value_in": 69.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 66.0
+    },
+    {
+     "check": "doorway_height",
+     "verdict": "fits",
+     "math": "box 1/1 middle side 3 in \u2264 92 in (user)",
+     "need_in": 3.0,
+     "available": {
+      "value_in": 92.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 89.0
+    }
+   ],
+   "best_value": true,
+   "why": "best value: nothing that fits is cheaper and better rated"
+  },
+  {
+   "id": "ikea-ringsta-skaftet-floor-lamp-white-nickel-plated-59387448",
+   "name": "RINGSTA / SKAFTET Floor lamp - white/nickel plated",
+   "price_usd": 64.99,
+   "rating": 4.5,
+   "review_count": 120,
+   "image_url": "https://www.ikea.com/us/en/images/products/ringsta-skaftet-floor-lamp-white-nickel-plated__0856897_pe780852_s5.jpg",
+   "source_url": "https://www.ikea.com/us/en/p/ringsta-skaftet-floor-lamp-white-nickel-plated-s59387448/",
+   "fit": "fits",
+   "fit_results": [
+    {
+     "check": "wall",
+     "verdict": "fits",
+     "math": "width 11 in \u2264 192 in (user)",
+     "need_in": 11.0,
+     "available": {
+      "value_in": 192.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 181.0
+    },
+    {
+     "check": "floor",
+     "verdict": "fits",
+     "math": "depth 11 in + walkway 36 in = 47 in \u2264 135 in (user)",
+     "need_in": 47.0,
+     "available": {
+      "value_in": 135.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 88.0
+    },
+    {
+     "check": "doorway_width",
+     "verdict": "fits",
+     "math": "box 1/2 smallest side 2.5 in \u2264 69 in (user)",
+     "need_in": 2.5,
+     "available": {
+      "value_in": 69.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 66.5
+    },
+    {
+     "check": "doorway_height",
+     "verdict": "fits",
+     "math": "box 1/2 middle side 17 in \u2264 92 in (user)",
+     "need_in": 17.0,
+     "available": {
+      "value_in": 92.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 75.0
+    },
+    {
+     "check": "doorway_width",
+     "verdict": "fits",
+     "math": "box 2/2 smallest side 2.25 in \u2264 69 in (user)",
+     "need_in": 2.25,
+     "available": {
+      "value_in": 69.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 66.75
+    },
+    {
+     "check": "doorway_height",
+     "verdict": "fits",
+     "math": "box 2/2 middle side 11.5 in \u2264 92 in (user)",
+     "need_in": 11.5,
+     "available": {
+      "value_in": 92.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 80.5
+    }
+   ],
+   "best_value": true,
+   "why": "best value: nothing that fits is cheaper and better rated"
+  },
+  {
+   "id": "ikea-flyghojd-floor-lamp-brass-beige-70524444",
+   "name": "FLYGH\u00d6JD Floor lamp - brass/beige",
+   "price_usd": 69.99,
+   "rating": 3.9,
+   "review_count": 194,
+   "image_url": "https://www.ikea.com/us/en/images/products/flyghoejd-floor-lamp-brass-beige__1244478_pe921198_s5.jpg",
+   "source_url": "https://www.ikea.com/us/en/p/flyghoejd-floor-lamp-brass-beige-70524444/",
+   "fit": "fits",
+   "fit_results": [
+    {
+     "check": "wall",
+     "verdict": "fits",
+     "math": "width 14 in \u2264 192 in (user)",
+     "need_in": 14.0,
+     "available": {
+      "value_in": 192.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 178.0
+    },
+    {
+     "check": "floor",
+     "verdict": "fits",
+     "math": "depth 14 in + walkway 36 in = 50 in \u2264 135 in (user)",
+     "need_in": 50.0,
+     "available": {
+      "value_in": 135.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 85.0
+    },
+    {
+     "check": "doorway_width",
+     "verdict": "fits",
+     "math": "box 1/1 smallest side 6 in \u2264 69 in (user)",
+     "need_in": 6.0,
+     "available": {
+      "value_in": 69.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 63.0
+    },
+    {
+     "check": "doorway_height",
+     "verdict": "fits",
+     "math": "box 1/1 middle side 13.5 in \u2264 92 in (user)",
+     "need_in": 13.5,
+     "available": {
+      "value_in": 92.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 78.5
+    }
+   ],
+   "best_value": false,
+   "why": "RINGSTA / SKAFTET Floor lamp is $64.99 and rated 4.5"
+  },
+  {
+   "id": "ikea-lauters-floor-lamp-ash-white-00405048",
+   "name": "LAUTERS Floor lamp - ash/white",
+   "price_usd": 79.99,
+   "rating": 4.7,
+   "review_count": 1492,
+   "image_url": "https://www.ikea.com/us/en/images/products/lauters-floor-lamp-ash-white__0663863_pe712536_s5.jpg",
+   "source_url": "https://www.ikea.com/us/en/p/lauters-floor-lamp-ash-white-00405048/",
+   "fit": "fits",
+   "fit_results": [
+    {
+     "check": "wall",
+     "verdict": "fits",
+     "math": "width 24 in \u2264 192 in (user)",
+     "need_in": 24.0,
+     "available": {
+      "value_in": 192.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 168.0
+    },
+    {
+     "check": "floor",
+     "verdict": "fits",
+     "math": "depth 24 in + walkway 36 in = 60 in \u2264 135 in (user)",
+     "need_in": 60.0,
+     "available": {
+      "value_in": 135.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 75.0
+    },
+    {
+     "check": "doorway_width",
+     "verdict": "fits",
+     "math": "box 1/1 smallest side 3.25 in \u2264 69 in (user)",
+     "need_in": 3.25,
+     "available": {
+      "value_in": 69.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 65.75
+    },
+    {
+     "check": "doorway_height",
+     "verdict": "fits",
+     "math": "box 1/1 middle side 14.75 in \u2264 92 in (user)",
+     "need_in": 14.75,
+     "available": {
+      "value_in": 92.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 77.25
+    }
+   ],
+   "best_value": true,
+   "why": "best value: nothing that fits is cheaper and better rated"
+  },
+  {
+   "id": "ikea-arstid-floor-lamp-brass-white-60321324",
+   "name": "\u00c5RSTID Floor lamp - brass/white",
+   "price_usd": 89.99,
+   "rating": 4.7,
+   "review_count": 1532,
+   "image_url": "https://www.ikea.com/us/en/images/products/arstid-floor-lamp-brass-white__0390610_pe566328_s5.jpg",
+   "source_url": "https://www.ikea.com/us/en/p/arstid-floor-lamp-brass-white-60321324/",
+   "fit": "fits",
+   "fit_results": [
+    {
+     "check": "wall",
+     "verdict": "fits",
+     "math": "width 14 in \u2264 192 in (user)",
+     "need_in": 14.0,
+     "available": {
+      "value_in": 192.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 178.0
+    },
+    {
+     "check": "floor",
+     "verdict": "fits",
+     "math": "depth 14 in + walkway 36 in = 50 in \u2264 135 in (user)",
+     "need_in": 50.0,
+     "available": {
+      "value_in": 135.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 85.0
+    },
+    {
+     "check": "doorway_width",
+     "verdict": "fits",
+     "math": "box 1/1 smallest side 14.75 in \u2264 69 in (user)",
+     "need_in": 14.75,
+     "available": {
+      "value_in": 69.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 54.25
+    },
+    {
+     "check": "doorway_height",
+     "verdict": "fits",
+     "math": "box 1/1 middle side 14.75 in \u2264 92 in (user)",
+     "need_in": 14.75,
+     "available": {
+      "value_in": 92.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 77.25
+    }
+   ],
+   "best_value": false,
+   "why": "LAUTERS Floor lamp is $79.99 and rated 4.7"
+  },
+  {
+   "id": "ikea-okensand-floor-lamp-beech-white-90541536",
+   "name": "\u00d6KENSAND Floor lamp - beech/white",
+   "price_usd": 89.99,
+   "rating": 4.7,
+   "review_count": 337,
+   "image_url": "https://www.ikea.com/us/en/images/products/oekensand-floor-lamp-beech-white__1187892_pe899535_s5.jpg",
+   "source_url": "https://www.ikea.com/us/en/p/oekensand-floor-lamp-beech-white-90541536/",
+   "fit": "fits",
+   "fit_results": [
+    {
+     "check": "wall",
+     "verdict": "fits",
+     "math": "width 19 in \u2264 192 in (user)",
+     "need_in": 19.0,
+     "available": {
+      "value_in": 192.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 173.0
+    },
+    {
+     "check": "floor",
+     "verdict": "fits",
+     "math": "depth 19 in + walkway 36 in = 55 in \u2264 135 in (user)",
+     "need_in": 55.0,
+     "available": {
+      "value_in": 135.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 80.0
+    },
+    {
+     "check": "doorway_width",
+     "verdict": "fits",
+     "math": "box 1/1 smallest side 1.75 in \u2264 69 in (user)",
+     "need_in": 1.75,
+     "available": {
+      "value_in": 69.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 67.25
+    },
+    {
+     "check": "doorway_height",
+     "verdict": "fits",
+     "math": "box 1/1 middle side 13.75 in \u2264 92 in (user)",
+     "need_in": 13.75,
+     "available": {
+      "value_in": 92.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 78.25
+    }
+   ],
+   "best_value": false,
+   "why": "LAUTERS Floor lamp is $79.99 and rated 4.7"
+  },
+  {
+   "id": "ikea-akterspring-floor-lamp-opal-glass-brass-plated-64-00618808",
+   "name": "AKTERSPRING Floor lamp - opal glass/brass plated 64 \"",
+   "price_usd": 99.99,
+   "rating": 4.7,
+   "review_count": 18,
+   "image_url": "https://www.ikea.com/us/en/images/products/akterspring-floor-lamp-opal-glass-brass-plated__1531221_pe1015569_s5.jpg",
+   "source_url": "https://www.ikea.com/us/en/p/akterspring-floor-lamp-opal-glass-brass-plated-00618808/",
+   "fit": "fits",
+   "fit_results": [
+    {
+     "check": "wall",
+     "verdict": "fits",
+     "math": "width 12 in \u2264 192 in (user)",
+     "need_in": 12.0,
+     "available": {
+      "value_in": 192.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 180.0
+    },
+    {
+     "check": "floor",
+     "verdict": "fits",
+     "math": "depth 10 in + walkway 36 in = 46 in \u2264 135 in (user)",
+     "need_in": 46.0,
+     "available": {
+      "value_in": 135.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 89.0
+    },
+    {
+     "check": "doorway_width",
+     "verdict": "fits",
+     "math": "box 1/1 smallest side 7 in \u2264 69 in (user)",
+     "need_in": 7.0,
+     "available": {
+      "value_in": 69.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 62.0
+    },
+    {
+     "check": "doorway_height",
+     "verdict": "fits",
+     "math": "box 1/1 middle side 13.5 in \u2264 92 in (user)",
+     "need_in": 13.5,
+     "available": {
+      "value_in": 92.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 78.5
+    }
+   ],
+   "best_value": false,
+   "why": "\u00c5RSTID Floor lamp is $89.99 and rated 4.7"
+  },
+  {
+   "id": "ikea-evedal-floor-lamp-marble-gray-60357916",
+   "name": "EVEDAL Floor lamp - marble/gray",
+   "price_usd": 399.99,
+   "rating": 4.3,
+   "review_count": 181,
+   "image_url": "https://www.ikea.com/us/en/images/products/evedal-floor-lamp-marble-gray__0663195_pe712324_s5.jpg",
+   "source_url": "https://www.ikea.com/us/en/p/evedal-floor-lamp-marble-gray-60357916/",
+   "fit": "fits",
+   "fit_results": [
+    {
+     "check": "wall",
+     "verdict": "fits",
+     "math": "width 16 in \u2264 192 in (user)",
+     "need_in": 16.0,
+     "available": {
+      "value_in": 192.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 176.0
+    },
+    {
+     "check": "floor",
+     "verdict": "fits",
+     "math": "depth 16 in + walkway 36 in = 52 in \u2264 135 in (user)",
+     "need_in": 52.0,
+     "available": {
+      "value_in": 135.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 83.0
+    },
+    {
+     "check": "doorway_width",
+     "verdict": "fits",
+     "math": "box 1/2 smallest side 15.5 in \u2264 69 in (user)",
+     "need_in": 15.5,
+     "available": {
+      "value_in": 69.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 53.5
+    },
+    {
+     "check": "doorway_height",
+     "verdict": "fits",
+     "math": "box 1/2 middle side 18.75 in \u2264 92 in (user)",
+     "need_in": 18.75,
+     "available": {
+      "value_in": 92.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 73.25
+    },
+    {
+     "check": "doorway_width",
+     "verdict": "fits",
+     "math": "box 2/2 smallest side 7.5 in \u2264 69 in (user)",
+     "need_in": 7.5,
+     "available": {
+      "value_in": 69.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 61.5
+    },
+    {
+     "check": "doorway_height",
+     "verdict": "fits",
+     "math": "box 2/2 middle side 7.5 in \u2264 92 in (user)",
+     "need_in": 7.5,
+     "available": {
+      "value_in": 92.0,
+      "error_in": 0.0,
+      "source": "user"
+     },
+     "margin_in": 84.5
+    }
+   ],
+   "best_value": false,
+   "why": "AKTERSPRING Floor lamp is $99.99 and rated 4.7"
+  }
+ ]
+}

@@ -93,6 +93,38 @@ def _refuse(plan: dict, step: str, error: str, slot: str | None = None, **extra)
     return {**_ids(plan), "ok": False, "error": error, **extra}
 
 
+def _budget(plan: dict) -> dict:
+    b = plan.get("budget") or {}
+    return {"total_usd": b.get("total_usd"), "per_item_usd": b.get("per_item_usd")}
+
+
+def _spent_elsewhere(plan: dict, slot: str, picked: bool = False) -> float:
+    """What the other slots cost: their picked items (picked=True, for pick/swap) or the cart (for cart_add).
+    This slot's own item is left out, since a swap or re-pick replaces it."""
+    mine = (_slot_item(plan, slot) or {}).get("product_id")
+    if picked:
+        return round(sum((i.get("price_usd") or 0) for i in plan["items"] if i["slot"] != slot), 2)
+    return round(sum((c.get("price_usd") or 0) for c in plan["cart"]["items"] if c["product_id"] != mine), 2)
+
+
+def _cap(plan: dict, slot: str, asked: float | None) -> tuple[float | None, str]:
+    """The most this slot's item may cost: the smallest of what the model asked for, the person's per-item
+    budget, and what's left of the person's total budget. The tools enforce this; the prompt can't loosen it."""
+    b = _budget(plan)
+    limits = []
+    if asked is not None:
+        limits.append((float(asked), f"asked ${float(asked):g}"))
+    if b["per_item_usd"] is not None:
+        limits.append((b["per_item_usd"], f'per-item budget ${b["per_item_usd"]:g}'))
+    if b["total_usd"] is not None:
+        left = round(b["total_usd"] - _spent_elsewhere(plan, slot, picked=True), 2)
+        limits.append((max(left, 0.0), f'${left:g} left of the ${b["total_usd"]:g} total'))
+    if not limits:
+        return None, "no budget"
+    cap, why = min(limits, key=lambda t: t[0])
+    return cap, why
+
+
 def _call_sie(fn, *args, **kw):
     """data.sie raises SystemExit when SIE_API_KEY is missing; turn every failure into a readable error."""
     try:
@@ -192,11 +224,12 @@ def _run_pick(plan_id: str, slot: str, budget_usd: float | None, swapping: bool)
         if not state.get("style", {}).get(slot) or not shown:
             return _refuse(plan, step, f"nothing picked for {slot} yet: call pick first", slot)
         budget_usd = state.get("budget", {}).get(slot)
+    cap, cap_why = _cap(plan, slot, budget_usd)
     style, records, err = _style_for(plan, slot)
     if err:
         return _refuse(plan, step, err, slot)
     opts = _options(plan, slot)
-    res = fit_pick(opts, style, budget_usd=budget_usd, exclude=shown if swapping else [])
+    res = fit_pick(opts, style, budget_usd=cap, exclude=shown if swapping else [])
     chosen = res["picked"]
     if chosen is not None and chosen["fit"] != FITS:  # belt and braces: the tool never hands out a non-fit
         chosen = None
@@ -237,7 +270,9 @@ def _run_pick(plan_id: str, slot: str, budget_usd: float | None, swapping: bool)
     out = {**_ids(plan), "ok": item is not None, "slot": slot, "picked": item, "rejected": _rejected(res["rejected"])}
     if item is None:
         out["error"] = (f"no other {slot} fits the room and matches the style" if swapping
-                        else f"no {slot} fits the room" + (f" within ${budget_usd:g}" if budget_usd is not None else ""))
+                        else f"no {slot} fits the room" + (f" within ${cap:g} ({cap_why})" if cap is not None else ""))
+    if cap is not None:
+        out["budget_cap_usd"], out["budget_cap_why"] = cap, cap_why
     if swapping:
         out["excluded"] = shown
     return out
@@ -509,6 +544,21 @@ def cart_add(plan_id: str, slot: str, why: str) -> dict:
     if not ok:
         return _refuse(plan, "cart", f"{item['name']} failed its Senso check (a conflict, or no verified claim); "
                                      "swap it or check again", slot, product_id=item["product_id"])
+    b = _budget(plan)
+    price = item.get("price_usd")
+    if (b["per_item_usd"] is not None or b["total_usd"] is not None) and price is None:
+        return _refuse(plan, "cart", f"{item['name']} has no price on the IKEA page, so the budget can't be "
+                                     "checked: swap it", slot, product_id=item["product_id"])
+    if b["per_item_usd"] is not None and price > b["per_item_usd"]:
+        return _refuse(plan, "cart", f"{item['name']} costs ${price:g}, over the per-item budget of "
+                                     f"${b['per_item_usd']:g}: swap it", slot, product_id=item["product_id"])
+    if b["total_usd"] is not None:
+        spent = _spent_elsewhere(plan, slot)
+        if spent + price > b["total_usd"] + 1e-9:
+            return _refuse(plan, "cart", f"{item['name']} (${price:g}) would bring the cart to "
+                                         f"${spent + price:g}, over the ${b['total_usd']:g} total budget: swap it "
+                                         f"or pick with budget_usd <= {max(b['total_usd'] - spent, 0):g}",
+                           slot, product_id=item["product_id"])
     why = (why or "").strip()
     pid = item["product_id"]
     rec = audit("cart", item_slot=slot, product_id=pid, source={"kind": "claude" if why else "template"},
@@ -527,6 +577,35 @@ def cart_add(plan_id: str, slot: str, why: str) -> dict:
 
     plan = _commit(plan_id, [rec], mutate)
     return {**_ids(plan), "ok": True, "slot": slot, "cart": plan["cart"]}
+
+
+def set_budget(plan_id: str, total_usd: float | None = None, per_item_usd: float | None = None) -> dict:
+    """Store the person's budget on the plan. From then on pick/swap never return a pricier item and cart_add
+    refuses anything over the per-item limit or that would take the cart past the total. Both None = no budget.
+    Audits step "agent", decision "budget set". Returns {plan_id, plan_url, ok, budget, spent_usd}."""
+    plan = _load(plan_id)
+    for name, v in (("total_usd", total_usd), ("per_item_usd", per_item_usd)):
+        if v is not None and (isinstance(v, bool) or not isinstance(v, (int, float)) or v <= 0):
+            return _refuse(plan, "agent", f"{name} must be a positive number of dollars, got {v!r}")
+    budget = {"total_usd": float(total_usd) if total_usd is not None else None,
+              "per_item_usd": float(per_item_usd) if per_item_usd is not None else None}
+    parts = ([f'total ${budget["total_usd"]:g}'] if budget["total_usd"] is not None else []) + \
+            ([f'${budget["per_item_usd"]:g} per item'] if budget["per_item_usd"] is not None else [])
+    spent = plan["cart"].get("total_usd", 0.0)
+    rec = audit("agent", source={"kind": "template", "set_by": "person"},
+                decision="budget set" if parts else "budget cleared",
+                input=budget, status="set",
+                why=("The person's budget: " + ", ".join(parts) + "; enforced by pick, swap and cart_add")
+                if parts else "No budget.")
+
+    def mutate(p: dict) -> None:
+        p["budget"] = budget if parts else None
+
+    plan = _commit(plan_id, [rec], mutate)
+    warn = {}
+    if budget["total_usd"] is not None and spent > budget["total_usd"]:
+        warn["warning"] = f"the cart already totals ${spent:g}, over the new ${budget['total_usd']:g}: swap items"
+    return {**_ids(plan), "ok": True, "budget": plan.get("budget"), "spent_usd": spent, **warn}
 
 
 def get_plan(plan_id: str) -> dict:
@@ -583,6 +662,14 @@ TOOL_SPECS: list[dict] = [
                     "has a verified claim and no conflict. 'why' is your one- or two-sentence explanation for the "
                     "person.",
      "input_schema": _schema({**_PLAN, **_SLOT, "why": {"type": "string"}}, ["plan_id", "slot", "why"])},
+    {"name": "set_budget",
+     "description": "Set the person's budget as soon as they mention one: total_usd for the whole room and/or "
+                    "per_item_usd for each piece. The tools then enforce it: pick and swap never return a pricier "
+                    "item and cart_add refuses anything that breaks it.",
+     "input_schema": _schema({**_PLAN,
+                              "total_usd": {"type": ["number", "null"], "description": "Budget for the whole room."},
+                              "per_item_usd": {"type": ["number", "null"], "description": "Max price per item."}},
+                             ["plan_id"])},
     {"name": "get_plan",
      "description": "Get the whole plan: room, style, items, cart and audit trail.",
      "input_schema": _schema({**_PLAN}, ["plan_id"])},

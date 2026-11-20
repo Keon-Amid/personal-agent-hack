@@ -1,0 +1,82 @@
+{
+ "plan": "contracts/plan.room_scan.json",
+ "scan": "assets/room_scan_roomplan.glb",
+ "placed": [
+  {
+   "product_id": "ikea-kivik-sofa-tibbleby-beige-gray-39440593",
+   "name": "KIVIK Sofa - Tibbleby beige/gray",
+   "category": "sofa",
+   "dims_in": {
+    "w": 89.75,
+    "d": 37.375,
+    "h": 32.625
+   },
+   "x_in": -76.3,
+   "z_in": 8.9,
+   "rotation": 90,
+   "wall_gap_in": 0.0
+  },
+  {
+   "product_id": "ikea-poang-armchair-birch-veneer-knisa-light-beige-59305928",
+   "name": "POÄNG Armchair - birch veneer/Knisa light beige",
+   "category": "armchair",
+   "dims_in": {
+    "w": 26.75,
+    "d": 32.25,
+    "h": 39.375
+   },
+   "x_in": -27.6,
+   "z_in": -55.9,
+   "rotation": 0,
+   "wall_gap_in": 0.0
+  },
+  {
+   "product_id": "ikea-ostavall-adjustable-coffee-table-black-35-3-8-40534152",
+   "name": "ÖSTAVALL Adjustable coffee table - black 35 3/8 \"",
+   "category": "coffee_table",
+   "dims_in": {
+    "w": 24.75,
+    "d": 35.375,
+    "h": 24.75
+   },
+   "x_in": 18.7,
+   "z_in": -59.6,
+   "rotation": 90,
+   "wall_gap_in": 0.0
+  },
+  {
+   "product_id": "ikea-barlast-floor-lamp-black-white-59-70437814",
+   "name": "BARLAST Floor lamp - black/white 59 \"",
+   "category": "floor_lamp",
+   "dims_in": {
+    "w": 13.0,
+    "d": 13.0,
+    "h": 59.0
+   },
+   "x_in": 19.5,
+   "z_in": 60.5,
+   "rotation": 0,
+   "wall_gap_in": 0.7
+  },
+  {
+   "product_id": "ikea-onsevig-rug-10559894",
+   "name": "ONSEVIG Rug, low pile - multicolor 7 ' 10 \"x9 ' 10 \"",
+   "category": "rug",
+   "dims_in": {
+    "w": 94.0,
+    "d": 118.0,
+    "h": 0.5
+   },
+   "x_in": -6.0,
+   "z_in": -1.0,
+   "rotation": 0,
+   "wall_gap_in": 9.7
+  }
+ ],
+ "shots": [
+  "room_before.png",
+  "room_after.png",
+  "room_sofa.png",
+  "room_door.png"
+ ]
+}

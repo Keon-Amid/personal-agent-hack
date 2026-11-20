@@ -2,7 +2,8 @@
 
     python -m agent.server [--port 8000]
 
-POST /api/plan  {room: {wall, depth, door_width, door_height}, style_text, budget_usd, scan_path?, scan_wall?}
+POST /api/plan  {room: {wall, depth, door_width, door_height}, style_text, budget_usd (per item), budget_total_usd,
+                scan_path?, scan_wall?}
                 -> 202 {plan_id, plan_url}; the agent runs in a background thread (claude -p + our MCP tools).
 GET  /api/plan/{id} -> the Plan (contracts/plan.live.json shape), with items[] and audit[] growing while it runs,
                 plus "status": running | done | error and "error" when it failed. Poll it (keon: every second).
@@ -29,7 +30,8 @@ def _run(pid: str, body: dict) -> None:
     from agent.agent import run_agent  # lazy: keeps the server importable without claude installed
     try:
         run_agent(body.get("room") or {}, style_text=body.get("style_text"), budget_usd=body.get("budget_usd"),
-                  scan_path=body.get("scan_path"), scan_wall=body.get("scan_wall"), plan_id=pid)
+                  budget_total_usd=body.get("budget_total_usd"), scan_path=body.get("scan_path"),
+                  scan_wall=body.get("scan_wall"), plan_id=pid)
         st = {"status": "done", "error": None}
     except Exception as e:  # the plan file keeps every audit record written before the failure
         st = {"status": "error", "error": f"{type(e).__name__}: {e}"}

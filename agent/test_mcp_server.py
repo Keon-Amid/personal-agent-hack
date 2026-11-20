@@ -45,7 +45,7 @@ class InProcess(_TempPlans):
             res = self.run_client(lambda c: c.list_tools(), mode=mode)
             by = {t.name: t for t in res.tools}
             self.assertEqual(set(by), EXPECTED, mode)
-            self.assertEqual(len(by), 9)
+            self.assertEqual(len(by), 10)  # 9 + set_budget
             for spec in tools.TOOL_SPECS:
                 self.assertEqual(by[spec["name"]].input_schema, spec["input_schema"])
                 self.assertTrue(by[spec["name"]].description)
