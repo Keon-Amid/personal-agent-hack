@@ -13,7 +13,7 @@
 // Per-product 3D models are optional: web/public/models/index.json lists them (made by scripts/make_model.py),
 // and any product without one is drawn as a simple shape. A plan from the agent goes through fromAgentPlan().
 
-export { RoomScene, describe } from './RoomScene'
+export { RoomScene, describe, type RoomScan } from './RoomScene'
 export { fromAgentPlan, type AgentPlan, type AgentItem } from './agentPlan'
 export type { ModelEntry, ModelManifest } from './Model'
 export { autoLayout, footprint } from './layout'

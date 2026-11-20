@@ -8,8 +8,17 @@
 import { useEffect, useMemo, useState } from 'react'
 import {
   RoomScene, VERDICT_COLOR, VERDICT_LABEL, fmt, fromAgentPlan,
-  type AgentPlan, type Candidate, type Plan, type Product, type RenderItem,
+  type AgentPlan, type Candidate, type Plan, type Product, type RenderItem, type RoomScan,
 } from './room3d'
+import scanUrl from '../../assets/room_scan_geometry.glb?url'
+import scanAlign from '../../assets/room_scan_geometry.align.json'
+
+// The LiDAR scan of the room we demo in, and where the room sits inside it (scripts/scan_align.py).
+const ROOM_SCAN: RoomScan = {
+  url: scanUrl,
+  corner_m: [scanAlign.wall_ends_m[0], scanAlign.floor_m, scanAlign.back_wall_m],
+  ceiling_in: scanAlign.measured_in.ceiling,
+}
 import catalogFile from '../../data/products.json'
 import planLive from '../../contracts/plan.live.json'
 import planRoomScan from '../../contracts/plan.room_scan.json'
@@ -29,14 +38,22 @@ const POSITION_NOTE = 'Item positions are a rule of thumb in the renderer, not c
 
 const short = (c: Candidate) => c.product.name.split(' - ')[0]
 
+// ?clean hides the panel (for screenshots); ?plan=live picks the starting plan.
+const QUERY = new URLSearchParams(window.location.search)
+const CLEAN = QUERY.has('clean')
+
 export default function Harness() {
-  const [source, setSource] = useState<string>('room_scan')
+  const [source, setSource] = useState<string>(() => {
+    const p = QUERY.get('plan')
+    return p && (p === DEMO || p in AGENT_PLANS) ? p : 'room_scan'
+  })
   const [demoPlan, setDemoPlan] = useState<Plan | null>(null)
   const [error, setError] = useState<string | null>(null)
   const [selected, setSelected] = useState<string | null>(null)
   // slot -> index into that slot's `others`; missing = the plan's own pick
   const [trying, setTrying] = useState<Record<string, number>>({})
   const [useModels, setUseModels] = useState(true)
+  const [useScan, setUseScan] = useState(true)
 
   useEffect(() => {
     if (source !== DEMO || demoPlan) return
@@ -84,9 +101,10 @@ export default function Harness() {
         selected={selected}
         onSelect={setSelected}
         modelsUrl={useModels ? '/models/' : null}
+        scan={source === 'room_scan' && useScan ? ROOM_SCAN : null}
       />
 
-      <div className="panel">
+      <div className="panel" style={CLEAN ? { display: 'none' } : undefined}>
         <b>3D renderer · test harness</b>
         <select
           value={source}
@@ -135,6 +153,12 @@ export default function Harness() {
           <input type="checkbox" checked={useModels} onChange={(e) => setUseModels(e.target.checked)} />
           <span>Use 3D models where one exists (off = simple shapes)</span>
         </label>
+        {source === 'room_scan' && (
+          <label>
+            <input type="checkbox" checked={useScan} onChange={(e) => setUseScan(e.target.checked)} />
+            <span>Draw the LiDAR scan as the room (off = box from measurements)</span>
+          </label>
+        )}
         <div className="muted">Drag to turn · scroll to zoom · click an item</div>
       </div>
     </div>

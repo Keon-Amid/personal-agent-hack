@@ -44,3 +44,10 @@ Honesty rules the renderer follows:
 - The label on a model says it is AI-generated from the IKEA photo and scaled to the listed size.
 - `stretch_w_d_h` in `index.json` records how far the generated shape's own proportions were from the listed
   size. Thin, tall items (floor lamps) are the weak case.
+
+## The scanned room
+
+`<RoomScene scan={{ url, corner_m, ceiling_in }} />` draws a scan of the real room instead of the box built from
+measurements. `python3 scripts/scan_align.py` finds the floor and wall planes in `assets/room_scan_geometry.glb`
+and writes `assets/room_scan_geometry.align.json`; `corner_m` is the room's back-left floor corner from that file.
+The harness turns the scan on for `plan.room_scan.json`. `?clean` hides the harness panel for screenshots.
