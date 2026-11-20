@@ -138,7 +138,13 @@ Senso's fact-check (brendan) runs on the picked item's claim after this.
 
 ### Agent: `agent/` (owner: brendan) — DRAFT, confirm
 One backend, two front doors. The tools enforce the rules; the model only orders and explains them.
-- **Web app (kyle wraps this):** `agent.agent.run_agent(room_input, photo_b64=None, style_text=None, budget_usd=None, on_event=None) -> Plan`.
+- **Web app (kyle wraps this):** `agent.agent.run_agent(room_input, photo_b64=None, style_text=None, budget_usd=None, on_event=None, budget_total_usd=None) -> Plan`.
+- **Budget is enforced by the tools (alistair, touched):** `set_budget(plan_id, total_usd=None, per_item_usd=None)` (also
+  `create_plan(total_usd, per_item_usd)` in the MCP server; `run_agent` stores `budget_usd` as per-item and
+  `budget_total_usd` as total) puts `plan["budget"] = {"total_usd", "per_item_usd"}` on the plan. `pick`/`swap` cap
+  each item at min(the model's budget_usd, per-item, total − other slots' picks) and return `budget_cap_usd` +
+  `budget_cap_why`; `cart_add` refuses an item over the per-item limit or that takes the cart past the total. A budget
+  said in chat is no longer just prompt text.
   `room_input` = `{"wall", "depth", "door_width", "door_height"}` in inches (exact, source "user"). Runs `claude -p` (Claude Code
   on the host's Claude subscription, no API key) with only the MCP tools below; `on_event(audit_record)` streams progress.
   Real run: 5 slots in 135 s, 42/46 Senso claims verified, cart $1,027.97 → `contracts/plan.live.json`.

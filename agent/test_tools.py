@@ -170,6 +170,65 @@ class ToolsTest(unittest.TestCase):
         cart_rec = [r for r in plan["audit"] if r["step"] == "cart" and r["decision"] == "added to cart"]
         self.assertEqual(cart_rec[0]["source"], {"kind": "claude"})
 
+    # ---------------------------------------------------------------- budget (enforced by the tools)
+    def verified(self):
+        self.senso.check.return_value = {"check_id": "ok", "accuracy_pct": 100.0, "claims": [
+            {"claim": "walkway", "verdict": "verified", "quote": "36 inches"}]}
+
+    def test_per_item_budget_caps_pick_even_if_model_asks_for_more(self):
+        self.exact_room()
+        self.assertTrue(tools.set_budget(self.pid, per_item_usd=500)["ok"])
+        out = tools.pick(self.pid, "sofa", budget_usd=5000)  # the model can't loosen the person's budget
+        self.assertLessEqual(out["picked"]["price_usd"], 500)
+        self.assertEqual(out["budget_cap_usd"], 500)
+        self.assertIn("per-item budget $500", out["budget_cap_why"])
+        self.assertEqual(tools.get_plan(self.pid)["budget"], {"total_usd": None, "per_item_usd": 500.0})
+
+    def test_total_budget_counts_picks_before_they_are_carted(self):
+        self.exact_room()
+        tools.set_budget(self.pid, total_usd=600)
+        sofa = tools.pick(self.pid, "sofa")["picked"]
+        arm = tools.pick(self.pid, "armchair")
+        self.assertAlmostEqual(arm["budget_cap_usd"], 600 - sofa["price_usd"])
+
+    def test_total_budget_shrinks_as_cart_fills(self):
+        self.exact_room()
+        self.verified()
+        tools.set_budget(self.pid, total_usd=600)
+        sofa = tools.pick(self.pid, "sofa")["picked"]
+        tools.senso_check(self.pid, "sofa")
+        self.assertTrue(tools.cart_add(self.pid, "sofa", "fits")["ok"])
+        left = 600 - sofa["price_usd"]
+        arm = tools.pick(self.pid, "armchair")
+        self.assertAlmostEqual(arm["budget_cap_usd"], left)
+        if arm["ok"]:
+            self.assertLessEqual(arm["picked"]["price_usd"], left)
+
+    def test_cart_refuses_item_that_breaks_a_budget_set_later(self):
+        self.exact_room()
+        self.verified()
+        picked = tools.pick(self.pid, "sofa")["picked"]  # no budget yet: LILLESATER $999
+        tools.senso_check(self.pid, "sofa")
+        tools.set_budget(self.pid, total_usd=500)
+        out = tools.cart_add(self.pid, "sofa", "fits")
+        self.assertFalse(out["ok"])
+        self.assertIn("over the $500 total budget", out["error"])
+        tools.set_budget(self.pid, per_item_usd=300)
+        out = tools.cart_add(self.pid, "sofa", "fits")
+        self.assertFalse(out["ok"])
+        self.assertIn(f"costs ${picked['price_usd']:g}, over the per-item budget of $300", out["error"])
+        self.assertEqual(tools.get_plan(self.pid)["cart"]["items"], [])
+        plan = self.assert_all_ts()
+        self.assertTrue(any(r["decision"] == "budget set" for r in plan["audit"]))
+
+    def test_set_budget_rejects_bad_values_and_clears(self):
+        self.assertFalse(tools.set_budget(self.pid, total_usd=-5)["ok"])
+        self.assertFalse(tools.set_budget(self.pid, per_item_usd=True)["ok"])
+        tools.set_budget(self.pid, total_usd=900)
+        self.assertEqual(tools.get_plan(self.pid)["budget"]["total_usd"], 900.0)
+        tools.set_budget(self.pid)
+        self.assertIsNone(tools.get_plan(self.pid)["budget"])
+
     def test_swap_never_repeats_and_clears_check_and_cart(self):
         self.exact_room()
         first = tools.pick(self.pid, "sofa")["picked"]["product_id"]

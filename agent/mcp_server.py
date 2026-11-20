@@ -32,7 +32,9 @@ SERVER_NAME = "room_furnisher"
 INSTRUCTIONS = (
     "Room Furnisher furnishes one living room from a real IKEA catalog and keeps an audit trail. "
     "Start with create_plan, then analyze_room (room photo and/or style words, exact inches if the person "
-    "measured). For each slot (sofa, armchair, coffee_table, rug, floor_lamp): pick, senso_check, then cart_add "
+    "measured). If the person mentions a budget, call set_budget (or pass it to create_plan) before picking: the "
+    "tools enforce it. With a total budget, split it across the slots first (sofa the biggest share) and pass each "
+    "slot's share to pick as budget_usd, so an early pick doesn't use it all. For each slot (sofa, armchair, coffee_table, rug, floor_lamp): pick, senso_check, then cart_add "
     "with a one- or two-sentence why. Use swap if the person dislikes a pick. Nothing is ever purchased. "
     "Always give the person the plan_url so they can open their room in 3D."
 )
@@ -41,18 +43,27 @@ CREATE_PLAN_SPEC = {
     "name": "create_plan",
     "description": "Start a new room plan. Call this first; every other tool needs its plan_id. Returns plan_id "
                    "and plan_url (the live 3D room page with the audit trail).",
-    "input_schema": {"type": "object", "properties": {}, "additionalProperties": False},
+    "input_schema": {"type": "object", "properties": {
+        "total_usd": {"type": ["number", "null"], "description": "The person's budget for the whole room, if given."},
+        "per_item_usd": {"type": ["number", "null"], "description": "The person's max price per item, if given."}},
+        "additionalProperties": False},
 }
 
 
-def create_plan() -> dict:
-    """Create an empty plan in the shared store and record where it came from."""
+def create_plan(total_usd: float | None = None, per_item_usd: float | None = None) -> dict:
+    """Create an empty plan in the shared store and record where it came from; store a budget if given."""
     plan = store.new_plan()
     store.append_audit(plan["plan_id"], audit(
         "agent", source={"kind": "template"}, decision="plan created",
         why="New plan started from an MCP client (the person's own Claude)."))
+    budget = None
+    if total_usd is not None or per_item_usd is not None:
+        res = tools.set_budget(plan["plan_id"], total_usd=total_usd, per_item_usd=per_item_usd)
+        if not res.get("ok"):
+            return res
+        budget = res["budget"]
     return {"plan_id": plan["plan_id"], "plan_url": plan["plan_url"], "room": None, "style": None,
-            "items": [], "cart": plan["cart"]}
+            "items": [], "cart": plan["cart"], "budget": budget}
 
 
 def tool_specs() -> list[dict]:
