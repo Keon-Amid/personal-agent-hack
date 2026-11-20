@@ -1,0 +1,34 @@
+# personal-agent-hack
+
+Our entry for the [tokens& Personal Agents Hackathon](https://tokensand.com/personalagenthack) (Nov 20, 2026, AWS Builder Loft SF).
+
+**Challenge:** build a shopping agent with an audit trail. It helps someone make a purchase or finish a shopping task, takes a real action, and shows the sources and steps behind every decision.
+
+**Team:** Keon, Brendan, Alistair, Kyle
+
+> Project name and pitch go here once the idea is locked in `CONTRACT.md`.
+
+## Start here
+1. `git clone https://github.com/Keon-Amid/personal-agent-hack && cd personal-agent-hack`
+2. `cp .env.example .env` and fill in the keys you'll use
+3. `./scripts/check-setup.sh` checks tools, repo access and keys (it never prints them)
+4. Open Claude Code in this folder. It reads `CLAUDE.md` → `CONTEXT.md` automatically.
+
+| File | What it's for |
+|---|---|
+| `CONTEXT.md` | Event brief, deadlines, prizes, sponsor setup, judges, team rules |
+| `IDEAS.md` | Idea shortlist and the real past winners behind them |
+| `CONTRACT.md` | What the team has actually agreed on. Nothing else counts as decided. |
+| `.env.example` | Every sponsor key we might need |
+
+## Deadlines (PT)
+Demo works end to end by **15:30** · code freeze **16:00** · submit by **16:30** (repo public + demo video link)
+
+## Audit trail format (proposal; agree on it in CONTRACT.md)
+Every step the agent takes appends one record, and the UI renders these as a timeline:
+```json
+{"ts": "2026-11-20T14:02:11Z", "step": "check_policy", "input": "...", "source": {"kind": "senso", "doc": "target-price-match", "passage": "..."}, "decision": "claim", "why": "...", "status": "verified | blocked | sent", "amount_usd": 12.50}
+```
+
+## Built with
+_Fill in at submission: which sponsor tools we used and for what._
