@@ -8,7 +8,8 @@ so the fit and Senso rules (and their audit records) apply exactly as in an agen
 POST /api/plan            {room, style_text?, budget_usd? (per item), budget_total_usd? (whole room), photo_b64?, quiz_answers?} -> {plan_id} at once
 GET  /api/plan/{id}       the Plan (contracts/plan.live.json shape) + "run": {status, error}; poll it
 POST /api/plan/{id}/swap  {slot} -> swap, Senso check, cart_add; returns the Plan
-POST /api/plan/{id}/approve  the person approves the cart (no purchase); returns the Plan + shopping_list
+POST /api/plan/{id}/approve  re-checks each cart item's live IKEA price, then the person approves the cart (no purchase);
+                          returns the Plan + shopping_list, or 409 with the price changes if IKEA's price moved
 GET  /api/quiz            agent/quiz.json
 POST /api/quiz/score      {answers} -> agent.quiz.score + catalog_support
 GET  /api/health          which live services are configured (never prints a key)
@@ -20,7 +21,10 @@ import os
 import shutil
 import threading
 import time
+import urllib.error
 import uuid
+from concurrent.futures import ThreadPoolExecutor
+from concurrent.futures import TimeoutError as FutureTimeout
 from pathlib import Path
 
 from fastapi import FastAPI, HTTPException
@@ -49,6 +53,7 @@ load_dotenv()
 from agent import agent as agent_mod  # noqa: E402  (after .env, so the agent's child process sees the keys)
 from agent import quiz, store, tools  # noqa: E402
 from agent.types import DELIVERY_NOTE, SLOTS, audit, now_ts  # noqa: E402
+from data import fetch_ikea  # noqa: E402
 
 app = FastAPI(title="Room Furnisher API")
 app.add_middleware(
@@ -262,31 +267,158 @@ def _products() -> dict[str, dict]:
     return _PRODUCTS
 
 
+# Live re-check of IKEA's price before approval. Tests replace _fetch_live; the real one re-reads the product page.
+_fetch_live = fetch_ikea.product
+LIVE_CHECK_TIMEOUT_S = 20.0
+_BLOCKING = ("price_changed", "unavailable")
+
+
+def _usd(v) -> str:
+    return "no price" if v is None else f"${v:,.2f}"
+
+
+def _check_one(c: dict, plan_item: dict) -> dict:
+    """Re-read one cart item's IKEA page. Never raises: failures become status check_failed."""
+    pid = c["product_id"]
+    url = c.get("source_url")
+    category = plan_item.get("category") or (_products().get(pid) or {}).get("category") or plan_item.get("slot")
+    res = {"product_id": pid, "item_slot": plan_item.get("slot"), "name": c.get("name"), "url": url,
+           "catalog_price_usd": c.get("price_usd"), "live_price_usd": None, "error": None}
+    if not url:
+        res.update(status="check_failed", error="the cart item has no IKEA page")
+    else:
+        try:
+            live = _fetch_live(url, category)
+        except urllib.error.HTTPError as e:
+            if e.code in (404, 410):
+                res.update(status="unavailable", error=f"IKEA's page returned HTTP {e.code}")
+            else:
+                res.update(status="check_failed", error=f"IKEA's page returned HTTP {e.code}")
+        except Exception as e:  # network error, timeout, page layout change
+            res.update(status="check_failed", error=f"{type(e).__name__}: {e}"[:200])
+        else:
+            lp = live.get("price_usd") if isinstance(live, dict) else None
+            res["live_price_usd"] = lp
+            if lp is None:
+                # A page that loaded but shows no price is a layout quirk or a regional page as often as a dropped
+                # item, and the catalog may never have had a price: don't claim "unavailable" or block approval.
+                had = "the catalog had none either" if res["catalog_price_usd"] is None else "the catalog price was kept"
+                res.update(status="check_failed", error=f"IKEA's page listed no price; {had}")
+            elif res["catalog_price_usd"] is not None and round(lp, 2) == round(res["catalog_price_usd"], 2):
+                res["status"] = "price_same"
+            else:
+                res["status"] = "price_changed"
+    res["checked_at"] = now_ts()
+    return res
+
+
+def _live_check(cart_items: list[dict], plan_items: list[dict]) -> list[dict]:
+    """Re-check every cart item concurrently, with one overall deadline. One result per cart item, in cart order."""
+    by_pid = {i.get("product_id"): i for i in plan_items}
+    pool = ThreadPoolExecutor(max_workers=min(8, max(1, len(cart_items))))
+    futures = [pool.submit(_check_one, c, by_pid.get(c["product_id"]) or {}) for c in cart_items]
+    deadline = time.monotonic() + LIVE_CHECK_TIMEOUT_S
+    out = []
+    for c, f in zip(cart_items, futures):
+        try:
+            out.append(f.result(timeout=max(0.0, deadline - time.monotonic())))
+        except FutureTimeout:
+            slot = (by_pid.get(c["product_id"]) or {}).get("slot")
+            out.append({"product_id": c["product_id"], "item_slot": slot, "name": c.get("name"),
+                        "url": c.get("source_url"), "catalog_price_usd": c.get("price_usd"), "live_price_usd": None,
+                        "status": "check_failed", "error": f"timed out after {LIVE_CHECK_TIMEOUT_S:.0f} s",
+                        "checked_at": now_ts()})
+    pool.shutdown(wait=False, cancel_futures=True)
+    return out
+
+
+def _live_why(r: dict) -> str:
+    cat, live, st = r["catalog_price_usd"], r["live_price_usd"], r["status"]
+    if st == "price_same":
+        return f"IKEA's page still lists {_usd(live)}, same as the catalog."
+    if st == "price_changed":
+        return (f"IKEA's page now lists {_usd(live)}; the catalog had {_usd(cat)}. The cart now uses the live price, "
+                "so approval was held until the person approves again.")
+    if st == "unavailable":
+        return (f"IKEA's product page is gone ({r['error']}), so approval was held. Swap this item to approve.")
+    if cat is None:
+        return f"The live IKEA check found no price ({r['error']}); approval was not blocked."
+    return (f"The live IKEA check failed ({r['error']}), so the catalog price {_usd(cat)} was kept and approval "
+            "was not blocked.")
+
+
+def _live_record(r: dict) -> dict:
+    extra = {"item_slot": r["item_slot"]} if r.get("item_slot") else {}
+    return audit("cart", **extra, product_id=r["product_id"], source={"kind": "catalog", "url": r["url"]},
+                 decision="live price re-checked", status=r["status"], why=_live_why(r),
+                 input={"catalog_price_usd": r["catalog_price_usd"], "live_price_usd": r["live_price_usd"],
+                        "checked_at": r["checked_at"]})
+
+
+def _already_approved(cart: dict) -> bool:
+    prev = cart.get("approval") or {}
+    ids = [c["product_id"] for c in cart.get("items") or []]
+    return bool(prev.get("approved") and prev.get("product_ids") == ids
+                and prev.get("total_usd") == cart.get("total_usd", 0.0))
+
+
 @app.post("/api/plan/{pid}/approve")
 def approve(pid: str) -> dict:
-    _require_finished(pid, "approve")
+    snap = _require_finished(pid, "approve")
+    cart_items = snap["cart"].get("items") or []
+    # Network fetches happen outside the plan lock; skipped when nothing to check or the same cart is approved.
+    results = [] if not cart_items or _already_approved(snap["cart"]) else _live_check(cart_items, snap.get("items") or [])
+    checked_ids = [r["product_id"] for r in results]
+    held: list[dict] = []
 
     def mutate(plan: dict) -> None:
         # Checked under the plan lock so two clicks cannot both approve (or approve an emptied cart).
         cart = plan["cart"]
         items = cart.get("items") or []
-        total = cart.get("total_usd", 0.0)
-        ids = [c["product_id"] for c in items]
-        prev = cart.get("approval") or {}
-        if prev.get("approved") and prev.get("product_ids") == ids and prev.get("total_usd") == total:
+        if _already_approved(cart):
             return  # idempotent: the same cart is already approved; add no second audit record
         if not items:
             raise HTTPException(409, "the cart is empty; nothing to approve")
+        ids = [c["product_id"] for c in items]
+        if ids != checked_ids:
+            raise HTTPException(409, "the cart changed while its prices were being checked; approve again")
+        trail = plan.setdefault("audit", [])
+        trail.extend(_live_record(r) for r in results)
+        for r in results:
+            if r["status"] in _BLOCKING:
+                held.append({k: r[k] for k in ("product_id", "item_slot", "name", "status", "catalog_price_usd",
+                                               "live_price_usd")})
+            if r["status"] == "price_changed":
+                for c in items:
+                    if c["product_id"] == r["product_id"]:
+                        c["price_usd"] = r["live_price_usd"]
+                for it in plan.get("items") or []:
+                    if it.get("product_id") == r["product_id"]:
+                        it["price_usd"] = r["live_price_usd"]
+        if held:
+            tools._cart_total(cart)
+            cart.pop("approval", None)  # any earlier approval was for other prices
+            return
+        total = cart.get("total_usd", 0.0)
+        partial = any(r["status"] == "check_failed" for r in results)
         cart["approval"] = {"approved": True, "approved_at": now_ts(), "total_usd": total, "item_count": len(items),
-                            "product_ids": ids}
+                            "product_ids": ids, "live_check": "partial" if partial else "all_same",
+                            "checked_at": max(r["checked_at"] for r in results)}
         cart["no_purchase"] = True
-        plan.setdefault("audit", []).append(audit(
+        trail.append(audit(
             "cart", source={"kind": "template"}, decision="cart approved by the person", status="approved",
             why="The person approved the cart on screen. No purchase is made; the shopping list links to each "
                 "IKEA product page.",
-            input={"total_usd": total, "product_ids": [c["product_id"] for c in items]}))
+            input={"total_usd": total, "product_ids": ids}))
 
     store.update(pid, mutate)
+    if held:
+        gone = any(h["status"] == "unavailable" for h in held)
+        msg = "prices changed since the plan was made; review and approve again"
+        if gone:
+            msg += "; items whose IKEA page is gone (unavailable) must be swapped first"
+        raise HTTPException(409, {"error": msg,
+                                  "changes": held})
     plan = get_plan(pid)
     catalog = _products()
     plan["shopping_list"] = [

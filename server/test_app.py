@@ -13,6 +13,9 @@ from server import app as srv
 def client(tmp_path, monkeypatch):
     monkeypatch.setenv("ROOM_FURNISHER_PLANS_DIR", str(tmp_path))
     srv.RUNS.clear()
+    # Offline: the live IKEA re-check in approve sees the catalog price unless a test says otherwise.
+    by_url = {p["source_url"]: p for p in srv._products().values()}
+    monkeypatch.setattr(srv, "_fetch_live", lambda url, cat: {"price_usd": by_url[url]["price_usd"]})
     return TestClient(srv.app)
 
 
@@ -263,3 +266,124 @@ def test_room_budget_reaches_run_agent(client, monkeypatch):
                                          "budget_total_usd": 1200}).json()["plan_id"]
     _wait(client, pid, "done")
     assert seen["budget_total_usd"] == 1200 and seen["budget_usd"] is None
+
+
+SOFA = "ikea-glostad-sofa-knisa-dark-gray-40595942"
+TABLE = "ikea-borgeby-coffee-table-birch-veneer-27-1-2-70389356"
+
+
+def _live(monkeypatch, prices):
+    """prices: product_id -> live price, an Exception instance to raise, or missing for the catalog price."""
+    by_url = {p["source_url"]: p for p in srv._products().values()}
+    seen = []
+
+    def fake(url, cat):
+        p = by_url[url]
+        seen.append((p["id"], cat))
+        v = prices.get(p["id"], p["price_usd"])
+        if isinstance(v, Exception):
+            raise v
+        return {"price_usd": v}
+    monkeypatch.setattr(srv, "_fetch_live", fake)
+    return seen
+
+
+def _price_recs(plan):
+    return [a for a in plan["audit"] if a.get("decision") == "live price re-checked"]
+
+
+def test_live_check_same_price_approves_all_same(client, monkeypatch):
+    seen = _live(monkeypatch, {})
+    pid, cat = _plan_with_cart([SOFA, TABLE])
+    r = client.post(f"/api/plan/{pid}/approve")
+    assert r.status_code == 200
+    appr = r.json()["cart"]["approval"]
+    assert appr["approved"] is True and appr["live_check"] == "all_same" and appr["checked_at"].endswith("Z")
+    assert sorted(seen) == sorted([(SOFA, "sofa"), (TABLE, "coffee_table")])
+    recs = _price_recs(r.json())
+    assert [x["product_id"] for x in recs] == [SOFA, TABLE] and {x["status"] for x in recs} == {"price_same"}
+    rec = recs[0]
+    assert rec["step"] == "cart" and rec["source"] == {"kind": "catalog", "url": cat[SOFA]["source_url"]}
+    assert rec["input"]["catalog_price_usd"] == rec["input"]["live_price_usd"] == cat[SOFA]["price_usd"]
+    assert "same as the catalog" in rec["why"]
+    # idempotent: approving the same cart again does not re-fetch
+    client.post(f"/api/plan/{pid}/approve")
+    assert len(seen) == 2
+
+
+def test_live_check_changed_price_holds_then_reapproves(client, monkeypatch):
+    pid, cat = _plan_with_cart([SOFA, TABLE])
+    new = round(cat[SOFA]["price_usd"] + 50, 2)
+    _live(monkeypatch, {SOFA: new})
+    r = client.post(f"/api/plan/{pid}/approve")
+    assert r.status_code == 409
+    d = r.json()["detail"]
+    assert d["error"].startswith("prices changed") and len(d["changes"]) == 1
+    ch = d["changes"][0]
+    assert ch["product_id"] == SOFA and ch["status"] == "price_changed" and ch["live_price_usd"] == new
+    p = store.get(pid)
+    assert "approval" not in p["cart"]
+    assert p["cart"]["total_usd"] == round(new + cat[TABLE]["price_usd"], 2)
+    assert next(c for c in p["cart"]["items"] if c["product_id"] == SOFA)["price_usd"] == new
+    assert {x["product_id"]: x["status"] for x in _price_recs(p)} == {SOFA: "price_changed", TABLE: "price_same"}
+    # IKEA's price is stable now, so the second approve passes
+    r2 = client.post(f"/api/plan/{pid}/approve")
+    assert r2.status_code == 200
+    appr = r2.json()["cart"]["approval"]
+    assert appr["live_check"] == "all_same" and appr["total_usd"] == round(new + cat[TABLE]["price_usd"], 2)
+    assert len(_price_recs(r2.json())) == 4
+
+
+def test_live_check_unavailable_holds(client, monkeypatch):
+    import urllib.error
+    pid, _ = _plan_with_cart([SOFA, TABLE])
+    _live(monkeypatch, {SOFA: urllib.error.HTTPError("u", 410, "Gone", {}, None),
+                        TABLE: urllib.error.HTTPError("u", 404, "Not Found", {}, None)})
+    r = client.post(f"/api/plan/{pid}/approve")
+    assert r.status_code == 409
+    d = r.json()["detail"]
+    assert {c["status"] for c in d["changes"]} == {"unavailable"} and "must be swapped" in d["error"]
+    p = store.get(pid)
+    assert "approval" not in p["cart"] and {x["status"] for x in _price_recs(p)} == {"unavailable"}
+    assert all("Swap this item" in x["why"] for x in _price_recs(p))
+
+
+def test_live_check_page_without_price_does_not_block(client, monkeypatch):
+    """A page that loads with no price is check_failed (not 'unavailable'), so approval is not stuck behind a 409."""
+    pid, cat = _plan_with_cart([SOFA, TABLE])
+    _live(monkeypatch, {SOFA: None})
+    r = client.post(f"/api/plan/{pid}/approve")
+    assert r.status_code == 200
+    appr = r.json()["cart"]["approval"]
+    assert appr["approved"] is True and appr["live_check"] == "partial"
+    recs = {x["product_id"]: x for x in _price_recs(r.json())}
+    assert recs[SOFA]["status"] == "check_failed" and "listed no price" in recs[SOFA]["why"]
+    assert "no longer offers" not in recs[SOFA]["why"]
+    assert next(c for c in r.json()["cart"]["items"] if c["product_id"] == SOFA)["price_usd"] == cat[SOFA]["price_usd"]
+
+
+def test_live_check_unpriced_catalog_item_can_be_approved(client, monkeypatch):
+    """A catalog item with price_usd null (e.g. SLATORP) whose IKEA page still lists no price must not block approve."""
+    pid, cat = _plan_with_cart([SOFA, TABLE])
+
+    def null_price(plan):
+        for c in plan["cart"]["items"]:
+            if c["product_id"] == SOFA:
+                c["price_usd"] = None
+    store.update(pid, null_price)
+    _live(monkeypatch, {SOFA: None})
+    r = client.post(f"/api/plan/{pid}/approve")
+    assert r.status_code == 200, r.text
+    rec = next(x for x in _price_recs(r.json()) if x["product_id"] == SOFA)
+    assert rec["status"] == "check_failed" and "catalog had none either" in rec["why"]
+
+
+def test_live_check_failure_does_not_block(client, monkeypatch):
+    pid, _ = _plan_with_cart([SOFA, TABLE])
+    _live(monkeypatch, {SOFA: OSError("network down")})
+    r = client.post(f"/api/plan/{pid}/approve")
+    assert r.status_code == 200
+    assert r.json()["cart"]["approval"]["live_check"] == "partial"
+    recs = {x["product_id"]: x for x in _price_recs(r.json())}
+    assert recs[SOFA]["status"] == "check_failed" and "network down" in recs[SOFA]["why"]
+    assert recs[SOFA]["input"]["live_price_usd"] is None and recs[TABLE]["status"] == "price_same"

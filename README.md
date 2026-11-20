@@ -34,12 +34,14 @@ It loads `.env` at startup and allows the Vite dev server (`localhost:5173`) by 
 | `POST /api/plan` | Starts a run from room measurements (and optional style, budget, photo or quiz answers); returns `plan_id` at once |
 | `GET /api/plan/{id}` | The plan so far: items, cart, audit trail, and run status. Poll it every second |
 | `POST /api/plan/{id}/swap` | Swaps one slot's product, re-checks it with Senso and updates the cart |
-| `POST /api/plan/{id}/approve` | Records the person's approval in the audit trail and returns a shopping list |
+| `POST /api/plan/{id}/approve` | Re-checks each item's live IKEA price (409 with the changes if any price moved or an item is gone; a failed check doesn't block), then records the person's approval in the audit trail and returns a shopping list |
 | `GET /api/quiz`, `POST /api/quiz/score` | The 5-question style quiz and its scoring |
 | `GET /api/health` | Whether Claude Code and the sponsor keys are available (never the keys) |
 
 Checkout is not automated: approving the cart produces a shopping list of IKEA links and places no order (**MOCKED checkout**).
 Full request and response shapes are in `CONTRACT.md` under the Agent section.
+
+**Guardrail eval:** `.venv/bin/python scripts/eval_guardrails.py` runs the agent's own tools (no LLM) against live Superlinked and Senso to show they block bad picks (too wide, too big for the door, over budget, wrong fact, unverified) and allow a good one; results go to `contracts/eval.json` (headline: scenarios passed out of 6; each scenario says what its counts count). Its offline wiring test is `agent/test_eval_guardrails.py`.
 
 ## Deadlines (PT)
 Demo works end to end by **15:30** · code freeze **16:00** · submit by **16:30** (repo public + demo video link)

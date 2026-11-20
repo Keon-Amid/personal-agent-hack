@@ -179,11 +179,25 @@ One backend, two front doors. The tools enforce the rules; the model only orders
     `approved`, input `{total_usd, product_ids}`) in one `store.update`; `cart.no_purchase` stays true. A second approve
     of the same cart (same `product_ids` and `total_usd`) returns 200 with the existing approval and adds no record; if the
     cart changed it records a new approval. 404 unknown plan, 409 unless the run is done or error, or with an empty cart.
+    Before approving it re-reads every cart item's IKEA page (`data.fetch_ikea.product`, concurrent, ~20 s cap) and appends one
+    `cart` record per item (decision "live price re-checked", source `{kind: "catalog", url}`, input `{catalog_price_usd,
+    live_price_usd, checked_at}`, status `price_same | price_changed | unavailable | check_failed`). Any `price_changed` or
+    `unavailable` (IKEA's page returned HTTP 404/410) → no approval, cart and item prices updated to the live price, total
+    recomputed, 409 `{detail: {error, changes: [{product_id, item_slot, name, status, catalog_price_usd, live_price_usd}]}}`;
+    approve again to confirm a changed price; an unavailable item must be swapped first. A failed check (network error, or a
+    page that loaded but listed no price) is `check_failed` and does not block. `cart.approval` gains `live_check: "all_same" | "partial"` and `checked_at`.
   - `GET /api/quiz` → `agent/quiz.json`. `POST /api/quiz/score` `{answers: {question_id: option_id}}` → `quiz.score(...)` plus
     `catalog_support`. `GET /api/health` → `{claude_code, superlinked_key, senso_key, runs: {running, max}}` (booleans, never keys).
 - **Tools** (`agent.tools`, also served by the MCP server): `create_plan`, `analyze_room`, `style_match`, `fit_options`, `pick`,
   `senso_check`, `swap`, `cart_add`, `get_plan`. `pick` only returns items that fit; `cart_add` refuses an item without a
   Senso check that has ≥1 verified claim and no conflict; every tool appends its own audit record and returns `plan_url`.
+- **Guardrail eval:** `.venv/bin/python scripts/eval_guardrails.py` calls the same `agent.tools` + `agent.senso.check` the
+  agent uses (no LLM) on fresh temp plans with exact rooms, live Superlinked + Senso, and writes `contracts/eval.json`
+  `{ran_at, git_sha (suffix "-dirty" if the tree had uncommitted changes), scenarios: [{name, should, happened, pass, kind,
+  blocked, allowed, counts, seconds, evidence}], summary: {passed, total, no_fit_or_refused_events, allowed_events, note}}`.
+  Headline is `passed/total`; `counts` says what each scenario's numbers count (they are different kinds of events).
+  Offline wiring test: `agent/test_eval_guardrails.py` (part of the full test command). Scenarios: too_wide_wall, door_too_small, over_budget,
+  senso_catches_wrong_fact, cart_refuses_unverified, good_pick_passes. Numbers: read `contracts/eval.json`, never retype.
 - **Anyone's own Claude:** `python -m agent.mcp_server` (stdio, for Claude Desktop / Claude Code) or `--http --port N`
   (claude.ai, needs public HTTPS). Setup in `docs/mcp.md`.
 - **Plan** = `contracts/plan.live.json` shape: `plan_id, plan_url, room, style, items[] (slot, product, style rank/scores,

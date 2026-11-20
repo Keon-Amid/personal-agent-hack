@@ -1,0 +1,508 @@
+{
+ "ran_at": "2026-11-20T23:33:07Z",
+ "git_sha": "f49fb62-dirty",
+ "how": "scripts/eval_guardrails.py: agent.tools + agent.senso called directly (no LLM), fresh temp plans, exact room numbers, live Superlinked + Senso",
+ "scenarios": [
+  {
+   "name": "too_wide_wall",
+   "should": "wall 88 in: fit_options rates every sofa wider than 88 in no_fit, with the wall math; the picked sofa fits",
+   "happened": "6/6 sofas wider than 88 in rated no_fit by the wall check; picked SALTSJÖBADEN 3-seat sofa - Blekinge white (80.75 in, fit fits)",
+   "pass": true,
+   "kind": "block",
+   "blocked": 6,
+   "allowed": 1,
+   "counts": "blocked = sofas wider than 88 in that fit_options rated no_fit on the wall check (6 of 6); allowed = the sofa pick returned",
+   "seconds": 1.7,
+   "evidence": {
+    "plan_id": "9ea6e8e6d352",
+    "wide_sofas": [
+     {
+      "product_id": "ikea-kivik-sofa-tibbleby-beige-gray-39440593",
+      "fit": "no_fit",
+      "wall_math": [
+       "width 89.75 in > 88 in (user)"
+      ]
+     },
+     {
+      "product_id": "ikea-uppland-sofa-blekinge-white-19384116",
+      "fit": "no_fit",
+      "wall_math": [
+       "width 88.25 in > 88 in (user)"
+      ]
+     },
+     {
+      "product_id": "ikea-hyltarp-sofa-gransel-gray-89514930",
+      "fit": "no_fit",
+      "wall_math": [
+       "width 91.375 in > 88 in (user)"
+      ]
+     },
+     {
+      "product_id": "ikea-kivik-sofa-grann-bomstad-black-80519531",
+      "fit": "no_fit",
+      "wall_math": [
+       "width 89.375 in > 88 in (user)"
+      ]
+     },
+     {
+      "product_id": "ikea-stockholm-2025-3-seat-sofa-alhamn-beige-69574294",
+      "fit": "no_fit",
+      "wall_math": [
+       "width 95.625 in > 88 in (user)"
+      ]
+     },
+     {
+      "product_id": "ikea-slatorp-sofa-hakebo-dark-gray-30594387",
+      "fit": "no_fit",
+      "wall_math": [
+       "width 96.875 in > 88 in (user)"
+      ]
+     }
+    ],
+    "pick_audit_rejected": [],
+    "picked": {
+     "product_id": "ikea-saltsjobaden-3-seat-sofa-blekinge-white-79579192",
+     "name": "SALTSJÖBADEN 3-seat sofa - Blekinge white",
+     "price_usd": 499.0,
+     "width_in": 80.75,
+     "fit_verdict": "fits",
+     "fit_math": [
+      "width 80.75 in ≤ 88 in (user)",
+      "depth 34.625 in + walkway 36 in = 70.625 in ≤ 150 in (user)",
+      "box 1/5 smallest side 18.5 in ≤ 36 in (user)",
+      "box 1/5 middle side 33.75 in ≤ 80 in (user)",
+      "box 2/5 smallest side 11.25 in ≤ 36 in (user)",
+      "box 2/5 middle side 18.75 in ≤ 80 in (user)",
+      "box 3/5 smallest side 3.5 in ≤ 36 in (user)",
+      "box 3/5 middle side 14.75 in ≤ 80 in (user)",
+      "box 4/5 smallest side 2.25 in ≤ 36 in (user)",
+      "box 4/5 middle side 5 in ≤ 80 in (user)",
+      "box 5/5 smallest side 2.25 in ≤ 36 in (user)",
+      "box 5/5 middle side 5 in ≤ 80 in (user)"
+     ]
+    }
+   }
+  },
+  {
+   "name": "door_too_small",
+   "should": "door 24 x 80 in: an armchair with a box whose smallest side is over 24 in is rejected for the doorway, with the math",
+   "happened": "ARNÄSVALL Recliner rocker and swivel armchair - Hakebo beige is no_fit (box smallest side over 24 in); 2/9 armchairs blocked by the 24 in door; picked PERSBOL Armchair - birch/Tibbleby beige/gray",
+   "pass": true,
+   "kind": "block",
+   "blocked": 2,
+   "allowed": 1,
+   "counts": "blocked = armchairs fit_options rated no_fit on the doorway (2 of 9); allowed = the armchair pick returned",
+   "seconds": 1.3,
+   "evidence": {
+    "plan_id": "e85dc5e71160",
+    "product_id": "ikea-arnasvall-recliner-rocker-and-swivel-armchair-hakebo-beige-50613912",
+    "packages_in": [
+     {
+      "w": 32.5,
+      "d": 37.75,
+      "h": 32.5
+     }
+    ],
+    "fit": "no_fit",
+    "doorway_math": [
+     "box 1/1 smallest side 32.5 in > 24 in (user)"
+    ],
+    "picked": {
+     "product_id": "ikea-persbol-armchair-birch-tibbleby-beige-gray-20525926",
+     "name": "PERSBOL Armchair - birch/Tibbleby beige/gray",
+     "price_usd": 249.0,
+     "width_in": 27.125,
+     "fit_verdict": "fits",
+     "fit_math": [
+      "width 27.125 in ≤ 120 in (user)",
+      "depth 27.5 in + walkway 36 in = 63.5 in ≤ 150 in (user)",
+      "box 1/1 smallest side 12 in ≤ 24 in (user)",
+      "box 1/1 middle side 28.25 in ≤ 80 in (user)"
+     ]
+    },
+    "picked_doorway_math": [
+     "box 1/1 smallest side 12 in ≤ 24 in (user)",
+     "box 1/1 middle side 28.25 in ≤ 80 in (user)"
+    ]
+   }
+  },
+  {
+   "name": "over_budget",
+   "should": "per-item budget $200: pick never returns a sofa over $200; cart_add refuses a sofa over $200",
+   "happened": "pick under $200 returned GLOSTAD Sofa - Knisa dark gray $199; skipped 7 pricier sofas; cart_add of SALTSJÖBADEN 3-seat sofa - Blekinge white $499 -> ok=False",
+   "pass": true,
+   "kind": "block",
+   "blocked": 8,
+   "allowed": 1,
+   "counts": "blocked = sofas pick skipped as over budget (7) + cart_add refusals (1); allowed = the under-budget sofa pick returned",
+   "seconds": 38.9,
+   "evidence": {
+    "plan_id": "bc2d70f53af2",
+    "pick_budget_cap": {
+     "usd": 200.0,
+     "why": "per-item budget $200"
+    },
+    "pick_picked": {
+     "product_id": "ikea-glostad-sofa-knisa-dark-gray-40595942",
+     "name": "GLOSTAD Sofa - Knisa dark gray",
+     "price_usd": 199.0,
+     "width_in": 70.125,
+     "fit_verdict": "fits",
+     "fit_math": [
+      "width 70.125 in ≤ 120 in (user)",
+      "depth 30.75 in + walkway 36 in = 66.75 in ≤ 150 in (user)",
+      "box 1/1 smallest side 7.5 in ≤ 36 in (user)",
+      "box 1/1 middle side 25.5 in ≤ 80 in (user)"
+     ]
+    },
+    "pick_over_budget_rejected": [
+     {
+      "product_id": "ikea-saltsjobaden-3-seat-sofa-blekinge-white-79579192",
+      "name": "SALTSJÖBADEN 3-seat sofa - Blekinge white",
+      "status": "rejected",
+      "why": "over budget: $499 > $200"
+     },
+     {
+      "product_id": "ikea-stockholm-2025-3-seat-sofa-alhamn-beige-69574294",
+      "name": "STOCKHOLM 2025 3-seat sofa - Alhamn beige",
+      "status": "rejected",
+      "why": "over budget: $1899 > $200"
+     },
+     {
+      "product_id": "ikea-saltmyran-sofa-oreryd-blue-70618522",
+      "name": "SALTMYRAN Sofa - Öreryd blue",
+      "status": "rejected",
+      "why": "over budget: $399 > $200"
+     },
+     {
+      "product_id": "ikea-gullvalla-sofa-silkeryd-dark-gray-beige-70618503",
+      "name": "GULLVALLA Sofa - Silkeryd dark gray-beige",
+      "status": "rejected",
+      "why": "over budget: $449 > $200"
+     },
+     {
+      "product_id": "ikea-lillesater-sofa-axvall-off-white-40619085",
+      "name": "LILLESÄTER Sofa - Axvall off-white",
+      "status": "rejected",
+      "why": "over budget: $999 > $200"
+     },
+     {
+      "product_id": "ikea-kivik-sofa-tibbleby-beige-gray-39440593",
+      "name": "KIVIK Sofa - Tibbleby beige/gray",
+      "status": "rejected",
+      "why": "over budget: $799 > $200"
+     },
+     {
+      "product_id": "ikea-uppland-sofa-blekinge-white-19384116",
+      "name": "UPPLAND Sofa - Blekinge white",
+      "status": "rejected",
+      "why": "over budget: $899 > $200"
+     }
+    ],
+    "cart_item": {
+     "product_id": "ikea-saltsjobaden-3-seat-sofa-blekinge-white-79579192",
+     "name": "SALTSJÖBADEN 3-seat sofa - Blekinge white",
+     "price_usd": 499.0,
+     "width_in": 80.75,
+     "fit_verdict": "fits",
+     "fit_math": [
+      "width 80.75 in ≤ 120 in (user)",
+      "depth 34.625 in + walkway 36 in = 70.625 in ≤ 150 in (user)",
+      "box 1/5 smallest side 18.5 in ≤ 36 in (user)",
+      "box 1/5 middle side 33.75 in ≤ 80 in (user)",
+      "box 2/5 smallest side 11.25 in ≤ 36 in (user)",
+      "box 2/5 middle side 18.75 in ≤ 80 in (user)",
+      "box 3/5 smallest side 3.5 in ≤ 36 in (user)",
+      "box 3/5 middle side 14.75 in ≤ 80 in (user)",
+      "box 4/5 smallest side 2.25 in ≤ 36 in (user)",
+      "box 4/5 middle side 5 in ≤ 80 in (user)",
+      "box 5/5 smallest side 2.25 in ≤ 36 in (user)",
+      "box 5/5 middle side 5 in ≤ 80 in (user)"
+     ]
+    },
+    "cart_item_senso": {
+     "check_id": "90d74e72-6351-41d6-bc65-bd2fbee2b872",
+     "accuracy_pct": 95.5,
+     "cached": false,
+     "verdicts": [
+      "verified",
+      "verified",
+      "verified",
+      "verified",
+      "verified",
+      "verified",
+      "verified",
+      "verified",
+      "verified",
+      "verified",
+      "verified",
+      "verified",
+      "verified",
+      "verified",
+      "verified",
+      "verified",
+      "verified",
+      "unsupported",
+      "verified",
+      "verified",
+      "verified",
+      "verified"
+     ],
+     "conflicts": []
+    },
+    "cart_result": {
+     "ok": false,
+     "error": "SALTSJÖBADEN 3-seat sofa - Blekinge white costs $499, over the per-item budget of $200: swap it"
+    },
+    "cart_refusal_audit": [
+     {
+      "ts": "2026-11-20T23:31:40Z",
+      "step": "cart",
+      "source": {
+       "kind": "template"
+      },
+      "decision": "refused",
+      "why": "SALTSJÖBADEN 3-seat sofa - Blekinge white costs $499, over the per-item budget of $200: swap it",
+      "status": "refused",
+      "item_slot": "sofa"
+     }
+    ]
+   }
+  },
+  {
+   "name": "senso_catches_wrong_fact",
+   "should": "Senso verifies the real claim text and flags a conflict when the width is wrong",
+   "happened": "correct text: 21 verified, 1 unsupported, acc 95.5%; same text with width 80.75 -> 92.75 in: 21 verified, 1 conflict, acc 95.5%, 1 conflict(s) on the 92.75 in width claim",
+   "pass": true,
+   "kind": "block",
+   "blocked": 1,
+   "allowed": 0,
+   "counts": "blocked = Senso conflicts on the changed width claim; the correct-text check is a precondition, not counted as an allowed pick",
+   "seconds": 86.6,
+   "evidence": {
+    "product_id": "ikea-saltsjobaden-3-seat-sofa-blekinge-white-79579192",
+    "true_width_in": 80.75,
+    "wrong_width_in": 92.75,
+    "correct_text": "Under our wall-fit rule, a piece placed against a wall must be no wider than that wall. Our catalog lists the SALTSJÖBADEN 3-seat sofa - Blekinge white, IKEA article 795.791.92, as 80.75 inches wide. Under our walkway rule, at least 36 inches of clear walkway is kept in front of any furniture placed against a wall. Our catalog lists the SALTSJÖBADEN 3-seat sofa - Blekinge white, IKEA article 795.791.92, as 34.625 inches deep. Under our doorway rule, every shipping box (package) must fit through the room's doorway. Our catalog lists the SALTSJÖBADEN 3-seat sofa - Blekinge white, IKEA article 795.791.92, as shipping in 5 box(es): box 1 as 33.75 inches wide, 75.75 inches long and 18.5 inches high; box 2 as 18.75 inches wide, 33.25 inches long and 11.25 inches high; box 3 as 14.75 inches wide, 22.25 inches long and 3.5 inches high; box 4 as 5 inches wide, 8.25 inches long and 2.25 inches high; box 5 as 5 inches wide, 8.25 inches long and 2.25 inches high. Our catalog lists the SALTSJÖBADEN 3-seat sofa - Blekinge white, IKEA article 795.791.92, at $499 on the IKEA US page.",
+    "corrupted_text": "Under our wall-fit rule, a piece placed against a wall must be no wider than that wall. Our catalog lists the SALTSJÖBADEN 3-seat sofa - Blekinge white, IKEA article 795.791.92, as 92.75 inches wide. Under our walkway rule, at least 36 inches of clear walkway is kept in front of any furniture placed against a wall. Our catalog lists the SALTSJÖBADEN 3-seat sofa - Blekinge white, IKEA article 795.791.92, as 34.625 inches deep. Under our doorway rule, every shipping box (package) must fit through the room's doorway. Our catalog lists the SALTSJÖBADEN 3-seat sofa - Blekinge white, IKEA article 795.791.92, as shipping in 5 box(es): box 1 as 33.75 inches wide, 75.75 inches long and 18.5 inches high; box 2 as 18.75 inches wide, 33.25 inches long and 11.25 inches high; box 3 as 14.75 inches wide, 22.25 inches long and 3.5 inches high; box 4 as 5 inches wide, 8.25 inches long and 2.25 inches high; box 5 as 5 inches wide, 8.25 inches long and 2.25 inches high. Our catalog lists the SALTSJÖBADEN 3-seat sofa - Blekinge white, IKEA article 795.791.92, at $499 on the IKEA US page.",
+    "correct_check": {
+     "check_id": "90d74e72-6351-41d6-bc65-bd2fbee2b872",
+     "accuracy_pct": 95.5,
+     "cached": true,
+     "verdicts": [
+      "verified",
+      "verified",
+      "verified",
+      "verified",
+      "verified",
+      "verified",
+      "verified",
+      "verified",
+      "verified",
+      "verified",
+      "verified",
+      "verified",
+      "verified",
+      "verified",
+      "verified",
+      "verified",
+      "verified",
+      "unsupported",
+      "verified",
+      "verified",
+      "verified",
+      "verified"
+     ],
+     "conflicts": []
+    },
+    "corrupted_check": {
+     "check_id": "7475b791-5a34-4748-b35a-45b03f381578",
+     "accuracy_pct": 95.5,
+     "cached": false,
+     "verdicts": [
+      "verified",
+      "conflict",
+      "verified",
+      "verified",
+      "verified",
+      "verified",
+      "verified",
+      "verified",
+      "verified",
+      "verified",
+      "verified",
+      "verified",
+      "verified",
+      "verified",
+      "verified",
+      "verified",
+      "verified",
+      "verified",
+      "verified",
+      "verified",
+      "verified",
+      "verified"
+     ],
+     "conflicts": [
+      {
+       "claim": "The SALTSJÖBADEN 3-seat sofa - Blekinge white, IKEA article 795.791.92, is 92.75 inches wide.",
+       "quote": "Size: width 80.75 in, depth 34.625 in, height 35.375 in."
+      }
+     ]
+    }
+   }
+  },
+  {
+   "name": "cart_refuses_unverified",
+   "should": "cart_add on a slot with no Senso check is refused (ok False) and audited",
+   "happened": "cart_add PERSBOL Armchair - birch/Tibbleby beige/gray with no Senso check -> ok=False: PERSBOL Armchair - birch/Tibbleby beige/gray has no Senso check: call senso_check first",
+   "pass": true,
+   "kind": "block",
+   "blocked": 1,
+   "allowed": 0,
+   "counts": "blocked = cart_add refusals for a slot with no Senso check",
+   "seconds": 0.0,
+   "evidence": {
+    "plan_id": "e85dc5e71160",
+    "slot": "armchair",
+    "result": {
+     "ok": false,
+     "error": "PERSBOL Armchair - birch/Tibbleby beige/gray has no Senso check: call senso_check first"
+    },
+    "refusal_audit": [
+     {
+      "ts": "2026-11-20T23:33:06Z",
+      "step": "cart",
+      "source": {
+       "kind": "template"
+      },
+      "decision": "refused",
+      "why": "PERSBOL Armchair - birch/Tibbleby beige/gray has no Senso check: call senso_check first",
+      "status": "refused",
+      "item_slot": "armchair"
+     }
+    ],
+    "in_cart": false
+   }
+  },
+  {
+   "name": "good_pick_passes",
+   "should": "a fitting, in-budget pick with a real Senso check is added to the cart",
+   "happened": "SALTSJÖBADEN 3-seat sofa - Blekinge white $499 fit fits; senso ok=True; cart_add ok=True; in cart=True",
+   "pass": true,
+   "kind": "allow",
+   "blocked": 0,
+   "allowed": 1,
+   "counts": "allowed = the fitting, in-budget, Senso-verified sofa that reached the cart",
+   "seconds": 1.2,
+   "evidence": {
+    "plan_id": "fdefbe909220",
+    "picked": {
+     "product_id": "ikea-saltsjobaden-3-seat-sofa-blekinge-white-79579192",
+     "name": "SALTSJÖBADEN 3-seat sofa - Blekinge white",
+     "price_usd": 499.0,
+     "width_in": 80.75,
+     "fit_verdict": "fits",
+     "fit_math": [
+      "width 80.75 in ≤ 88 in (user)",
+      "depth 34.625 in + walkway 36 in = 70.625 in ≤ 150 in (user)",
+      "box 1/5 smallest side 18.5 in ≤ 36 in (user)",
+      "box 1/5 middle side 33.75 in ≤ 80 in (user)",
+      "box 2/5 smallest side 11.25 in ≤ 36 in (user)",
+      "box 2/5 middle side 18.75 in ≤ 80 in (user)",
+      "box 3/5 smallest side 3.5 in ≤ 36 in (user)",
+      "box 3/5 middle side 14.75 in ≤ 80 in (user)",
+      "box 4/5 smallest side 2.25 in ≤ 36 in (user)",
+      "box 4/5 middle side 5 in ≤ 80 in (user)",
+      "box 5/5 smallest side 2.25 in ≤ 36 in (user)",
+      "box 5/5 middle side 5 in ≤ 80 in (user)"
+     ]
+    },
+    "senso": {
+     "check_id": "90d74e72-6351-41d6-bc65-bd2fbee2b872",
+     "accuracy_pct": 95.5,
+     "cached": true,
+     "verdicts": [
+      "verified",
+      "verified",
+      "verified",
+      "verified",
+      "verified",
+      "verified",
+      "verified",
+      "verified",
+      "verified",
+      "verified",
+      "verified",
+      "verified",
+      "verified",
+      "verified",
+      "verified",
+      "verified",
+      "verified",
+      "unsupported",
+      "verified",
+      "verified",
+      "verified",
+      "verified"
+     ],
+     "conflicts": []
+    },
+    "cart_result": {
+     "ok": true,
+     "error": null
+    },
+    "cart": {
+     "items": [
+      {
+       "product_id": "ikea-saltsjobaden-3-seat-sofa-blekinge-white-79579192",
+       "name": "SALTSJÖBADEN 3-seat sofa - Blekinge white",
+       "price_usd": 499.0,
+       "source_url": "https://www.ikea.com/us/en/p/saltsjoebaden-3-seat-sofa-blekinge-white-s79579192/"
+      }
+     ],
+     "total_usd": 499.0,
+     "delivery_note": "IKEA home delivery from $29",
+     "no_purchase": true
+    },
+    "cart_audit": [
+     {
+      "ts": "2026-11-20T23:33:07Z",
+      "step": "cart",
+      "source": {
+       "kind": "claude"
+      },
+      "decision": "added to cart",
+      "why": "eval: fits the 88 in wall, within budget, Senso verified",
+      "item_slot": "sofa",
+      "product_id": "ikea-saltsjobaden-3-seat-sofa-blekinge-white-79579192",
+      "status": "in_cart"
+     }
+    ],
+    "senso_audit": [
+     {
+      "ts": "2026-11-20T23:33:07Z",
+      "step": "senso_check",
+      "source": {
+       "kind": "senso",
+       "check_id": "90d74e72-6351-41d6-bc65-bd2fbee2b872"
+      },
+      "decision": "passed",
+      "why": "21 verified, 1 unsupported; accuracy 95.5%",
+      "item_slot": "sofa",
+      "product_id": "ikea-saltsjobaden-3-seat-sofa-blekinge-white-79579192",
+      "input": "Under our wall-fit rule, a piece placed against a wall must be no wider than that wall. Our catalog lists the SALTSJÖBADEN 3-seat sofa - Blekinge white, IKEA article 795.791.92, as 80.75 inches wide. Under our walkway rule, at least 36 inches of clear walkway is kept in front of any furniture placed against a wall. Our catalog lists the SALTSJÖBADEN 3-seat sofa - Blekinge white, IKEA article 795.791.92, as 34.625 inches deep. Under our doorway rule, every shipping box (package) must fit through the room's doorway. Our catalog lists the SALTSJÖBADEN 3-seat sofa - Blekinge white, IKEA article 795.791.92, as shipping in 5 box(es): box 1 as 33.75 inches wide, 75.75 inches long and 18.5 inches high; box 2 as 18.75 inches wide, 33.25 inches long and 11.25 inches high; box 3 as 14.75 inches wide, 22.25 inches long and 3.5 inches high; box 4 as 5 inches wide, 8.25 inches long and 2.25 inches high; box 5 as 5 inches wide, 8.25 inches long and 2.25 inches high. Our catalog lists the SALTSJÖBADEN 3-seat sofa - Blekinge white, IKEA article 795.791.92, at $499 on the IKEA US page.",
+      "status": "verified"
+     }
+    ]
+   }
+  }
+ ],
+ "summary": {
+  "passed": 6,
+  "total": 6,
+  "no_fit_or_refused_events": 18,
+  "allowed_events": 4,
+  "note": "Headline is passed/total. The two event totals add different kinds of events (no_fit product ratings, budget skips, cart refusals, Senso conflicts; picks returned); each scenario's 'counts' says what its numbers count. Only good_pick_passes is an allow scenario."
+ }
+}
