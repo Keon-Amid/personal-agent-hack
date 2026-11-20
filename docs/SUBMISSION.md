@@ -42,6 +42,20 @@ A personal shopping agent that runs on its own, not a chat window:
 | Our scanned room | 5 slots in ~3 min, \$1,407.97, 55/58 verified, 75 audit records | `contracts/plan.room_scan.json` |
 | Demo-room fixture | ARNÄSVALL armchair rejected: "box 32.5 in > 30 in door"; KIVIK "89.4 in ≈ 88 in ±4" → measure first | `contracts/plan.example.json` |
 
+### Guardrails, tested live: 6 of 6 pass (`contracts/eval.json`, `scripts/eval_guardrails.py`)
+Each scenario runs the real tools on a fresh plan with live Superlinked + Senso (no LLM, so the rules alone are tested):
+| Scenario | What the tools did |
+|---|---|
+| Sofa too wide for the wall | KIVIK and UPPLAND rejected: "width 89.75 in > 88 in" |
+| Box too big for the door | ARNÄSVALL rejected: "box smallest side 32.5 in > 24 in" |
+| Over budget | Per-item $200 cap: picked GLOSTAD at $199, pricier sofas skipped |
+| Senso catches a wrong fact | SALTSJÖBADEN claimed 92.75 in wide (true: 80.75 in) → Senso conflict |
+| Cart without a Senso check | Refused: "PERSBOL … has no Senso check: call senso_check first" |
+| A good pick passes | SALTSJÖBADEN, 80.75 in ≤ 88 in, verified, added to the cart |
+
+Plus the live run in the app (88 in wall, $1,000 budget): GULLVALLA and SALTSJÖBADEN rejected over budget
+("$449 > $400"), STOCKHOLM rejected "95.625 in > 88 in", cart \$717.97, 96 audit records, ~3 min.
+
 ## Sponsor tools (exact use)
 - **Senso (context layer):** all 102 products (every dimension, box, price) plus the room rules are loaded as Senso
   knowledge-base documents (`agent/senso_kb.py`). Before any item can go in the cart, its claims are fact-checked with

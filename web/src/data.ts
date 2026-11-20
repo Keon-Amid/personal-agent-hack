@@ -69,7 +69,7 @@ export interface DemoRoom {
   scanPath?: string
 }
 
-const SCAN_PLAN = 'bdf378ca6115' // contracts/plan.room_scan.json: the agent's run on the room we scanned
+const SCAN_PLAN = '35291cb16052' // contracts/plan.roomplan.json: the agent's run on the Floorplan scan (real 32 in door)
 const TYPED_PLAN = '1f4ade193dee' // contracts/plan.live.json: typed measurements, 88 in wall
 
 export const demoRooms: DemoRoom[] = [
