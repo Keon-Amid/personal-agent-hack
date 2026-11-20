@@ -166,11 +166,15 @@ def _from_photo(photo: bytes) -> tuple[dict, dict, str]:
     return est, source, why.strip()
 
 
-def estimate(photo_bytes: bytes | None = None, exact: dict | None = None) -> tuple[dict, list[dict]]:
+def estimate(photo_bytes: bytes | None = None, exact: dict | None = None, scan_bytes: bytes | None = None,
+             scan_name: str = "scan.obj") -> tuple[dict, list[dict]]:
     """Room measurements -> (fit.options.room(...), [AuditRecord]).
 
     exact: {"wall", "depth", "door_width", "door_height"} in inches, typed by the person; each becomes
         fit.measurement(v, 0, "user") and overrides the photo estimate for that key.
+    scan_bytes: a full-room LiDAR scan (OBJ/PLY, see agent.room_scan). It measures wall, depth and, if a door is
+        open in the scan, door_width/door_height (source "scanned:lidar"); the photo only fills what's left.
+    Precedence per key: exact > scan > photo > default.
     Raises ValueError naming what's missing when there's no photo and not all four exact values, or when the
     photo can't be read (with the Superlinked error) and exact values don't cover the gap.
     """
@@ -181,6 +185,36 @@ def estimate(photo_bytes: bytes | None = None, exact: dict | None = None) -> tup
     m = {k: measurement(float(exact[k]), 0.0, "user") for k in KEYS if k in exact}
     missing = [k for k in KEYS if k not in m]
     records = []
+
+    if missing and scan_bytes is not None:
+        from agent import room_scan
+        try:
+            res = room_scan.scan(scan_bytes, scan_name)
+        except room_scan.ScanError as e:
+            raise ValueError(f"couldn't read the room scan ({e})") from None
+        got = {k: v for k, v in room_scan.to_measurements(res).items() if k in missing}
+        if "door_width" in got and "door_height" not in got and "door_height" in missing and photo_bytes is None:
+            got["door_height"] = measurement(DOOR_HEIGHT_IN, DOOR_HEIGHT_ERR_IN, "estimated:standard_door")
+        m.update(got)
+        missing = [k for k in KEYS if k not in m]
+        meth = res["method"]
+        records.append(audit(
+            "estimate_room",
+            source={"kind": "lidar_scan", "file": scan_name, "outline_in": res["outline_in"], "walls": res["walls"],
+                    "doors": res["doors"], "ceiling_in": res["ceiling_in"], "area_sqft": res["area_sqft"],
+                    "method": meth},
+            input={"scan": scan_name, "exact": sorted(exact)},
+            decision=f"scanned {len(res['walls'])}-wall room, {res['area_sqft']:g} sq ft: "
+                     + ", ".join(f"{k} {got[k]['value_in']:g} ±{got[k]['error_in']:g} in" for k in got),
+            status="measured",
+            why=(f"LiDAR mesh ({meth['vertices']} vertices, {meth['units']}, {meth['up_axis']}-up): floor and "
+                 f"walls found as planes, outline traced and snapped to {meth['wall_points']} wall points "
+                 f"(spread {meth['edge_spread_mad_in']:g} in, so error ±{res['error_in']:g} in). Wall = longest "
+                 f"wall {res['longest_wall']}; depth = straight out from its middle to the opposite wall. "
+                 + ("" if res["doors"] else "No open doorway in the scan (closed doors are flush with the wall), "
+                    "so the door needs the photo or a tape measure. ")
+                 + ("Door height assumed 80 in (standard US door). " if
+                    got.get("door_height", {}).get("source") == "estimated:standard_door" else "")).strip()))
 
     if missing and photo_bytes is None:
         if missing == ["depth"]:
