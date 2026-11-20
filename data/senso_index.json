@@ -1,0 +1,338 @@
+{
+ "ikea-kivik-sofa-tibbleby-beige-gray-39440593": {
+  "title": "IKEA 394.405.93 KIVIK Sofa - Tibbleby beige/gray",
+  "sha256": "e6ae99f0f5348ddaa6a4bcd2ec1495fd069315b0783d475c69375da1a134d355",
+  "kb_node_id": "b0e22fa4-ebcc-4a9c-97d0-86da6d75fb97",
+  "content_id": "08010df0-269f-476f-99e0-330a4eea23df",
+  "status": "complete"
+ },
+ "ikea-glostad-sofa-knisa-dark-gray-40595942": {
+  "title": "IKEA 405.959.42 GLOSTAD Sofa - Knisa dark gray",
+  "sha256": "ad16495c29fa2ba30355190f45f0157670b89d538ca0bcf434ea789d26068c3d",
+  "kb_node_id": "63f29a27-b963-42de-baca-1858fc93c07c",
+  "content_id": "79a7e355-4697-4538-8f25-a7c548149ed2",
+  "status": "complete"
+ },
+ "ikea-gullvalla-sofa-silkeryd-dark-gray-beige-70618503": {
+  "title": "IKEA 706.185.03 GULLVALLA Sofa - Silkeryd dark gray-beige",
+  "sha256": "9167cb8e099641e0c1c3019413fcb03615c7dfe493c2ec3de0b45986814cc5ca",
+  "kb_node_id": "a3a42e59-e98c-4fd0-980f-f7d448493fcc",
+  "content_id": "b935464a-3a5d-414c-80cb-a7d701a2e94a",
+  "status": "complete"
+ },
+ "ikea-hyltarp-sofa-gransel-gray-89514930": {
+  "title": "IKEA 895.149.30 HYLTARP Sofa - Gransel gray",
+  "sha256": "2ca1e77b0c8c0d04bfc2bf9498223b3b5a1a5ca3a00b10630e4ea288fecb1c1c",
+  "kb_node_id": "4b48c5b9-b0ae-4b98-bf26-03789179a2fa",
+  "content_id": "d688e935-a025-4158-ae61-af509d207265",
+  "status": "complete"
+ },
+ "ikea-kivik-sofa-grann-bomstad-black-80519531": {
+  "title": "IKEA 805.195.31 KIVIK Sofa - Grann/Bomstad black",
+  "sha256": "668b51aa142f51e50748be871a51fea3134fec2bb9a0dd9204763fe6c30fac8d",
+  "kb_node_id": "0b429fbf-dbea-4520-8d4a-16de30945270",
+  "content_id": "2163584c-a521-4017-8821-9ac5643f9bf0",
+  "status": "complete"
+ },
+ "ikea-lillesater-sofa-axvall-off-white-40619085": {
+  "title": "IKEA 406.190.85 LILLESÄTER Sofa - Axvall off-white",
+  "sha256": "fe7f6e31b70e53780dfaafe263292af66c1c2c62063a90f605b08a86be665fd7",
+  "kb_node_id": "f97ce3a4-5478-4794-ac9e-22f51adef916",
+  "content_id": "03c123d0-d413-4ddd-87b9-d10a214fb5f4",
+  "status": "complete"
+ },
+ "ikea-arnasvall-recliner-rocker-and-swivel-armchair-hakebo-beige-50613912": {
+  "title": "IKEA 506.139.12 ARNÄSVALL Recliner rocker and swivel armchair - Hakebo beige",
+  "sha256": "ce5a216a49983ea16611c84e81a9aa66102857703a0c27829f057508b7547265",
+  "kb_node_id": "6db45282-c2ae-43b0-b9ce-70f2856f9e7f",
+  "content_id": "397099a3-fdb7-4a63-8997-23c6c8558e74",
+  "status": "complete"
+ },
+ "ikea-ekenaset-armchair-jonsbyn-black-80539015": {
+  "title": "IKEA 805.390.15 EKENÄSET Armchair - Jonsbyn black",
+  "sha256": "c9ce614597162c0fdd6f732dbca6dd44b405a7931945d38d326d270af0cb109e",
+  "kb_node_id": "8c7a3d66-aeb1-4930-8595-7573d884ee61",
+  "content_id": "d992bc7c-92c8-4792-ab21-9051f01a7a7c",
+  "status": "complete"
+ },
+ "ikea-gryteryd-recliner-rocker-armchair-hakebo-beige-20613904": {
+  "title": "IKEA 206.139.04 GRYTERYD Recliner rocker armchair - Hakebo beige",
+  "sha256": "9b73909223a4798dfe6c2b8eed5d508cf96d378f95284f1853f15a4f71771ade",
+  "kb_node_id": "16cc52c5-8165-4f82-88da-904963398693",
+  "content_id": "426f6093-819b-4f67-a7ae-a1719b76bf12",
+  "status": "complete"
+ },
+ "ikea-borgeby-coffee-table-birch-veneer-27-1-2-70389356": {
+  "title": "IKEA 703.893.56 BORGEBY Coffee table - birch veneer 27 1/2 \"",
+  "sha256": "9bd462fc17aad3b0fd4782abfbee8a9180dbf80d97426dfb696c37db7fc20380",
+  "kb_node_id": "4d0c3493-ba5e-4bf9-92bd-0f9b163fff0d",
+  "content_id": "9357919d-1ce8-46cd-9d08-20a34ce38220",
+  "status": "complete"
+ },
+ "ikea-lack-coffee-table-black-brown-46-1-2x30-3-4-00104291": {
+  "title": "IKEA 001.042.91 LACK Coffee table - black-brown 46 1/2x30 3/4 \"",
+  "sha256": "5fec43ba5dea63f02b6cb26e5cecab7da2839b18809c25db946a4d3a3501f8e3",
+  "kb_node_id": "166bf0fd-db9d-4512-8c0a-5efcab95aae2",
+  "content_id": "b2b9a82a-854e-4cc1-a172-48650d4e753d",
+  "status": "complete"
+ },
+ "ikea-ortrask-coffee-table-black-ash-veneer-43-1-4x26-3-4-30635849": {
+  "title": "IKEA 306.358.49 ÖRTRÄSK Coffee table - black ash veneer 43 1/4x26 3/4 \"",
+  "sha256": "4b16ed9f9c37d4fb04530ed221f79f9414e712bfc284c5c0e67aa716c343efde",
+  "kb_node_id": "4172f497-61aa-40af-9633-271fe2686237",
+  "content_id": "4b94ec09-054d-4d6a-8a72-bc9b6a878be2",
+  "status": "complete"
+ },
+ "ikea-ostavall-adjustable-coffee-table-black-35-3-8-40534152": {
+  "title": "IKEA 405.341.52 ÖSTAVALL Adjustable coffee table - black 35 3/8 \"",
+  "sha256": "a70894f3dc2f7f6b6f970b21de7858eacfd7eb55ae047712a1274491cfc9ef0f",
+  "kb_node_id": "7a5d4bea-3893-4896-8699-dbd97dd64d8c",
+  "content_id": "d4f93c48-285a-4a21-8e62-65049dc57960",
+  "status": "complete"
+ },
+ "ikea-baggboda-side-table-white-28x19-5-8-20556507": {
+  "title": "IKEA 205.565.07 BAGGBODA Side table - white 28x19 5/8 \"",
+  "sha256": "5399b001ce4038e2fa8887d52bba16a5d424b545bd835d706fe5d48de34dfd93",
+  "kb_node_id": "6a52cb31-6eb0-4c82-85f4-c0dad0dad869",
+  "content_id": "5fc68b75-18e8-45a4-93fa-1d0b27ec35cd",
+  "status": "complete"
+ },
+ "ikea-borgeby-side-table-birch-veneer-18-1-8-80619880": {
+  "title": "IKEA 806.198.80 BORGEBY Side table - birch veneer 18 1/8 \"",
+  "sha256": "0ad3a531bdfcf513070f48ead085f45e4efeea6ef73c18c2703fa93658ef5186",
+  "kb_node_id": "909b83c1-cf7d-4628-b863-3dbcda132af9",
+  "content_id": "09b750b6-7468-47b0-b109-fbcc12276d71",
+  "status": "complete"
+ },
+ "ikea-anfallare-alex-desk-bamboo-black-brown-55-1-8x25-5-8-89417745": {
+  "title": "IKEA 894.177.45 ANFALLARE / ALEX Desk - bamboo/black-brown 55 1/8x25 5/8 \"",
+  "sha256": "d60f15613ca1ef5c819a3ae09009a40832da2964fa51d3dfe436f9d43ebfbae5",
+  "kb_node_id": "387ebc80-a7a9-48b5-afd2-dfc83ddf7de1",
+  "content_id": "794c71a2-b2c8-4746-97d8-a983908c47bd",
+  "status": "complete"
+ },
+ "ikea-brytning-desk-green-43-1-4x20-7-8x29-1-2-50609750": {
+  "title": "IKEA 506.097.50 BRYTNING Desk - green 43 1/4x20 7/8x29 1/2 \"",
+  "sha256": "3ed3203dc516e7220f67bceb12140e3e7476ee884b04926238f9743898b030df",
+  "kb_node_id": "8e9e324e-d239-4d99-b035-22a69f865e1b",
+  "content_id": "11ef71a7-0402-4600-880c-bf7cabb713e1",
+  "status": "complete"
+ },
+ "ikea-kallax-desk-black-brown-43-3-4x15-3-8-00582442": {
+  "title": "IKEA 005.824.42 KALLAX Desk - black-brown 43 3/4x15 3/8 \"",
+  "sha256": "c11199a7ba5c0508ecfc88aa2954ddb0f0d7c3a61970f6fbe5b3ae13ca5179fa",
+  "kb_node_id": "5114aca8-390d-4d91-b7b1-3bf61585cb16",
+  "content_id": "8115419e-5600-4d0d-89c6-3e2bef8f3fdd",
+  "status": "complete"
+ },
+ "ikea-lagkapten-adils-desk-black-brown-black-47-1-4x23-5-8-49417021": {
+  "title": "IKEA 494.170.21 LAGKAPTEN / ADILS Desk - black-brown/black 47 1/4x23 5/8 \"",
+  "sha256": "165abfa46910d211eb7446e11c7b018557643feabe2ba281c4facdc7a8571a27",
+  "kb_node_id": "543428d7-9e6b-46b6-bf24-606019debb94",
+  "content_id": "1f452bd6-1e53-4120-90ab-4194a1fca77b",
+  "status": "complete"
+ },
+ "ikea-alhult-extendable-table-beige-brown-47-1-4-66-7-8x31-1-2-60597921": {
+  "title": "IKEA 605.979.21 ÅLHULT Extendable table - beige/brown 47 1/4/66 7/8x31 1/2 \"",
+  "sha256": "2a9067304156bf7c1aa9fd984c9ae898558f97dee8e30163788f598e7f5035eb",
+  "kb_node_id": "42e343aa-fbb1-4dfa-a406-53c9e536b340",
+  "content_id": "00919d42-d703-4d7f-8a41-9ee5756a665c",
+  "status": "complete"
+ },
+ "ikea-bergshyttan-table-dark-brown-ash-veneer-94-1-2x36-5-8-40608242": {
+  "title": "IKEA 406.082.42 BERGSHYTTAN Table - dark-brown ash veneer 94 1/2x36 5/8 \"",
+  "sha256": "c4dfb3a5b79dcc34d5d208849ce64d09497fb0c6fa2ac32802fa52e51f7673d0",
+  "kb_node_id": "e12d35af-9de0-4925-b937-7a6dda4a39c9",
+  "content_id": "7343e707-46a2-435b-acdc-a8ba16fa7435",
+  "status": "complete"
+ },
+ "ikea-docksta-table-black-black-40-1-2-99418848": {
+  "title": "IKEA 994.188.48 DOCKSTA Table - black/black 40 1/2 \"",
+  "sha256": "233412dec0966cc084009450394470f4210040bb8332d8e3c96898ea7d313d44",
+  "kb_node_id": "8794c9b9-7eaf-4635-bb29-868e4edc9650",
+  "content_id": "0d798ff4-6b4a-42c1-9d92-fed537b4ddb6",
+  "status": "complete"
+ },
+ "ikea-alhult-chair-beige-kabusa-light-beige-60600773": {
+  "title": "IKEA 606.007.73 ÅLHULT Chair - beige/Kabusa light beige",
+  "sha256": "477dc788efc8a49885a114c5a22def51e0fd8f1f50fa02088b6b9fd653e1fb28",
+  "kb_node_id": "ea06ba81-d682-4810-8e4d-017699902cea",
+  "content_id": "802e33df-6477-4d97-9253-c64786f93afa",
+  "status": "complete"
+ },
+ "ikea-bergmund-chair-oak-effect-gunnared-medium-gray-49471701": {
+  "title": "IKEA 494.717.01 BERGMUND Chair - oak effect/Gunnared medium gray",
+  "sha256": "724f40b325b50ea231553e350435d4a8bc5eb9246482d1a8ebbdf0b89dcf5cb1",
+  "kb_node_id": "f2edd477-96d2-4a9d-93ee-bcb0e368fa55",
+  "content_id": "2f0d5d3e-2cc6-4cd3-b88b-91d89ba92bcf",
+  "status": "complete"
+ },
+ "ikea-gronsta-chair-indoor-outdoor-gray-dark-brown-wood-70637238": {
+  "title": "IKEA 706.372.38 GRÖNSTA Chair - indoor/outdoor gray/dark brown/wood",
+  "sha256": "1c7bd79468330445c296668f751f2800a21b17c469211a272c3dc2352bec00f0",
+  "kb_node_id": "6d20d667-5f2d-4989-9a85-3abc5d8e596d",
+  "content_id": "32810368-b1ee-4f3a-890c-524be213de3f",
+  "status": "complete"
+ },
+ "ikea-ankarudden-6-drawer-dresser-with-2-inner-drawers-oak-effect-54-1-2x18-7-8x34-3-8-80598057": {
+  "title": "IKEA 805.980.57 ANKARUDDEN 6-drawer dresser - with 2 inner drawers/oak effect 54 1/2x18 7/8x34 3/8 \"",
+  "sha256": "0c574760727f68a77b492c55908a3b28008fc0e4b986633c2b17bb9016785110",
+  "kb_node_id": "aa1a6970-9c94-4782-ab0f-c3de8e71537f",
+  "content_id": "098943d9-5ffe-463d-bd7f-19127e89a9e7",
+  "status": "complete"
+ },
+ "ikea-brimnes-4-drawer-dresser-black-30-3-4x18-1-8x48-7-8-70574245": {
+  "title": "IKEA 705.742.45 BRIMNES 4-drawer dresser - black 30 3/4x18 1/8x48 7/8 \"",
+  "sha256": "37e6acb56d5937bacd0d13f4879768ec7a5d0f995337e1bf8bb2ba281c2a35b3",
+  "kb_node_id": "e5441b89-88ef-4c22-b8aa-c65ff8ba4f50",
+  "content_id": "ea8856ad-0d3d-4e36-86e2-69963f6afd33",
+  "status": "complete"
+ },
+ "ikea-fagelfjallet-3-drawer-dresser-black-oak-effect-32-1-4x20-1-8x30-3-4-90598603": {
+  "title": "IKEA 905.986.03 FÅGELFJÄLLET 3-drawer dresser - black oak effect 32 1/4x20 1/8x30 3/4 \"",
+  "sha256": "6336b80c903cb37a8fe65c5218810020925548a83beff3e8a3875722fa43404e",
+  "kb_node_id": "39b89566-8c3b-476d-8ffb-139c8e8a971d",
+  "content_id": "cdaaffca-1fb1-4bd9-b7c1-227ed7121f3a",
+  "status": "complete"
+ },
+ "ikea-blastasen-nightstand-black-19-5-8x14-5-8x29-7-8-90617574": {
+  "title": "IKEA 906.175.74 BLÄSTÅSEN Nightstand - black 19 5/8x14 5/8x29 7/8 \"",
+  "sha256": "32a9780c78b7b9c087ebd6f718008bc8caf5479ef26adcf3e7e40a759fca2202",
+  "kb_node_id": "f1319c60-bce1-4b93-92a0-450351ea7fc3",
+  "content_id": "84714351-fb3c-4ba8-9fa7-baeb03f920eb",
+  "status": "complete"
+ },
+ "ikea-brimnes-nightstand-black-15-3-8x16-1-8x20-7-8-80340454": {
+  "title": "IKEA 803.404.54 BRIMNES Nightstand - black 15 3/8x16 1/8x20 7/8 \"",
+  "sha256": "a80ded878d099eae0346c66ce15e06ab5530b0a506de40ad9803bd6f50b38860",
+  "kb_node_id": "a8069be9-4c8b-4d23-b047-b67c52093639",
+  "content_id": "6da8f6d5-4e81-4f4f-8b38-716dbb889f95",
+  "status": "complete"
+ },
+ "ikea-besta-tv-bench-with-doors-black-brown-bjorkoviken-brown-stained-oak-veneer-70-7-8x16-1-2x15-09568026": {
+  "title": "IKEA 095.680.26 BESTÅ TV bench with doors - black-brown Björköviken/brown stained oak veneer 70 7/8x16 1/2x15 \"",
+  "sha256": "a39de60ca393044916cfa8389fbf5b7deaac9ecb720ba7fd75a91f8903470201",
+  "kb_node_id": "9aa5f7cb-e0d5-4f13-98a2-90b0cd55ccdf",
+  "content_id": "6adef440-e7e9-4bcb-a54f-b99f3b38d8dd",
+  "status": "complete"
+ },
+ "ikea-brimnes-tv-unit-black-85-1-8x16-1-4x21-1-8-20593091": {
+  "title": "IKEA 205.930.91 BRIMNES TV unit - black 85 1/8x16 1/4x21 1/8 \"",
+  "sha256": "69cb5ed2f5db9f671bbca386f34149af05a16fbd6dd4ff8c91370d56151ed5b7",
+  "kb_node_id": "9ae7fd5e-afc9-4d34-aac9-ee2767500558",
+  "content_id": "8dd68ad4-ec48-4dd2-90a7-0c19efda3f01",
+  "status": "complete"
+ },
+ "ikea-fjallbo-tv-unit-black-78x17-3-4x21-1-4-00579034": {
+  "title": "IKEA 005.790.34 FJÄLLBO TV unit - black 78x17 3/4x21 1/4 \"",
+  "sha256": "9b6911a73cf6eabf7129c8386d116ef1ae97af5690446697f5817e7eda6fb492",
+  "kb_node_id": "903d1b79-f01f-4b18-be22-41364e68ade8",
+  "content_id": "6c852a5c-751c-4782-b6ea-5b5e4eea45c2",
+  "status": "complete"
+ },
+ "ikea-arende-rug-00576436": {
+  "title": "IKEA 005.764.36 ÄRENDE Rug, high pile - gray 5 ' 3 \"x7 ' 7 \"",
+  "sha256": "beed9376a9ffabdfe10ea11371a3dc4f472e428c4f62d09ce9864e8d7c6197e7",
+  "kb_node_id": "1a9e0344-cccf-4ccc-bf97-e4495c7dddaa",
+  "content_id": "08aededc-7d72-4e0b-bba5-db06814d7677",
+  "status": "complete"
+ },
+ "ikea-grejsimojs-rug-00602001": {
+  "title": "IKEA 006.020.01 GREJSIMOJS Rug, high pile - green 5 ' 0 \"x7 ' 1 \"",
+  "sha256": "5531556a1cb0cb7a909f0fab9eaee10f1991dec981afc1851aa027698ccce600",
+  "kb_node_id": "48edb25f-ee0c-4449-81d8-58439e152db0",
+  "content_id": "4f51e406-c047-421f-ad95-4262e56621c4",
+  "status": "complete"
+ },
+ "ikea-halved-rug-20328228": {
+  "title": "IKEA 203.282.28 HALVED Rug, flatwoven - handmade multicolor 5 ' 7 \"x7 ' 10 \"",
+  "sha256": "12c04cc5fe60e173364723f2c575bc468160a006459fe484c3aa2226034afd40",
+  "kb_node_id": "2a49a9b5-8f8f-433a-a50d-0416dbccfc4f",
+  "content_id": "6a106379-4dab-4ae3-b8e9-195a2921f9bd",
+  "status": "complete"
+ },
+ "ikea-akterspring-floor-lamp-opal-glass-brass-plated-64-00618808": {
+  "title": "IKEA 006.188.08 AKTERSPRING Floor lamp - opal glass/brass plated 64 \"",
+  "sha256": "b352f0bba8d5415698c1b5e810c26f7dc28b013d45cebd780d9de6bff2b6f41d",
+  "kb_node_id": "f45a1b1b-074a-44cb-9eaf-74aa24b6c0d0",
+  "content_id": "2cd6e60c-1c8e-4f16-a269-73669c10f569",
+  "status": "complete"
+ },
+ "ikea-arstid-floor-lamp-brass-white-60321324": {
+  "title": "IKEA 603.213.24 ÅRSTID Floor lamp - brass/white",
+  "sha256": "e67bce55ff78ace97add2995633418df4910d8271d6700962cf8f583d4a53d57",
+  "kb_node_id": "f48ca4ab-c096-4925-973a-f121004ea93f",
+  "content_id": "0306d371-1c3a-4d8e-8e53-73c52fb2544c",
+  "status": "complete"
+ },
+ "ikea-barlast-floor-lamp-black-white-59-70437814": {
+  "title": "IKEA 704.378.14 BARLAST Floor lamp - black/white 59 \"",
+  "sha256": "52bfadeb63f32e5141c1006c77069001c4906ee5ca087162ccd816f2dcfd4162",
+  "kb_node_id": "078daf6c-ad9c-4306-b521-5d3f12e0c64c",
+  "content_id": "8abf9c42-3444-4fde-959e-a6ab8eec1355",
+  "status": "complete"
+ },
+ "ikea-uppland-sofa-blekinge-white-19384116": {
+  "title": "IKEA 193.841.16 UPPLAND Sofa - Blekinge white",
+  "sha256": "c2c854d24fe47f90b1e0f287289c6e3ce84215ea0041956113d2a860745d3776",
+  "kb_node_id": "ac19c401-a558-4669-bc3a-5d242534112e",
+  "content_id": "98ff139d-e429-43dc-b4da-a2f521f19b4c",
+  "status": "complete"
+ },
+ "ikea-poang-armchair-birch-veneer-knisa-light-beige-59305928": {
+  "title": "IKEA 593.059.28 POÄNG Armchair - birch veneer/Knisa light beige",
+  "sha256": "82d00f5a91b5c79e125b718c320a8c59d1cdf9f4fc2b5b52d768d6153275d01b",
+  "kb_node_id": "e0d9089b-625f-4fdb-9ec7-ef89fdb080c7",
+  "content_id": "f6b0dd76-4dc4-4cc8-80e6-ccb6163bd2c8",
+  "status": "complete"
+ },
+ "ikea-billy-bookcase-white-31-1-2x11x79-1-2-20522046": {
+  "title": "IKEA 205.220.46 BILLY Bookcase - white 31 1/2x11x79 1/2 \"",
+  "sha256": "5c441b5bbb929729894fd1b6b7a0fd43ad80d9b47f5577de78fc71fbc3a26170",
+  "kb_node_id": "960e1a7b-43a9-4ad0-885d-090bb2a8da2d",
+  "content_id": "fbdd4690-3265-418b-a86d-6f0414ae91df",
+  "status": "complete"
+ },
+ "ikea-kallax-shelf-unit-white-30-1-8x57-5-8-20631663": {
+  "title": "IKEA 206.316.63 KALLAX Shelf unit - white 30 1/8x57 5/8 \"",
+  "sha256": "7b5aecdb766062ab538567a2c1897a0e98b1f3cc86d1ae35eefec3aa43cc4b47",
+  "kb_node_id": "54656f53-67a2-4e94-8583-4b955bdb0408",
+  "content_id": "949e2492-0e00-46e7-875c-a507d3475d54",
+  "status": "complete"
+ },
+ "ikea-malm-bed-frame-dark-brown-veneer-luroy-queen-49574365": {
+  "title": "IKEA 495.743.65 MALM Bed frame - dark-brown veneer/Luröy Queen",
+  "sha256": "de6255aa57c531d42f9368543327e041df400ec9010d4147842c39b34c7c545f",
+  "kb_node_id": "561f2e72-7aa3-4b91-a3ef-6dac3b37cf2d",
+  "content_id": "1581986a-7b54-4e50-af6f-7ad10af9f8f8",
+  "status": "complete"
+ },
+ "ikea-jarnvag-rug-00623466": {
+  "title": "IKEA 006.234.66 JÄRNVÄG Rug, low pile - ornament pattern beige/dark beige 7 ' 10 \"x10 '",
+  "sha256": "f40a588499e75d716e4cc18ac2466c79c35c8b1ade8d167710d0f4aba8c1ca6e",
+  "kb_node_id": "71bc9505-a6d2-4888-a07d-f92a35d8099f",
+  "content_id": "dac4b83b-c4c1-4fef-adbc-e4e01e8732c0",
+  "status": "complete"
+ },
+ "ikea-onsevig-rug-10559894": {
+  "title": "IKEA 105.598.94 ONSEVIG Rug, low pile - multicolor 7 ' 10 \"x9 ' 10 \"",
+  "sha256": "72c54d15e7ae6a2d9670344c38b71e36ce9748b30498218fdcc4974c6769b118",
+  "kb_node_id": "dc714ce0-ccd9-46f6-9086-70e5386471d4",
+  "content_id": "7468ebb6-1fb5-4959-9b19-6d0237f0992b",
+  "status": "complete"
+ },
+ "ikea-lohals-rug-00277395": {
+  "title": "IKEA 002.773.95 LOHALS Rug, flatwoven - natural 6 ' 7 \"x9 ' 10 \"",
+  "sha256": "906acd0ced441a4d156227f9054f27cadf3c93a4004b015fc593faf04f0aee21",
+  "kb_node_id": "c7e778fb-f7a3-4bf7-b58d-9498df7ad571",
+  "content_id": "fe3051cf-8307-4d5c-91c5-b29f3e1fa2d1",
+  "status": "complete"
+ },
+ "ikea-lohals-rug-50277393": {
+  "title": "IKEA 502.773.93 LOHALS Rug, flatwoven - natural 5 ' 3 \"x7 ' 7 \"",
+  "sha256": "398804d6582bcb2bbfa25ef64a450137730bb79a777abafae5a554713a6dac40",
+  "kb_node_id": "ed9b3a19-cd9f-450c-9d15-41635fbc8d75",
+  "content_id": "30e13c1a-64ae-4b0f-8907-61e9c13d05d7",
+  "status": "complete"
+ }
+}

@@ -101,6 +101,28 @@ Zero-shot by Superlinked SigLIP over the product photo, not hand-written; stored
 `sie.style_match(products, slot, emb, room=R)` per slot (1 rerank call each). Real run, 5 living-room slots from one
 IKEA room photo: 4.7 s total, detected "dark modern".
 
+### Senso knowledge base: `agent/senso_kb.py` (owner: alistair, A2) — loaded
+All 48 products are in the team's Senso org as one document each (status `complete`; ids in `data/senso_index.json`).
+Brendan's "Room Furnisher clearance rules" doc is the rules doc (not duplicated). Reload after catalog changes:
+`python3 agent/senso_kb.py load` (skips unchanged docs). Loading cost ~0 credits; each fact-check ~0.01.
+
+**Use `fit.claims.claim_text(product, fit_results)` to build the text you send to Senso.** It produces, per rule the
+item was checked against: "Under our <rule> rule, <rule text>. Our catalog lists <name>, IKEA article <n>, as <fact>."
+Live test (15:05): GLOSTAD sofa 10/10 and JÄRNVÄG rug 8/8 claims scored, all `grounded`; "Our catalog lists GLOSTAD as
+84 inches wide" → `contradicts_kb`. `claims_for(...)` gives the same as `[{"rule", "text"}]` for the audit panel.
+
+**Why that wording** (tested live, 14:50–15:05):
+- Senso's `kb_accuracy` only scores claims it reads as about our org. Bare product facts ("GLOSTAD is 70 in wide")
+  come back `about_brand: false`, **not scored** (`passed: null`, no KB search). "Our catalog lists …" and "Under our
+  … rule" are scored.
+- Always name the product with its **IKEA article number**. "KIVIK box 1 is 37.5 in wide" came back
+  `contradicts_kb` (Senso matched the *black* KIVIK); with "IKEA article 394.405.93" it's `grounded`.
+- Don't mix a fact and a rule in one sentence ("X is 70 in wide under the wall rule" → `unsupported_by_kb`).
+- Room measurements aren't in Senso, so "wider than the 30 inch door" → `unsupported_by_kb`. The fit math is the
+  authority for that; Senso verifies the spec and the rule it relies on.
+- Read `claims[].passed` (true/false/null) and `claims[].bucket` (`grounded` / `contradicts_kb` / `unsupported_by_kb`
+  / `general`) from `POST /org/evals/text {"text", "wait": true}`; evidence is in `evidence_chunks`.
+
 ### Pick one product per slot: `fit.pick.pick(options, style_match_result, budget_usd=None)` (owner: alistair) — DRAFT
 Walks Superlinked's style ranking best-first; picks the first product that fits (and is within budget). Everything
 ranked above it is rejected with the reason. Returns `{"slot", "picked": Option + style, "rejected": [...],

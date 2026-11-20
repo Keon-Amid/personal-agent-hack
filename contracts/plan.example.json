@@ -1,801 +1,1130 @@
 {
-  "fixture": true,
-  "_note": "Example Plan for the UI and tests. Fit results are real fit.options output for an exact 88 in wall; style scores, Senso check ids and why texts are illustrative, not from a live run.",
-  "plan_id": "fixture-0001",
-  "plan_url": "http://localhost:5173/plan/fixture-0001",
-  "room": {
-    "wall": {
-      "value_in": 88.0,
-      "error_in": 0.0,
-      "source": "user"
-    },
-    "depth": {
-      "value_in": 150.0,
-      "error_in": 0.0,
-      "source": "user"
-    },
-    "door_width": {
-      "value_in": 30.0,
-      "error_in": 0.0,
-      "source": "user"
-    },
-    "door_height": {
-      "value_in": 80.0,
-      "error_in": 0.0,
-      "source": "user"
-    },
-    "photo_url": null
+ "plan_id": "demo-1",
+ "generated": {
+  "at": "2026-11-20T21:59:12+00:00",
+  "by": "scripts/make_fixture.py (real run: Superlinked + fit + Senso)",
+  "note": "why lines are built from facts; the agent will write the final sentence"
+ },
+ "room": {
+  "wall": {
+   "value_in": 88.0,
+   "error_in": 4.0,
+   "source": "estimated:door"
   },
-  "style": {
-    "style_text": "warm minimal, light oak",
-    "detected_style": "scandinavian"
+  "depth": {
+   "value_in": 150.0,
+   "error_in": 6.0,
+   "source": "estimated:door"
   },
-  "items": [
-    {
-      "slot": "sofa",
-      "product_id": "ikea-glostad-sofa-knisa-dark-gray-40595942",
-      "name": "GLOSTAD Sofa - Knisa dark gray",
-      "price_usd": 199.0,
-      "dims_in": {
-        "w": 70.125,
-        "d": 30.75,
-        "h": 26.75
-      },
-      "image_url": "https://www.ikea.com/us/en/images/products/glostad-sofa-knisa-dark-gray__1234948_pe917261_s5.jpg",
-      "source_url": "https://www.ikea.com/us/en/p/glostad-sofa-knisa-dark-gray-40595942/",
-      "style": {
-        "rank": 2,
-        "fused": 0.0915,
-        "photo_score": 0.071,
-        "text_score": 0.112,
-        "product_styles": [
-          "minimal",
-          "scandinavian"
-        ]
-      },
-      "fit": {
-        "verdict": "fits",
-        "results": [
-          {
-            "check": "wall",
-            "verdict": "fits",
-            "math": "width 70.125 in ≤ 88 in (user)",
-            "need_in": 70.12,
-            "available": {
-              "value_in": 88.0,
-              "error_in": 0.0,
-              "source": "user"
-            },
-            "margin_in": 17.88
-          },
-          {
-            "check": "floor",
-            "verdict": "fits",
-            "math": "depth 30.75 in + walkway 36 in = 66.75 in ≤ 150 in (user)",
-            "need_in": 66.75,
-            "available": {
-              "value_in": 150.0,
-              "error_in": 0.0,
-              "source": "user"
-            },
-            "margin_in": 83.25
-          },
-          {
-            "check": "doorway_width",
-            "verdict": "fits",
-            "math": "box 1/1 smallest side 7.5 in ≤ 30 in (user)",
-            "need_in": 7.5,
-            "available": {
-              "value_in": 30.0,
-              "error_in": 0.0,
-              "source": "user"
-            },
-            "margin_in": 22.5
-          },
-          {
-            "check": "doorway_height",
-            "verdict": "fits",
-            "math": "box 1/1 middle side 25.5 in ≤ 80 in (user)",
-            "need_in": 25.5,
-            "available": {
-              "value_in": 80.0,
-              "error_in": 0.0,
-              "source": "user"
-            },
-            "margin_in": 54.5
-          }
-        ]
-      },
-      "senso": {
-        "check_id": "fixture-eval-1",
-        "accuracy_pct": 66.7,
-        "claims": [
-          {
-            "claim": "The sofa needs at least 36 inches of clear walkway in front of it.",
-            "verdict": "verified",
-            "quote": "Walkway: keep at least 36 inches of clear walkway in front of any item placed against a wall."
-          },
-          {
-            "claim": "The GLOSTAD Sofa - Knisa dark gray costs $199.",
-            "verdict": "verified",
-            "quote": "GLOSTAD Sofa - Knisa dark gray: price $199"
-          },
-          {
-            "claim": "The room wall is 88 inches wide.",
-            "verdict": "unsupported",
-            "quote": null
-          }
-        ]
-      },
-      "why": "GLOSTAD Sofa fits the 88 in wall with room for the 36 in walkway, and it matches the warm minimal style.",
-      "why_source": {
-        "kind": "claude"
-      },
-      "rejected": [
-        {
-          "product_id": "ikea-kivik-sofa-tibbleby-beige-gray-39440593",
-          "name": "KIVIK Sofa - Tibbleby beige/gray",
-          "status": "no_fit",
-          "why": "no_fit: width 89.75 in > 88 in (user)"
-        }
-      ]
-    },
-    {
-      "slot": "armchair",
-      "product_id": "ikea-poang-armchair-birch-veneer-knisa-light-beige-59305928",
-      "name": "POÄNG Armchair - birch veneer/Knisa light beige",
-      "price_usd": 149.0,
-      "dims_in": {
-        "w": 26.75,
-        "d": 32.25,
-        "h": 39.375
-      },
-      "image_url": "https://www.ikea.com/us/en/images/products/poaeng-armchair-birch-veneer-knisa-light-beige__0571500_pe666933_s5.jpg",
-      "source_url": "https://www.ikea.com/us/en/p/poaeng-armchair-birch-veneer-knisa-light-beige-s59305928/",
-      "style": {
-        "rank": 1,
-        "fused": 0.1015,
-        "photo_score": 0.083,
-        "text_score": 0.12,
-        "product_styles": [
-          "scandinavian",
-          "warm"
-        ]
-      },
-      "fit": {
-        "verdict": "fits",
-        "results": [
-          {
-            "check": "wall",
-            "verdict": "fits",
-            "math": "width 26.75 in ≤ 88 in (user)",
-            "need_in": 26.75,
-            "available": {
-              "value_in": 88.0,
-              "error_in": 0.0,
-              "source": "user"
-            },
-            "margin_in": 61.25
-          },
-          {
-            "check": "floor",
-            "verdict": "fits",
-            "math": "depth 32.25 in + walkway 36 in = 68.25 in ≤ 150 in (user)",
-            "need_in": 68.25,
-            "available": {
-              "value_in": 150.0,
-              "error_in": 0.0,
-              "source": "user"
-            },
-            "margin_in": 81.75
-          },
-          {
-            "check": "doorway_width",
-            "verdict": "fits",
-            "math": "box 1/2 smallest side 2.75 in ≤ 30 in (user)",
-            "need_in": 2.75,
-            "available": {
-              "value_in": 30.0,
-              "error_in": 0.0,
-              "source": "user"
-            },
-            "margin_in": 27.25
-          },
-          {
-            "check": "doorway_height",
-            "verdict": "fits",
-            "math": "box 1/2 middle side 26.25 in ≤ 80 in (user)",
-            "need_in": 26.25,
-            "available": {
-              "value_in": 80.0,
-              "error_in": 0.0,
-              "source": "user"
-            },
-            "margin_in": 53.75
-          },
-          {
-            "check": "doorway_width",
-            "verdict": "fits",
-            "math": "box 2/2 smallest side 9.75 in ≤ 30 in (user)",
-            "need_in": 9.75,
-            "available": {
-              "value_in": 30.0,
-              "error_in": 0.0,
-              "source": "user"
-            },
-            "margin_in": 20.25
-          },
-          {
-            "check": "doorway_height",
-            "verdict": "fits",
-            "math": "box 2/2 middle side 9.75 in ≤ 80 in (user)",
-            "need_in": 9.75,
-            "available": {
-              "value_in": 80.0,
-              "error_in": 0.0,
-              "source": "user"
-            },
-            "margin_in": 70.25
-          }
-        ]
-      },
-      "senso": {
-        "check_id": "fixture-eval-2",
-        "accuracy_pct": 100.0,
-        "claims": [
-          {
-            "claim": "The POÄNG Armchair - birch veneer/Knisa light beige costs $149.",
-            "verdict": "verified",
-            "quote": "POÄNG Armchair - birch veneer/Knisa light beige: price $149"
-          }
-        ]
-      },
-      "why": "POÄNG Armchair fits and matches the style at $149.",
-      "why_source": {
-        "kind": "claude"
-      },
-      "rejected": []
-    },
-    {
-      "slot": "coffee_table",
-      "product_id": "ikea-lack-coffee-table-black-brown-46-1-2x30-3-4-00104291",
-      "name": "LACK Coffee table - black-brown 46 1/2x30 3/4 \"",
-      "price_usd": 49.99,
-      "dims_in": {
-        "w": 30.75,
-        "d": 46.5,
-        "h": 17.75
-      },
-      "image_url": "https://www.ikea.com/us/en/images/products/lack-coffee-table-black-brown__57537_pe163119_s5.jpg",
-      "source_url": "https://www.ikea.com/us/en/p/lack-coffee-table-black-brown-00104291/",
-      "style": {
-        "rank": 1,
-        "fused": 0.081,
-        "photo_score": 0.064,
-        "text_score": 0.098,
-        "product_styles": [
-          "minimal"
-        ]
-      },
-      "fit": {
-        "verdict": "fits",
-        "results": [
-          {
-            "check": "wall",
-            "verdict": "fits",
-            "math": "width 30.75 in ≤ 88 in (user)",
-            "need_in": 30.75,
-            "available": {
-              "value_in": 88.0,
-              "error_in": 0.0,
-              "source": "user"
-            },
-            "margin_in": 57.25
-          },
-          {
-            "check": "floor",
-            "verdict": "fits",
-            "math": "depth 46.5 in + walkway 36 in = 82.5 in ≤ 150 in (user)",
-            "need_in": 82.5,
-            "available": {
-              "value_in": 150.0,
-              "error_in": 0.0,
-              "source": "user"
-            },
-            "margin_in": 67.5
-          },
-          {
-            "check": "doorway_width",
-            "verdict": "fits",
-            "math": "box 1/1 smallest side 2.75 in ≤ 30 in (user)",
-            "need_in": 2.75,
-            "available": {
-              "value_in": 30.0,
-              "error_in": 0.0,
-              "source": "user"
-            },
-            "margin_in": 27.25
-          },
-          {
-            "check": "doorway_height",
-            "verdict": "fits",
-            "math": "box 1/1 middle side 31.25 in ≤ 80 in (user)",
-            "need_in": 31.25,
-            "available": {
-              "value_in": 80.0,
-              "error_in": 0.0,
-              "source": "user"
-            },
-            "margin_in": 48.75
-          }
-        ]
-      },
-      "senso": {
-        "check_id": "fixture-eval-3",
-        "accuracy_pct": 100.0,
-        "claims": [
-          {
-            "claim": "The LACK Coffee table - black-brown 46 1/2x30 3/4 \" costs $49.99.",
-            "verdict": "verified",
-            "quote": "LACK Coffee table - black-brown 46 1/2x30 3/4 \": price $49.99"
-          }
-        ]
-      },
-      "why": "LACK Coffee table fits and matches the style at $49.99.",
-      "why_source": {
-        "kind": "claude"
-      },
-      "rejected": []
-    },
-    {
-      "slot": "rug",
-      "product_id": "ikea-lohals-rug-50277393",
-      "name": "LOHALS Rug, flatwoven - natural 5 ' 3 \"x7 ' 7 \"",
-      "price_usd": 129.99,
-      "dims_in": {
-        "w": 63.0,
-        "d": 91.0,
-        "h": 0.5
-      },
-      "image_url": "https://www.ikea.com/us/en/images/products/lohals-rug-flatwoven-natural__0280221_pe419173_s5.jpg",
-      "source_url": "https://www.ikea.com/us/en/p/lohals-rug-flatwoven-natural-50277393/",
-      "style": {
-        "rank": 2,
-        "fused": 0.087,
-        "photo_score": 0.069,
-        "text_score": 0.105,
-        "product_styles": [
-          "natural",
-          "boho"
-        ]
-      },
-      "fit": {
-        "verdict": "fits",
-        "results": [
-          {
-            "check": "rug_width",
-            "verdict": "fits",
-            "math": "rug 63 in + 2 x 6 in margin = 75 in ≤ 88 in (user)",
-            "need_in": 75.0,
-            "available": {
-              "value_in": 88.0,
-              "error_in": 0.0,
-              "source": "user"
-            },
-            "margin_in": 13.0
-          },
-          {
-            "check": "rug_depth",
-            "verdict": "fits",
-            "math": "rug 91 in + 2 x 6 in margin = 103 in ≤ 150 in (user)",
-            "need_in": 103.0,
-            "available": {
-              "value_in": 150.0,
-              "error_in": 0.0,
-              "source": "user"
-            },
-            "margin_in": 47.0
-          },
-          {
-            "check": "doorway_width",
-            "verdict": "fits",
-            "math": "box 1/1 smallest side 7 in ≤ 30 in (user)",
-            "need_in": 7.0,
-            "available": {
-              "value_in": 30.0,
-              "error_in": 0.0,
-              "source": "user"
-            },
-            "margin_in": 23.0
-          },
-          {
-            "check": "doorway_height",
-            "verdict": "fits",
-            "math": "box 1/1 middle side 7 in ≤ 80 in (user)",
-            "need_in": 7.0,
-            "available": {
-              "value_in": 80.0,
-              "error_in": 0.0,
-              "source": "user"
-            },
-            "margin_in": 73.0
-          }
-        ]
-      },
-      "senso": {
-        "check_id": "fixture-eval-4",
-        "accuracy_pct": 100.0,
-        "claims": [
-          {
-            "claim": "The LOHALS Rug, flatwoven - natural 5 ' 3 \"x7 ' 7 \" costs $129.99.",
-            "verdict": "verified",
-            "quote": "LOHALS Rug, flatwoven - natural 5 ' 3 \"x7 ' 7 \": price $129.99"
-          }
-        ]
-      },
-      "why": "LOHALS Rug, flatwoven fits and matches the style at $129.99.",
-      "why_source": {
-        "kind": "claude"
-      },
-      "rejected": [
-        {
-          "product_id": "ikea-lohals-rug-00277395",
-          "name": "LOHALS Rug, flatwoven - natural 6 ' 7 \"x9 ' 10 \"",
-          "status": "no_fit",
-          "why": "no_fit: rug 79 in + 2 x 6 in margin = 91 in > 88 in (user)"
-        }
-      ]
-    },
-    {
-      "slot": "floor_lamp",
-      "product_id": "ikea-arstid-floor-lamp-brass-white-60321324",
-      "name": "ÅRSTID Floor lamp - brass/white",
-      "price_usd": 89.99,
-      "dims_in": {
-        "w": 14.0,
-        "d": 14.0,
-        "h": 61.0
-      },
-      "image_url": "https://www.ikea.com/us/en/images/products/arstid-floor-lamp-brass-white__0390610_pe566328_s5.jpg",
-      "source_url": "https://www.ikea.com/us/en/p/arstid-floor-lamp-brass-white-60321324/",
-      "style": {
-        "rank": 1,
-        "fused": 0.097,
-        "photo_score": 0.077,
-        "text_score": 0.117,
-        "product_styles": [
-          "mid-century",
-          "warm"
-        ]
-      },
-      "fit": {
-        "verdict": "fits",
-        "results": [
-          {
-            "check": "wall",
-            "verdict": "fits",
-            "math": "width 14 in ≤ 88 in (user)",
-            "need_in": 14.0,
-            "available": {
-              "value_in": 88.0,
-              "error_in": 0.0,
-              "source": "user"
-            },
-            "margin_in": 74.0
-          },
-          {
-            "check": "floor",
-            "verdict": "fits",
-            "math": "depth 14 in + walkway 36 in = 50 in ≤ 150 in (user)",
-            "need_in": 50.0,
-            "available": {
-              "value_in": 150.0,
-              "error_in": 0.0,
-              "source": "user"
-            },
-            "margin_in": 100.0
-          },
-          {
-            "check": "doorway_width",
-            "verdict": "fits",
-            "math": "box 1/1 smallest side 14.75 in ≤ 30 in (user)",
-            "need_in": 14.75,
-            "available": {
-              "value_in": 30.0,
-              "error_in": 0.0,
-              "source": "user"
-            },
-            "margin_in": 15.25
-          },
-          {
-            "check": "doorway_height",
-            "verdict": "fits",
-            "math": "box 1/1 middle side 14.75 in ≤ 80 in (user)",
-            "need_in": 14.75,
-            "available": {
-              "value_in": 80.0,
-              "error_in": 0.0,
-              "source": "user"
-            },
-            "margin_in": 65.25
-          }
-        ]
-      },
-      "senso": {
-        "check_id": "fixture-eval-5",
-        "accuracy_pct": 100.0,
-        "claims": [
-          {
-            "claim": "The ÅRSTID Floor lamp - brass/white costs $89.99.",
-            "verdict": "verified",
-            "quote": "ÅRSTID Floor lamp - brass/white: price $89.99"
-          }
-        ]
-      },
-      "why": "ÅRSTID Floor lamp fits and matches the style at $89.99.",
-      "why_source": {
-        "kind": "claude"
-      },
-      "rejected": []
-    }
-  ],
-  "cart": {
-    "items": [
-      {
-        "product_id": "ikea-glostad-sofa-knisa-dark-gray-40595942",
-        "name": "GLOSTAD Sofa - Knisa dark gray",
-        "price_usd": 199.0,
-        "source_url": "https://www.ikea.com/us/en/p/glostad-sofa-knisa-dark-gray-40595942/"
-      },
-      {
-        "product_id": "ikea-poang-armchair-birch-veneer-knisa-light-beige-59305928",
-        "name": "POÄNG Armchair - birch veneer/Knisa light beige",
-        "price_usd": 149.0,
-        "source_url": "https://www.ikea.com/us/en/p/poaeng-armchair-birch-veneer-knisa-light-beige-s59305928/"
-      },
-      {
-        "product_id": "ikea-lack-coffee-table-black-brown-46-1-2x30-3-4-00104291",
-        "name": "LACK Coffee table - black-brown 46 1/2x30 3/4 \"",
-        "price_usd": 49.99,
-        "source_url": "https://www.ikea.com/us/en/p/lack-coffee-table-black-brown-00104291/"
-      },
-      {
-        "product_id": "ikea-lohals-rug-50277393",
-        "name": "LOHALS Rug, flatwoven - natural 5 ' 3 \"x7 ' 7 \"",
-        "price_usd": 129.99,
-        "source_url": "https://www.ikea.com/us/en/p/lohals-rug-flatwoven-natural-50277393/"
-      },
-      {
-        "product_id": "ikea-arstid-floor-lamp-brass-white-60321324",
-        "name": "ÅRSTID Floor lamp - brass/white",
-        "price_usd": 89.99,
-        "source_url": "https://www.ikea.com/us/en/p/arstid-floor-lamp-brass-white-60321324/"
-      }
-    ],
-    "total_usd": 617.97,
-    "delivery_note": "IKEA home delivery from $29",
-    "no_purchase": true
+  "door_width": {
+   "value_in": 30.0,
+   "error_in": 0.0,
+   "source": "user"
   },
-  "audit": [
-    {
-      "ts": "2026-11-20T21:30:00Z",
-      "step": "estimate_room",
-      "input": {
-        "wall": 88,
-        "depth": 150,
-        "door_width": 30,
-        "door_height": 80
-      },
-      "source": {
-        "kind": "template",
-        "measured_by": "user"
-      },
-      "decision": "measurements set",
-      "why": "The person typed exact measurements (source user, error 0)."
-    },
-    {
-      "ts": "2026-11-20T21:30:00Z",
-      "step": "pick",
-      "item_slot": "sofa",
-      "product_id": "ikea-kivik-sofa-tibbleby-beige-gray-39440593",
-      "source": {
-        "kind": "fit"
-      },
-      "decision": "rejected",
-      "status": "no_fit",
-      "why": "style #1; no_fit: width 89.75 in > 88 in (user)"
-    },
-    {
-      "ts": "2026-11-20T21:30:00Z",
-      "step": "pick",
-      "item_slot": "sofa",
-      "product_id": "ikea-glostad-sofa-knisa-dark-gray-40595942",
-      "source": {
-        "kind": "superlinked",
-        "url": "https://www.ikea.com/us/en/p/glostad-sofa-knisa-dark-gray-40595942/"
-      },
-      "decision": "picked",
-      "status": "fits",
-      "why": "style #2; fits; $199, 4.0★ (90 reviews)"
-    },
-    {
-      "ts": "2026-11-20T21:30:00Z",
-      "step": "senso_check",
-      "item_slot": "sofa",
-      "product_id": "ikea-glostad-sofa-knisa-dark-gray-40595942",
-      "source": {
-        "kind": "senso",
-        "check_id": "fixture-eval-1"
-      },
-      "decision": "verified",
-      "why": "2 verified, 0 conflict"
-    },
-    {
-      "ts": "2026-11-20T21:30:00Z",
-      "step": "cart",
-      "item_slot": "sofa",
-      "product_id": "ikea-glostad-sofa-knisa-dark-gray-40595942",
-      "source": {
-        "kind": "claude"
-      },
-      "decision": "added",
-      "why": "GLOSTAD Sofa fits the 88 in wall with room for the 36 in walkway, and it matches the warm minimal style."
-    },
-    {
-      "ts": "2026-11-20T21:30:00Z",
-      "step": "pick",
-      "item_slot": "armchair",
-      "product_id": "ikea-poang-armchair-birch-veneer-knisa-light-beige-59305928",
-      "source": {
-        "kind": "superlinked",
-        "url": "https://www.ikea.com/us/en/p/poaeng-armchair-birch-veneer-knisa-light-beige-s59305928/"
-      },
-      "decision": "picked",
-      "status": "fits",
-      "why": "style #1; fits; $149, 4.5★ (1369 reviews)"
-    },
-    {
-      "ts": "2026-11-20T21:30:00Z",
-      "step": "senso_check",
-      "item_slot": "armchair",
-      "product_id": "ikea-poang-armchair-birch-veneer-knisa-light-beige-59305928",
-      "source": {
-        "kind": "senso",
-        "check_id": "fixture-eval-2"
-      },
-      "decision": "verified",
-      "why": "1 verified, 0 conflict"
-    },
-    {
-      "ts": "2026-11-20T21:30:00Z",
-      "step": "cart",
-      "item_slot": "armchair",
-      "product_id": "ikea-poang-armchair-birch-veneer-knisa-light-beige-59305928",
-      "source": {
-        "kind": "claude"
-      },
-      "decision": "added",
-      "why": "POÄNG Armchair fits and matches the style at $149."
-    },
-    {
-      "ts": "2026-11-20T21:30:00Z",
-      "step": "pick",
-      "item_slot": "coffee_table",
-      "product_id": "ikea-lack-coffee-table-black-brown-46-1-2x30-3-4-00104291",
-      "source": {
-        "kind": "superlinked",
-        "url": "https://www.ikea.com/us/en/p/lack-coffee-table-black-brown-00104291/"
-      },
-      "decision": "picked",
-      "status": "fits",
-      "why": "style #1; fits; $49.99, 4.5★ (1201 reviews)"
-    },
-    {
-      "ts": "2026-11-20T21:30:00Z",
-      "step": "senso_check",
-      "item_slot": "coffee_table",
-      "product_id": "ikea-lack-coffee-table-black-brown-46-1-2x30-3-4-00104291",
-      "source": {
-        "kind": "senso",
-        "check_id": "fixture-eval-3"
-      },
-      "decision": "verified",
-      "why": "1 verified, 0 conflict"
-    },
-    {
-      "ts": "2026-11-20T21:30:00Z",
-      "step": "cart",
-      "item_slot": "coffee_table",
-      "product_id": "ikea-lack-coffee-table-black-brown-46-1-2x30-3-4-00104291",
-      "source": {
-        "kind": "claude"
-      },
-      "decision": "added",
-      "why": "LACK Coffee table fits and matches the style at $49.99."
-    },
-    {
-      "ts": "2026-11-20T21:30:00Z",
-      "step": "pick",
-      "item_slot": "rug",
-      "product_id": "ikea-lohals-rug-00277395",
-      "source": {
-        "kind": "fit"
-      },
-      "decision": "rejected",
-      "status": "no_fit",
-      "why": "style #1; no_fit: rug 79 in + 2 x 6 in margin = 91 in > 88 in (user)"
-    },
-    {
-      "ts": "2026-11-20T21:30:00Z",
-      "step": "pick",
-      "item_slot": "rug",
-      "product_id": "ikea-lohals-rug-50277393",
-      "source": {
-        "kind": "superlinked",
-        "url": "https://www.ikea.com/us/en/p/lohals-rug-flatwoven-natural-50277393/"
-      },
-      "decision": "picked",
-      "status": "fits",
-      "why": "style #2; fits; $129.99, 4.5★ (2629 reviews)"
-    },
-    {
-      "ts": "2026-11-20T21:30:00Z",
-      "step": "senso_check",
-      "item_slot": "rug",
-      "product_id": "ikea-lohals-rug-50277393",
-      "source": {
-        "kind": "senso",
-        "check_id": "fixture-eval-4"
-      },
-      "decision": "verified",
-      "why": "1 verified, 0 conflict"
-    },
-    {
-      "ts": "2026-11-20T21:30:00Z",
-      "step": "cart",
-      "item_slot": "rug",
-      "product_id": "ikea-lohals-rug-50277393",
-      "source": {
-        "kind": "claude"
-      },
-      "decision": "added",
-      "why": "LOHALS Rug, flatwoven fits and matches the style at $129.99."
-    },
-    {
-      "ts": "2026-11-20T21:30:00Z",
-      "step": "pick",
-      "item_slot": "floor_lamp",
-      "product_id": "ikea-arstid-floor-lamp-brass-white-60321324",
-      "source": {
-        "kind": "superlinked",
-        "url": "https://www.ikea.com/us/en/p/arstid-floor-lamp-brass-white-60321324/"
-      },
-      "decision": "picked",
-      "status": "fits",
-      "why": "style #1; fits; $89.99, 4.7★ (1532 reviews)"
-    },
-    {
-      "ts": "2026-11-20T21:30:00Z",
-      "step": "senso_check",
-      "item_slot": "floor_lamp",
-      "product_id": "ikea-arstid-floor-lamp-brass-white-60321324",
-      "source": {
-        "kind": "senso",
-        "check_id": "fixture-eval-5"
-      },
-      "decision": "verified",
-      "why": "1 verified, 0 conflict"
-    },
-    {
-      "ts": "2026-11-20T21:30:00Z",
-      "step": "cart",
-      "item_slot": "floor_lamp",
-      "product_id": "ikea-arstid-floor-lamp-brass-white-60321324",
-      "source": {
-        "kind": "claude"
-      },
-      "decision": "added",
-      "why": "ÅRSTID Floor lamp fits and matches the style at $89.99."
-    }
+  "door_height": {
+   "value_in": 80.0,
+   "error_in": 0.0,
+   "source": "user"
+  },
+  "photo_url": "https://www.ikea.com/us/en/images/products/kivik-sofa-tibbleby-beige-gray__1399650_ph191619_s5.jpg",
+  "detected_style": [
+   {
+    "style": "dark modern",
+    "score": 0.1244
+   },
+   {
+    "style": "traditional",
+    "score": 0.1105
+   },
+   {
+    "style": "scandinavian",
+    "score": 0.0996
+   }
   ]
+ },
+ "items": [
+  {
+   "slot": "sofa",
+   "product_id": "ikea-glostad-sofa-knisa-dark-gray-40595942",
+   "name": "GLOSTAD Sofa - Knisa dark gray",
+   "price_usd": 199.0,
+   "dims_in": {
+    "w": 70.125,
+    "d": 30.75,
+    "h": 26.75
+   },
+   "image_url": "https://www.ikea.com/us/en/images/products/glostad-sofa-knisa-dark-gray__1234948_pe917261_s5.jpg",
+   "source_url": "https://www.ikea.com/us/en/p/glostad-sofa-knisa-dark-gray-40595942/",
+   "style": {
+    "rank": 2,
+    "photo_score": 0.6257,
+    "text_score": 0.0323,
+    "labels": [
+     {
+      "style": "dark modern",
+      "score": 0.093
+     },
+     {
+      "style": "scandinavian",
+      "score": 0.0783
+     },
+     {
+      "style": "warm minimal",
+      "score": 0.0767
+     }
+    ]
+   },
+   "fit": {
+    "verdict": "fits",
+    "results": [
+     {
+      "check": "wall",
+      "verdict": "fits",
+      "math": "width 70.125 in ≤ 88 in ±4 (estimated:door)",
+      "need_in": 70.12,
+      "available": {
+       "value_in": 88.0,
+       "error_in": 4.0,
+       "source": "estimated:door"
+      },
+      "margin_in": 17.88
+     },
+     {
+      "check": "floor",
+      "verdict": "fits",
+      "math": "depth 30.75 in + walkway 36 in = 66.75 in ≤ 150 in ±6 (estimated:door)",
+      "need_in": 66.75,
+      "available": {
+       "value_in": 150.0,
+       "error_in": 6.0,
+       "source": "estimated:door"
+      },
+      "margin_in": 83.25
+     },
+     {
+      "check": "doorway_width",
+      "verdict": "fits",
+      "math": "box 1/1 smallest side 7.5 in ≤ 30 in (user)",
+      "need_in": 7.5,
+      "available": {
+       "value_in": 30.0,
+       "error_in": 0.0,
+       "source": "user"
+      },
+      "margin_in": 22.5
+     },
+     {
+      "check": "doorway_height",
+      "verdict": "fits",
+      "math": "box 1/1 middle side 25.5 in ≤ 80 in (user)",
+      "need_in": 25.5,
+      "available": {
+       "value_in": 80.0,
+       "error_in": 0.0,
+       "source": "user"
+      },
+      "margin_in": 54.5
+     }
+    ]
+   },
+   "senso": {
+    "check_id": "c64724e7-d75b-409e-b309-84cd80358a46",
+    "scored": 10,
+    "total": 10,
+    "claims": [
+     {
+      "claim": "Brendan's Org's wall-fit rule requires a piece placed against a wall to be no wider than that wall.",
+      "verdict": "verified",
+      "bucket": "grounded"
+     },
+     {
+      "claim": "Brendan's Org's catalog lists the GLOSTAD Sofa - Knisa dark gray, IKEA article 405.959.42, as 70.125 inches wide.",
+      "verdict": "verified",
+      "bucket": "grounded"
+     },
+     {
+      "claim": "Brendan's Org's walkway rule requires at least 36 inches of clear walkway in front of any furniture placed against a wall.",
+      "verdict": "verified",
+      "bucket": "grounded"
+     },
+     {
+      "claim": "Brendan's Org's catalog lists the GLOSTAD Sofa - Knisa dark gray, IKEA article 405.959.42, as 30.75 inches deep.",
+      "verdict": "verified",
+      "bucket": "grounded"
+     },
+     {
+      "claim": "Brendan's Org's doorway rule requires every shipping box (package) to fit through the room's doorway.",
+      "verdict": "verified",
+      "bucket": "grounded"
+     },
+     {
+      "claim": "Brendan's Org's catalog lists the GLOSTAD Sofa - Knisa dark gray, IKEA article 405.959.42, as shipping in 1 box(es).",
+      "verdict": "verified",
+      "bucket": "grounded"
+     },
+     {
+      "claim": "Brendan's Org's catalog lists box 1 for the GLOSTAD Sofa - Knisa dark gray, IKEA article 405.959.42, as 25.5 inches wide.",
+      "verdict": "verified",
+      "bucket": "grounded"
+     },
+     {
+      "claim": "Brendan's Org's catalog lists box 1 for the GLOSTAD Sofa - Knisa dark gray, IKEA article 405.959.42, as 68.75 inches long.",
+      "verdict": "verified",
+      "bucket": "grounded"
+     },
+     {
+      "claim": "Brendan's Org's catalog lists box 1 for the GLOSTAD Sofa - Knisa dark gray, IKEA article 405.959.42, as 7.5 inches high.",
+      "verdict": "verified",
+      "bucket": "grounded"
+     },
+     {
+      "claim": "Brendan's Org's catalog lists the GLOSTAD Sofa - Knisa dark gray, IKEA article 405.959.42, at $199 on the IKEA US page.",
+      "verdict": "verified",
+      "bucket": "grounded"
+     }
+    ],
+    "quote": "GLOSTAD Sofa - Knisa dark gray (IKEA article 405.959.42).\nCategory: sofa.\nSize: width 70.125 in, depth 30.75 in, height 26.75 in.\nShips in 1 package(s): box 1: 25.5 in wide x 68.75 in long x 7.5 in high.\nPrice on the IKEA US page on 2026-11-20: $199.\nIKEA customer rating: 4 out of 5 from 90 reviews."
+   },
+   "why": "style #2 of 7 (photo #2 0.626, text #2 0.032); fits; best value",
+   "rejected": [
+    {
+     "product_id": "ikea-kivik-sofa-grann-bomstad-black-80519531",
+     "name": "KIVIK Sofa - Grann/Bomstad black",
+     "status": "unsure",
+     "why": "unsure: width 89.375 in ≈ 88 in ±4 (estimated:door)"
+    }
+   ]
+  },
+  {
+   "slot": "armchair",
+   "product_id": "ikea-gryteryd-recliner-rocker-armchair-hakebo-beige-20613904",
+   "name": "GRYTERYD Recliner rocker armchair - Hakebo beige",
+   "price_usd": 399.0,
+   "dims_in": {
+    "w": 29.875,
+    "d": 37.0,
+    "h": 40.5
+   },
+   "image_url": "https://www.ikea.com/us/en/images/products/gryteryd-recliner-rocker-armchair-hakebo-beige__1426044_pe979668_s5.jpg",
+   "source_url": "https://www.ikea.com/us/en/p/gryteryd-recliner-rocker-armchair-hakebo-beige-20613904/",
+   "style": {
+    "rank": 3,
+    "photo_score": 0.6149,
+    "text_score": 0.0013,
+    "labels": [
+     {
+      "style": "warm minimal",
+      "score": 0.0661
+     },
+     {
+      "style": "traditional",
+      "score": 0.0571
+     },
+     {
+      "style": "scandinavian",
+      "score": 0.057
+     }
+    ]
+   },
+   "fit": {
+    "verdict": "fits",
+    "results": [
+     {
+      "check": "wall",
+      "verdict": "fits",
+      "math": "width 29.875 in ≤ 88 in ±4 (estimated:door)",
+      "need_in": 29.88,
+      "available": {
+       "value_in": 88.0,
+       "error_in": 4.0,
+       "source": "estimated:door"
+      },
+      "margin_in": 58.12
+     },
+     {
+      "check": "floor",
+      "verdict": "fits",
+      "math": "depth 37 in + walkway 36 in = 73 in ≤ 150 in ±6 (estimated:door)",
+      "need_in": 73.0,
+      "available": {
+       "value_in": 150.0,
+       "error_in": 6.0,
+       "source": "estimated:door"
+      },
+      "margin_in": 77.0
+     },
+     {
+      "check": "doorway_width",
+      "verdict": "fits",
+      "math": "box 1/1 smallest side 28.25 in ≤ 30 in (user)",
+      "need_in": 28.25,
+      "available": {
+       "value_in": 30.0,
+       "error_in": 0.0,
+       "source": "user"
+      },
+      "margin_in": 1.75
+     },
+     {
+      "check": "doorway_height",
+      "verdict": "fits",
+      "math": "box 1/1 middle side 31 in ≤ 80 in (user)",
+      "need_in": 31.0,
+      "available": {
+       "value_in": 80.0,
+       "error_in": 0.0,
+       "source": "user"
+      },
+      "margin_in": 49.0
+     }
+    ]
+   },
+   "senso": {
+    "check_id": "741837e5-6e9a-4dce-a97e-cf9d6e66cf96",
+    "scored": 10,
+    "total": 10,
+    "claims": [
+     {
+      "claim": "Brendan's Org's wall-fit rule requires a piece placed against a wall to be no wider than that wall.",
+      "verdict": "verified",
+      "bucket": "grounded"
+     },
+     {
+      "claim": "Brendan's Org's catalog lists the GRYTERYD Recliner rocker armchair - Hakebo beige, IKEA article 206.139.04, as 29.875 inches wide.",
+      "verdict": "verified",
+      "bucket": "grounded"
+     },
+     {
+      "claim": "Brendan's Org's walkway rule requires at least 36 inches of clear walkway in front of any furniture placed against a wall.",
+      "verdict": "verified",
+      "bucket": "grounded"
+     },
+     {
+      "claim": "Brendan's Org's catalog lists the GRYTERYD Recliner rocker armchair - Hakebo beige, IKEA article 206.139.04, as 37 inches deep.",
+      "verdict": "verified",
+      "bucket": "grounded"
+     },
+     {
+      "claim": "Brendan's Org's doorway rule requires every shipping box (package) to fit through the room's doorway.",
+      "verdict": "verified",
+      "bucket": "grounded"
+     },
+     {
+      "claim": "Brendan's Org's catalog lists the GRYTERYD Recliner rocker armchair - Hakebo beige, IKEA article 206.139.04, as shipping in 1 box(es).",
+      "verdict": "verified",
+      "bucket": "grounded"
+     },
+     {
+      "claim": "Brendan's Org's catalog lists box 1 for the GRYTERYD Recliner rocker armchair - Hakebo beige, IKEA article 206.139.04, as 31 inches wide.",
+      "verdict": "verified",
+      "bucket": "grounded"
+     },
+     {
+      "claim": "Brendan's Org's catalog lists box 1 for the GRYTERYD Recliner rocker armchair - Hakebo beige, IKEA article 206.139.04, as 33.75 inches long.",
+      "verdict": "verified",
+      "bucket": "grounded"
+     },
+     {
+      "claim": "Brendan's Org's catalog lists box 1 for the GRYTERYD Recliner rocker armchair - Hakebo beige, IKEA article 206.139.04, as 28.25 inches high.",
+      "verdict": "verified",
+      "bucket": "grounded"
+     },
+     {
+      "claim": "Brendan's Org's catalog lists the GRYTERYD Recliner rocker armchair - Hakebo beige, IKEA article 206.139.04, at $399 on the IKEA US page.",
+      "verdict": "verified",
+      "bucket": "grounded"
+     }
+    ],
+    "quote": "GRYTERYD Recliner rocker armchair - Hakebo beige (IKEA article 206.139.04).\nCategory: armchair.\nSize: width 29.875 in, depth 37 in, height 40.5 in.\nShips in 1 package(s): box 1: 31 in wide x 33.75 in long x 28.25 in high.\nPrice on the IKEA US page on 2026-11-20: $399.\nColor: beige.\nMaterial: Fabric,"
+   },
+   "why": "style #3 of 4 (photo #3 0.615, text #2 0.001); fits; not the best value",
+   "rejected": [
+    {
+     "product_id": "ikea-ekenaset-armchair-jonsbyn-black-80539015",
+     "name": "EKENÄSET Armchair - Jonsbyn black",
+     "status": "rejected",
+     "why": "no price on the IKEA page"
+    },
+    {
+     "product_id": "ikea-arnasvall-recliner-rocker-and-swivel-armchair-hakebo-beige-50613912",
+     "name": "ARNÄSVALL Recliner rocker and swivel armchair - Hakebo beige",
+     "status": "no_fit",
+     "why": "no_fit: box 1/1 smallest side 32.5 in > 30 in (user)"
+    }
+   ]
+  },
+  {
+   "slot": "coffee_table",
+   "product_id": "ikea-ostavall-adjustable-coffee-table-black-35-3-8-40534152",
+   "name": "ÖSTAVALL Adjustable coffee table - black 35 3/8 \"",
+   "price_usd": 199.99,
+   "dims_in": {
+    "w": 24.75,
+    "d": 35.375,
+    "h": 24.75
+   },
+   "image_url": "https://www.ikea.com/us/en/images/products/oestavall-adjustable-coffee-table-black__1213707_pe911231_s5.jpg",
+   "source_url": "https://www.ikea.com/us/en/p/oestavall-adjustable-coffee-table-black-40534152/",
+   "style": {
+    "rank": 1,
+    "photo_score": 0.629,
+    "text_score": 0.0473,
+    "labels": [
+     {
+      "style": "dark modern",
+      "score": 0.1042
+     },
+     {
+      "style": "scandinavian",
+      "score": 0.071
+     },
+     {
+      "style": "industrial",
+      "score": 0.0643
+     }
+    ]
+   },
+   "fit": {
+    "verdict": "fits",
+    "results": [
+     {
+      "check": "wall",
+      "verdict": "fits",
+      "math": "width 24.75 in ≤ 88 in ±4 (estimated:door)",
+      "need_in": 24.75,
+      "available": {
+       "value_in": 88.0,
+       "error_in": 4.0,
+       "source": "estimated:door"
+      },
+      "margin_in": 63.25
+     },
+     {
+      "check": "floor",
+      "verdict": "fits",
+      "math": "depth 35.375 in + walkway 36 in = 71.375 in ≤ 150 in ±6 (estimated:door)",
+      "need_in": 71.38,
+      "available": {
+       "value_in": 150.0,
+       "error_in": 6.0,
+       "source": "estimated:door"
+      },
+      "margin_in": 78.62
+     },
+     {
+      "check": "doorway_width",
+      "verdict": "fits",
+      "math": "box 1/2 smallest side 2.5 in ≤ 30 in (user)",
+      "need_in": 2.5,
+      "available": {
+       "value_in": 30.0,
+       "error_in": 0.0,
+       "source": "user"
+      },
+      "margin_in": 27.5
+     },
+     {
+      "check": "doorway_height",
+      "verdict": "fits",
+      "math": "box 1/2 middle side 25.25 in ≤ 80 in (user)",
+      "need_in": 25.25,
+      "available": {
+       "value_in": 80.0,
+       "error_in": 0.0,
+       "source": "user"
+      },
+      "margin_in": 54.75
+     },
+     {
+      "check": "doorway_width",
+      "verdict": "fits",
+      "math": "box 2/2 smallest side 1.75 in ≤ 30 in (user)",
+      "need_in": 1.75,
+      "available": {
+       "value_in": 30.0,
+       "error_in": 0.0,
+       "source": "user"
+      },
+      "margin_in": 28.25
+     },
+     {
+      "check": "doorway_height",
+      "verdict": "fits",
+      "math": "box 2/2 middle side 28.25 in ≤ 80 in (user)",
+      "need_in": 28.25,
+      "available": {
+       "value_in": 80.0,
+       "error_in": 0.0,
+       "source": "user"
+      },
+      "margin_in": 51.75
+     }
+    ]
+   },
+   "senso": {
+    "check_id": "c4ff1a86-18b7-4c2d-83e3-0924117d30e6",
+    "scored": 13,
+    "total": 13,
+    "claims": [
+     {
+      "claim": "Brendan's Org's wall-fit rule requires a piece placed against a wall to be no wider than that wall.",
+      "verdict": "verified",
+      "bucket": "grounded"
+     },
+     {
+      "claim": "Brendan's Org's catalog lists the ÖSTAVALL Adjustable coffee table - black 35 3/8 \", IKEA article 405.341.52, as 24.75 inches wide.",
+      "verdict": "verified",
+      "bucket": "grounded"
+     },
+     {
+      "claim": "Brendan's Org's walkway rule requires at least 36 inches of clear walkway in front of any furniture placed against a wall.",
+      "verdict": "verified",
+      "bucket": "grounded"
+     },
+     {
+      "claim": "Brendan's Org's catalog lists the ÖSTAVALL Adjustable coffee table - black 35 3/8 \", IKEA article 405.341.52, as 35.375 inches deep.",
+      "verdict": "verified",
+      "bucket": "grounded"
+     },
+     {
+      "claim": "Brendan's Org's doorway rule requires every shipping box (package) to fit through the room's doorway.",
+      "verdict": "verified",
+      "bucket": "grounded"
+     },
+     {
+      "claim": "Brendan's Org's catalog lists the ÖSTAVALL Adjustable coffee table - black 35 3/8 \", IKEA article 405.341.52, as shipping in 2 box(es).",
+      "verdict": "verified",
+      "bucket": "grounded"
+     },
+     {
+      "claim": "Brendan's Org's catalog lists box 1 for the ÖSTAVALL Adjustable coffee table - black 35 3/8 \", IKEA article 405.341.52, as 25.25 inches wide.",
+      "verdict": "verified",
+      "bucket": "grounded"
+     },
+     {
+      "claim": "Brendan's Org's catalog lists box 1 for the ÖSTAVALL Adjustable coffee table - black 35 3/8 \", IKEA article 405.341.52, as 35.75 inches long.",
+      "verdict": "verified",
+      "bucket": "grounded"
+     },
+     {
+      "claim": "Brendan's Org's catalog lists box 1 for the ÖSTAVALL Adjustable coffee table - black 35 3/8 \", IKEA article 405.341.52, as 2.5 inches high.",
+      "verdict": "verified",
+      "bucket": "grounded"
+     },
+     {
+      "claim": "Brendan's Org's catalog lists box 2 for the ÖSTAVALL Adjustable coffee table - black 35 3/8 \", IKEA article 405.341.52, as 28.25 inches wide.",
+      "verdict": "verified",
+      "bucket": "grounded"
+     },
+     {
+      "claim": "Brendan's Org's catalog lists box 2 for the ÖSTAVALL Adjustable coffee table - black 35 3/8 \", IKEA article 405.341.52, as 37.25 inches long.",
+      "verdict": "verified",
+      "bucket": "grounded"
+     },
+     {
+      "claim": "Brendan's Org's catalog lists box 2 for the ÖSTAVALL Adjustable coffee table - black 35 3/8 \", IKEA article 405.341.52, as 1.75 inches high.",
+      "verdict": "verified",
+      "bucket": "grounded"
+     },
+     {
+      "claim": "Brendan's Org's catalog lists the ÖSTAVALL Adjustable coffee table - black 35 3/8 \", IKEA article 405.341.52, at $199.99 on the IKEA US page.",
+      "verdict": "verified",
+      "bucket": "grounded"
+     }
+    ],
+    "quote": "# Room Furnisher clearance rules\n\nThese are the house rules the Room Furnisher agent applies to every item before it goes in the cart. They are our chosen defaults.\n\n- Walkway: keep at least 36 inches of clear walkway in front of any furniture placed against a wall.\n- Wall fit: a piece placed agains"
+   },
+   "why": "style #1 of 4 (photo #2 0.629, text #1 0.047); fits; not the best value",
+   "rejected": []
+  },
+  {
+   "slot": "rug",
+   "product_id": "ikea-lohals-rug-50277393",
+   "name": "LOHALS Rug, flatwoven - natural 5 ' 3 \"x7 ' 7 \"",
+   "price_usd": 129.99,
+   "dims_in": {
+    "w": 63.0,
+    "d": 91.0,
+    "h": 0.5
+   },
+   "image_url": "https://www.ikea.com/us/en/images/products/lohals-rug-flatwoven-natural__0280221_pe419173_s5.jpg",
+   "source_url": "https://www.ikea.com/us/en/p/lohals-rug-flatwoven-natural-50277393/",
+   "style": {
+    "rank": 2,
+    "photo_score": 0.5596,
+    "text_score": 0.0013,
+    "labels": [
+     {
+      "style": "warm minimal",
+      "score": 0.0583
+     },
+     {
+      "style": "coastal",
+      "score": 0.0465
+     },
+     {
+      "style": "traditional",
+      "score": 0.0342
+     }
+    ]
+   },
+   "fit": {
+    "verdict": "fits",
+    "results": [
+     {
+      "check": "rug_width",
+      "verdict": "fits",
+      "math": "rug 63 in + 2 x 6 in margin = 75 in ≤ 88 in ±4 (estimated:door)",
+      "need_in": 75.0,
+      "available": {
+       "value_in": 88.0,
+       "error_in": 4.0,
+       "source": "estimated:door"
+      },
+      "margin_in": 13.0
+     },
+     {
+      "check": "rug_depth",
+      "verdict": "fits",
+      "math": "rug 91 in + 2 x 6 in margin = 103 in ≤ 150 in ±6 (estimated:door)",
+      "need_in": 103.0,
+      "available": {
+       "value_in": 150.0,
+       "error_in": 6.0,
+       "source": "estimated:door"
+      },
+      "margin_in": 47.0
+     },
+     {
+      "check": "doorway_width",
+      "verdict": "fits",
+      "math": "box 1/1 smallest side 7 in ≤ 30 in (user)",
+      "need_in": 7.0,
+      "available": {
+       "value_in": 30.0,
+       "error_in": 0.0,
+       "source": "user"
+      },
+      "margin_in": 23.0
+     },
+     {
+      "check": "doorway_height",
+      "verdict": "fits",
+      "math": "box 1/1 middle side 7 in ≤ 80 in (user)",
+      "need_in": 7.0,
+      "available": {
+       "value_in": 80.0,
+       "error_in": 0.0,
+       "source": "user"
+      },
+      "margin_in": 73.0
+     }
+    ]
+   },
+   "senso": {
+    "check_id": "ea6a182a-ffe5-4431-b706-9991a1381809",
+    "scored": 8,
+    "total": 8,
+    "claims": [
+     {
+      "claim": "Brendan's Org's rug rule requires a rug to be kept at least 6 inches from every wall.",
+      "verdict": "verified",
+      "bucket": "grounded"
+     },
+     {
+      "claim": "The LOHALS Rug, flatwoven - natural 5 ' 3 \"x7 ' 7 \", IKEA article 502.773.93, is listed as 63 inches wide.",
+      "verdict": "verified",
+      "bucket": "grounded"
+     },
+     {
+      "claim": "The LOHALS Rug, flatwoven - natural 5 ' 3 \"x7 ' 7 \", IKEA article 502.773.93, is listed as 91 inches long.",
+      "verdict": "verified",
+      "bucket": "grounded"
+     },
+     {
+      "claim": "Brendan's Org's doorway rule requires every shipping box (package) to fit through the room's doorway.",
+      "verdict": "verified",
+      "bucket": "grounded"
+     },
+     {
+      "claim": "The LOHALS Rug, flatwoven - natural 5 ' 3 \"x7 ' 7 \", IKEA article 502.773.93, is listed as shipping in 1 box.",
+      "verdict": "verified",
+      "bucket": "grounded"
+     },
+     {
+      "claim": "The LOHALS Rug, flatwoven - natural 5 ' 3 \"x7 ' 7 \", IKEA article 502.773.93, shipping box 1 is listed as 7 inches wide.",
+      "verdict": "verified",
+      "bucket": "grounded"
+     },
+     {
+      "claim": "The LOHALS Rug, flatwoven - natural 5 ' 3 \"x7 ' 7 \", IKEA article 502.773.93, shipping box 1 is listed as 64.25 inches long.",
+      "verdict": "verified",
+      "bucket": "grounded"
+     },
+     {
+      "claim": "The LOHALS Rug, flatwoven - natural 5 ' 3 \"x7 ' 7 \", IKEA article 502.773.93, is listed at $129.99 on the IKEA US page.",
+      "verdict": "verified",
+      "bucket": "grounded"
+     }
+    ],
+    "quote": "LOHALS Rug, flatwoven - natural 5 ' 3 \"x7 ' 7 \" (IKEA article 502.773.93).\nCategory: rug.\nSize: width 63 in, depth 91 in, height 0.5 in.\nShips in 1 package(s): box 1: 7 in wide x 64.25 in long x 7 in high.\nPrice on the IKEA US page on 2026-11-20: $129.99.\nIKEA customer rating: 4.5 out of 5 from 2629"
+   },
+   "why": "style #2 of 7 (photo #2 0.560, text #4 0.001); fits; best value",
+   "rejected": [
+    {
+     "product_id": "ikea-lohals-rug-00277395",
+     "name": "LOHALS Rug, flatwoven - natural 6 ' 7 \"x9 ' 10 \"",
+     "status": "unsure",
+     "why": "unsure: rug 79 in + 2 x 6 in margin = 91 in ≈ 88 in ±4 (estimated:door)"
+    }
+   ]
+  },
+  {
+   "slot": "floor_lamp",
+   "product_id": "ikea-barlast-floor-lamp-black-white-59-70437814",
+   "name": "BARLAST Floor lamp - black/white 59 \"",
+   "price_usd": 9.99,
+   "dims_in": {
+    "w": 13.0,
+    "d": 13.0,
+    "h": 59.0
+   },
+   "image_url": "https://www.ikea.com/us/en/images/products/barlast-floor-lamp-black-white__0957676_pe805130_s5.jpg",
+   "source_url": "https://www.ikea.com/us/en/p/barlast-floor-lamp-black-white-70437814/",
+   "style": {
+    "rank": 1,
+    "photo_score": 0.589,
+    "text_score": 0.0134,
+    "labels": [
+     {
+      "style": "warm minimal",
+      "score": 0.0493
+     },
+     {
+      "style": "scandinavian",
+      "score": 0.0481
+     },
+     {
+      "style": "dark modern",
+      "score": 0.0411
+     }
+    ]
+   },
+   "fit": {
+    "verdict": "fits",
+    "results": [
+     {
+      "check": "wall",
+      "verdict": "fits",
+      "math": "width 13 in ≤ 88 in ±4 (estimated:door)",
+      "need_in": 13.0,
+      "available": {
+       "value_in": 88.0,
+       "error_in": 4.0,
+       "source": "estimated:door"
+      },
+      "margin_in": 75.0
+     },
+     {
+      "check": "floor",
+      "verdict": "fits",
+      "math": "depth 13 in + walkway 36 in = 49 in ≤ 150 in ±6 (estimated:door)",
+      "need_in": 49.0,
+      "available": {
+       "value_in": 150.0,
+       "error_in": 6.0,
+       "source": "estimated:door"
+      },
+      "margin_in": 101.0
+     },
+     {
+      "check": "doorway_width",
+      "verdict": "fits",
+      "math": "box 1/1 smallest side 3 in ≤ 30 in (user)",
+      "need_in": 3.0,
+      "available": {
+       "value_in": 30.0,
+       "error_in": 0.0,
+       "source": "user"
+      },
+      "margin_in": 27.0
+     },
+     {
+      "check": "doorway_height",
+      "verdict": "fits",
+      "math": "box 1/1 middle side 3 in ≤ 80 in (user)",
+      "need_in": 3.0,
+      "available": {
+       "value_in": 80.0,
+       "error_in": 0.0,
+       "source": "user"
+      },
+      "margin_in": 77.0
+     }
+    ]
+   },
+   "senso": {
+    "check_id": "6128321d-c251-4012-bd5f-6876b0e4d8cb",
+    "scored": 9,
+    "total": 9,
+    "claims": [
+     {
+      "claim": "Brendan's Org's wall-fit rule requires a piece placed against a wall to be no wider than that wall.",
+      "verdict": "verified",
+      "bucket": "grounded"
+     },
+     {
+      "claim": "Brendan's Org's catalog lists the BARLAST Floor lamp - black/white 59 \", IKEA article 704.378.14, as 13 inches wide.",
+      "verdict": "verified",
+      "bucket": "grounded"
+     },
+     {
+      "claim": "Brendan's Org's walkway rule requires at least 36 inches of clear walkway in front of any furniture placed against a wall.",
+      "verdict": "verified",
+      "bucket": "grounded"
+     },
+     {
+      "claim": "Brendan's Org's catalog lists the BARLAST Floor lamp - black/white 59 \", IKEA article 704.378.14, as 13 inches deep.",
+      "verdict": "verified",
+      "bucket": "grounded"
+     },
+     {
+      "claim": "Brendan's Org's doorway rule requires every shipping box (package) to fit through the room's doorway.",
+      "verdict": "verified",
+      "bucket": "grounded"
+     },
+     {
+      "claim": "Brendan's Org's catalog lists the BARLAST Floor lamp - black/white 59 \", IKEA article 704.378.14, as shipping in 1 box(es).",
+      "verdict": "verified",
+      "bucket": "grounded"
+     },
+     {
+      "claim": "Brendan's Org's catalog lists box 1 for the BARLAST Floor lamp - black/white 59 \", IKEA article 704.378.14, as 3 inches wide.",
+      "verdict": "verified",
+      "bucket": "grounded"
+     },
+     {
+      "claim": "Brendan's Org's catalog lists box 1 for the BARLAST Floor lamp - black/white 59 \", IKEA article 704.378.14, as 14.25 inches long.",
+      "verdict": "verified",
+      "bucket": "grounded"
+     },
+     {
+      "claim": "Brendan's Org's catalog lists the BARLAST Floor lamp - black/white 59 \", IKEA article 704.378.14, at $9.99 on the IKEA US page.",
+      "verdict": "verified",
+      "bucket": "grounded"
+     }
+    ],
+    "quote": "BARLAST Floor lamp - black/white 59 \" (IKEA article 704.378.14).\nCategory: floor lamp.\nSize: width 13 in, depth 13 in, height 59 in.\nShips in 1 package(s): box 1: 3 in wide x 14.25 in long x 3 in high.\nPrice on the IKEA US page on 2026-11-20: $9.99.\nIKEA customer rating: 3.7 out of 5 from 1212 revie"
+   },
+   "why": "style #1 of 3 (photo #2 0.589, text #1 0.013); fits; best value",
+   "rejected": []
+  }
+ ],
+ "cart": {
+  "total_usd": 937.97,
+  "delivery_note": "IKEA home delivery from $29 ($19 with IKEA Family); no delivery date available",
+  "no_purchase": true
+ },
+ "audit": [
+  {
+   "step": "rank",
+   "item_slot": "sofa",
+   "input": "dark modern style living room",
+   "source": {
+    "kind": "superlinked",
+    "embed_model": "google/siglip-so400m-patch14-384",
+    "rerank_model": "Qwen/Qwen3-Reranker-4B",
+    "fusion": "reciprocal rank fusion, k=60",
+    "detected_style": {
+     "style": "dark modern",
+     "score": 0.1244
+    }
+   },
+   "decision": "ranked",
+   "why": "7 sofa products ranked by style",
+   "ts": "2026-11-20T21:59:12+00:00"
+  },
+  {
+   "step": "pick",
+   "item_slot": "sofa",
+   "product_id": "ikea-kivik-sofa-grann-bomstad-black-80519531",
+   "source": {
+    "kind": "superlinked",
+    "embed_model": "google/siglip-so400m-patch14-384",
+    "rerank_model": "Qwen/Qwen3-Reranker-4B",
+    "fusion": "reciprocal rank fusion, k=60"
+   },
+   "decision": "rejected",
+   "status": "unsure",
+   "why": "style #1 of 7 (photo #1 0.639, text #3 0.004); unsure: width 89.375 in ≈ 88 in ±4 (estimated:door)",
+   "ts": "2026-11-20T21:59:12+00:00"
+  },
+  {
+   "step": "pick",
+   "item_slot": "sofa",
+   "product_id": "ikea-glostad-sofa-knisa-dark-gray-40595942",
+   "source": {
+    "kind": "superlinked",
+    "embed_model": "google/siglip-so400m-patch14-384",
+    "rerank_model": "Qwen/Qwen3-Reranker-4B",
+    "fusion": "reciprocal rank fusion, k=60",
+    "url": "https://www.ikea.com/us/en/p/glostad-sofa-knisa-dark-gray-40595942/"
+   },
+   "decision": "picked",
+   "status": "fits",
+   "why": "style #2 of 7 (photo #2 0.626, text #2 0.032); fits; $199, 4.0★ (90 reviews), best value",
+   "ts": "2026-11-20T21:59:12+00:00"
+  },
+  {
+   "step": "senso_check",
+   "item_slot": "sofa",
+   "product_id": "ikea-glostad-sofa-knisa-dark-gray-40595942",
+   "source": {
+    "kind": "senso",
+    "senso_check_id": "c64724e7-d75b-409e-b309-84cd80358a46",
+    "passage": "GLOSTAD Sofa - Knisa dark gray (IKEA article 405.959.42).\nCategory: sofa.\nSize: width 70.125 in, depth 30.75 in, height 26.75 in.\nShips in 1 package(s): box 1: 25.5 in wide x 68.75 in long x 7.5 in high.\nPrice on the IKEA US page on 2026-11-20: $199.\nIKEA customer rating: 4 out of 5 from 90 reviews."
+   },
+   "decision": "picked",
+   "status": "verified",
+   "why": "Senso: 10 of 10 claims verified",
+   "ts": "2026-11-20T21:59:12+00:00"
+  },
+  {
+   "step": "rank",
+   "item_slot": "armchair",
+   "input": "dark modern style living room",
+   "source": {
+    "kind": "superlinked",
+    "embed_model": "google/siglip-so400m-patch14-384",
+    "rerank_model": "Qwen/Qwen3-Reranker-4B",
+    "fusion": "reciprocal rank fusion, k=60",
+    "detected_style": {
+     "style": "dark modern",
+     "score": 0.1244
+    }
+   },
+   "decision": "ranked",
+   "why": "4 armchair products ranked by style",
+   "ts": "2026-11-20T21:59:12+00:00"
+  },
+  {
+   "step": "pick",
+   "item_slot": "armchair",
+   "product_id": "ikea-ekenaset-armchair-jonsbyn-black-80539015",
+   "source": {
+    "kind": "superlinked",
+    "embed_model": "google/siglip-so400m-patch14-384",
+    "rerank_model": "Qwen/Qwen3-Reranker-4B",
+    "fusion": "reciprocal rank fusion, k=60"
+   },
+   "decision": "rejected",
+   "status": "rejected",
+   "why": "style #1 of 4 (photo #2 0.625, text #1 0.004); no price on the IKEA page",
+   "ts": "2026-11-20T21:59:12+00:00"
+  },
+  {
+   "step": "pick",
+   "item_slot": "armchair",
+   "product_id": "ikea-arnasvall-recliner-rocker-and-swivel-armchair-hakebo-beige-50613912",
+   "source": {
+    "kind": "superlinked",
+    "embed_model": "google/siglip-so400m-patch14-384",
+    "rerank_model": "Qwen/Qwen3-Reranker-4B",
+    "fusion": "reciprocal rank fusion, k=60"
+   },
+   "decision": "rejected",
+   "status": "no_fit",
+   "why": "style #2 of 4 (photo #1 0.628, text #4 0.000); no_fit: box 1/1 smallest side 32.5 in > 30 in (user)",
+   "ts": "2026-11-20T21:59:12+00:00"
+  },
+  {
+   "step": "pick",
+   "item_slot": "armchair",
+   "product_id": "ikea-gryteryd-recliner-rocker-armchair-hakebo-beige-20613904",
+   "source": {
+    "kind": "superlinked",
+    "embed_model": "google/siglip-so400m-patch14-384",
+    "rerank_model": "Qwen/Qwen3-Reranker-4B",
+    "fusion": "reciprocal rank fusion, k=60",
+    "url": "https://www.ikea.com/us/en/p/gryteryd-recliner-rocker-armchair-hakebo-beige-20613904/"
+   },
+   "decision": "picked",
+   "status": "fits",
+   "why": "style #3 of 4 (photo #3 0.615, text #2 0.001); fits; $399, None★ (0 reviews), not the best value",
+   "ts": "2026-11-20T21:59:12+00:00"
+  },
+  {
+   "step": "senso_check",
+   "item_slot": "armchair",
+   "product_id": "ikea-gryteryd-recliner-rocker-armchair-hakebo-beige-20613904",
+   "source": {
+    "kind": "senso",
+    "senso_check_id": "741837e5-6e9a-4dce-a97e-cf9d6e66cf96",
+    "passage": "GRYTERYD Recliner rocker armchair - Hakebo beige (IKEA article 206.139.04).\nCategory: armchair.\nSize: width 29.875 in, depth 37 in, height 40.5 in.\nShips in 1 package(s): box 1: 31 in wide x 33.75 in long x 28.25 in high.\nPrice on the IKEA US page on 2026-11-20: $399.\nColor: beige.\nMaterial: Fabric,"
+   },
+   "decision": "picked",
+   "status": "verified",
+   "why": "Senso: 10 of 10 claims verified",
+   "ts": "2026-11-20T21:59:12+00:00"
+  },
+  {
+   "step": "rank",
+   "item_slot": "coffee_table",
+   "input": "dark modern style living room",
+   "source": {
+    "kind": "superlinked",
+    "embed_model": "google/siglip-so400m-patch14-384",
+    "rerank_model": "Qwen/Qwen3-Reranker-4B",
+    "fusion": "reciprocal rank fusion, k=60",
+    "detected_style": {
+     "style": "dark modern",
+     "score": 0.1244
+    }
+   },
+   "decision": "ranked",
+   "why": "4 coffee_table products ranked by style",
+   "ts": "2026-11-20T21:59:12+00:00"
+  },
+  {
+   "step": "pick",
+   "item_slot": "coffee_table",
+   "product_id": "ikea-ostavall-adjustable-coffee-table-black-35-3-8-40534152",
+   "source": {
+    "kind": "superlinked",
+    "embed_model": "google/siglip-so400m-patch14-384",
+    "rerank_model": "Qwen/Qwen3-Reranker-4B",
+    "fusion": "reciprocal rank fusion, k=60",
+    "url": "https://www.ikea.com/us/en/p/oestavall-adjustable-coffee-table-black-40534152/"
+   },
+   "decision": "picked",
+   "status": "fits",
+   "why": "style #1 of 4 (photo #2 0.629, text #1 0.047); fits; $199.99, 4.0★ (275 reviews), not the best value",
+   "ts": "2026-11-20T21:59:12+00:00"
+  },
+  {
+   "step": "senso_check",
+   "item_slot": "coffee_table",
+   "product_id": "ikea-ostavall-adjustable-coffee-table-black-35-3-8-40534152",
+   "source": {
+    "kind": "senso",
+    "senso_check_id": "c4ff1a86-18b7-4c2d-83e3-0924117d30e6",
+    "passage": "# Room Furnisher clearance rules\n\nThese are the house rules the Room Furnisher agent applies to every item before it goes in the cart. They are our chosen defaults.\n\n- Walkway: keep at least 36 inches of clear walkway in front of any furniture placed against a wall.\n- Wall fit: a piece placed agains"
+   },
+   "decision": "picked",
+   "status": "verified",
+   "why": "Senso: 13 of 13 claims verified",
+   "ts": "2026-11-20T21:59:12+00:00"
+  },
+  {
+   "step": "rank",
+   "item_slot": "rug",
+   "input": "dark modern style living room",
+   "source": {
+    "kind": "superlinked",
+    "embed_model": "google/siglip-so400m-patch14-384",
+    "rerank_model": "Qwen/Qwen3-Reranker-4B",
+    "fusion": "reciprocal rank fusion, k=60",
+    "detected_style": {
+     "style": "dark modern",
+     "score": 0.1244
+    }
+   },
+   "decision": "ranked",
+   "why": "7 rug products ranked by style",
+   "ts": "2026-11-20T21:59:12+00:00"
+  },
+  {
+   "step": "pick",
+   "item_slot": "rug",
+   "product_id": "ikea-lohals-rug-00277395",
+   "source": {
+    "kind": "superlinked",
+    "embed_model": "google/siglip-so400m-patch14-384",
+    "rerank_model": "Qwen/Qwen3-Reranker-4B",
+    "fusion": "reciprocal rank fusion, k=60"
+   },
+   "decision": "rejected",
+   "status": "unsure",
+   "why": "style #1 of 7 (photo #1 0.587, text #1 0.006); unsure: rug 79 in + 2 x 6 in margin = 91 in ≈ 88 in ±4 (estimated:door)",
+   "ts": "2026-11-20T21:59:12+00:00"
+  },
+  {
+   "step": "pick",
+   "item_slot": "rug",
+   "product_id": "ikea-lohals-rug-50277393",
+   "source": {
+    "kind": "superlinked",
+    "embed_model": "google/siglip-so400m-patch14-384",
+    "rerank_model": "Qwen/Qwen3-Reranker-4B",
+    "fusion": "reciprocal rank fusion, k=60",
+    "url": "https://www.ikea.com/us/en/p/lohals-rug-flatwoven-natural-50277393/"
+   },
+   "decision": "picked",
+   "status": "fits",
+   "why": "style #2 of 7 (photo #2 0.560, text #4 0.001); fits; $129.99, 4.5★ (2629 reviews), best value",
+   "ts": "2026-11-20T21:59:12+00:00"
+  },
+  {
+   "step": "senso_check",
+   "item_slot": "rug",
+   "product_id": "ikea-lohals-rug-50277393",
+   "source": {
+    "kind": "senso",
+    "senso_check_id": "ea6a182a-ffe5-4431-b706-9991a1381809",
+    "passage": "LOHALS Rug, flatwoven - natural 5 ' 3 \"x7 ' 7 \" (IKEA article 502.773.93).\nCategory: rug.\nSize: width 63 in, depth 91 in, height 0.5 in.\nShips in 1 package(s): box 1: 7 in wide x 64.25 in long x 7 in high.\nPrice on the IKEA US page on 2026-11-20: $129.99.\nIKEA customer rating: 4.5 out of 5 from 2629"
+   },
+   "decision": "picked",
+   "status": "verified",
+   "why": "Senso: 8 of 8 claims verified",
+   "ts": "2026-11-20T21:59:12+00:00"
+  },
+  {
+   "step": "rank",
+   "item_slot": "floor_lamp",
+   "input": "dark modern style living room",
+   "source": {
+    "kind": "superlinked",
+    "embed_model": "google/siglip-so400m-patch14-384",
+    "rerank_model": "Qwen/Qwen3-Reranker-4B",
+    "fusion": "reciprocal rank fusion, k=60",
+    "detected_style": {
+     "style": "dark modern",
+     "score": 0.1244
+    }
+   },
+   "decision": "ranked",
+   "why": "3 floor_lamp products ranked by style",
+   "ts": "2026-11-20T21:59:12+00:00"
+  },
+  {
+   "step": "pick",
+   "item_slot": "floor_lamp",
+   "product_id": "ikea-barlast-floor-lamp-black-white-59-70437814",
+   "source": {
+    "kind": "superlinked",
+    "embed_model": "google/siglip-so400m-patch14-384",
+    "rerank_model": "Qwen/Qwen3-Reranker-4B",
+    "fusion": "reciprocal rank fusion, k=60",
+    "url": "https://www.ikea.com/us/en/p/barlast-floor-lamp-black-white-70437814/"
+   },
+   "decision": "picked",
+   "status": "fits",
+   "why": "style #1 of 3 (photo #2 0.589, text #1 0.013); fits; $9.99, 3.7★ (1212 reviews), best value",
+   "ts": "2026-11-20T21:59:12+00:00"
+  },
+  {
+   "step": "senso_check",
+   "item_slot": "floor_lamp",
+   "product_id": "ikea-barlast-floor-lamp-black-white-59-70437814",
+   "source": {
+    "kind": "senso",
+    "senso_check_id": "6128321d-c251-4012-bd5f-6876b0e4d8cb",
+    "passage": "BARLAST Floor lamp - black/white 59 \" (IKEA article 704.378.14).\nCategory: floor lamp.\nSize: width 13 in, depth 13 in, height 59 in.\nShips in 1 package(s): box 1: 3 in wide x 14.25 in long x 3 in high.\nPrice on the IKEA US page on 2026-11-20: $9.99.\nIKEA customer rating: 3.7 out of 5 from 1212 revie"
+   },
+   "decision": "picked",
+   "status": "verified",
+   "why": "Senso: 9 of 9 claims verified",
+   "ts": "2026-11-20T21:59:12+00:00"
+  }
+ ]
 }
