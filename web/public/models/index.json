@@ -119,5 +119,148 @@
    0.97
   ],
   "bytes": 891708
+ },
+ "ikea-lauters-floor-lamp-ash-white-00405048": {
+  "file": "ikea-lauters-floor-lamp-ash-white-00405048.glb",
+  "source": "AI-generated from the IKEA photo (Hyper3D Rodin Gen-2.5-Low)",
+  "rot_y_deg": 0,
+  "stretch_w_d_h": [
+   0.99,
+   1.08,
+   0.93
+  ],
+  "bytes": 609724
+ },
+ "ikea-torsjo-coffee-table-gold-effect-glass-34-5-8-50590406": {
+  "file": "ikea-torsjo-coffee-table-gold-effect-glass-34-5-8-50590406.glb",
+  "source": "AI-generated from the IKEA photo (Hyper3D Rodin Gen-2.5-Low)",
+  "rot_y_deg": 0,
+  "stretch_w_d_h": [
+   1.03,
+   1.03,
+   0.94
+  ],
+  "bytes": 667072
+ },
+ "ikea-persbol-armchair-birch-tibbleby-beige-gray-20525926": {
+  "file": "ikea-persbol-armchair-birch-tibbleby-beige-gray-20525926.glb",
+  "source": "AI-generated from the IKEA photo (Hyper3D Rodin Gen-2.5-Low)",
+  "rot_y_deg": 0,
+  "stretch_w_d_h": [
+   0.96,
+   1.14,
+   0.91
+  ],
+  "bytes": 949700
+ },
+ "ikea-morabo-armchair-gunnared-dark-gray-metal-79318307": {
+  "file": "ikea-morabo-armchair-gunnared-dark-gray-metal-79318307.glb",
+  "source": "AI-generated from the IKEA photo (Hyper3D Rodin Gen-2.5-Low)",
+  "rot_y_deg": 0,
+  "stretch_w_d_h": [
+   1.02,
+   1.0,
+   0.98
+  ],
+  "bytes": 903280
+ },
+ "ikea-herrakra-armchair-diserod-dark-yellow-40535547": {
+  "file": "ikea-herrakra-armchair-diserod-dark-yellow-40535547.glb",
+  "source": "AI-generated from the IKEA photo (Hyper3D Rodin Gen-2.5-Low)",
+  "rot_y_deg": 0,
+  "stretch_w_d_h": [
+   0.97,
+   1.07,
+   0.96
+  ],
+  "bytes": 846544
+ },
+ "ikea-ugglerum-coffee-table-walnut-veneer-51-1-8x25-5-8-60627980": {
+  "file": "ikea-ugglerum-coffee-table-walnut-veneer-51-1-8x25-5-8-60627980.glb",
+  "source": "AI-generated from the IKEA photo (Hyper3D Rodin Gen-2.5-Low)",
+  "rot_y_deg": 90,
+  "stretch_w_d_h": [
+   1.01,
+   1.01,
+   0.98
+  ],
+  "bytes": 694676
+ },
+ "ikea-flyghojd-floor-lamp-brass-beige-70524444": {
+  "file": "ikea-flyghojd-floor-lamp-brass-beige-70524444.glb",
+  "source": "AI-generated from the IKEA photo (Hyper3D Rodin Gen-2.5-Low)",
+  "rot_y_deg": 0,
+  "stretch_w_d_h": [
+   1.16,
+   0.76,
+   1.14
+  ],
+  "bytes": 505980
+ },
+ "ikea-saltsjobaden-armchair-blekinge-white-39622710": {
+  "file": "ikea-saltsjobaden-armchair-blekinge-white-39622710.glb",
+  "source": "AI-generated from the IKEA photo (Hyper3D Rodin Gen-2.5-Low)",
+  "rot_y_deg": 90,
+  "stretch_w_d_h": [
+   1.03,
+   1.0,
+   0.97
+  ],
+  "bytes": 899412
+ },
+ "ikea-evedal-floor-lamp-marble-gray-60357916": {
+  "file": "ikea-evedal-floor-lamp-marble-gray-60357916.glb",
+  "source": "AI-generated from the IKEA photo (Hyper3D Rodin Gen-2.5-Low)",
+  "rot_y_deg": 0,
+  "stretch_w_d_h": [
+   1.32,
+   0.62,
+   1.22
+  ],
+  "bytes": 583980
+ },
+ "ikea-stockholm-2025-coffee-table-oak-veneer-glass-20586552": {
+  "file": "ikea-stockholm-2025-coffee-table-oak-veneer-glass-20586552.glb",
+  "source": "AI-generated from the IKEA photo (Hyper3D Rodin Gen-2.5-Low)",
+  "rot_y_deg": 0,
+  "stretch_w_d_h": [
+   0.98,
+   0.96,
+   1.06
+  ],
+  "bytes": 663152
+ },
+ "ikea-uppland-sofa-blekinge-white-19384116": {
+  "file": "ikea-uppland-sofa-blekinge-white-19384116.glb",
+  "source": "AI-generated from the IKEA photo (Hyper3D Rodin Gen-2.5-Low)",
+  "rot_y_deg": 0,
+  "stretch_w_d_h": [
+   1.1,
+   0.95,
+   0.96
+  ],
+  "bytes": 995556
+ },
+ "ikea-morabo-sofa-grann-bomstad-black-metal-09316670": {
+  "file": "ikea-morabo-sofa-grann-bomstad-black-metal-09316670.glb",
+  "source": "AI-generated from the IKEA photo (Hyper3D Rodin Gen-2.5-Low)",
+  "rot_y_deg": 0,
+  "stretch_w_d_h": [
+   1.03,
+   1.02,
+   0.95
+  ],
+  "bytes": 889864
+ },
+ "ikea-ringsta-skaftet-floor-lamp-white-nickel-plated-59387448": {
+  "file": "ikea-ringsta-skaftet-floor-lamp-white-nickel-plated-59387448.glb",
+  "source": "AI-generated from the IKEA photo (Hyper3D Rodin Gen-2.5-Low)",
+  "rot_y_deg": 0,
+  "stretch_w_d_h": [
+   1.09,
+   0.57,
+   1.62
+  ],
+  "bytes": 487484
  }
 }

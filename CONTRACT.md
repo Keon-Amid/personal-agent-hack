@@ -140,6 +140,11 @@ Senso's fact-check (brendan) runs on the picked item's claim after this.
 ### Agent: `agent/` (owner: brendan) — DRAFT, confirm
 One backend, two front doors. The tools enforce the rules; the model only orders and explains them.
 - **Web app (kyle wraps this):** `agent.agent.run_agent(room_input, photo_b64=None, style_text=None, budget_usd=None, on_event=None, budget_total_usd=None) -> Plan`.
+- **Arcee (optional, alistair; brendan OK'd):** `agent/arcee.py`. With `ARCEE_WHY_MODEL` set (e.g. `zai-org/glm-5.3-flash`),
+  `run_agent` ends by having Arcee write an alternative one-line why per item from the tools' facts only; Claude's why stays
+  the item's `why`; Arcee's goes in `item["why_alternatives"]` and the audit (`source.kind "arcee"`, model, cost_usd,
+  latency_ms, tokens, reasoning). `python3 -m agent.arcee pareto <plan>` → `contracts/arcee_pareto.json`: on plan.live.json
+  glm-5.3-flash was the frontier ($0.00023/item, 2.4 s, no invented numbers in 5/5) vs kimi-k3 $0.0083/item, 9.1 s.
 - **Budget is enforced by the tools (alistair, touched):** `set_budget(plan_id, total_usd=None, per_item_usd=None)` (also
   `create_plan(total_usd, per_item_usd)` in the MCP server; `run_agent` stores `budget_usd` as per-item and
   `budget_total_usd` as total) puts `plan["budget"] = {"total_usd", "per_item_usd"}` on the plan. `pick`/`swap` cap
