@@ -131,13 +131,24 @@ export function layoutDetail(room: RoomModel, items: PlanItem[]): LayoutDetail {
   let anchorRect: Rect | null = null
   let lampRect: Rect | null = null
 
+  // The lamp stands against the sofa's wall, past the sofa's end. If the room corner is close, tuck it into
+  // the corner (between the sofa's end and the side wall) so it never reads as standing in the walkway.
   const lampBeside = (f: (typeof frames)[number], s: number, a: { w: number; d: number }, side: number): Rect | null => {
     if (!lamp) return null
     const l = dims(lamp)
-    const along = s + side * (a.w / 2 + 3 + l.w / 2)
-    const c = add(add(f.w.a, f.t, along), f.n, inset + l.d / 2 + 2)
-    const r: Rect = { cx: c[0], cz: c[1], hw: l.w / 2, hd: l.d / 2, rot: rotOf(f.n) }
-    return inRoom(r, 0) && clear(r) ? r : null
+    const L = Math.hypot(f.w.b[0] - f.w.a[0], f.w.b[1] - f.w.a[1])
+    const end = s + side * (a.w / 2) // the sofa's end on this side, along the wall
+    const cornerAt = side > 0 ? L - inset - 2 - l.w / 2 : inset + 2 + l.w / 2
+    const besideAt = end + side * (3 + l.w / 2)
+    const gap = side > 0 ? L - inset - end : end - inset
+    const spots = gap <= 44 ? [cornerAt, besideAt] : [besideAt]
+    for (const along of spots) {
+      if (side > 0 ? along < besideAt - 0.01 : along > besideAt + 0.01) continue // would overlap the sofa
+      const c = add(add(f.w.a, f.t, along), f.n, inset + l.d / 2 + 2)
+      const r: Rect = { cx: c[0], cz: c[1], hw: l.w / 2, hd: l.d / 2, rot: rotOf(f.n) }
+      if (inRoom(r, 0) && clear(r)) return r
+    }
+    return null
   }
 
   if (anchor) {

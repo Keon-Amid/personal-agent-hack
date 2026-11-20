@@ -205,12 +205,18 @@ function Rig({ shell, layout, hero, plan }: { shell: Shell; layout: LayoutDetail
     const pl = selected ? layout.placements[selected] : undefined
     const item = selected ? plan?.items.find((i) => i.slot === selected) : undefined
     if (pl && item) {
-      const big = Math.max(item.dims_in.w, item.dims_in.d, item.dims_in.h ?? 0) * IN
+      // ease toward the piece, but keep about half the room in frame around it
       const room = pose(useApp.getState().camera)
       const roomDist = room.pos.distanceTo(room.tgt)
-      const dist = Math.min(roomDist * 0.93, Math.max(8.6, big * 5.2))
-      c.moveTo(pl.x_in * IN, Math.min(((item.dims_in.h ?? 20) * IN) / 2, 0.6), pl.z_in * IN, !STILL)
-      c.dollyTo(dist, !STILL)
+      const k = 0.6
+      const y = Math.min(((item.dims_in.h ?? 20) * IN) / 2, 0.6)
+      c.moveTo(
+        room.tgt.x + (pl.x_in * IN - room.tgt.x) * k,
+        room.tgt.y + (y - room.tgt.y) * k,
+        room.tgt.z + (pl.z_in * IN - room.tgt.z) * k,
+        !STILL,
+      )
+      c.dollyTo(roomDist * 0.94, !STILL)
       focused.current = true
     } else if (focused.current) {
       const room = pose(useApp.getState().camera)
