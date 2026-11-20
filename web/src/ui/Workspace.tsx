@@ -2,9 +2,9 @@ import { useEffect } from 'react'
 import { AnimatePresence, MotionConfig } from 'motion/react'
 import { useParams, useSearchParams } from 'react-router'
 import RoomScene from '../scene/RoomScene'
-import { demoRoomForPlan, planById } from '../data'
+import { demoRoomForPlan, demoRooms, planById } from '../data'
 import { placedItems, useApp } from '../store'
-import { startRun } from '../run'
+import { openServerPlan, startRun, watchServer } from '../run'
 import TopBar from './TopBar'
 import Ledger from './Ledger'
 import Inspector from './Inspector'
@@ -23,6 +23,18 @@ function useDeepLink() {
   const [q] = useSearchParams()
   useEffect(() => {
     const plan = id ? planById[id] : undefined
+    if (id && !plan) {
+      // Not one of the recorded runs: ask the agent server (this is the link the agent hands out).
+      void openServerPlan(id, (p) => {
+        const sameRoom = demoRooms.find((r) => {
+          const rp = planById[r.planId]
+          return rp && Math.abs(rp.room.wall.value_in - p.room.wall.value_in) < 4 && Math.abs(rp.room.depth.value_in - p.room.depth.value_in) < 4
+        })
+        if (sameRoom) useApp.setState({ roomPlanId: sameRoom.planId })
+        return { modelUrl: sameRoom?.modelUrl ?? null, modelLabel: sameRoom?.modelLabel ?? null }
+      })
+      return
+    }
     if (!plan) return
     const demo = demoRoomForPlan(plan.plan_id)
     useApp.getState().openRoom({ plan, modelUrl: demo?.modelUrl ?? null, modelLabel: demo?.modelLabel ?? null })
@@ -96,6 +108,7 @@ function useKeys() {
 export default function Workspace() {
   useDeepLink()
   useKeys()
+  useEffect(() => watchServer(), [])
   const stage = useApp((s) => s.stage)
   const selected = useApp((s) => s.selectedSlot)
   const cartOpen = useApp((s) => s.cartOpen)

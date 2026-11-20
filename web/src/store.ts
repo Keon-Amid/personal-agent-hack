@@ -3,6 +3,7 @@ import type { AuditRecord, Dims, MeasureKey, Plan, PlanItem, RoomModel } from '.
 import { optionsFor, productById } from './data'
 import { effective, overall, refit } from './lib/refit'
 import { splitName } from './lib/format'
+import type { ServerState } from './api/server'
 
 export type Stage = 'start' | 'reading' | 'ready' | 'running' | 'done'
 /** What the agent has proven about an item so far. The 3D view draws each phase differently. */
@@ -48,6 +49,12 @@ export interface AppState {
   runError: string | null
   /** photo = kyle's image-to-3D product models where one exists; clay = plain shapes for everything. */
   modelStyle: 'photo' | 'clay'
+  /** The team's agent server, probed every few seconds. */
+  server: ServerState
+  /** How the run on screen was produced. */
+  runMode: 'mock' | 'live' | null
+  /** The recorded plan this room came from: its measurements, and the alternatives generated for it. */
+  roomPlanId: string | null
 
   openRoom: (o: { plan: Plan; modelUrl: string | null; modelLabel: string | null }) => void
   setRoom: (room: RoomModel | null) => void
@@ -66,6 +73,9 @@ export interface AppState {
   setCartOpen: (open: boolean) => void
   setBudget: (b: number | null) => void
   setModelStyle: (m: 'photo' | 'clay') => void
+  setServer: (s: ServerState) => void
+  /** Record the person's OK on the cart (replay; live plans are approved by the server). */
+  approveLocally: () => void
   /** Replace a slot's item with another catalog product (fit re-checked by fit.options; Senso not yet). */
   swap: (slot: string, productId: string) => void
   reset: () => void
@@ -94,6 +104,9 @@ const blank = {
   budget: null,
   runError: null,
   modelStyle: 'photo' as 'photo' | 'clay',
+  server: { reachable: false, ready: false, note: null } as ServerState,
+  runMode: null as 'mock' | 'live' | null,
+  roomPlanId: null as string | null,
 }
 
 /** Fold one audit record into what the room shows. This is the only place run state changes. */
@@ -134,7 +147,17 @@ export const useApp = create<AppState>((set, get) => ({
 
   openRoom: ({ plan, modelUrl, modelLabel }) =>
     // The start screen already shows the demo scan; if it's the same model, keep what the scene measured.
-    set((s) => ({ ...blank, modelStyle: s.modelStyle, stage: 'reading', plan, modelUrl, modelLabel, room: s.modelUrl === modelUrl ? s.room : null })),
+    set((s) => ({
+      ...blank,
+      modelStyle: s.modelStyle,
+      server: s.server,
+      roomPlanId: s.roomPlanId && plan.plan_id !== s.roomPlanId && !s.plan ? s.roomPlanId : plan.plan_id,
+      stage: 'reading',
+      plan,
+      modelUrl,
+      modelLabel,
+      room: s.modelUrl === modelUrl ? s.room : null,
+    })),
   setRoom: (room) => set({ room }),
   roomReady: () => {
     if (get().stage === 'reading') set({ stage: 'ready' })
@@ -214,11 +237,35 @@ export const useApp = create<AppState>((set, get) => ({
   setCartOpen: (cartOpen) => set({ cartOpen, selectedSlot: cartOpen ? null : get().selectedSlot }),
   setBudget: (budget) => set({ budget }),
   setModelStyle: (modelStyle) => set({ modelStyle }),
+  setServer: (server) => {
+    const cur = get().server
+    if (cur.reachable !== server.reachable || cur.ready !== server.ready || cur.note !== server.note) set({ server })
+  },
+  approveLocally: () =>
+    set((s) => {
+      if (!s.plan) return {}
+      const items = s.plan.items.filter((i) => s.placed[i.slot])
+      const total = Math.round(items.reduce((n, i) => n + (i.price_usd ?? 0), 0) * 100) / 100
+      const at = new Date().toISOString()
+      const rec: AuditRecord = {
+        ts: at,
+        step: 'cart',
+        decision: 'cart approved by you',
+        why: `You approved ${items.length} pieces for $${total}. No order is placed; you pay on IKEA.com.`,
+        source: { kind: 'you' },
+        status: 'approved',
+        input: { total_usd: total, product_ids: items.map((i) => i.product_id) },
+      }
+      return {
+        plan: { ...s.plan, cart: { ...s.plan.cart, approval: { approved: true, approved_at: at, total_usd: total, item_count: items.length } } },
+        audit: [...s.audit, rec],
+      }
+    }),
   swap: (slot, productId) =>
     set((s) => {
       if (!s.plan) return {}
       const p = productById[productId]
-      const raw = optionsFor(s.plan.plan_id, slot).find((o) => o.id === productId)
+      const raw = optionsFor(s.plan.plan_id, slot, s.roomPlanId).find((o) => o.id === productId)
       const results = raw ? refit(raw.fit_results, s.plan.room, s.overrides) : []
       const opt = raw ? { ...raw, fit_results: results, fit: overall(results) } : undefined
       const old = s.plan.items.find((i) => i.slot === slot)
@@ -260,12 +307,12 @@ export const useApp = create<AppState>((set, get) => ({
         product_id: p.id,
       }
       return {
-        plan: { ...s.plan, items, cart: { ...s.plan.cart, items: cartItems, total_usd: total } },
+        plan: { ...s.plan, items, cart: { ...s.plan.cart, items: cartItems, total_usd: total, approval: null } },
         audit: [...s.audit, rec],
         placed: { ...s.placed, [slot]: 'picked' },
       }
     }),
-  reset: () => set((s) => ({ ...blank, modelStyle: s.modelStyle })),
+  reset: () => set((s) => ({ ...blank, modelStyle: s.modelStyle, server: s.server })),
 }))
 
 export const itemBySlot = (plan: Plan | null, slot: string | null): PlanItem | null =>

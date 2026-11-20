@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { useNavigate } from 'react-router'
 import { Armchair, Box, ShoppingBag } from 'lucide-react'
 import { AnimatePresence, motion } from 'motion/react'
-import { API_MODE } from '../api/api'
+import { wantsLive } from '../api/api'
 import { demoRoomForPlan } from '../data'
 import { cn, inches, usd } from '../lib/format'
 import { useApp, type CameraPreset, type ExistingMode } from '../store'
@@ -149,8 +149,13 @@ export default function TopBar() {
   const modelLabel = useApp((s) => s.modelLabel)
   const modelStyle = useApp((s) => s.modelStyle)
   const setModelStyle = useApp((s) => s.setModelStyle)
+  const server = useApp((s) => s.server)
+  const runMode = useApp((s) => s.runMode)
   if (!plan) return null
-  const demo = demoRoomForPlan(plan.plan_id)
+  const hasRun = stage === 'running' || stage === 'done'
+  const live = hasRun ? runMode === 'live' : wantsLive(server.ready)
+  const roomPlanId = useApp.getState().roomPlanId
+  const demo = demoRoomForPlan(plan.plan_id) ?? (roomPlanId ? demoRoomForPlan(roomPlanId) : undefined)
   const inCart = plan.items.filter((i) => placed[i.slot] === 'in_cart' || (stage === 'done' && placed[i.slot]))
   const total = inCart.reduce((sum, i) => sum + (i.price_usd ?? 0), 0)
   const floorItems = room?.existing.filter((e) => e.on_floor).length ?? 0
@@ -179,7 +184,7 @@ export default function TopBar() {
         <span className="mx-2 h-4 w-px bg-line-2" aria-hidden />
         <div className="mr-1 flex items-baseline gap-2 whitespace-nowrap">
           <span className="text-sm font-medium text-fg">{demo?.title ?? modelLabel ?? 'Your room'}</span>
-          <span className="text-xs text-fg-3">{demo?.note ?? 'Your scan'}</span>
+          <span className="text-xs text-fg-3">{demo?.note ?? (modelLabel ? 'Your scan' : 'Typed measurements')}</span>
         </div>
         <span className="mx-1 h-4 w-px bg-line-2" aria-hidden />
         <Measure k="wall" m={plan.room.wall} />
@@ -188,15 +193,20 @@ export default function TopBar() {
       </div>
 
       <div className="pointer-events-auto flex items-center gap-2">
-        {API_MODE === 'mock' && (
-          <span
-            className="glass flex h-10 items-center gap-2 rounded-md px-3 text-xs text-fg-2"
-            title="This screen replays an agent run the team recorded today. The records, numbers and checks are real; only the waiting is shortened."
-          >
-            <span className="h-1.5 w-1.5 rounded-full bg-unsure" aria-hidden />
-            Replay of a real run
+        <Tip
+          label={
+            live
+              ? hasRun
+                ? 'This run is the team\u2019s agent working right now: Claude with the fit, Superlinked and Senso tools.'
+                : 'The agent server is up. Press Enter and it furnishes this room for real (about three minutes).'
+              : (server.note ?? 'This replays an agent run the team recorded today. The records, numbers and checks are real; only the waiting is shortened. Start the agent server and this switches to live by itself.')
+          }
+        >
+          <span className="glass flex h-10 cursor-default items-center gap-2 rounded-md px-3 text-xs text-fg-2" tabIndex={0}>
+            <span className={cn('h-1.5 w-1.5 rounded-full', live ? 'bg-fits' : 'bg-unsure')} aria-hidden />
+            {live ? (hasRun ? 'Live agent run' : 'Live agent ready') : 'Replay of a real run'}
           </span>
-        )}
+        </Tip>
         <div className="glass flex h-10 items-center gap-0.5 rounded-md p-1" role="group" aria-label="Camera view">
           {cams.map((c) => (
             <button

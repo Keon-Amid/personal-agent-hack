@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router'
 import QRCode from 'qrcode'
 import { ChevronRight, Upload } from 'lucide-react'
 import { motion } from 'motion/react'
-import { API_MODE } from '../api/api'
+import { wantsLive } from '../api/api'
 import { demoRooms, planById, scanModelUrl, type DemoRoom } from '../data'
 import { cn, inches, usd } from '../lib/format'
 import { useApp } from '../store'
@@ -68,6 +68,7 @@ export default function StartScreen() {
   const fileRef = useRef<HTMLInputElement>(null)
   const [over, setOver] = useState(false)
   const [error, setError] = useState<string | null>(null)
+  const live = useApp((s) => wantsLive(s.server.ready))
 
   // The scanned room turns slowly on the right while you decide.
   useEffect(() => {
@@ -161,12 +162,11 @@ export default function StartScreen() {
                   <RoomRow key={r.id} room={r} onOpen={() => open(r)} />
                 ))}
               </div>
-              {API_MODE === 'mock' && (
-                <p className="mt-2.5 max-w-[52ch] text-xs leading-relaxed text-fg-3">
-                  Each room replays the agent run the team recorded for it today. The records, measurements and checks are real; only
-                  the waiting is shortened.
-                </p>
-              )}
+              <p className="mt-2.5 max-w-[52ch] text-xs leading-relaxed text-fg-3">
+                {live
+                  ? 'The agent server is up: describe a room and the agent furnishes it for real. Each room also keeps the run the team recorded for it today.'
+                  : 'Each room replays the agent run the team recorded for it today. The records, measurements and checks are real; only the waiting is shortened.'}
+              </p>
             </section>
           )}
         </div>

@@ -88,6 +88,8 @@ export interface Cart {
   total_usd: number
   delivery_note?: string
   no_purchase?: boolean
+  /** Set when the person approves the cart (POST /api/plan/{id}/approve, or locally in replay). */
+  approval?: { approved: boolean; approved_at: string; total_usd: number; item_count: number } | null
 }
 
 export interface AuditSource {
