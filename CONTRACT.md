@@ -101,6 +101,21 @@ Zero-shot by Superlinked SigLIP over the product photo, not hand-written; stored
 `sie.style_match(products, slot, emb, room=R)` per slot (1 rerank call each). Real run, 5 living-room slots from one
 IKEA room photo: 4.7 s total, detected "dark modern".
 
+### Senso knowledge base: `agent/senso_kb.py` (owner: alistair, A2) — loaded
+All 48 products are in the team's Senso org as one document each (status `complete`; ids in `data/senso_index.json`).
+Brendan's "Room Furnisher clearance rules" doc is the rules doc (not duplicated). Reload after catalog changes:
+`python3 agent/senso_kb.py load` (skips unchanged docs). Loading cost ~0 credits; each fact-check ~0.01.
+
+**How to word claims so Senso actually checks them** (tested live, 14:50):
+- Always name the product with its **IKEA article number** (and colour). "KIVIK box 1 is 37.5 in wide" came back
+  `contradicts_kb` (Senso matched the *black* KIVIK); with "IKEA article 394.405.93" it's `grounded`.
+- Put the fact under a team rule ("Under the doorway rule, ... ships in a box 32.5 inches wide"). Bare product
+  facts are tagged `about_brand: false` and **not scored** (`passed: null`, no KB search).
+- Room measurements aren't in Senso, so "wider than the 30 inch door" → `unsupported_by_kb`. The fit math is the
+  authority for that; Senso verifies the spec and the rule it relies on.
+- Read `claims[].passed` (true/false/null) and `claims[].bucket` (`grounded` / `contradicts_kb` / `unsupported_by_kb`
+  / `general`) from `POST /org/evals/text {"text", "wait": true}`; evidence is in `evidence_chunks`.
+
 ### Pick one product per slot: `fit.pick.pick(options, style_match_result, budget_usd=None)` (owner: alistair) — DRAFT
 Walks Superlinked's style ranking best-first; picks the first product that fits (and is within budget). Everything
 ranked above it is rejected with the reason. Returns `{"slot", "picked": Option + style, "rejected": [...],
