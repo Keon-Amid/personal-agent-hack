@@ -9,11 +9,240 @@ Every tool takes plain JSON values and returns a JSON-serializable dict that inc
 On a rule violation a tool returns {"ok": False, "error": ..., plan_id, plan_url} (and audits the refusal)
 rather than raising, so the model can read why and recover. Unknown plan_id / slot raises ValueError.
 
-A1 status: STUBS. Bodies land in A5/A6; signatures and docstrings here are the contract.
+A3 (agent.senso) and A4 (agent.room) are imported lazily inside the tools that use them.
 """
 from __future__ import annotations
 
+import base64
+import binascii
+import importlib
+import json
+from functools import lru_cache
+from pathlib import Path
+
+from . import store
+from .types import audit
+
 SLOT_ENUM = ["sofa", "armchair", "coffee_table", "rug", "floor_lamp"]
+ROOM_KEYS = ("wall", "depth", "door_width", "door_height")
+REPO = Path(__file__).resolve().parent.parent
+
+
+# ---------------------------------------------------------------- helpers
+
+@lru_cache(maxsize=1)
+def _catalog() -> tuple[dict, ...]:
+    return tuple(json.loads((REPO / "data" / "products.json").read_text())["products"])
+
+
+def _products() -> list[dict]:
+    return list(_catalog())
+
+
+def _product(pid: str) -> dict:
+    return next(p for p in _catalog() if p["id"] == pid)
+
+
+@lru_cache(maxsize=1)
+def _emb() -> dict:
+    return json.loads((REPO / "data" / "style_embeddings.json").read_text())
+
+
+def _sie():
+    return importlib.import_module("data.sie")
+
+
+def _senso():
+    return importlib.import_module("agent.senso")  # A3, lands on its own branch
+
+
+def _room_estimator():
+    return importlib.import_module("agent.room")  # A4, lands on its own branch
+
+
+def _load(plan_id: str) -> dict:
+    try:
+        return store.get(plan_id)
+    except KeyError:
+        raise ValueError(f"unknown plan_id {plan_id!r}") from None
+
+
+def _check_slot(slot: str) -> None:
+    if slot not in SLOT_ENUM:
+        raise ValueError(f"unknown slot {slot!r}; use one of {SLOT_ENUM}")
+
+
+def _ids(plan: dict) -> dict:
+    return {"plan_id": plan["plan_id"], "plan_url": plan["plan_url"]}
+
+
+def _commit(plan_id: str, records: list[dict], mutate=None) -> dict:
+    """Locked read-modify-write: apply `mutate` to the fresh plan, append the audit records (ts stamped)."""
+    def fn(plan: dict) -> None:
+        if mutate:
+            mutate(plan)
+        plan.setdefault("audit", []).extend(records)
+    return store.update(plan_id, fn)
+
+
+def _refuse(plan: dict, step: str, error: str, slot: str | None = None, **extra) -> dict:
+    """Audit a refusal and return the error dict the model reads."""
+    rec = audit(step, decision="refused", status="refused", why=error, **({"item_slot": slot} if slot else {}))
+    _commit(plan["plan_id"], [rec])
+    return {**_ids(plan), "ok": False, "error": error, **extra}
+
+
+def _call_sie(fn, *args, **kw):
+    """data.sie raises SystemExit when SIE_API_KEY is missing; turn every failure into a readable error."""
+    try:
+        return fn(*args, **kw), None
+    except SystemExit as e:
+        return None, f"Superlinked unavailable: {e}"
+    except Exception as e:  # network / API errors: report them, never fake a ranking
+        return None, f"Superlinked call failed: {type(e).__name__}: {e}"
+
+
+def _room_complete(room: dict | None) -> bool:
+    return bool(room) and all(room.get(k) for k in ROOM_KEYS)
+
+
+def _detected(det) -> str | None:
+    if not det:
+        return None
+    first = det[0]
+    return first.get("style") if isinstance(first, dict) else str(first)
+
+
+def _style_names(ps) -> list[str]:
+    return [s["style"] if isinstance(s, dict) else str(s) for s in (ps or [])]
+
+
+def _rejected(rows: list[dict]) -> list[dict]:
+    return [{"product_id": r["id"], "name": r["name"], "status": r["status"], "why": r["why"]} for r in rows]
+
+
+def _cart_total(cart: dict) -> None:
+    cart["total_usd"] = round(sum(c["price_usd"] or 0 for c in cart["items"]), 2)
+
+
+def _drop_from_cart(plan: dict, product_id: str | None) -> None:
+    if product_id is None:
+        return
+    cart = plan["cart"]
+    cart["items"] = [c for c in cart["items"] if c["product_id"] != product_id]
+    _cart_total(cart)
+
+
+def _slot_item(plan: dict, slot: str) -> dict | None:
+    return next((i for i in plan.get("items", []) if i["slot"] == slot), None)
+
+
+def _options(plan: dict, slot: str) -> list[dict]:
+    from fit.options import options, room
+    r = plan["room"]
+    return options(_products(), slot, room(*(r[k] for k in ROOM_KEYS)))
+
+
+def _style_for(plan: dict, slot: str) -> tuple[dict | None, list[dict], str | None]:
+    """Cached style_match for the slot, or run it (one Superlinked rerank call). Returns (style, records, error)."""
+    cached = plan.get("state", {}).get("style", {}).get(slot)
+    if cached:
+        return cached, [], None
+    R = plan.get("state", {}).get("room_analysis")
+    if not R:
+        return None, [], "no room style yet: call analyze_room with a photo or style words first"
+    res, err = _call_sie(_sie().style_match, _products(), slot, _emb(), room=R)
+    if err:
+        return None, [], err
+    top = res["ranked"][0] if res["ranked"] else None
+    rec = audit("rank", item_slot=slot, input=res["style_text"], source=dict(res["source"]),
+                decision="ranked by style",
+                why=f'{len(res["ranked"])} {slot} products ranked against "{res["style_text"]}"'
+                    + (f'; #1 {top["name"]}' if top else ""))
+    return res, [rec], None
+
+
+def _item(slot: str, chosen: dict, rejected: list[dict]) -> dict:
+    p = _product(chosen["id"])
+    s = chosen["style"]
+    return {
+        "slot": slot, "product_id": p["id"], "name": p["name"], "price_usd": p["price_usd"],
+        "dims_in": p["dims_in"], "image_url": p.get("image_url"), "source_url": p["source_url"],
+        "style": {"rank": s["style_rank"], "fused": s.get("style_fused"), "photo_score": s.get("photo_score"),
+                  "text_score": s.get("text_score"), "product_styles": _style_names(s.get("product_styles"))},
+        "fit": {"verdict": chosen["fit"], "results": chosen["fit_results"]},
+        "senso": None,
+        "why": f'{chosen["style_why"]}; fits; ${chosen["price_usd"]:g}',
+        "why_source": {"kind": "template"},
+        "rejected": _rejected(rejected),
+    }
+
+
+def _run_pick(plan_id: str, slot: str, budget_usd: float | None, swapping: bool) -> dict:
+    from fit.checks import FITS
+    from fit.pick import pick as fit_pick
+    plan = _load(plan_id)
+    step = "swap" if swapping else "pick"
+    if not _room_complete(plan.get("room")):
+        return _refuse(plan, step, "room measurements missing: call analyze_room first", slot)
+    state = plan.get("state", {})
+    shown = list(state.get("shown", {}).get(slot, []))
+    if swapping:
+        if not state.get("style", {}).get(slot) or not shown:
+            return _refuse(plan, step, f"nothing picked for {slot} yet: call pick first", slot)
+        budget_usd = state.get("budget", {}).get(slot)
+    style, records, err = _style_for(plan, slot)
+    if err:
+        return _refuse(plan, step, err, slot)
+    opts = _options(plan, slot)
+    res = fit_pick(opts, style, budget_usd=budget_usd, exclude=shown if swapping else [])
+    chosen = res["picked"]
+    if chosen is not None and chosen["fit"] != FITS:  # belt and braces: the tool never hands out a non-fit
+        chosen = None
+    records += [audit(r.pop("step"), **r) for r in (dict(x) for x in res["audit"])]
+    old = _slot_item(plan, slot)
+    old_id = old["product_id"] if old else None
+    item = _item(slot, chosen, res["rejected"]) if chosen else None
+
+    if swapping:
+        if item is None:
+            records.append(audit("swap", item_slot=slot, product_id=old_id, source={"kind": "fit"},
+                                 decision="no swap", status="none_left",
+                                 why=f'no other {slot} fits and matches; kept {old["name"] if old else "nothing"}; '
+                                     f'excluded {len(shown)} shown'))
+        else:
+            records.append(audit("swap", item_slot=slot, product_id=item["product_id"], source={"kind": "fit"},
+                                 decision="swapped", status="fits", input={"excluded": shown},
+                                 why=f'swapped {old["name"] if old else "nothing"} for {item["name"]}; '
+                                     f'{len(shown)} earlier picks excluded'))
+
+    def mutate(p: dict) -> None:
+        st = p.setdefault("state", {})
+        st.setdefault("style", {})[slot] = style
+        if not swapping:
+            st.setdefault("budget", {})[slot] = budget_usd
+        if item is None:
+            if not swapping:  # a fresh pick that finds nothing clears the slot
+                p["items"] = [i for i in p["items"] if i["slot"] != slot]
+                _drop_from_cart(p, old_id)
+            return
+        sh = st.setdefault("shown", {}).setdefault(slot, [])
+        if item["product_id"] not in sh:
+            sh.append(item["product_id"])
+        p["items"] = [i for i in p["items"] if i["slot"] != slot] + [item]
+        _drop_from_cart(p, old_id)
+
+    plan = _commit(plan_id, records, mutate)
+    out = {**_ids(plan), "ok": item is not None, "slot": slot, "picked": item, "rejected": _rejected(res["rejected"])}
+    if item is None:
+        out["error"] = (f"no other {slot} fits the room and matches the style" if swapping
+                        else f"no {slot} fits the room" + (f" within ${budget_usd:g}" if budget_usd is not None else ""))
+    if swapping:
+        out["excluded"] = shown
+    return out
+
+
+# ---------------------------------------------------------------- tools
 
 
 def analyze_room(plan_id: str, photo_b64: str | None = None, style_text: str | None = None,
@@ -30,7 +259,88 @@ def analyze_room(plan_id: str, photo_b64: str | None = None, style_text: str | N
     Audits step "estimate_room" (source photo/template) and the style detection (source superlinked).
     Returns {plan_id, plan_url, room, style}.
     """
-    raise NotImplementedError
+    from fit import measurement
+    plan = _load(plan_id)
+    exact = {k: v for k, v in (exact or {}).items() if v is not None}
+    bad = [k for k in exact if k not in ROOM_KEYS]
+    if bad:
+        return _refuse(plan, "estimate_room", f"unknown measurement keys {bad}; use {list(ROOM_KEYS)}")
+    photo = None
+    if photo_b64:
+        try:
+            photo = base64.b64decode(photo_b64.split(",", 1)[-1] if photo_b64.startswith("data:") else photo_b64,
+                                     validate=False)
+        except (binascii.Error, ValueError) as e:
+            return _refuse(plan, "estimate_room", f"photo_b64 is not valid base64: {e}")
+
+    room = dict(plan.get("room") or {})
+    records: list[dict] = []
+    if photo is not None and len(exact) < len(ROOM_KEYS):
+        try:
+            est = _room_estimator().estimate(photo)
+        except Exception as e:
+            est, est_err = None, f"room estimate failed: {type(e).__name__}: {e}"
+        else:
+            est_err = None
+        if est:
+            got = {k: est[k] for k in ROOM_KEYS if isinstance(est.get(k), dict) and k not in exact}
+            room.update(got)
+            if est.get("photo_url"):
+                room["photo_url"] = est["photo_url"]
+            records.append(audit(
+                "estimate_room", input={"photo": True}, source={"kind": "photo", **(est.get("source") or {})},
+                decision="measurements estimated from photo",
+                why="; ".join(f'{k} {m["value_in"]:g} ± {m["error_in"]:g} in ({m["source"]})' for k, m in got.items())
+                    or "no measurements could be estimated"))
+        elif est_err:
+            records.append(audit("estimate_room", input={"photo": True}, source={"kind": "photo"},
+                                 decision="estimate failed", status="error", why=est_err))
+    if exact:
+        try:
+            for k, v in exact.items():
+                room[k] = measurement(float(v), 0, "user")
+        except (TypeError, ValueError) as e:
+            return _refuse(plan, "estimate_room", f"bad measurement: {e}")
+        records.append(audit("estimate_room", input=exact, source={"kind": "template", "measured_by": "user"},
+                             decision="measurements set",
+                             why="The person typed exact measurements (source user, error 0): "
+                                 + ", ".join(f"{k} {v:g} in" for k, v in exact.items())))
+
+    R = None
+    if photo is not None or style_text:
+        R, err = _call_sie(_sie().analyze_room, room_photo=photo, style_text=style_text)
+        if err:
+            records.append(audit("estimate_room", source={"kind": "superlinked"}, decision="style detection failed",
+                                 status="error", why=err))
+        else:
+            det = _detected(R.get("detected_style"))
+            records.append(audit(
+                "estimate_room", input={"photo": photo is not None, "style_text": style_text},
+                source={"kind": "superlinked", "detected": R.get("detected_style")},
+                decision=f'style: {R["style_text"]}',
+                why=(f"detected from the room photo: {det}" if det else "from the person's words")))
+    style = {"style_text": R["style_text"], "detected_style": _detected(R.get("detected_style"))} if R else None
+
+    def mutate(p: dict) -> None:
+        p["room"] = room or None
+        st = p.setdefault("state", {})
+        if R is not None:
+            p["style"] = style
+            st["room_analysis"] = R
+            st["style"] = {}  # new room style: rankings must be redone
+
+    plan = _commit(plan_id, records, mutate)
+    out = {**_ids(plan), "ok": True, "room": plan["room"], "style": plan["style"]}
+    missing = [k for k in ROOM_KEYS if not (plan["room"] or {}).get(k)]
+    if missing:
+        out["ok"] = False
+        out["error"] = f"still missing measurements: {missing}; ask the person or send a photo"
+    if not plan["style"]:
+        out["ok"] = False
+        out["error"] = (out.get("error", "") + "; " if "error" in out else "") + \
+            "no style yet: give style words or a photo" + \
+            (f" ({records[-1]['why']})" if records and records[-1].get("status") == "error" else "")
+    return out
 
 
 def style_match(plan_id: str, slot: str) -> dict:
@@ -41,7 +351,19 @@ def style_match(plan_id: str, slot: str) -> dict:
     Returns {plan_id, plan_url, slot, style_text, detected_style, ranked: [{product_id, name, style_rank,
     photo_rank, photo_score, text_rank, text_score, product_styles}]}.
     """
-    raise NotImplementedError
+    _check_slot(slot)
+    plan = _load(plan_id)
+    plan.setdefault("state", {}).setdefault("style", {}).pop(slot, None)  # explicit call: rank fresh
+    res, records, err = _style_for(plan, slot)
+    if err:
+        return _refuse(plan, "rank", err, slot)
+    plan = _commit(plan_id, records, lambda p: p.setdefault("state", {}).setdefault("style", {}).__setitem__(slot, res))
+    return {**_ids(plan), "ok": True, "slot": slot, "style_text": res["style_text"],
+            "detected_style": _detected(res.get("detected_style")),
+            "ranked": [{"product_id": r["id"], "name": r["name"], "style_rank": r["style_rank"],
+                        "photo_rank": r["photo_rank"], "photo_score": r["photo_score"],
+                        "text_rank": r["text_rank"], "text_score": r["text_score"],
+                        "product_styles": _style_names(r.get("product_styles"))} for r in res["ranked"]]}
 
 
 def fit_options(plan_id: str, slot: str) -> dict:
@@ -51,7 +373,23 @@ def fit_options(plan_id: str, slot: str) -> dict:
     Returns {plan_id, plan_url, slot, options: [{product_id, name, price_usd, rating, review_count,
     fit, fit_results (each with its math), best_value, why}]}.
     """
-    raise NotImplementedError
+    _check_slot(slot)
+    plan = _load(plan_id)
+    if not _room_complete(plan.get("room")):
+        return _refuse(plan, "rank", "room measurements missing: call analyze_room first", slot)
+    opts = _options(plan, slot)
+    counts = {v: sum(o["fit"] == v for o in opts) for v in ("fits", "unsure", "no_fit")}
+    rec = audit("rank", item_slot=slot, source={"kind": "fit"}, decision="fit checked",
+                input={k: plan["room"][k] for k in ROOM_KEYS},
+                why=f'{len(opts)} {slot} products: {counts["fits"]} fit, {counts["unsure"]} unsure, '
+                    f'{counts["no_fit"]} no_fit; best value: '
+                    + (", ".join(o["name"] for o in opts if o["best_value"]) or "none"))
+    plan = _commit(plan_id, [rec])
+    return {**_ids(plan), "ok": True, "slot": slot, "counts": counts,
+            "options": [{"product_id": o["id"], "name": o["name"], "price_usd": o["price_usd"],
+                         "rating": o["rating"], "review_count": o["review_count"], "fit": o["fit"],
+                         "fit_results": o["fit_results"], "best_value": o["best_value"], "why": o["why"]}
+                        for o in opts]}
 
 
 def pick(plan_id: str, slot: str, budget_usd: float | None = None) -> dict:
@@ -63,7 +401,8 @@ def pick(plan_id: str, slot: str, budget_usd: float | None = None) -> dict:
     Returns {plan_id, plan_url, slot, picked: Item | None, rejected: [{product_id, name, status, why}]}.
     picked is None (with the reasons in rejected) when nothing fits.
     """
-    raise NotImplementedError
+    _check_slot(slot)
+    return _run_pick(plan_id, slot, budget_usd, swapping=False)
 
 
 def senso_check(plan_id: str, slot: str) -> dict:
@@ -76,7 +415,48 @@ def senso_check(plan_id: str, slot: str) -> dict:
     Audits step "senso_check" (source senso, check_id).
     Returns {plan_id, plan_url, slot, product_id, senso, ok: no conflict and >= 1 verified}.
     """
-    raise NotImplementedError
+    _check_slot(slot)
+    plan = _load(plan_id)
+    item = _slot_item(plan, slot)
+    if item is None:
+        return _refuse(plan, "senso_check", f"nothing picked for {slot}: call pick first", slot)
+    try:
+        sn = _senso()
+        text = sn.build_claim(item, plan["room"])
+        res = sn.check(text)
+    except Exception as e:  # never fake a check: report the failure
+        return _refuse(plan, "senso_check", f"Senso check failed: {type(e).__name__}: {e}", slot,
+                       product_id=item["product_id"])
+    ok = _senso_ok(res)
+    verdicts = [c["verdict"] for c in res.get("claims", [])]
+    tally = ", ".join(f"{verdicts.count(v)} {v}" for v in ("verified", "conflict", "unsupported", "not_verifiable")
+                      if v in verdicts)
+    conflicts = [c["claim"] for c in res.get("claims", []) if c["verdict"] == "conflict"]
+    rec = audit("senso_check", item_slot=slot, product_id=item["product_id"], input=text,
+                source={"kind": "senso", "check_id": res.get("check_id")},
+                decision="passed" if ok else "blocked", status="verified" if ok else "conflict" if conflicts
+                else "not_verified",
+                why=f'{tally or "no claims"}; accuracy {res.get("accuracy_pct")}%'
+                    + (f'; conflict: {"; ".join(conflicts)}' if conflicts else ""))
+    pid = item["product_id"]
+
+    def mutate(p: dict) -> None:
+        it = _slot_item(p, slot)
+        if it and it["product_id"] == pid:  # a swap in between invalidates this check
+            it["senso"] = res
+
+    plan = _commit(plan_id, [rec], mutate)
+    return {**_ids(plan), "ok": ok, "slot": slot, "product_id": pid, "senso": res}
+
+
+def _senso_ok(res: dict | None) -> bool:
+    """The cart gate: A3's verdict_ok AND our own floor (no conflict, at least one verified claim)."""
+    if not res or not res.get("claims"):
+        return False
+    verdicts = [c.get("verdict") for c in res["claims"]]
+    if "conflict" in verdicts or "verified" not in verdicts:
+        return False
+    return bool(_senso().verdict_ok(res))
 
 
 def swap(plan_id: str, slot: str) -> dict:
@@ -86,7 +466,8 @@ def swap(plan_id: str, slot: str) -> dict:
     Senso check and removes it from the cart. Audits step "swap".
     Returns the same shape as pick, plus {"excluded": [product_id, ...]}.
     """
-    raise NotImplementedError
+    _check_slot(slot)
+    return _run_pick(plan_id, slot, None, swapping=True)
 
 
 def cart_add(plan_id: str, slot: str, why: str) -> dict:
@@ -97,12 +478,46 @@ def cart_add(plan_id: str, slot: str, why: str) -> dict:
     why_source {"kind": "claude"} and in the audit record (step "cart", source claude).
     Returns {plan_id, plan_url, ok, slot, cart} or {plan_id, plan_url, ok: False, error}.
     """
-    raise NotImplementedError
+    _check_slot(slot)
+    plan = _load(plan_id)
+    item = _slot_item(plan, slot)
+    if item is None:
+        return _refuse(plan, "cart", f"nothing picked for {slot}: call pick first", slot)
+    if not item.get("senso"):
+        return _refuse(plan, "cart", f"{item['name']} has no Senso check: call senso_check first", slot,
+                       product_id=item["product_id"])
+    try:
+        ok = _senso_ok(item["senso"])
+    except Exception as e:
+        return _refuse(plan, "cart", f"could not evaluate the Senso check: {type(e).__name__}: {e}", slot)
+    if not ok:
+        return _refuse(plan, "cart", f"{item['name']} failed its Senso check (a conflict, or no verified claim); "
+                                     "swap it or check again", slot, product_id=item["product_id"])
+    why = (why or "").strip()
+    pid = item["product_id"]
+    rec = audit("cart", item_slot=slot, product_id=pid, source={"kind": "claude"}, decision="added to cart",
+                status="in_cart", why=why or "(no explanation given)")
+
+    def mutate(p: dict) -> None:
+        it = _slot_item(p, slot)
+        if not it or it["product_id"] != pid:
+            return
+        it["why"], it["why_source"] = why or it["why"], {"kind": "claude"} if why else it["why_source"]
+        cart = p["cart"]
+        cart["items"] = [c for c in cart["items"] if c["product_id"] != pid] + [
+            {"product_id": pid, "name": it["name"], "price_usd": it["price_usd"], "source_url": it["source_url"]}]
+        cart["no_purchase"] = True
+        _cart_total(cart)
+
+    plan = _commit(plan_id, [rec], mutate)
+    return {**_ids(plan), "ok": True, "slot": slot, "cart": plan["cart"]}
 
 
 def get_plan(plan_id: str) -> dict:
     """Return the whole plan (room, style, items, cart, audit) without plan["state"]. Not audited."""
-    raise NotImplementedError
+    plan = _load(plan_id)
+    plan.pop("state", None)
+    return plan
 
 
 _PLAN = {"plan_id": {"type": "string", "description": "The plan to work on."}}
