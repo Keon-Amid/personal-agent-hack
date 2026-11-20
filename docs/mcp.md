@@ -84,7 +84,8 @@ claude.ai needs (not done yet; kyle's deploy):
 - `PUBLIC_BASE_URL` set to the deployed web app, so `plan_url` links open for the person.
 - In claude.ai, add it as a custom connector with the `/mcp` URL (Settings > Connectors; menu path not checked by us).
 - **No auth is built in.** Anyone with the URL can call the tools. That's fine for the demo because the tools only
-  build carts and never buy anything, but don't leave it up afterwards.
+  build carts and never buy anything, but it runs on the team's Superlinked and Senso keys, so anyone with the URL
+  spends that quota. Keep the URL private and shut the server down after the demo.
 
 ## Tests
 
