@@ -1,31 +1,1580 @@
 {
-  "about": "Real IKEA US products. Every number was read from the source_url page on fetched_at. Inches. packages_in: Width->w, Height->h, Length->d.",
-  "fetched_at": "2026-11-20T12:50:00-08:00",
-  "products": [
-    {"id": "ikea-kivik-sofa", "retailer": "IKEA", "name": "KIVIK Sofa, Tibbleby beige/gray", "article_number": "394.405.93", "category": "sofa", "price_usd": 799.0, "price_note": null,
-     "dims_in": {"w": 89.75, "d": 37.375, "h": 32.625},
-     "packages_in": [{"w": 37.5, "d": 72.5, "h": 19.75}, {"w": 36.25, "d": 38.5, "h": 11.0}, {"w": 14.75, "d": 22.25, "h": 3.5}],
-     "source_url": "https://www.ikea.com/us/en/p/kivik-sofa-tibbleby-beige-gray-s39440593/"},
-    {"id": "ikea-uppland-sofa", "retailer": "IKEA", "name": "UPPLAND Sofa, Blekinge white", "article_number": "193.841.16", "category": "sofa", "price_usd": 699.0, "price_note": "IKEA Family price Nov 5-24, 2026; regular $899",
-     "dims_in": {"w": 88.25, "d": 36.25, "h": 36.25},
-     "packages_in": [{"w": 36.25, "d": 80.0, "h": 19.25}, {"w": 14.75, "d": 22.25, "h": 4.0}],
-     "source_url": "https://www.ikea.com/us/en/p/uppland-sofa-blekinge-white-s19384116/"},
-    {"id": "ikea-poang-armchair", "retailer": "IKEA", "name": "POÄNG Armchair, birch veneer/Knisa light beige", "article_number": "593.059.28", "category": "armchair", "price_usd": 149.0, "price_note": null,
-     "dims_in": {"w": 26.75, "d": 32.25, "h": 39.375},
-     "packages_in": [{"w": 26.25, "d": 29.0, "h": 2.75}, {"w": 9.75, "d": 23.25, "h": 9.75}],
-     "packages_note": "Cushion package is listed as length 23 1/4 in, diameter 9 3/4 in; stored as a 9.75 x 23.25 x 9.75 bounding box.",
-     "source_url": "https://www.ikea.com/us/en/p/poaeng-armchair-birch-veneer-knisa-light-beige-s59305928/"},
-    {"id": "ikea-billy-bookcase", "retailer": "IKEA", "name": "BILLY Bookcase, white, 31 1/2x11x79 1/2", "article_number": "205.220.46", "category": "bookcase", "price_usd": 65.0, "price_note": "IKEA Family price Nov 16-Dec 24, 2026; regular $79",
-     "dims_in": {"w": 31.5, "d": 11.0, "h": 79.5},
-     "packages_in": [{"w": 11.75, "d": 81.25, "h": 5.25}],
-     "source_url": "https://www.ikea.com/us/en/p/billy-bookcase-white-20522046/"},
-    {"id": "ikea-kallax-shelf", "retailer": "IKEA", "name": "KALLAX Shelf unit, white, 30 1/8x57 5/8", "article_number": "206.316.63", "category": "bookcase", "price_usd": 79.99, "price_note": "Underframe sold separately",
-     "dims_in": {"w": 30.125, "d": 15.375, "h": 57.625},
-     "packages_in": [{"w": 15.75, "d": 59.0, "h": 6.5}],
-     "source_url": "https://www.ikea.com/us/en/p/kallax-shelf-unit-white-20631663/"},
-    {"id": "ikea-malm-bed-queen", "retailer": "IKEA", "name": "MALM Bed frame, dark-brown veneer/Luröy, Queen", "article_number": "495.743.65", "category": "bed", "price_usd": 299.0, "price_note": "Mattress and bedding sold separately; slatted base included",
-     "dims_in": {"w": 66.125, "d": 83.125, "h": 39.375},
-     "packages_in": [{"w": 30.5, "d": 67.25, "h": 3.5}, {"w": 9.75, "d": 81.25, "h": 3.0}, {"w": 2.5, "d": 54.75, "h": 2.25}, {"w": 9.5, "d": 30.25, "h": 4.25}],
-     "source_url": "https://www.ikea.com/us/en/p/malm-bed-frame-dark-brown-veneer-luroey-s49574365/"}
-  ]
+ "about": "Real IKEA US products. Every number is read from the source_url page by data/fetch_ikea.py (URLs in data/sources.txt) at fetched_at. Inches. dims_in w=width, d=depth/length, h=height; round items use the diameter for w and d. packages_in: one box per package (Width->w, Length->d, Height->h). price_usd is the price shown on the page that day and may be a temporary IKEA Family price; null if the page showed none. dims_raw keeps every measurement the page listed.",
+ "products": [
+  {
+   "id": "ikea-glostad-sofa-knisa-dark-gray-40595942",
+   "retailer": "IKEA",
+   "name": "GLOSTAD Sofa - Knisa dark gray",
+   "article_number": "405.959.42",
+   "category": "sofa",
+   "price_usd": 199.0,
+   "price_note": null,
+   "dims_in": {
+    "w": 70.125,
+    "d": 30.75,
+    "h": 26.75
+   },
+   "dims_raw": {
+    "depth": 30.75,
+    "height under furniture": 9.0,
+    "backrest height": 26.75,
+    "seat height": 16.125,
+    "width": 70.125
+   },
+   "packages_in": [
+    {
+     "w": 25.5,
+     "d": 68.75,
+     "h": 7.5
+    }
+   ],
+   "source_url": "https://www.ikea.com/us/en/p/glostad-sofa-knisa-dark-gray-40595942/",
+   "fetched_at": "2026-11-20T20:50:01+00:00"
+  },
+  {
+   "id": "ikea-gullvalla-sofa-silkeryd-dark-gray-beige-70618503",
+   "retailer": "IKEA",
+   "name": "GULLVALLA Sofa - Silkeryd dark gray-beige",
+   "article_number": "706.185.03",
+   "category": "sofa",
+   "price_usd": 449.0,
+   "price_note": null,
+   "dims_in": {
+    "w": 71.625,
+    "d": 32.625,
+    "h": 30.75
+   },
+   "dims_raw": {
+    "armrest height": 16.125,
+    "armrest width": 31.125,
+    "depth": 32.625,
+    "height under furniture": 5.875,
+    "backrest height": 27.5,
+    "height including back cushions": 30.75,
+    "seat depth": 18.875,
+    "seat height": 16.5,
+    "seat width": 63.0,
+    "width": 71.625
+   },
+   "packages_in": [
+    {
+     "w": 25.5,
+     "d": 67.5,
+     "h": 13.75
+    }
+   ],
+   "source_url": "https://www.ikea.com/us/en/p/gullvalla-sofa-silkeryd-dark-gray-beige-70618503/",
+   "fetched_at": "2026-11-20T20:50:01+00:00"
+  },
+  {
+   "id": "ikea-hyltarp-sofa-gransel-gray-89514930",
+   "retailer": "IKEA",
+   "name": "HYLTARP Sofa - Gransel gray",
+   "article_number": "895.149.30",
+   "category": "sofa",
+   "price_usd": 1249.0,
+   "price_note": null,
+   "dims_in": {
+    "w": 91.375,
+    "d": 36.625,
+    "h": 35.875
+   },
+   "dims_raw": {
+    "armrest height": 24.75,
+    "armrest width": 4.375,
+    "depth": 36.625,
+    "height under furniture": 5.5,
+    "backrest height": 32.25,
+    "height including back cushions": 35.875,
+    "seat depth": 23.625,
+    "seat height": 18.875,
+    "width": 91.375
+   },
+   "packages_in": [
+    {
+     "w": 32.25,
+     "d": 85.25,
+     "h": 14.0
+    },
+    {
+     "w": 31.0,
+     "d": 85.25,
+     "h": 17.75
+    },
+    {
+     "w": 14.75,
+     "d": 22.25,
+     "h": 4.5
+    }
+   ],
+   "source_url": "https://www.ikea.com/us/en/p/hyltarp-sofa-gransel-gray-s89514930/",
+   "fetched_at": "2026-11-20T20:50:02+00:00"
+  },
+  {
+   "id": "ikea-kivik-sofa-grann-bomstad-black-80519531",
+   "retailer": "IKEA",
+   "name": "KIVIK Sofa - Grann/Bomstad black",
+   "article_number": "805.195.31",
+   "category": "sofa",
+   "price_usd": 1299.0,
+   "price_note": null,
+   "dims_in": {
+    "w": 89.375,
+    "d": 37.375,
+    "h": 32.625
+   },
+   "dims_raw": {
+    "depth": 37.375,
+    "height": 32.625,
+    "seat depth": 23.625,
+    "seat height": 17.75,
+    "seat width": 70.875,
+    "width": 89.375
+   },
+   "packages_in": [
+    {
+     "w": 36.5,
+     "d": 72.0,
+     "h": 22.5
+    },
+    {
+     "w": 35.5,
+     "d": 37.75,
+     "h": 11.0
+    }
+   ],
+   "source_url": "https://www.ikea.com/us/en/p/kivik-sofa-grann-bomstad-black-80519531/",
+   "fetched_at": "2026-11-20T20:50:02+00:00"
+  },
+  {
+   "id": "ikea-lillesater-sofa-axvall-off-white-40619085",
+   "retailer": "IKEA",
+   "name": "LILLESÄTER Sofa - Axvall off-white",
+   "article_number": "406.190.85",
+   "category": "sofa",
+   "price_usd": 999.0,
+   "price_note": null,
+   "dims_in": {
+    "w": 79.125,
+    "d": 35.375,
+    "h": 27.125
+   },
+   "dims_raw": {
+    "armrest height": 20.125,
+    "armrest width": 6.25,
+    "depth": 35.375,
+    "height under furniture": 0.75,
+    "height": 27.125,
+    "seat depth": 25.625,
+    "seat height": 17.375,
+    "seat width": 65.375,
+    "width": 79.125
+   },
+   "packages_in": [
+    {
+     "w": 32.5,
+     "d": 37.5,
+     "h": 17.25
+    },
+    {
+     "w": 32.5,
+     "d": 37.5,
+     "h": 17.25
+    },
+    {
+     "w": 28.5,
+     "d": 40.25,
+     "h": 18.5
+    },
+    {
+     "w": 28.5,
+     "d": 40.25,
+     "h": 18.5
+    }
+   ],
+   "source_url": "https://www.ikea.com/us/en/p/lillesaeter-sofa-axvall-off-white-40619085/",
+   "fetched_at": "2026-11-20T20:50:03+00:00"
+  },
+  {
+   "id": "ikea-arnasvall-recliner-rocker-and-swivel-armchair-hakebo-beige-50613912",
+   "retailer": "IKEA",
+   "name": "ARNÄSVALL Recliner rocker and swivel armchair - Hakebo beige",
+   "article_number": "506.139.12",
+   "category": "armchair",
+   "price_usd": 499.0,
+   "price_note": null,
+   "dims_in": {
+    "w": 35.875,
+    "d": 36.625,
+    "h": 41.375
+   },
+   "dims_raw": {
+    "width": 35.875,
+    "depth": 36.625,
+    "height": 41.375,
+    "seat width": 20.125,
+    "seat depth": 21.625,
+    "seat height": 20.875,
+    "tested for": null
+   },
+   "packages_in": [
+    {
+     "w": 32.5,
+     "d": 37.75,
+     "h": 32.5
+    }
+   ],
+   "source_url": "https://www.ikea.com/us/en/p/arnaesvall-recliner-rocker-and-swivel-armchair-hakebo-beige-50613912/",
+   "fetched_at": "2026-11-20T20:50:04+00:00"
+  },
+  {
+   "id": "ikea-ekenaset-armchair-jonsbyn-black-80539015",
+   "retailer": "IKEA",
+   "name": "EKENÄSET Armchair - Jonsbyn black",
+   "article_number": "805.390.15",
+   "category": "armchair",
+   "price_usd": null,
+   "price_note": null,
+   "dims_in": {
+    "w": 25.25,
+    "d": 30.75,
+    "h": 29.875
+   },
+   "dims_raw": {
+    "backrest height": 18.125,
+    "width": 25.25,
+    "depth": 30.75,
+    "height": 29.875,
+    "height under furniture": 8.625,
+    "armrest height": 24.75,
+    "seat width": 22.0,
+    "seat depth": 19.625,
+    "seat height": 17.75
+   },
+   "packages_in": [
+    {
+     "w": 26.0,
+     "d": 30.0,
+     "h": 14.5
+    }
+   ],
+   "source_url": "https://www.ikea.com/us/en/p/ekenaeset-armchair-jonsbyn-black-80539015/",
+   "fetched_at": "2026-11-20T20:50:05+00:00"
+  },
+  {
+   "id": "ikea-gryteryd-recliner-rocker-armchair-hakebo-beige-20613904",
+   "retailer": "IKEA",
+   "name": "GRYTERYD Recliner rocker armchair - Hakebo beige",
+   "article_number": "206.139.04",
+   "category": "armchair",
+   "price_usd": 399.0,
+   "price_note": null,
+   "dims_in": {
+    "w": 29.875,
+    "d": 37.0,
+    "h": 40.5
+   },
+   "dims_raw": {
+    "width": 29.875,
+    "depth": 37.0,
+    "height": 40.5,
+    "seat width": 21.25,
+    "seat depth": 20.875,
+    "seat height": 19.25,
+    "tested for": null
+   },
+   "packages_in": [
+    {
+     "w": 31.0,
+     "d": 33.75,
+     "h": 28.25
+    }
+   ],
+   "source_url": "https://www.ikea.com/us/en/p/gryteryd-recliner-rocker-armchair-hakebo-beige-20613904/",
+   "fetched_at": "2026-11-20T20:50:05+00:00"
+  },
+  {
+   "id": "ikea-borgeby-coffee-table-birch-veneer-27-1-2-70389356",
+   "retailer": "IKEA",
+   "name": "BORGEBY Coffee table - birch veneer 27 1/2 \"",
+   "article_number": "703.893.56",
+   "category": "coffee_table",
+   "price_usd": 199.99,
+   "price_note": null,
+   "dims_in": {
+    "w": 27.5,
+    "d": 27.5,
+    "h": 16.5
+   },
+   "dims_raw": {
+    "height": 16.5,
+    "diameter": 27.5,
+    "height under furniture": 2.375,
+    "max. load": null,
+    "max load/shelf": null,
+    "width": 27.5,
+    "depth": 27.5
+   },
+   "packages_in": [
+    {
+     "w": 28.25,
+     "d": 28.25,
+     "h": 5.75
+    }
+   ],
+   "source_url": "https://www.ikea.com/us/en/p/borgeby-coffee-table-birch-veneer-70389356/",
+   "fetched_at": "2026-11-20T20:50:06+00:00"
+  },
+  {
+   "id": "ikea-lack-coffee-table-black-brown-46-1-2x30-3-4-00104291",
+   "retailer": "IKEA",
+   "name": "LACK Coffee table - black-brown 46 1/2x30 3/4 \"",
+   "article_number": "001.042.91",
+   "category": "coffee_table",
+   "price_usd": 49.99,
+   "price_note": null,
+   "dims_in": {
+    "w": 30.75,
+    "d": 46.5,
+    "h": 17.75
+   },
+   "dims_raw": {
+    "length": 46.5,
+    "width": 30.75,
+    "height": 17.75,
+    "depth": 46.5
+   },
+   "packages_in": [
+    {
+     "w": 31.25,
+     "d": 55.0,
+     "h": 2.75
+    }
+   ],
+   "source_url": "https://www.ikea.com/us/en/p/lack-coffee-table-black-brown-00104291/",
+   "fetched_at": "2026-11-20T20:50:07+00:00"
+  },
+  {
+   "id": "ikea-ortrask-coffee-table-black-ash-veneer-43-1-4x26-3-4-30635849",
+   "retailer": "IKEA",
+   "name": "ÖRTRÄSK Coffee table - black ash veneer 43 1/4x26 3/4 \"",
+   "article_number": "306.358.49",
+   "category": "coffee_table",
+   "price_usd": 199.99,
+   "price_note": null,
+   "dims_in": {
+    "w": 26.75,
+    "d": 43.25,
+    "h": 13.75
+   },
+   "dims_raw": {
+    "height": 13.75,
+    "length": 43.25,
+    "max. load": null,
+    "width": 26.75,
+    "depth": 43.25
+   },
+   "packages_in": [
+    {
+     "w": 28.75,
+     "d": 51.75,
+     "h": 3.0
+    }
+   ],
+   "source_url": "https://www.ikea.com/us/en/p/oertraesk-coffee-table-black-ash-veneer-30635849/",
+   "fetched_at": "2026-11-20T20:50:07+00:00"
+  },
+  {
+   "id": "ikea-ostavall-adjustable-coffee-table-black-35-3-8-40534152",
+   "retailer": "IKEA",
+   "name": "ÖSTAVALL Adjustable coffee table - black 35 3/8 \"",
+   "article_number": "405.341.52",
+   "category": "coffee_table",
+   "price_usd": 199.99,
+   "price_note": null,
+   "dims_in": {
+    "w": 24.75,
+    "d": 35.375,
+    "h": 24.75
+   },
+   "dims_raw": {
+    "length": 35.375,
+    "min. height": 18.875,
+    "max. height": 24.75,
+    "max. width": 24.75,
+    "min. width": 23.625,
+    "max. load adjustable top": null,
+    "height under furniture": 9.875,
+    "max. load storage compartment": null,
+    "depth": 35.375
+   },
+   "packages_in": [
+    {
+     "w": 25.25,
+     "d": 35.75,
+     "h": 2.5
+    },
+    {
+     "w": 28.25,
+     "d": 37.25,
+     "h": 1.75
+    }
+   ],
+   "source_url": "https://www.ikea.com/us/en/p/oestavall-adjustable-coffee-table-black-40534152/",
+   "fetched_at": "2026-11-20T20:50:08+00:00"
+  },
+  {
+   "id": "ikea-baggboda-side-table-white-28x19-5-8-20556507",
+   "retailer": "IKEA",
+   "name": "BAGGBODA Side table - white 28x19 5/8 \"",
+   "article_number": "205.565.07",
+   "category": "side_table",
+   "price_usd": 79.99,
+   "price_note": null,
+   "dims_in": {
+    "w": 19.625,
+    "d": 28.0,
+    "h": 18.5
+   },
+   "dims_raw": {
+    "height": 18.5,
+    "length": 28.0,
+    "width": 19.625,
+    "depth": 28.0
+   },
+   "packages_in": [
+    {
+     "w": 20.25,
+     "d": 29.0,
+     "h": 3.75
+    }
+   ],
+   "source_url": "https://www.ikea.com/us/en/p/baggboda-side-table-white-20556507/",
+   "fetched_at": "2026-11-20T20:50:09+00:00"
+  },
+  {
+   "id": "ikea-borgeby-side-table-birch-veneer-18-1-8-80619880",
+   "retailer": "IKEA",
+   "name": "BORGEBY Side table - birch veneer 18 1/8 \"",
+   "article_number": "806.198.80",
+   "category": "side_table",
+   "price_usd": 89.99,
+   "price_note": null,
+   "dims_in": {
+    "w": 18.125,
+    "d": 18.125,
+    "h": 21.625
+   },
+   "dims_raw": {
+    "diameter": 18.125,
+    "height under furniture": 2.375,
+    "height": 21.625,
+    "max. load": null,
+    "max load/shelf": null,
+    "width": 18.125,
+    "depth": 18.125
+   },
+   "packages_in": [
+    {
+     "w": 18.75,
+     "d": 21.75,
+     "h": 6.0
+    }
+   ],
+   "source_url": "https://www.ikea.com/us/en/p/borgeby-side-table-birch-veneer-80619880/",
+   "fetched_at": "2026-11-20T20:50:09+00:00"
+  },
+  {
+   "id": "ikea-anfallare-alex-desk-bamboo-black-brown-55-1-8x25-5-8-89417745",
+   "retailer": "IKEA",
+   "name": "ANFALLARE / ALEX Desk - bamboo/black-brown 55 1/8x25 5/8 \"",
+   "article_number": "894.177.45",
+   "category": "desk",
+   "price_usd": 229.99,
+   "price_note": null,
+   "dims_in": {
+    "w": 25.625,
+    "d": 55.125,
+    "h": 28.75
+   },
+   "dims_raw": {
+    "length": 55.125,
+    "width": 25.625,
+    "height": 28.75,
+    "depth": 55.125
+   },
+   "packages_in": [
+    {
+     "w": 27.75,
+     "d": 58.0,
+     "h": 1.25
+    },
+    {
+     "w": 4.5,
+     "d": 27.75,
+     "h": 2.25
+    },
+    {
+     "w": 4.5,
+     "d": 27.75,
+     "h": 2.25
+    },
+    {
+     "w": 23.5,
+     "d": 32.0,
+     "h": 4.25
+    }
+   ],
+   "source_url": "https://www.ikea.com/us/en/p/anfallare-alex-desk-bamboo-black-brown-s89417745/",
+   "fetched_at": "2026-11-20T20:50:10+00:00"
+  },
+  {
+   "id": "ikea-brytning-desk-green-43-1-4x20-7-8x29-1-2-50609750",
+   "retailer": "IKEA",
+   "name": "BRYTNING Desk - green 43 1/4x20 7/8x29 1/2 \"",
+   "article_number": "506.097.50",
+   "category": "desk",
+   "price_usd": 129.99,
+   "price_note": null,
+   "dims_in": {
+    "w": 43.25,
+    "d": 20.875,
+    "h": 29.5
+   },
+   "dims_raw": {
+    "max. load": null,
+    "maximum load/drawer": null,
+    "width": 43.25,
+    "depth": 20.875,
+    "height": 29.5,
+    "height under furniture": 25.25,
+    "drawer width (inside)": 36.625,
+    "drawer depth (inside)": 15.0
+   },
+   "packages_in": [
+    {
+     "w": 22.25,
+     "d": 45.75,
+     "h": 3.0
+    }
+   ],
+   "source_url": "https://www.ikea.com/us/en/p/brytning-desk-green-50609750/",
+   "fetched_at": "2026-11-20T20:50:11+00:00"
+  },
+  {
+   "id": "ikea-kallax-desk-black-brown-43-3-4x15-3-8-00582442",
+   "retailer": "IKEA",
+   "name": "KALLAX Desk - black-brown 43 3/4x15 3/8 \"",
+   "article_number": "005.824.42",
+   "category": "desk",
+   "price_usd": 79.99,
+   "price_note": null,
+   "dims_in": {
+    "w": 43.75,
+    "d": 15.375,
+    "h": 30.375
+   },
+   "dims_raw": {
+    "max. load": null,
+    "max load/shelf": null,
+    "width": 43.75,
+    "depth": 15.375,
+    "height": 30.375,
+    "height under furniture": 28.375
+   },
+   "packages_in": [
+    {
+     "w": 16.0,
+     "d": 45.75,
+     "h": 6.75
+    }
+   ],
+   "source_url": "https://www.ikea.com/us/en/p/kallax-desk-black-brown-00582442/",
+   "fetched_at": "2026-11-20T20:50:12+00:00"
+  },
+  {
+   "id": "ikea-lagkapten-adils-desk-black-brown-black-47-1-4x23-5-8-49417021",
+   "retailer": "IKEA",
+   "name": "LAGKAPTEN / ADILS Desk - black-brown/black 47 1/4x23 5/8 \"",
+   "article_number": "494.170.21",
+   "category": "desk",
+   "price_usd": 59.99,
+   "price_note": null,
+   "dims_in": {
+    "w": 47.25,
+    "d": 23.625,
+    "h": 28.75
+   },
+   "dims_raw": {
+    "max. load": null,
+    "width": 47.25,
+    "depth": 23.625,
+    "height": 28.75
+   },
+   "packages_in": [
+    {
+     "w": 23.75,
+     "d": 47.25,
+     "h": 1.5
+    },
+    {
+     "w": 4.5,
+     "d": 27.75,
+     "h": 2.25
+    },
+    {
+     "w": 4.5,
+     "d": 27.75,
+     "h": 2.25
+    },
+    {
+     "w": 4.5,
+     "d": 27.75,
+     "h": 2.25
+    },
+    {
+     "w": 4.5,
+     "d": 27.75,
+     "h": 2.25
+    }
+   ],
+   "source_url": "https://www.ikea.com/us/en/p/lagkapten-adils-desk-black-brown-black-s49417021/",
+   "fetched_at": "2026-11-20T20:50:12+00:00"
+  },
+  {
+   "id": "ikea-alhult-extendable-table-beige-brown-47-1-4-66-7-8x31-1-2-60597921",
+   "retailer": "IKEA",
+   "name": "ÅLHULT Extendable table - beige/brown 47 1/4/66 7/8x31 1/2 \"",
+   "article_number": "605.979.21",
+   "category": "dining_table",
+   "price_usd": 199.99,
+   "price_note": null,
+   "dims_in": {
+    "w": 31.5,
+    "d": 47.25,
+    "h": 29.5
+   },
+   "dims_raw": {
+    "height": 29.5,
+    "max. length": 66.875,
+    "min. length": 47.25,
+    "width": 31.5
+   },
+   "packages_in": [
+    {
+     "w": 25.0,
+     "d": 33.0,
+     "h": 2.5
+    },
+    {
+     "w": 10.75,
+     "d": 66.25,
+     "h": 2.75
+    }
+   ],
+   "source_url": "https://www.ikea.com/us/en/p/alhult-extendable-table-beige-brown-60597921/",
+   "fetched_at": "2026-11-20T20:50:13+00:00"
+  },
+  {
+   "id": "ikea-bergshyttan-table-dark-brown-ash-veneer-94-1-2x36-5-8-40608242",
+   "retailer": "IKEA",
+   "name": "BERGSHYTTAN Table - dark-brown ash veneer 94 1/2x36 5/8 \"",
+   "article_number": "406.082.42",
+   "category": "dining_table",
+   "price_usd": 499.99,
+   "price_note": null,
+   "dims_in": {
+    "w": 36.625,
+    "d": 94.5,
+    "h": 29.5
+   },
+   "dims_raw": {
+    "height": 29.5,
+    "length": 94.5,
+    "thickness, veneer": 0.25,
+    "width": 36.625,
+    "depth": 94.5
+   },
+   "packages_in": [
+    {
+     "w": 28.5,
+     "d": 30.0,
+     "h": 3.25
+    },
+    {
+     "w": 37.5,
+     "d": 96.75,
+     "h": 2.75
+    }
+   ],
+   "source_url": "https://www.ikea.com/us/en/p/bergshyttan-table-dark-brown-ash-veneer-40608242/",
+   "fetched_at": "2026-11-20T20:50:15+00:00"
+  },
+  {
+   "id": "ikea-docksta-table-black-black-40-1-2-99418848",
+   "retailer": "IKEA",
+   "name": "DOCKSTA Table - black/black 40 1/2 \"",
+   "article_number": "994.188.48",
+   "category": "dining_table",
+   "price_usd": 279.99,
+   "price_note": null,
+   "dims_in": {
+    "w": 40.5,
+    "d": 40.5,
+    "h": 29.5
+   },
+   "dims_raw": {
+    "height": 29.5,
+    "diameter": 40.5,
+    "width": 40.5,
+    "depth": 40.5
+   },
+   "packages_in": [
+    {
+     "w": 42.0,
+     "d": 42.5,
+     "h": 1.0
+    },
+    {
+     "w": 23.75,
+     "d": 23.75,
+     "h": 8.75
+    }
+   ],
+   "source_url": "https://www.ikea.com/us/en/p/docksta-table-black-black-s99418848/",
+   "fetched_at": "2026-11-20T20:50:15+00:00"
+  },
+  {
+   "id": "ikea-alhult-chair-beige-kabusa-light-beige-60600773",
+   "retailer": "IKEA",
+   "name": "ÅLHULT Chair - beige/Kabusa light beige",
+   "article_number": "606.007.73",
+   "category": "dining_chair",
+   "price_usd": 65.0,
+   "price_note": null,
+   "dims_in": {
+    "w": 17.75,
+    "d": 21.25,
+    "h": 37.0
+   },
+   "dims_raw": {
+    "depth": 21.25,
+    "height": 37.0,
+    "width": 17.75
+   },
+   "packages_in": [
+    {
+     "w": 19.5,
+     "d": 37.75,
+     "h": 4.25
+    }
+   ],
+   "source_url": "https://www.ikea.com/us/en/p/alhult-chair-beige-kabusa-light-beige-60600773/",
+   "fetched_at": "2026-11-20T20:50:16+00:00"
+  },
+  {
+   "id": "ikea-bergmund-chair-oak-effect-gunnared-medium-gray-49471701",
+   "retailer": "IKEA",
+   "name": "BERGMUND Chair - oak effect/Gunnared medium gray",
+   "article_number": "494.717.01",
+   "category": "dining_chair",
+   "price_usd": 125.0,
+   "price_note": null,
+   "dims_in": {
+    "w": 20.5,
+    "d": 23.25,
+    "h": 37.375
+   },
+   "dims_raw": {
+    "tested for": null,
+    "width": 20.5,
+    "depth": 23.25,
+    "height": 37.375,
+    "seat width": 20.5,
+    "seat depth": 16.125,
+    "seat height": 20.125
+   },
+   "packages_in": [
+    {
+     "w": 19.75,
+     "d": 24.0,
+     "h": 7.25
+    },
+    {
+     "w": 7.0,
+     "d": 8.5,
+     "h": 1.75
+    }
+   ],
+   "source_url": "https://www.ikea.com/us/en/p/bergmund-chair-oak-effect-gunnared-medium-gray-s49471701/",
+   "fetched_at": "2026-11-20T20:50:17+00:00"
+  },
+  {
+   "id": "ikea-gronsta-chair-indoor-outdoor-gray-dark-brown-wood-70637238",
+   "retailer": "IKEA",
+   "name": "GRÖNSTA Chair - indoor/outdoor gray/dark brown/wood",
+   "article_number": "706.372.38",
+   "category": "dining_chair",
+   "price_usd": 70.0,
+   "price_note": null,
+   "dims_in": {
+    "w": 21.25,
+    "d": 18.875,
+    "h": 31.125
+   },
+   "dims_raw": {
+    "width": 21.25,
+    "depth": 18.875,
+    "height": 31.125,
+    "seat width": 18.875,
+    "seat depth": 16.5,
+    "seat height": 17.75,
+    "tested for": null
+   },
+   "packages_in": [
+    {
+     "w": 19.0,
+     "d": 22.0,
+     "h": 16.0
+    },
+    {
+     "w": 6.5,
+     "d": 19.0,
+     "h": 2.0
+    }
+   ],
+   "source_url": "https://www.ikea.com/us/en/p/groensta-chair-indoor-outdoor-gray-dark-brown-wood-70637238/",
+   "fetched_at": "2026-11-20T20:50:18+00:00"
+  },
+  {
+   "id": "ikea-ankarudden-6-drawer-dresser-with-2-inner-drawers-oak-effect-54-1-2x18-7-8x34-3-8-80598057",
+   "retailer": "IKEA",
+   "name": "ANKARUDDEN 6-drawer dresser - with 2 inner drawers/oak effect 54 1/2x18 7/8x34 3/8 \"",
+   "article_number": "805.980.57",
+   "category": "dresser",
+   "price_usd": 299.99,
+   "price_note": null,
+   "dims_in": {
+    "w": 54.5,
+    "d": 18.875,
+    "h": 34.375
+   },
+   "dims_raw": {
+    "width": 54.5,
+    "height": 34.375,
+    "depth": 18.875,
+    "drawer depth (inside)": 15.0,
+    "storage capacity": null,
+    "drawer pull-out": 8.25
+   },
+   "packages_in": [
+    {
+     "w": 19.25,
+     "d": 56.75,
+     "h": 3.5
+    },
+    {
+     "w": 19.25,
+     "d": 35.75,
+     "h": 3.75
+    },
+    {
+     "w": 19.25,
+     "d": 35.5,
+     "h": 4.5
+    }
+   ],
+   "source_url": "https://www.ikea.com/us/en/p/ankarudden-6-drawer-dresser-with-2-inner-drawers-oak-effect-80598057/",
+   "fetched_at": "2026-11-20T20:50:19+00:00"
+  },
+  {
+   "id": "ikea-brimnes-4-drawer-dresser-black-30-3-4x18-1-8x48-7-8-70574245",
+   "retailer": "IKEA",
+   "name": "BRIMNES 4-drawer dresser - black 30 3/4x18 1/8x48 7/8 \"",
+   "article_number": "705.742.45",
+   "category": "dresser",
+   "price_usd": 229.99,
+   "price_note": null,
+   "dims_in": {
+    "w": 30.75,
+    "d": 18.125,
+    "h": 48.875
+   },
+   "dims_raw": {
+    "depth": 18.125,
+    "drawer depth (inside)": 14.125,
+    "height": 48.875,
+    "width": 30.75,
+    "drawer width (inside)": 27.5,
+    "storage capacity": null,
+    "drawer pull-out": 7.75
+   },
+   "packages_in": [
+    {
+     "w": 18.5,
+     "d": 62.0,
+     "h": 2.5
+    },
+    {
+     "w": 19.0,
+     "d": 63.0,
+     "h": 3.0
+    }
+   ],
+   "source_url": "https://www.ikea.com/us/en/p/brimnes-4-drawer-dresser-black-70574245/",
+   "fetched_at": "2026-11-20T20:50:20+00:00"
+  },
+  {
+   "id": "ikea-fagelfjallet-3-drawer-dresser-black-oak-effect-32-1-4x20-1-8x30-3-4-90598603",
+   "retailer": "IKEA",
+   "name": "FÅGELFJÄLLET 3-drawer dresser - black oak effect 32 1/4x20 1/8x30 3/4 \"",
+   "article_number": "905.986.03",
+   "category": "dresser",
+   "price_usd": 179.99,
+   "price_note": null,
+   "dims_in": {
+    "w": 32.25,
+    "d": 20.125,
+    "h": 30.75
+   },
+   "dims_raw": {
+    "depth": 20.125,
+    "drawer depth (inside)": 15.0,
+    "height": 30.75,
+    "storage capacity": null,
+    "width": 32.25,
+    "drawer width (inside)": 28.0,
+    "drawer pull-out": 9.75
+   },
+   "packages_in": [
+    {
+     "w": 21.25,
+     "d": 34.25,
+     "h": 4.5
+    },
+    {
+     "w": 16.75,
+     "d": 32.0,
+     "h": 3.5
+    }
+   ],
+   "source_url": "https://www.ikea.com/us/en/p/fagelfjaellet-3-drawer-dresser-black-oak-effect-90598603/",
+   "fetched_at": "2026-11-20T20:50:21+00:00"
+  },
+  {
+   "id": "ikea-blastasen-nightstand-black-19-5-8x14-5-8x29-7-8-90617574",
+   "retailer": "IKEA",
+   "name": "BLÄSTÅSEN Nightstand - black 19 5/8x14 5/8x29 7/8 \"",
+   "article_number": "906.175.74",
+   "category": "nightstand",
+   "price_usd": 129.99,
+   "price_note": null,
+   "dims_in": {
+    "w": 19.625,
+    "d": 14.625,
+    "h": 29.875
+   },
+   "dims_raw": {
+    "depth": 14.625,
+    "drawer depth (inside)": 10.625,
+    "height under furniture": 7.875,
+    "height": 29.875,
+    "height of drawer (inside)": 3.875,
+    "width": 19.625,
+    "drawer width (inside)": 11.375
+   },
+   "packages_in": [
+    {
+     "w": 15.25,
+     "d": 36.75,
+     "h": 2.5
+    }
+   ],
+   "source_url": "https://www.ikea.com/us/en/p/blaestasen-nightstand-black-90617574/",
+   "fetched_at": "2026-11-20T20:50:22+00:00"
+  },
+  {
+   "id": "ikea-brimnes-nightstand-black-15-3-8x16-1-8x20-7-8-80340454",
+   "retailer": "IKEA",
+   "name": "BRIMNES Nightstand - black 15 3/8x16 1/8x20 7/8 \"",
+   "article_number": "803.404.54",
+   "category": "nightstand",
+   "price_usd": 79.99,
+   "price_note": null,
+   "dims_in": {
+    "w": 15.375,
+    "d": 16.125,
+    "h": 20.875
+   },
+   "dims_raw": {
+    "width": 15.375,
+    "depth": 16.125,
+    "height": 20.875,
+    "drawer width (inside)": 12.25,
+    "drawer depth (inside)": 14.125
+   },
+   "packages_in": [
+    {
+     "w": 16.0,
+     "d": 22.5,
+     "h": 4.25
+    }
+   ],
+   "source_url": "https://www.ikea.com/us/en/p/brimnes-nightstand-black-80340454/",
+   "fetched_at": "2026-11-20T20:50:22+00:00"
+  },
+  {
+   "id": "ikea-besta-tv-bench-with-doors-black-brown-bjorkoviken-brown-stained-oak-veneer-70-7-8x16-1-2x15-09568026",
+   "retailer": "IKEA",
+   "name": "BESTÅ TV bench with doors - black-brown Björköviken/brown stained oak veneer 70 7/8x16 1/2x15 \"",
+   "article_number": "095.680.26",
+   "category": "tv_bench",
+   "price_usd": 390.0,
+   "price_note": null,
+   "dims_in": {
+    "w": 70.875,
+    "d": 16.5,
+    "h": 15.0
+   },
+   "dims_raw": {
+    "width": 70.875,
+    "depth": 16.5,
+    "height": 15.0,
+    "max. tv weight": null,
+    "max load/shelf": null
+   },
+   "packages_in": [
+    {
+     "w": 16.0,
+     "d": 72.75,
+     "h": 4.25
+    },
+    {
+     "w": 14.0,
+     "d": 23.0,
+     "h": 0.75
+    },
+    {
+     "w": 14.0,
+     "d": 23.0,
+     "h": 0.75
+    },
+    {
+     "w": 14.0,
+     "d": 23.0,
+     "h": 0.75
+    },
+    {
+     "w": 7.75,
+     "d": 9.75,
+     "h": 1.0
+    },
+    {
+     "w": 7.75,
+     "d": 9.75,
+     "h": 1.0
+    },
+    {
+     "w": 7.75,
+     "d": 9.75,
+     "h": 1.0
+    },
+    {
+     "w": 15.75,
+     "d": 26.75,
+     "h": 0.75
+    },
+    {
+     "w": 15.75,
+     "d": 26.75,
+     "h": 0.75
+    },
+    {
+     "w": 15.75,
+     "d": 26.75,
+     "h": 0.75
+    }
+   ],
+   "source_url": "https://www.ikea.com/us/en/p/besta-tv-bench-with-doors-black-brown-bjoerkoeviken-brown-stained-oak-veneer-s09568026/",
+   "fetched_at": "2026-11-20T20:50:23+00:00"
+  },
+  {
+   "id": "ikea-brimnes-tv-unit-black-85-1-8x16-1-4x21-1-8-20593091",
+   "retailer": "IKEA",
+   "name": "BRIMNES TV unit - black 85 1/8x16 1/4x21 1/8 \"",
+   "article_number": "205.930.91",
+   "category": "tv_bench",
+   "price_usd": 249.99,
+   "price_note": null,
+   "dims_in": {
+    "w": 85.125,
+    "d": 16.25,
+    "h": 21.125
+   },
+   "dims_raw": {
+    "width": 85.125,
+    "depth": 16.25,
+    "height": 21.125,
+    "max. load on top panel": null,
+    "maximum load/drawer": null,
+    "max. load/large shelf": null,
+    "max. load/small shelf": null,
+    "max. tv weight": null
+   },
+   "packages_in": [
+    {
+     "w": 16.0,
+     "d": 85.75,
+     "h": 2.25
+    },
+    {
+     "w": 16.75,
+     "d": 87.25,
+     "h": 2.25
+    }
+   ],
+   "source_url": "https://www.ikea.com/us/en/p/brimnes-tv-unit-black-20593091/",
+   "fetched_at": "2026-11-20T20:50:23+00:00"
+  },
+  {
+   "id": "ikea-fjallbo-tv-unit-black-78x17-3-4x21-1-4-00579034",
+   "retailer": "IKEA",
+   "name": "FJÄLLBO TV unit - black 78x17 3/4x21 1/4 \"",
+   "article_number": "005.790.34",
+   "category": "tv_bench",
+   "price_usd": 299.99,
+   "price_note": null,
+   "dims_in": {
+    "w": 78.0,
+    "d": 17.75,
+    "h": 21.25
+   },
+   "dims_raw": {
+    "width": 78.0,
+    "depth": 17.75,
+    "height": 21.25,
+    "max. tv weight": null,
+    "max load/shelf": null
+   },
+   "packages_in": [
+    {
+     "w": 18.5,
+     "d": 79.0,
+     "h": 4.25
+    }
+   ],
+   "source_url": "https://www.ikea.com/us/en/p/fjaellbo-tv-unit-black-00579034/",
+   "fetched_at": "2026-11-20T20:50:24+00:00"
+  },
+  {
+   "id": "ikea-arende-rug-00576436",
+   "retailer": "IKEA",
+   "name": "ÄRENDE Rug, high pile - gray 5 ' 3 \"x7 ' 7 \"",
+   "article_number": "005.764.36",
+   "category": "rug",
+   "price_usd": 69.99,
+   "price_note": null,
+   "dims_in": {
+    "w": 63.0,
+    "d": 91.0,
+    "h": 1.25
+   },
+   "dims_raw": {
+    "length": 91.0,
+    "width": 63.0,
+    "area": null,
+    "pile length": 1.25,
+    "surface density": null,
+    "depth": 91.0
+   },
+   "packages_in": [
+    {
+     "w": 7.5,
+     "d": 63.75,
+     "h": 7.5
+    }
+   ],
+   "source_url": "https://www.ikea.com/us/en/p/aerende-rug-high-pile-gray-00576436/",
+   "fetched_at": "2026-11-20T20:50:25+00:00"
+  },
+  {
+   "id": "ikea-grejsimojs-rug-00602001",
+   "retailer": "IKEA",
+   "name": "GREJSIMOJS Rug, high pile - green 5 ' 0 \"x7 ' 1 \"",
+   "article_number": "006.020.01",
+   "category": "rug",
+   "price_usd": 159.99,
+   "price_note": null,
+   "dims_in": {
+    "w": 60.0,
+    "d": 85.0,
+    "h": null
+   },
+   "dims_raw": {
+    "length": 85.0,
+    "width": 60.0,
+    "area": null,
+    "depth": 85.0
+   },
+   "packages_in": [
+    {
+     "w": 7.5,
+     "d": 60.25,
+     "h": 7.5
+    }
+   ],
+   "source_url": "https://www.ikea.com/us/en/p/grejsimojs-rug-high-pile-green-00602001/",
+   "fetched_at": "2026-11-20T20:50:25+00:00"
+  },
+  {
+   "id": "ikea-halved-rug-20328228",
+   "retailer": "IKEA",
+   "name": "HALVED Rug, flatwoven - handmade multicolor 5 ' 7 \"x7 ' 10 \"",
+   "article_number": "203.282.28",
+   "category": "rug",
+   "price_usd": 249.99,
+   "price_note": null,
+   "dims_in": {
+    "w": 67.0,
+    "d": 94.0,
+    "h": 0.25
+   },
+   "dims_raw": {
+    "length": 94.0,
+    "width": 67.0,
+    "thickness": 0.25,
+    "area": null,
+    "surface density": null,
+    "depth": 94.0
+   },
+   "packages_in": [
+    {
+     "w": 18.0,
+     "d": 24.5,
+     "h": 4.75
+    }
+   ],
+   "source_url": "https://www.ikea.com/us/en/p/halved-rug-flatwoven-handmade-multicolor-20328228/",
+   "fetched_at": "2026-11-20T20:50:26+00:00"
+  },
+  {
+   "id": "ikea-akterspring-floor-lamp-opal-glass-brass-plated-64-00618808",
+   "retailer": "IKEA",
+   "name": "AKTERSPRING Floor lamp - opal glass/brass plated 64 \"",
+   "article_number": "006.188.08",
+   "category": "floor_lamp",
+   "price_usd": 99.99,
+   "price_note": null,
+   "dims_in": {
+    "w": 12.0,
+    "d": 10.0,
+    "h": 64.0
+   },
+   "dims_raw": {
+    "base diameter": 10.0,
+    "cord length": 91.0,
+    "height": 64.0,
+    "max. power/bulb": null,
+    "shade diameter": 5.0,
+    "width": 12.0
+   },
+   "packages_in": [
+    {
+     "w": 13.5,
+     "d": 13.5,
+     "h": 7.0
+    }
+   ],
+   "source_url": "https://www.ikea.com/us/en/p/akterspring-floor-lamp-opal-glass-brass-plated-00618808/",
+   "fetched_at": "2026-11-20T20:50:27+00:00"
+  },
+  {
+   "id": "ikea-arstid-floor-lamp-brass-white-60321324",
+   "retailer": "IKEA",
+   "name": "ÅRSTID Floor lamp - brass/white",
+   "article_number": "603.213.24",
+   "category": "floor_lamp",
+   "price_usd": 89.99,
+   "price_note": null,
+   "dims_in": {
+    "w": 14.0,
+    "d": 14.0,
+    "h": 61.0
+   },
+   "dims_raw": {
+    "max.": null,
+    "height": 61.0,
+    "base diameter": 11.0,
+    "shade diameter": 14.0,
+    "cord length": 80.0,
+    "width": 14.0,
+    "depth": 14.0
+   },
+   "packages_in": [
+    {
+     "w": 14.75,
+     "d": 16.75,
+     "h": 14.75
+    }
+   ],
+   "source_url": "https://www.ikea.com/us/en/p/arstid-floor-lamp-brass-white-60321324/",
+   "fetched_at": "2026-11-20T20:50:27+00:00"
+  },
+  {
+   "id": "ikea-barlast-floor-lamp-black-white-59-70437814",
+   "retailer": "IKEA",
+   "name": "BARLAST Floor lamp - black/white 59 \"",
+   "article_number": "704.378.14",
+   "category": "floor_lamp",
+   "price_usd": 9.99,
+   "price_note": null,
+   "dims_in": {
+    "w": 13.0,
+    "d": 13.0,
+    "h": 59.0
+   },
+   "dims_raw": {
+    "max.": null,
+    "height": 59.0,
+    "base diameter": 13.0,
+    "shade diameter": 12.0,
+    "cord length": 39.0,
+    "width": 13.0,
+    "depth": 13.0
+   },
+   "packages_in": [
+    {
+     "w": 3.0,
+     "d": 14.25,
+     "h": 3.0
+    }
+   ],
+   "source_url": "https://www.ikea.com/us/en/p/barlast-floor-lamp-black-white-70437814/",
+   "fetched_at": "2026-11-20T20:50:28+00:00"
+  },
+  {
+   "id": "ikea-kivik-sofa-tibbleby-beige-gray-39440593",
+   "retailer": "IKEA",
+   "name": "KIVIK Sofa - Tibbleby beige/gray",
+   "article_number": "394.405.93",
+   "category": "sofa",
+   "price_usd": 799.0,
+   "price_note": null,
+   "dims_in": {
+    "w": 89.75,
+    "d": 37.375,
+    "h": 32.625
+   },
+   "dims_raw": {
+    "width": 89.75,
+    "depth": 37.375,
+    "height": 32.625,
+    "seat width": 70.875,
+    "seat depth": 23.625,
+    "seat height": 17.75
+   },
+   "packages_in": [
+    {
+     "w": 37.5,
+     "d": 72.5,
+     "h": 19.75
+    },
+    {
+     "w": 36.25,
+     "d": 38.5,
+     "h": 11.0
+    },
+    {
+     "w": 14.75,
+     "d": 22.25,
+     "h": 3.5
+    }
+   ],
+   "source_url": "https://www.ikea.com/us/en/p/kivik-sofa-tibbleby-beige-gray-s39440593/",
+   "fetched_at": "2026-11-20T20:50:29+00:00"
+  },
+  {
+   "id": "ikea-uppland-sofa-blekinge-white-19384116",
+   "retailer": "IKEA",
+   "name": "UPPLAND Sofa - Blekinge white",
+   "article_number": "193.841.16",
+   "category": "sofa",
+   "price_usd": 899.0,
+   "price_note": null,
+   "dims_in": {
+    "w": 88.25,
+    "d": 36.25,
+    "h": 36.25
+   },
+   "dims_raw": {
+    "height including back cushions": 36.25,
+    "backrest height": 29.875,
+    "width": 88.25,
+    "depth": 36.25,
+    "height under furniture": 6.75,
+    "armrest width": 9.875,
+    "armrest height": 26.75,
+    "seat width": 68.125,
+    "seat depth": 22.875,
+    "seat height": 18.5
+   },
+   "packages_in": [
+    {
+     "w": 36.25,
+     "d": 80.0,
+     "h": 19.25
+    },
+    {
+     "w": 14.75,
+     "d": 22.25,
+     "h": 4.0
+    }
+   ],
+   "source_url": "https://www.ikea.com/us/en/p/uppland-sofa-blekinge-white-s19384116/",
+   "fetched_at": "2026-11-20T20:50:29+00:00"
+  },
+  {
+   "id": "ikea-poang-armchair-birch-veneer-knisa-light-beige-59305928",
+   "retailer": "IKEA",
+   "name": "POÄNG Armchair - birch veneer/Knisa light beige",
+   "article_number": "593.059.28",
+   "category": "armchair",
+   "price_usd": 149.0,
+   "price_note": null,
+   "dims_in": {
+    "w": 26.75,
+    "d": 32.25,
+    "h": 39.375
+   },
+   "dims_raw": {
+    "width": 26.75,
+    "depth": 32.25,
+    "height": 39.375,
+    "seat width": 22.0,
+    "seat depth": 19.625,
+    "seat height": 16.5
+   },
+   "packages_in": [
+    {
+     "w": 26.25,
+     "d": 29.0,
+     "h": 2.75
+    },
+    {
+     "w": 9.75,
+     "d": 23.25,
+     "h": 9.75
+    }
+   ],
+   "source_url": "https://www.ikea.com/us/en/p/poaeng-armchair-birch-veneer-knisa-light-beige-s59305928/",
+   "fetched_at": "2026-11-20T20:50:30+00:00"
+  },
+  {
+   "id": "ikea-billy-bookcase-white-31-1-2x11x79-1-2-20522046",
+   "retailer": "IKEA",
+   "name": "BILLY Bookcase - white 31 1/2x11x79 1/2 \"",
+   "article_number": "205.220.46",
+   "category": "bookcase",
+   "price_usd": 79.0,
+   "price_note": null,
+   "dims_in": {
+    "w": 31.5,
+    "d": 11.0,
+    "h": 79.5
+   },
+   "dims_raw": {
+    "width": 31.5,
+    "depth": 11.0,
+    "height": 79.5,
+    "max load/shelf": null
+   },
+   "packages_in": [
+    {
+     "w": 11.75,
+     "d": 81.25,
+     "h": 5.25
+    }
+   ],
+   "source_url": "https://www.ikea.com/us/en/p/billy-bookcase-white-20522046/",
+   "fetched_at": "2026-11-20T20:50:31+00:00"
+  },
+  {
+   "id": "ikea-kallax-shelf-unit-white-30-1-8x57-5-8-20631663",
+   "retailer": "IKEA",
+   "name": "KALLAX Shelf unit - white 30 1/8x57 5/8 \"",
+   "article_number": "206.316.63",
+   "category": "bookcase",
+   "price_usd": 79.99,
+   "price_note": null,
+   "dims_in": {
+    "w": 30.125,
+    "d": 15.375,
+    "h": 57.625
+   },
+   "dims_raw": {
+    "width": 30.125,
+    "depth": 15.375,
+    "height": 57.625,
+    "max load/shelf": null
+   },
+   "packages_in": [
+    {
+     "w": 15.75,
+     "d": 59.0,
+     "h": 6.5
+    }
+   ],
+   "source_url": "https://www.ikea.com/us/en/p/kallax-shelf-unit-white-20631663/",
+   "fetched_at": "2026-11-20T20:50:32+00:00"
+  },
+  {
+   "id": "ikea-malm-bed-frame-dark-brown-veneer-luroy-queen-49574365",
+   "retailer": "IKEA",
+   "name": "MALM Bed frame - dark-brown veneer/Luröy Queen",
+   "article_number": "495.743.65",
+   "category": "bed",
+   "price_usd": 299.0,
+   "price_note": null,
+   "dims_in": {
+    "w": 66.125,
+    "d": 83.125,
+    "h": 39.375
+   },
+   "dims_raw": {
+    "length": 83.125,
+    "width": 66.125,
+    "footboard height": 15.0,
+    "headboard height": 39.375,
+    "mattress length": 79.5,
+    "mattress width": 59.875,
+    "height": 39.375,
+    "height under furniture": 8.25,
+    "depth": 83.125
+   },
+   "packages_in": [
+    {
+     "w": 30.5,
+     "d": 67.25,
+     "h": 3.5
+    },
+    {
+     "w": 9.75,
+     "d": 81.25,
+     "h": 3.0
+    },
+    {
+     "w": 2.5,
+     "d": 54.75,
+     "h": 2.25
+    },
+    {
+     "w": 9.5,
+     "d": 30.25,
+     "h": 4.25
+    }
+   ],
+   "source_url": "https://www.ikea.com/us/en/p/malm-bed-frame-dark-brown-veneer-luroey-s49574365/",
+   "fetched_at": "2026-11-20T20:50:32+00:00"
+  }
+ ]
 }
