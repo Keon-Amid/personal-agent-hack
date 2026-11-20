@@ -208,7 +208,15 @@ def query_photo(data: bytes, fmt: str = "jpeg") -> list[float]:
 if __name__ == "__main__":
     products = json.loads((HERE / "products.json").read_text())["products"]
     a = sys.argv[1:]
-    if a[:1] == ["build"]:
+    if a[:2] == ["build", "--missing"]:  # embed only products not in the file yet
+        emb = json.loads(EMB_PATH.read_text())
+        new = [p for p in products if p["id"] not in emb["vectors"]]
+        if new:
+            emb["vectors"].update(build(new)["vectors"])
+        emb["product_styles"] = product_styles(emb)
+        EMB_PATH.write_text(json.dumps(emb))
+        print(f"embedded {len(new)} new products; {len(emb['vectors'])} total")
+    elif a[:1] == ["build"]:
         emb = build(products)
         emb["product_styles"] = product_styles(emb)
         EMB_PATH.write_text(json.dumps(emb))

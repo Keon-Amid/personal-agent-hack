@@ -1,7 +1,7 @@
 """Run: python3 -m unittest discover -s fit -t ."""
 import unittest
 
-from fit import FITS, NO_FIT, UNSURE, check_doorway, check_floor, check_wall, measurement, overall
+from fit import FITS, NO_FIT, UNSURE, check_doorway, check_floor, check_rug, check_wall, measurement, overall
 
 SOFA = {"dims_in": {"w": 84, "d": 38, "h": 32}}
 
@@ -50,6 +50,23 @@ class Doorway(unittest.TestCase):
         rs = check_doorway(item, measurement(30), measurement(80))
         self.assertEqual(overall(rs), NO_FIT)
         self.assertIn("assembled item", rs[0]["math"])
+
+
+class Rug(unittest.TestCase):
+    RUG = {"dims_in": {"w": 63, "d": 91, "h": 1}}  # ÄRENDE 5'3" x 7'7"
+
+    def test_fits_with_margins(self):
+        rs = check_rug(self.RUG, measurement(120), measurement(140))
+        self.assertEqual(overall(rs), FITS)
+        self.assertIn("rug 63 in + 2 x 6 in margin", rs[0]["math"])
+
+    def test_turns_to_fit(self):
+        rs = check_rug(self.RUG, measurement(110), measurement(80))  # 91+12 > 80 but 63+12 <= 80 turned
+        self.assertEqual(overall(rs), FITS)
+        self.assertIn("turned 90°", rs[0]["math"])
+
+    def test_too_big_either_way(self):
+        self.assertEqual(overall(check_rug(self.RUG, measurement(70), measurement(70))), NO_FIT)
 
 
 class Measurement(unittest.TestCase):

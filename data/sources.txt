@@ -42,3 +42,7 @@ armchair https://www.ikea.com/us/en/p/poaeng-armchair-birch-veneer-knisa-light-b
 bookcase https://www.ikea.com/us/en/p/billy-bookcase-white-20522046/
 bookcase https://www.ikea.com/us/en/p/kallax-shelf-unit-white-20631663/
 bed https://www.ikea.com/us/en/p/malm-bed-frame-dark-brown-veneer-luroey-s49574365/
+rug https://www.ikea.com/us/en/p/jaernvaeg-rug-low-pile-ornament-pattern-beige-dark-beige-00623466/
+rug https://www.ikea.com/us/en/p/onsevig-rug-low-pile-multicolor-10559894/
+rug https://www.ikea.com/us/en/p/lohals-rug-flatwoven-natural-00277395/
+rug https://www.ikea.com/us/en/p/lohals-rug-flatwoven-natural-50277393/

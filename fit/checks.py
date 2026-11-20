@@ -93,6 +93,29 @@ def check_doorway(item: dict, door_width: dict, door_height: dict) -> list[dict]
     return out
 
 
+DEFAULT_RUG_MARGIN_IN = 6.0  # team rule: keep a rug at least 6 in from every wall
+
+
+def check_rug(item: dict, room_width: dict, room_depth: dict,
+              margin_in: float = DEFAULT_RUG_MARGIN_IN) -> list[dict]:
+    """A rug plus `margin_in` on each side must fit the room's width and depth. A rug can turn 90°, so both
+    orientations are tried and the better one is returned (two results: along the width, along the depth)."""
+    a, b = item["dims_in"]["w"], item["dims_in"]["d"]
+    best = None
+    for w, d, turned in ((a, b, False), (b, a, True)):
+        rs = [
+            _result("rug_width", w + 2 * margin_in, room_width,
+                    f"rug {w:g} in + 2 x {margin_in:g} in margin" + (" (turned 90°)" if turned else "")),
+            _result("rug_depth", d + 2 * margin_in, room_depth,
+                    f"rug {d:g} in + 2 x {margin_in:g} in margin" + (" (turned 90°)" if turned else "")),
+        ]
+        rank = {FITS: 0, UNSURE: 1, NO_FIT: 2}[overall(rs)]
+        key = (rank, -min(r["margin_in"] for r in rs))
+        if best is None or key < best[0]:
+            best = (key, rs)
+    return best[1]
+
+
 def overall(results: list[dict]) -> str:
     """Worst verdict across several checks: one no_fit sinks it, one unsure makes it unsure."""
     vs = {r["verdict"] for r in results}

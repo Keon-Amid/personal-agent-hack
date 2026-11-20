@@ -20,7 +20,7 @@ TBD
 ## Interfaces
 
 ### Products: `data/products.json` (owner: alistair) — DRAFT, confirm
-`{"about", "products": [Product]}`, 44 real IKEA US products. Built by `python3 data/fetch_ikea.py $(cat data/sources.txt)`;
+`{"about", "products": [Product]}`, 48 real IKEA US products. Built by `python3 data/fetch_ikea.py $(cat data/sources.txt)`;
 every number is read from `source_url`, nothing typed by hand.
 Categories: sofa, armchair, coffee_table, side_table, desk, dining_table, dining_chair, dresser, nightstand,
 tv_bench, rug, floor_lamp, bookcase, bed.
@@ -43,6 +43,7 @@ All inches. A room measurement carries where it came from and how far off it may
 - `check_wall(product, wall, clearance_in=0)` → FitResult
 - `check_floor(product, room_depth, walkway_in=36)` → FitResult (item against a wall + walkway in front)
 - `check_doorway(product, door_width, door_height)` → [FitResult] (every package, or the assembled item)
+- `check_rug(product, room_width, room_depth, margin_in=6)` → [FitResult] (rug + 6 in from every wall; tries both orientations). `fit.options` uses it for rugs instead of the wall/floor checks
 - `overall([FitResult])` → worst verdict
 
 FitResult (goes straight into the audit record):

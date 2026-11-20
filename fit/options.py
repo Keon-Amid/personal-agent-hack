@@ -9,7 +9,7 @@ The UI draws price on x, rating on y, dot size = review count, colour = fit verd
 """
 from __future__ import annotations
 
-from .checks import FITS, check_doorway, check_floor, check_wall, overall
+from .checks import FITS, check_doorway, check_floor, check_rug, check_wall, overall
 
 MIN_REVIEWS = 10  # below this the average rating is too noisy to rank on
 
@@ -20,8 +20,10 @@ def room(wall: dict, depth: dict, door_width: dict, door_height: dict) -> dict:
 
 
 def check_all(product: dict, rm: dict) -> list[dict]:
-    return ([check_wall(product, rm["wall"]), check_floor(product, rm["depth"])]
-            + check_doorway(product, rm["door_width"], rm["door_height"]))
+    door = check_doorway(product, rm["door_width"], rm["door_height"])
+    if product["category"] == "rug":  # rugs lie in the room, not against a wall
+        return check_rug(product, rm["wall"], rm["depth"]) + door
+    return [check_wall(product, rm["wall"]), check_floor(product, rm["depth"])] + door
 
 
 def _trusted(o: dict) -> bool:
