@@ -50,6 +50,8 @@ function toRow(r: AuditRecord): Row {
       icon: ShieldCheck,
       tone: r.status === 'verified' ? 'fits' : 'unsure',
     }
+  if (r.step === 'cart' && r.status === 'approved') return { ...base, title: 'You approved the cart', source: 'You', icon: Check, tone: 'fits' }
+  if (r.step === 'cart' && /withdrawn/.test(r.decision)) return { ...base, title: 'Approval withdrawn', source: 'Cart', icon: ShoppingBag, tone: 'unsure' }
   if (r.step === 'cart') return { ...base, title: 'Added to the cart', source: 'Claude', icon: ShoppingBag }
   if (r.step === 'measure') return { ...base, title: r.decision.charAt(0).toUpperCase() + r.decision.slice(1), source: 'You', icon: Ruler, tone: r.status === 'no_fit' ? 'nofit' : 'fits' }
   if (r.step === 'swap') return { ...base, title: `You swapped in ${family(r.product_id)}`, source: 'You', icon: Repeat2 }
@@ -73,7 +75,8 @@ function group(audit: AuditRecord[]): Group[] {
   let last: Group | null = null
   for (const r of audit) {
     const prevSlot: string | null = last ? last.slot : null
-    const slot: string | null = r.step === 'measure' ? YOU : (r.item_slot ?? (r.step === 'estimate_room' ? null : prevSlot))
+    const mine = r.step === 'measure' || (r.step === 'cart' && !r.item_slot)
+    const slot: string | null = mine ? YOU : (r.item_slot ?? (r.step === 'estimate_room' ? null : prevSlot))
     let g = bySlot.get(slot)
     if (!g) {
       g = { slot, rows: [] }
@@ -120,7 +123,7 @@ function RowView({ row, start, open, onToggle }: { row: Row; start: string; open
           >
             {row.title}
           </span>
-          <span className="num shrink-0 text-2xs text-fg-3">{row.r.source.kind === 'you' ? clock(row.r.ts).slice(0, 5) : sinceStart(row.r.ts, start)}</span>
+          <span className="num shrink-0 text-2xs text-fg-3">{row.source === 'You' ? clock(row.r.ts).slice(0, 5) : sinceStart(row.r.ts, start)}</span>
         </span>
         <span
           className={cn(
@@ -204,7 +207,7 @@ export default function Ledger() {
     if (jumped) {
       el.scrollTop = 0
       stick.current = false
-    } else if ((stick.current && stage === 'running') || audit[audit.length - 1]?.source.kind === 'you') {
+    } else if ((stick.current && stage === 'running') || audit[audit.length - 1]?.source.kind === 'you' || audit[audit.length - 1]?.status === 'approved') {
       el.scrollTo({ top: el.scrollHeight, behavior: 'smooth' })
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -255,7 +258,7 @@ export default function Ledger() {
           return (
             <section key={g.slot ?? 'room'} className={cn(gi > 0 && 'mt-4 border-t border-line pt-3')}>
               {g.slot === YOU ? (
-                <h3 className="mb-2.5 text-sm font-semibold text-fg">Your measurements</h3>
+                <h3 className="mb-2.5 text-sm font-semibold text-fg">Your decisions</h3>
               ) : g.slot ? (
                 <SlotHeader slot={g.slot} item={item} phase={placed[g.slot]} active={stage === 'running' && activeSlot === g.slot} />
               ) : (

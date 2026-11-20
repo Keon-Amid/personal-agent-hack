@@ -15,7 +15,8 @@ cd web && npm install && npm run dev      # http://localhost:5173
    what was rejected first, and the alternatives as a price-against-rating chart. Swap to any that fits.
 4. **Measure**: click Wall, Depth or Door width in the top bar and type a tape measurement. Every piece is re-checked,
    the change is logged, and anything that no longer fits turns red with a one-click swap.
-5. **Cart**: IKEA links, the total, and the audit trail as a JSON download. No purchase is made.
+5. **Cart**: approve it (recorded in the audit trail), open every piece on IKEA, download the trail as JSON.
+   No order is placed; you pay on IKEA.com.
 
 Keys: `⌘K` describe, `←` `→` step through pieces, `1` `2` `3` views, `esc` close.
 
@@ -29,9 +30,23 @@ Keys: `⌘K` describe, `←` `→` step through pieces, `1` `2` `3` views, `esc`
 | The room | `assets/room_scan_roomplan.glb` (Polycam Floorplan scan), or drawn from a plan's typed measurements |
 | Product 3D models | `public/models/` (see below); anything without one is a plain shape at the listed size |
 
-**Replay or live.** By default (`VITE_API=mock`) the app replays a recorded run: same records, same order, same text,
-with the waiting shortened. The pill in the top bar says so. `VITE_API=live` calls the agent server instead
-(`POST /api/plan`, then `GET /api/plan/{id}` polled once a second; see `src/api/live.ts`). That server is not built yet.
+**Live or replay, decided by itself.** Run everything with one command from the repo root:
+
+```bash
+./scripts/dev.sh        # agent server on :8000 + this app on :5173
+```
+
+The app asks the agent server (`server/app.py`, proxied at `/api`) how it is doing every few seconds:
+
+- **Server up, with `SENSO_API_KEY` and `SIE_API_KEY` in `.env`** → the pill says "Live agent ready". Describing a room
+  starts a real run (`POST /api/plan` with the room's measurements, your words and your budget as `budget_total_usd`),
+  and the app follows `GET /api/plan/{id}` once a second. Approving the cart calls `POST /api/plan/{id}/approve`.
+- **Anything else** → the pill says "Replay of a real run" and the app plays back a recorded run from `contracts/`:
+  same records, same order, same text, with the waiting shortened. Hover the pill to see what is missing.
+
+`/plan/<id>` works for any plan the server knows, including ones started from Claude Desktop through the MCP server:
+the page shows what exists so far and keeps following while the agent works. `API_TARGET=http://<host>:8000 npm run dev`
+points the app at a teammate's server. `VITE_API=mock` or `VITE_API=live` forces one mode.
 
 Computed in the browser, and labelled as yours in the trail: a tape measurement re-checks each piece from the
 `need_in` its fit result already carries (same comparison as `fit/checks.py`), and a swap takes its fit checks from

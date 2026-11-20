@@ -3662,6 +3662,1474 @@
    ],
    "source_url": "https://www.ikea.com/us/en/p/ringsta-skaftet-floor-lamp-white-nickel-plated-s59387448/",
    "fetched_at": "2026-11-20T22:46:34+00:00"
+  },
+  {
+   "id": "ikea-vihals-bed-frame-white-twin-10602449",
+   "retailer": "IKEA",
+   "name": "VIHALS Bed frame - white Twin",
+   "article_number": "106.024.49",
+   "category": "bed",
+   "price_usd": 99.0,
+   "price_note": null,
+   "dims_in": {
+    "w": 40.5,
+    "d": 77.125,
+    "h": 26.0
+   },
+   "dims_raw": {
+    "footboard height": 16.125,
+    "height under furniture": 10.25,
+    "headboard height": 26.0,
+    "height": 26.0,
+    "length": 77.125,
+    "headboard width": 40.5,
+    "mattress length": 74.375,
+    "mattress width": 38.25,
+    "width": 40.5,
+    "depth": 77.125
+   },
+   "packages_in": [
+    {
+     "w": 27.75,
+     "d": 82.25,
+     "h": 2.0
+    }
+   ],
+   "rating": 3.4,
+   "review_count": 57,
+   "description": "VIHALS Bed frame - white Twin. If you need space for extra bedlinens, you can add VIHALS bed storage boxes on castors, sold separately. If you need extra sleeping space, you can add VIHALS trundle bed that you can roll out when needed, sold separately. Slatted bed base and mattress sold separately.",
+   "color": "white",
+   "material": "Wood (including board)",
+   "image_url": "https://www.ikea.com/us/en/images/products/vihals-bed-frame-white__1450554_pe990358_s5.jpg",
+   "image_urls": [
+    "https://www.ikea.com/us/en/images/products/vihals-bed-frame-white__1450554_pe990358_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/vihals-bed-frame-white__1446112_pe988552_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/vihals-bed-frame-white__1448779_pe989657_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/vihals-bed-frame-white__1446106_pe988550_s5.jpg"
+   ],
+   "source_url": "https://www.ikea.com/us/en/p/vihals-bed-frame-white-10602449/",
+   "fetched_at": "2026-11-20T22:59:35+00:00"
+  },
+  {
+   "id": "ikea-stjarno-bed-frame-anthracite-luroy-twin-09563340",
+   "retailer": "IKEA",
+   "name": "STJÄRNÖ Bed frame - anthracite/Luröy Twin",
+   "article_number": "095.633.40",
+   "category": "bed",
+   "price_usd": 229.0,
+   "price_note": null,
+   "dims_in": {
+    "w": 41.375,
+    "d": 78.375,
+    "h": 46.5
+   },
+   "dims_raw": {
+    "footboard height": 27.125,
+    "headboard height": 46.5,
+    "length": 78.375,
+    "mattress length": 74.375,
+    "mattress width": 38.25,
+    "width": 41.375,
+    "height under furniture": 8.625,
+    "headboard width": 41.375,
+    "height": 46.5,
+    "depth": 78.375
+   },
+   "packages_in": [
+    {
+     "w": 29.25,
+     "d": 42.25,
+     "h": 4.5
+    },
+    {
+     "w": 9.0,
+     "d": 80.75,
+     "h": 2.75
+    },
+    {
+     "w": 9.5,
+     "d": 38.0,
+     "h": 2.0
+    }
+   ],
+   "rating": 4.7,
+   "review_count": 22,
+   "description": "STJÄRNÖ Bed frame - anthracite/Luröy Twin. Whether you prefer a classically romantic style or a modern and bold one, your existing bed textiles and bedroom furniture will go perfectly with this bed frame. The high footboard keeps bed textiles from falling onto the floor while you sleep.",
+   "color": "gray",
+   "material": "Metal",
+   "image_url": "https://www.ikea.com/us/en/images/products/stjaernoe-bed-frame-anthracite-luroey__1298064_pe936037_s5.jpg",
+   "image_urls": [
+    "https://www.ikea.com/us/en/images/products/stjaernoe-bed-frame-anthracite-luroey__1298064_pe936037_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/stjaernoe-bed-frame-anthracite-luroey__1298063_pe936036_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/stjaernoe-bed-frame-anthracite-luroey__1298067_pe936040_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/stjaernoe-bed-frame-anthracite-luroey__1298066_pe936039_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/stjaernoe-bed-frame-anthracite-luroey__1298065_pe936038_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/stjaernoe-bed-frame-anthracite-luroey__1273465_pe930077_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/stjaernoe-bed-frame-anthracite-luroey__1298078_pe936051_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/stjaernoe-bed-frame-anthracite-luroey__1298079_pe936052_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/stjaernoe-bed-frame-anthracite-luroey__1279071_pe931299_s5.jpg"
+   ],
+   "source_url": "https://www.ikea.com/us/en/p/stjaernoe-bed-frame-anthracite-luroey-s09563340/",
+   "fetched_at": "2026-11-20T22:59:37+00:00"
+  },
+  {
+   "id": "ikea-kleppstad-bed-frame-white-vissle-beige-full-double-40492680",
+   "retailer": "IKEA",
+   "name": "KLEPPSTAD Bed frame - white/Vissle beige Full/Double",
+   "article_number": "404.926.80",
+   "category": "bed",
+   "price_usd": 179.0,
+   "price_note": null,
+   "dims_in": {
+    "w": 55.5,
+    "d": 77.5,
+    "h": 33.875
+   },
+   "dims_raw": {
+    "height": 33.875,
+    "width": 55.5,
+    "length": 77.5,
+    "footboard height": 10.625,
+    "height under furniture": 7.875,
+    "mattress length": 74.375,
+    "mattress width": 53.125,
+    "depth": 77.5
+   },
+   "packages_in": [
+    {
+     "w": 6.25,
+     "d": 76.25,
+     "h": 3.25
+    },
+    {
+     "w": 14.0,
+     "d": 54.5,
+     "h": 3.25
+    }
+   ],
+   "rating": 4.4,
+   "review_count": 334,
+   "description": "KLEPPSTAD Bed frame - white/Vissle beige Full/Double. The clean and simple design goes well with other bedroom furniture and fits perfectly in any modern bedroom. White powder-coated metal and visible screws add a modern look to the bed frame. Goes perfectly with furniture in the KLEPPSTAD series.",
+   "color": "beige, white",
+   "material": "Metal",
+   "image_url": "https://www.ikea.com/us/en/images/products/kleppstad-bed-frame-white-vissle-beige__1035341_pe840528_s5.jpg",
+   "image_urls": [
+    "https://www.ikea.com/us/en/images/products/kleppstad-bed-frame-white-vissle-beige__1035341_pe840528_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/kleppstad-bed-frame-white-vissle-beige__1035340_pe840527_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/kleppstad-bed-frame-white-vissle-beige__1035343_pe840530_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/kleppstad-bed-frame-white-vissle-beige__1035342_pe840529_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/kleppstad-bed-frame-white-vissle-beige__1116343_pe872489_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/kleppstad-bed-frame-white-vissle-beige__1116344_pe872490_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/kleppstad-bed-frame-white-vissle-beige__1035350_pe840525_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/kleppstad-bed-frame-white-vissle-beige__1035344_pe840531_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/kleppstad-bed-frame-white-vissle-beige__1036672_pe838472_s5.jpg"
+   ],
+   "source_url": "https://www.ikea.com/us/en/p/kleppstad-bed-frame-white-vissle-beige-40492680/",
+   "fetched_at": "2026-11-20T22:59:37+00:00"
+  },
+  {
+   "id": "ikea-tonstad-bed-frame-off-white-full-60603620",
+   "retailer": "IKEA",
+   "name": "TONSTAD Bed frame - off-white Full",
+   "article_number": "606.036.20",
+   "category": "bed",
+   "price_usd": 329.0,
+   "price_note": null,
+   "dims_in": {
+    "w": 56.75,
+    "d": 78.375,
+    "h": 45.625
+   },
+   "dims_raw": {
+    "footboard height": 18.5,
+    "height under furniture": 9.0,
+    "height": 45.625,
+    "length": 78.375,
+    "mattress length": 74.375,
+    "mattress width": 53.125,
+    "width": 56.75,
+    "depth": 78.375
+   },
+   "packages_in": [
+    {
+     "w": 16.75,
+     "d": 75.75,
+     "h": 2.75
+    },
+    {
+     "w": 33.25,
+     "d": 56.0,
+     "h": 2.0
+    }
+   ],
+   "rating": 4.6,
+   "review_count": 46,
+   "description": "TONSTAD Bed frame - off-white Full. The bed has a strong and sturdy construction that allows you to use it for many years. Adjustable bed sides allow you to use mattresses of different thicknesses. You can easily vacuum under the bed frame to keep the space clean and dust-free.",
+   "color": "white",
+   "material": "Wood (including board)",
+   "image_url": "https://www.ikea.com/us/en/images/products/tonstad-bed-frame-off-white__1419012_pe976817_s5.jpg",
+   "image_urls": [
+    "https://www.ikea.com/us/en/images/products/tonstad-bed-frame-off-white__1419012_pe976817_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/tonstad-bed-frame-off-white__1385649_pe963602_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/tonstad-bed-frame-off-white__1419014_pe976819_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/tonstad-bed-frame-off-white__1419015_pe976820_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/tonstad-bed-frame-off-white__1419013_pe976818_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/tonstad-bed-frame-off-white__1426185_pe979713_s5.jpg"
+   ],
+   "source_url": "https://www.ikea.com/us/en/p/tonstad-bed-frame-off-white-60603620/",
+   "fetched_at": "2026-11-20T22:59:38+00:00"
+  },
+  {
+   "id": "ikea-mellgrund-bed-frame-off-white-queen-50603767",
+   "retailer": "IKEA",
+   "name": "MELLGRUND Bed frame - off-white Queen",
+   "article_number": "506.037.67",
+   "category": "bed",
+   "price_usd": 199.0,
+   "price_note": null,
+   "dims_in": {
+    "w": 63.0,
+    "d": 82.625,
+    "h": 57.5
+   },
+   "dims_raw": {
+    "footboard height": 36.625,
+    "height under furniture": 9.875,
+    "headboard height": 57.5,
+    "headboard width": 63.0,
+    "height": 57.5,
+    "length": 82.625,
+    "mattress length": 79.5,
+    "mattress width": 59.875,
+    "width": 63.0,
+    "depth": 82.625
+   },
+   "packages_in": [
+    {
+     "w": 28.75,
+     "d": 63.0,
+     "h": 3.75
+    },
+    {
+     "w": 11.75,
+     "d": 81.25,
+     "h": 3.25
+    }
+   ],
+   "rating": 5.0,
+   "review_count": 8,
+   "description": "MELLGRUND Bed frame - off-white Queen. The sturdy MELLGRUND bed frame features elegant lines and a timeless look – a romantic version of a classic metal bed. The powder-coated steel frame is not only sturdy but also easy to clean, making it durable and long-lasting. Centre support beam included.",
+   "color": "white",
+   "material": "Metal",
+   "image_url": "https://www.ikea.com/us/en/images/products/mellgrund-bed-frame-off-white__1476995_pe1001055_s5.jpg",
+   "image_urls": [
+    "https://www.ikea.com/us/en/images/products/mellgrund-bed-frame-off-white__1476995_pe1001055_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/mellgrund-bed-frame-off-white__1476975_pe999084_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/mellgrund-bed-frame-off-white__1477000_pe1001058_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/mellgrund-bed-frame-off-white__1476997_pe1001056_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/mellgrund-bed-frame-off-white__1482508_pe1001060_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/mellgrund-bed-frame-off-white__1482435_pe1001049_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/mellgrund-bed-frame-off-white__1482436_pe1001064_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/mellgrund-bed-frame-off-white__1486165_pe1002323_s5.jpg"
+   ],
+   "source_url": "https://www.ikea.com/us/en/p/mellgrund-bed-frame-off-white-50603767/",
+   "fetched_at": "2026-11-20T22:59:38+00:00"
+  },
+  {
+   "id": "ikea-gullaberg-bed-frame-white-luroy-queen-69614515",
+   "retailer": "IKEA",
+   "name": "GULLABERG Bed frame - white/Luröy Queen",
+   "article_number": "696.145.15",
+   "category": "bed",
+   "price_usd": 349.0,
+   "price_note": null,
+   "dims_in": {
+    "w": 64.125,
+    "d": 82.625,
+    "h": 44.5
+   },
+   "dims_raw": {
+    "footboard height": 16.125,
+    "height under furniture": 7.875,
+    "headboard height": 44.5,
+    "headboard width": 64.125,
+    "height": 44.5,
+    "length": 82.625,
+    "mattress length": 79.5,
+    "mattress width": 59.875,
+    "width": 64.125,
+    "depth": 82.625
+   },
+   "packages_in": [
+    {
+     "w": 29.5,
+     "d": 65.75,
+     "h": 1.75
+    },
+    {
+     "w": 9.25,
+     "d": 81.5,
+     "h": 3.5
+    },
+    {
+     "w": 9.5,
+     "d": 30.25,
+     "h": 4.25
+    }
+   ],
+   "rating": 4.3,
+   "review_count": 63,
+   "description": "GULLABERG Bed frame - white/Luröy Queen. Robust design, sturdy construction and crafted details with a Scandinavian touch add a beautiful traditional look to GULLABERG bed frame. The sturdy tapered legs in solid wood create an airy expression – and they also make it easy to vacuum under the bed.",
+   "color": "white",
+   "material": "Wood (including board)",
+   "image_url": "https://www.ikea.com/us/en/images/products/gullaberg-bed-frame-white-luroey__1529860_pe1014643_s5.jpg",
+   "image_urls": [
+    "https://www.ikea.com/us/en/images/products/gullaberg-bed-frame-white-luroey__1529860_pe1014643_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/gullaberg-bed-frame-white-luroey__1529823_pe1014622_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/gullaberg-bed-frame-white-luroey__1529859_pe1014642_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/gullaberg-bed-frame-white-luroey__1488568_pe1003408_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/gullaberg-bed-frame-white-luroey__1273465_pe930077_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/gullaberg-bed-frame-white-luroey__1488567_pe1003407_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/gullaberg-bed-frame-white-luroey__1538720_pe1017419_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/gullaberg-bed-frame-white-luroey__1520873_pe1012999_s5.jpg"
+   ],
+   "source_url": "https://www.ikea.com/us/en/p/gullaberg-bed-frame-white-luroey-s69614515/",
+   "fetched_at": "2026-11-20T22:59:39+00:00"
+  },
+  {
+   "id": "ikea-malm-bed-frame-white-luroy-king-49009481",
+   "retailer": "IKEA",
+   "name": "MALM Bed frame - white/Luröy King",
+   "article_number": "490.094.81",
+   "category": "bed",
+   "price_usd": 399.0,
+   "price_note": null,
+   "dims_in": {
+    "w": 82.25,
+    "d": 83.125,
+    "h": 39.375
+   },
+   "dims_raw": {
+    "length": 83.125,
+    "width": 82.25,
+    "footboard height": 15.0,
+    "headboard height": 39.375,
+    "mattress length": 79.5,
+    "mattress width": 76.0,
+    "height": 39.375,
+    "height under furniture": 8.25,
+    "depth": 83.125
+   },
+   "packages_in": [
+    {
+     "w": 30.75,
+     "d": 83.25,
+     "h": 3.5
+    },
+    {
+     "w": 9.75,
+     "d": 81.0,
+     "h": 3.0
+    },
+    {
+     "w": 2.5,
+     "d": 54.75,
+     "h": 2.25
+    },
+    {
+     "w": 9.75,
+     "d": 38.0,
+     "h": 4.0
+    }
+   ],
+   "rating": 3.9,
+   "review_count": 1020,
+   "description": "MALM Bed frame - white/Luröy King. Adjustable bed sides allow you to use mattresses of different thicknesses. Suitable for business use. This versatile bed frame will look great with your choice of textiles and bedroom furniture. Add 2 or 4 MALM bed boxes to create lots of extra storage space.",
+   "color": "white",
+   "material": "Wood (including board)",
+   "image_url": "https://www.ikea.com/us/en/images/products/malm-bed-frame-white-luroey__1101527_pe866706_s5.jpg",
+   "image_urls": [
+    "https://www.ikea.com/us/en/images/products/malm-bed-frame-white-luroey__1101527_pe866706_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/malm-bed-frame-white-luroey__0749130_pe745499_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/malm-bed-frame-white-luroey__1101528_pe866707_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/malm-bed-frame-white-luroey__1101529_pe866708_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/malm-bed-frame-white-luroey__1273465_pe930077_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/malm-bed-frame-white-luroey__0860683_pe566696_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/malm-bed-frame-white-luroey__1499334_pe1006568_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/malm-bed-frame-white-luroey__0800857_ph163673_s5.jpg"
+   ],
+   "source_url": "https://www.ikea.com/us/en/p/malm-bed-frame-white-luroey-s49009481/",
+   "fetched_at": "2026-11-20T22:59:41+00:00"
+  },
+  {
+   "id": "ikea-hemnes-8-drawer-dresser-black-brown-63x37-3-4-30576190",
+   "retailer": "IKEA",
+   "name": "HEMNES 8-drawer dresser - black-brown 63x37 3/4 \"",
+   "article_number": "305.761.90",
+   "category": "dresser",
+   "price_usd": 449.99,
+   "price_note": null,
+   "dims_in": {
+    "w": 63.0,
+    "d": 19.625,
+    "h": 37.75
+   },
+   "dims_raw": {
+    "width": 63.0,
+    "depth": 19.625,
+    "height": 37.75,
+    "drawer depth (inside)": 15.75,
+    "height under furniture": 4.375,
+    "storage capacity": null,
+    "drawer pull-out": 9.875
+   },
+   "packages_in": [
+    {
+     "w": 21.0,
+     "d": 66.0,
+     "h": 3.25
+    },
+    {
+     "w": 18.5,
+     "d": 33.0,
+     "h": 3.25
+    },
+    {
+     "w": 18.5,
+     "d": 33.0,
+     "h": 3.25
+    }
+   ],
+   "rating": 4.0,
+   "review_count": 77,
+   "description": "HEMNES 8-drawer dresser - black-brown 63x37 3/4 \". This chest of drawers has a drawer interlock, which means that only one drawer per column can be opened at a time. When combined with wall-anchoring, this solution helps reduce the risk of tip-over. Smooth running drawers with pull-out stop.",
+   "color": "brown, black",
+   "material": "Solid wood",
+   "image_url": "https://www.ikea.com/us/en/images/products/hemnes-8-drawer-dresser-black-brown__1151401_pe886163_s5.jpg",
+   "image_urls": [
+    "https://www.ikea.com/us/en/images/products/hemnes-8-drawer-dresser-black-brown__1151401_pe886163_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/hemnes-8-drawer-dresser-black-brown__1602271_pe1043361_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/hemnes-8-drawer-dresser-black-brown__1269058_pe928956_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/hemnes-8-drawer-dresser-black-brown__0380367_pe555288_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/hemnes-8-drawer-dresser-black-brown__1093041_pe863159_s5.jpg"
+   ],
+   "source_url": "https://www.ikea.com/us/en/p/hemnes-8-drawer-dresser-black-brown-30576190/",
+   "fetched_at": "2026-11-20T22:56:57+00:00"
+  },
+  {
+   "id": "ikea-rast-3-drawer-dresser-pine-24-3-8x26-3-4-70582165",
+   "retailer": "IKEA",
+   "name": "RAST 3-drawer dresser - pine 24 3/8x26 3/4 \"",
+   "article_number": "705.821.65",
+   "category": "dresser",
+   "price_usd": 69.99,
+   "price_note": null,
+   "dims_in": {
+    "w": 24.375,
+    "d": 13.75,
+    "h": 26.75
+   },
+   "dims_raw": {
+    "width": 24.375,
+    "depth": 13.75,
+    "height": 26.75,
+    "drawer depth (inside)": 11.75,
+    "drawer width (inside)": 21.625,
+    "storage capacity": null,
+    "drawer pull-out": 6.5
+   },
+   "packages_in": [
+    {
+     "w": 23.5,
+     "d": 30.0,
+     "h": 3.25
+    }
+   ],
+   "rating": 3.1,
+   "review_count": 137,
+   "description": "RAST 3-drawer dresser - pine 24 3/8x26 3/4 \". Your home should be a safe place for the entire family. That’s why a wall-anchoring kit is included for you to anchor your chest of drawers to the wall. The chest of drawers holds approximately 45 medium-sized T-shirts.",
+   "color": "beige, brown",
+   "material": "Solid wood",
+   "image_url": "https://www.ikea.com/us/en/images/products/rast-3-drawer-dresser-pine__1291242_pe934856_s5.jpg",
+   "image_urls": [
+    "https://www.ikea.com/us/en/images/products/rast-3-drawer-dresser-pine__1291242_pe934856_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/rast-3-drawer-dresser-pine__1291241_pe934855_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/rast-3-drawer-dresser-pine__1291243_pe934857_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/rast-3-drawer-dresser-pine__1291240_pe934854_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/rast-3-drawer-dresser-pine__1291246_pe934860_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/rast-3-drawer-dresser-pine__1291244_pe934863_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/rast-3-drawer-dresser-pine__1291245_pe934859_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/rast-3-drawer-dresser-pine__1405721_pe970551_s5.jpg"
+   ],
+   "source_url": "https://www.ikea.com/us/en/p/rast-3-drawer-dresser-pine-70582165/",
+   "fetched_at": "2026-11-20T22:56:58+00:00"
+  },
+  {
+   "id": "ikea-radmanso-6-drawer-dresser-brown-walnut-effect-62-5-8x18-7-8x31-7-8-40593839",
+   "retailer": "IKEA",
+   "name": "RÅDMANSÖ 6-drawer dresser - brown walnut effect 62 5/8x18 7/8x31 7/8 \"",
+   "article_number": "405.938.39",
+   "category": "dresser",
+   "price_usd": 349.99,
+   "price_note": null,
+   "dims_in": {
+    "w": 62.625,
+    "d": 18.875,
+    "h": 31.875
+   },
+   "dims_raw": {
+    "depth": 18.875,
+    "drawer depth (inside)": 15.0,
+    "height under furniture": 5.0,
+    "height": 31.875,
+    "storage capacity": null,
+    "width": 62.625,
+    "drawer width (inside)": 28.0,
+    "drawer pull-out": 9.0
+   },
+   "packages_in": [
+    {
+     "w": 18.75,
+     "d": 34.0,
+     "h": 4.5
+    },
+    {
+     "w": 18.5,
+     "d": 65.25,
+     "h": 2.5
+    },
+    {
+     "w": 16.25,
+     "d": 35.0,
+     "h": 4.5
+    }
+   ],
+   "rating": 3.9,
+   "review_count": 197,
+   "description": "RÅDMANSÖ 6-drawer dresser - brown walnut effect 62 5/8x18 7/8x31 7/8 \". The wide RÅDMANSÖ chest of drawers with 6 drawers has a wood expression with a warm walnut tone that creates a beautiful frame to store, organize and display your items. The generous drawers are easy to open and close.",
+   "color": "brown",
+   "material": "Wood (including board)",
+   "image_url": "https://www.ikea.com/us/en/images/products/radmansoe-6-drawer-dresser-brown-walnut-effect__1416942_pe975719_s5.jpg",
+   "image_urls": [
+    "https://www.ikea.com/us/en/images/products/radmansoe-6-drawer-dresser-brown-walnut-effect__1416942_pe975719_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/radmansoe-6-drawer-dresser-brown-walnut-effect__1416939_pe975715_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/radmansoe-6-drawer-dresser-brown-walnut-effect__1511361_pe1010078_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/radmansoe-6-drawer-dresser-brown-walnut-effect__1544506_pe1019219_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/radmansoe-6-drawer-dresser-brown-walnut-effect__1533868_pe1016063_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/radmansoe-6-drawer-dresser-brown-walnut-effect__1416940_pe975716_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/radmansoe-6-drawer-dresser-brown-walnut-effect__1384142_pe962859_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/radmansoe-6-drawer-dresser-brown-walnut-effect__1544655_pe1019261_s5.jpg"
+   ],
+   "source_url": "https://www.ikea.com/us/en/p/radmansoe-6-drawer-dresser-brown-walnut-effect-40593839/",
+   "fetched_at": "2026-11-20T22:56:59+00:00"
+  },
+  {
+   "id": "ikea-storklinta-5-drawer-dresser-white-anchor-unlock-function-15-3-4x18-7-8x47-1-4-20559285",
+   "retailer": "IKEA",
+   "name": "STORKLINTA 5-drawer dresser - white/anchor/unlock function 15 3/4x18 7/8x47 1/4 \"",
+   "article_number": "205.592.85",
+   "category": "dresser",
+   "price_usd": 179.99,
+   "price_note": null,
+   "dims_in": {
+    "w": 15.75,
+    "d": 18.875,
+    "h": 47.25
+   },
+   "dims_raw": {
+    "depth": 18.875,
+    "drawer depth (inside)": 15.75,
+    "height": 47.25,
+    "width": 15.75,
+    "width of drawer 1 (inside)": 12.25,
+    "storage capacity": null,
+    "drawer pull-out": 10.875
+   },
+   "packages_in": [
+    {
+     "w": 18.25,
+     "d": 54.75,
+     "h": 3.75
+    },
+    {
+     "w": 17.25,
+     "d": 43.5,
+     "h": 2.75
+    }
+   ],
+   "rating": 4.0,
+   "review_count": 105,
+   "description": "STORKLINTA 5-drawer dresser - white/anchor/unlock function 15 3/4x18 7/8x47 1/4 \". Our safety feature Anchor and unlock enhances the safety of your chest of drawers by significantly reducing, but not completely eliminating, the tip-over risk.",
+   "color": "white",
+   "material": "Wood (including board)",
+   "image_url": "https://www.ikea.com/us/en/images/products/storklinta-5-drawer-dresser-white-anchor-unlock-function__1516066_pe1011727_s5.jpg",
+   "image_urls": [
+    "https://www.ikea.com/us/en/images/products/storklinta-5-drawer-dresser-white-anchor-unlock-function__1516066_pe1011727_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/storklinta-5-drawer-dresser-white-anchor-unlock-function__1283571_pe932553_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/storklinta-5-drawer-dresser-white-anchor-unlock-function__1344127_pe949744_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/storklinta-5-drawer-dresser-white-anchor-unlock-function__1516061_pe1011718_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/storklinta-5-drawer-dresser-white-anchor-unlock-function__1343993_pe949667_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/storklinta-5-drawer-dresser-white-anchor-unlock-function__1395333_pe966953_s5.jpg"
+   ],
+   "source_url": "https://www.ikea.com/us/en/p/storklinta-5-drawer-dresser-white-anchor-unlock-function-20559285/",
+   "fetched_at": "2026-11-20T22:56:59+00:00"
+  },
+  {
+   "id": "ikea-lillberget-6-drawer-dresser-white-55-1-8x16-7-8x26-3-4-30639852",
+   "retailer": "IKEA",
+   "name": "LILLBERGET 6-drawer dresser - white 55 1/8x16 7/8x26 3/4 \"",
+   "article_number": "306.398.52",
+   "category": "dresser",
+   "price_usd": 149.99,
+   "price_note": null,
+   "dims_in": {
+    "w": 55.125,
+    "d": 16.875,
+    "h": 26.75
+   },
+   "dims_raw": {
+    "depth": 16.875,
+    "drawer depth (inside)": 13.0,
+    "height": 26.75,
+    "width": 55.125,
+    "drawer width (inside)": 24.375,
+    "storage capacity": null,
+    "drawer pull-out": 6.75
+   },
+   "packages_in": [
+    {
+     "w": 17.5,
+     "d": 63.5,
+     "h": 3.0
+    },
+    {
+     "w": 16.25,
+     "d": 29.25,
+     "h": 3.0
+    },
+    {
+     "w": 16.25,
+     "d": 29.25,
+     "h": 3.0
+    }
+   ],
+   "rating": 3.4,
+   "review_count": 28,
+   "description": "LILLBERGET 6-drawer dresser - white 55 1/8x16 7/8x26 3/4 \". A modern chest of drawers with 6 drawers to easily store and organize your things. Use the top panel for displaying or storing things. The chest of drawers holds approximately 100 medium-sized T-shirts.",
+   "color": "white",
+   "material": "Wood (including board)",
+   "image_url": "https://www.ikea.com/us/en/images/products/lillberget-6-drawer-dresser-white__1281811_pe931991_s5.jpg",
+   "image_urls": [
+    "https://www.ikea.com/us/en/images/products/lillberget-6-drawer-dresser-white__1281811_pe931991_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/lillberget-6-drawer-dresser-white__1281810_pe931990_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/lillberget-6-drawer-dresser-white__1602300_pe1043390_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/lillberget-6-drawer-dresser-white__1606074_pe1045538_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/lillberget-6-drawer-dresser-white__1281807_pe931987_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/lillberget-6-drawer-dresser-white__1573895_pe1031750_s5.jpg"
+   ],
+   "source_url": "https://www.ikea.com/us/en/p/lillberget-6-drawer-dresser-white-30639852/",
+   "fetched_at": "2026-11-20T22:57:01+00:00"
+  },
+  {
+   "id": "ikea-hemnes-nightstand-white-stain-18-1-8x13-3-4-20200456",
+   "retailer": "IKEA",
+   "name": "HEMNES Nightstand - white stain 18 1/8x13 3/4 \"",
+   "article_number": "202.004.56",
+   "category": "nightstand",
+   "price_usd": 129.99,
+   "price_note": null,
+   "dims_in": {
+    "w": 18.125,
+    "d": 13.75,
+    "h": 27.5
+   },
+   "dims_raw": {
+    "width": 18.125,
+    "depth": 13.75,
+    "height": 27.5,
+    "drawer depth (inside)": 9.0,
+    "height under furniture": 9.875
+   },
+   "packages_in": [
+    {
+     "w": 14.5,
+     "d": 31.25,
+     "h": 2.25
+    }
+   ],
+   "rating": 4.5,
+   "review_count": 236,
+   "description": "HEMNES Nightstand - white stain 18 1/8x13 3/4 \". Smooth running drawer with pull-out stop. Made of solid wood, which is a durable and warm natural material. Coordinates with other furniture in the HEMNES series.",
+   "color": "white",
+   "material": "Solid wood",
+   "image_url": "https://www.ikea.com/us/en/images/products/hemnes-nightstand-white-stain__0624424_pe691831_s5.jpg",
+   "image_urls": [
+    "https://www.ikea.com/us/en/images/products/hemnes-nightstand-white-stain__0624424_pe691831_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/hemnes-nightstand-white-stain__0380136_pe555081_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/hemnes-nightstand-white-stain__0858089_pe670722_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/hemnes-nightstand-white-stain__0381152_pe555902_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/hemnes-nightstand-white-stain__1158210_pe888032_s5.jpg"
+   ],
+   "source_url": "https://www.ikea.com/us/en/p/hemnes-nightstand-white-stain-20200456/",
+   "fetched_at": "2026-11-20T22:57:05+00:00"
+  },
+  {
+   "id": "ikea-tonstad-nightstand-oak-veneer-15-3-4x15-3-4x23-1-4-80489322",
+   "retailer": "IKEA",
+   "name": "TONSTAD Nightstand - oak veneer 15 3/4x15 3/4x23 1/4 \"",
+   "article_number": "804.893.22",
+   "category": "nightstand",
+   "price_usd": 149.99,
+   "price_note": null,
+   "dims_in": {
+    "w": 15.75,
+    "d": 15.75,
+    "h": 23.25
+   },
+   "dims_raw": {
+    "height": 23.25,
+    "width": 15.75,
+    "depth": 15.75,
+    "drawer depth (inside)": 11.75,
+    "height under furniture": 4.375,
+    "drawer width (inside)": 11.0
+   },
+   "packages_in": [
+    {
+     "w": 23.0,
+     "d": 30.5,
+     "h": 2.25
+    }
+   ],
+   "rating": 4.3,
+   "review_count": 258,
+   "description": "TONSTAD Nightstand - oak veneer 15 3/4x15 3/4x23 1/4 \". This bedside table has a drawer with an integrated handle that closes softly and quietly. Round legs in solid wood give the bedside table an elegant look. The brushed veneer gives the furniture a unique look and a personal character.",
+   "color": "beige",
+   "material": "Wood veneer",
+   "image_url": "https://www.ikea.com/us/en/images/products/tonstad-nightstand-oak-veneer__1247217_pe922597_s5.jpg",
+   "image_urls": [
+    "https://www.ikea.com/us/en/images/products/tonstad-nightstand-oak-veneer__1247217_pe922597_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/tonstad-nightstand-oak-veneer__1320234_pe941173_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/tonstad-nightstand-oak-veneer__1610494_ph201582_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/tonstad-nightstand-oak-veneer__1320236_pe941175_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/tonstad-nightstand-oak-veneer__1320235_pe941174_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/tonstad-nightstand-oak-veneer__1217774_pe913016_s5.jpg"
+   ],
+   "source_url": "https://www.ikea.com/us/en/p/tonstad-nightstand-oak-veneer-80489322/",
+   "fetched_at": "2026-11-20T22:57:06+00:00"
+  },
+  {
+   "id": "ikea-radmanso-nightstand-brown-walnut-effect-21-1-4x15-1-8x22-7-8-80593597",
+   "retailer": "IKEA",
+   "name": "RÅDMANSÖ Nightstand - brown walnut effect 21 1/4x15 1/8x22 7/8 \"",
+   "article_number": "805.935.97",
+   "category": "nightstand",
+   "price_usd": 99.99,
+   "price_note": null,
+   "dims_in": {
+    "w": 21.25,
+    "d": 15.125,
+    "h": 22.875
+   },
+   "dims_raw": {
+    "depth": 15.125,
+    "drawer depth (inside)": 11.0,
+    "height under furniture": 12.625,
+    "height": 22.875,
+    "height of drawer (inside)": 3.125,
+    "width": 21.25,
+    "drawer width (inside)": 18.0
+   },
+   "packages_in": [
+    {
+     "w": 14.75,
+     "d": 22.5,
+     "h": 4.75
+    }
+   ],
+   "rating": 4.3,
+   "review_count": 113,
+   "description": "RÅDMANSÖ Nightstand - brown walnut effect 21 1/4x15 1/8x22 7/8 \". RÅDMANSÖ bedside table has a wood expression with a warm walnut tone that creates a beautiful frame to store and organize your items. Comes with a drawer for hidden storage and an open shelf for items you want easily accessible.",
+   "color": "brown",
+   "material": "Wood (including board)",
+   "image_url": "https://www.ikea.com/us/en/images/products/radmansoe-nightstand-brown-walnut-effect__1384141_pe962860_s5.jpg",
+   "image_urls": [
+    "https://www.ikea.com/us/en/images/products/radmansoe-nightstand-brown-walnut-effect__1384141_pe962860_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/radmansoe-nightstand-brown-walnut-effect__1416653_pe975659_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/radmansoe-nightstand-brown-walnut-effect__1416654_pe975661_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/radmansoe-nightstand-brown-walnut-effect__1416655_pe975660_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/radmansoe-nightstand-brown-walnut-effect__1539046_ph206266_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/radmansoe-nightstand-brown-walnut-effect__1539055_ph206268_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/radmansoe-nightstand-brown-walnut-effect__1450351_pe990298_s5.jpg"
+   ],
+   "source_url": "https://www.ikea.com/us/en/p/radmansoe-nightstand-brown-walnut-effect-80593597/",
+   "fetched_at": "2026-11-20T22:57:07+00:00"
+  },
+  {
+   "id": "ikea-nordkisa-nightstand-bamboo-23-5-8x15-3-4-00430745",
+   "retailer": "IKEA",
+   "name": "NORDKISA Nightstand - bamboo 23 5/8x15 3/4 \"",
+   "article_number": "004.307.45",
+   "category": "nightstand",
+   "price_usd": 149.99,
+   "price_note": null,
+   "dims_in": {
+    "w": 23.625,
+    "d": 15.75,
+    "h": 26.75
+   },
+   "dims_raw": {
+    "width": 23.625,
+    "depth": 15.75,
+    "height": 26.75
+   },
+   "packages_in": [
+    {
+     "w": 17.0,
+     "d": 29.0,
+     "h": 4.5
+    }
+   ],
+   "rating": 4.6,
+   "review_count": 583,
+   "description": "NORDKISA Nightstand - bamboo 23 5/8x15 3/4 \". The drawer can be accessed from both sides. Cables are easy to manage by running them through the handle on either side of the drawer. NORDKISA series in bamboo coordinates beautifully with both our NORDLI and ELVARLI storage series.",
+   "color": "beige",
+   "material": "Bamboo",
+   "image_url": "https://www.ikea.com/us/en/images/products/nordkisa-nightstand-bamboo__0756063_pe748759_s5.jpg",
+   "image_urls": [
+    "https://www.ikea.com/us/en/images/products/nordkisa-nightstand-bamboo__0756063_pe748759_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/nordkisa-nightstand-bamboo__0813692_ph165842_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/nordkisa-nightstand-bamboo__0756062_pe748758_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/nordkisa-nightstand-bamboo__0756061_pe748757_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/nordkisa-nightstand-bamboo__0756060_pe748756_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/nordkisa-nightstand-bamboo__0756027_pe748755_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/nordkisa-nightstand-bamboo__0756024_pe748744_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/nordkisa-nightstand-bamboo__0789374_pe763969_s5.jpg"
+   ],
+   "source_url": "https://www.ikea.com/us/en/p/nordkisa-nightstand-bamboo-00430745/",
+   "fetched_at": "2026-11-20T22:57:08+00:00"
+  },
+  {
+   "id": "ikea-knarrevik-nightstand-black-16-1-2x13-1-4x20-1-2-20569977",
+   "retailer": "IKEA",
+   "name": "KNARREVIK Nightstand - black 16 1/2x13 1/4x20 1/2 \"",
+   "article_number": "205.699.77",
+   "category": "nightstand",
+   "price_usd": 14.99,
+   "price_note": null,
+   "dims_in": {
+    "w": 16.5,
+    "d": 13.25,
+    "h": 20.5
+   },
+   "dims_raw": {
+    "width": 16.5,
+    "depth": 13.25,
+    "height": 20.5
+   },
+   "packages_in": [
+    {
+     "w": 13.75,
+     "d": 21.5,
+     "h": 1.5
+    }
+   ],
+   "rating": 4.6,
+   "review_count": 261,
+   "description": "KNARREVIK Nightstand - black 16 1/2x13 1/4x20 1/2 \". The metal bar construction without welded joints makes assembly simple and also adds to the modern look. This side table with a shelf has plenty of space for everything from coffee mugs and eyeglasses to magazines and books. Only for indoor use.",
+   "color": "black",
+   "material": "Metal",
+   "image_url": "https://www.ikea.com/us/en/images/products/knarrevik-nightstand-black__1255278_pe924478_s5.jpg",
+   "image_urls": [
+    "https://www.ikea.com/us/en/images/products/knarrevik-nightstand-black__1255278_pe924478_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/knarrevik-nightstand-black__1295966_pe935626_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/knarrevik-nightstand-black__1295967_pe935627_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/knarrevik-nightstand-black__1295968_pe935628_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/knarrevik-nightstand-black__1255285_pe924480_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/knarrevik-nightstand-black__1215806_pe912198_s5.jpg"
+   ],
+   "source_url": "https://www.ikea.com/us/en/p/knarrevik-nightstand-black-20569977/",
+   "fetched_at": "2026-11-20T22:57:09+00:00"
+  },
+  {
+   "id": "ikea-varptross-table-lamp-bamboo-10-50601240",
+   "retailer": "IKEA",
+   "name": "VARPTROSS Table lamp - bamboo 10 \"",
+   "article_number": "506.012.40",
+   "category": "table_lamp",
+   "price_usd": 39.99,
+   "price_note": null,
+   "dims_in": {
+    "w": 6.0,
+    "d": 7.0,
+    "h": 10.0
+   },
+   "dims_raw": {
+    "cord length": 79.0,
+    "height": 10.0,
+    "length": 7.0,
+    "power": null,
+    "width": 6.0,
+    "depth": 7.0
+   },
+   "packages_in": [
+    {
+     "w": 9.25,
+     "d": 10.75,
+     "h": 6.5
+    }
+   ],
+   "rating": 4.9,
+   "review_count": 32,
+   "description": "VARPTROSS Table lamp - bamboo 10 \". Gives a soft glowing light, that gives your home a warm and welcoming atmosphere. Each lamp is unique since it is made of bamboo with natural color variations and has handmade details by skilled craftspeople.",
+   "color": "beige",
+   "material": "Bamboo",
+   "image_url": "https://www.ikea.com/us/en/images/products/varptross-table-lamp-bamboo__1509490_pe1009729_s5.jpg",
+   "image_urls": [
+    "https://www.ikea.com/us/en/images/products/varptross-table-lamp-bamboo__1509490_pe1009729_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/varptross-table-lamp-bamboo__1520240_pe1012802_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/varptross-table-lamp-bamboo__1520239_pe1012803_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/varptross-table-lamp-bamboo__1570731_ph209337_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/varptross-table-lamp-bamboo__1570728_ph209341_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/varptross-table-lamp-bamboo__1520238_pe1012804_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/varptross-table-lamp-bamboo__1520237_pe1012801_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/varptross-table-lamp-bamboo__0997546_ph162053_s5.jpg"
+   ],
+   "source_url": "https://www.ikea.com/us/en/p/varptross-table-lamp-bamboo-50601240/",
+   "fetched_at": "2026-11-20T22:57:10+00:00"
+  },
+  {
+   "id": "ikea-tarnaby-table-lamp-dimmable-anthracite-10-00323887",
+   "retailer": "IKEA",
+   "name": "TÄRNABY Table lamp - dimmable anthracite 10 \"",
+   "article_number": "003.238.87",
+   "category": "table_lamp",
+   "price_usd": 34.99,
+   "price_note": null,
+   "dims_in": {
+    "w": 6.0,
+    "d": 6.0,
+    "h": 10.0
+   },
+   "dims_raw": {
+    "max.": null,
+    "shade width": 4.0,
+    "height": 10.0,
+    "base diameter": 6.0,
+    "cord length": 71.0,
+    "width": 6.0,
+    "depth": 6.0
+   },
+   "packages_in": [
+    {
+     "w": 6.75,
+     "d": 11.0,
+     "h": 4.5
+    }
+   ],
+   "rating": 4.6,
+   "review_count": 2484,
+   "description": "TÄRNABY Table lamp - dimmable anthracite 10 \". Small and easy to place anywhere you want to bring some coziness and mood lighting into your home. If you want to dim the light, just turn the knob. By dimming the lighting, you change the mood in the room. Can only be used with dimmable light bulbs.",
+   "color": "gray",
+   "material": "Metal, Glass",
+   "image_url": "https://www.ikea.com/us/en/images/products/taernaby-table-lamp-dimmable-anthracite__1188962_pe899634_s5.jpg",
+   "image_urls": [
+    "https://www.ikea.com/us/en/images/products/taernaby-table-lamp-dimmable-anthracite__1188962_pe899634_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/taernaby-table-lamp-dimmable-anthracite__0811972_pe771891_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/taernaby-table-lamp-dimmable-anthracite__0760736_ph160475_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/taernaby-table-lamp-dimmable-anthracite__1105554_ph166557_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/taernaby-table-lamp-dimmable-anthracite__0747833_ph155459_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/taernaby-table-lamp-dimmable-anthracite__0908404_ph168349_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/taernaby-table-lamp-dimmable-anthracite__0880791_pe670203_s5.jpg"
+   ],
+   "source_url": "https://www.ikea.com/us/en/p/taernaby-table-lamp-dimmable-anthracite-00323887/",
+   "fetched_at": "2026-11-20T22:57:11+00:00"
+  },
+  {
+   "id": "ikea-fado-table-lamp-white-10-70096377",
+   "retailer": "IKEA",
+   "name": "FADO Table lamp - white 10 \"",
+   "article_number": "700.963.77",
+   "category": "table_lamp",
+   "price_usd": 29.99,
+   "price_note": null,
+   "dims_in": {
+    "w": 10.0,
+    "d": 10.0,
+    "h": 9.0
+   },
+   "dims_raw": {
+    "max.": null,
+    "height": 9.0,
+    "diameter": 10.0,
+    "cord length": 73.0,
+    "width": 10.0,
+    "depth": 10.0
+   },
+   "packages_in": [
+    {
+     "w": 10.75,
+     "d": 10.75,
+     "h": 10.0
+    }
+   ],
+   "rating": 4.5,
+   "review_count": 1078,
+   "description": "FADO Table lamp - white 10 \". Creates a soft, cozy mood light in your room. Light bulb sold separately. IKEA recommends LED bulb E26 globe opal white. Use an opal light bulb if you have an ordinary lamp shade or lamp and want an even, diffused distribution of light.",
+   "color": "white",
+   "material": "Glass",
+   "image_url": "https://www.ikea.com/us/en/images/products/fado-table-lamp-white__0606976_pe682645_s5.jpg",
+   "image_urls": [
+    "https://www.ikea.com/us/en/images/products/fado-table-lamp-white__0606976_pe682645_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/fado-table-lamp-white__1158342_pe888106_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/fado-table-lamp-white__1481772_pe1005760_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/fado-table-lamp-white__0176843_pe267072_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/fado-table-lamp-white__0969841_ph174718_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/fado-table-lamp-white__0340391_pe217413_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/fado-table-lamp-white__1061714_ph177857_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/fado-table-lamp-white__0879252_pe614411_s5.jpg"
+   ],
+   "source_url": "https://www.ikea.com/us/en/p/fado-table-lamp-white-70096377/",
+   "fetched_at": "2026-11-20T22:57:12+00:00"
+  },
+  {
+   "id": "ikea-storsegel-table-lamp-ash-white-60573576",
+   "retailer": "IKEA",
+   "name": "STORSEGEL Table lamp - ash/white",
+   "article_number": "605.735.76",
+   "category": "table_lamp",
+   "price_usd": 19.99,
+   "price_note": null,
+   "dims_in": {
+    "w": 7.0,
+    "d": 7.0,
+    "h": 12.0
+   },
+   "dims_raw": {
+    "diameter": 7.0,
+    "height": 12.0,
+    "max.": null,
+    "width": 7.0,
+    "depth": 7.0
+   },
+   "packages_in": [
+    {
+     "w": 7.5,
+     "d": 7.5,
+     "h": 6.0
+    }
+   ],
+   "rating": 4.8,
+   "review_count": 575,
+   "description": "STORSEGEL Table lamp - ash/white. You can create a soft, cozy atmosphere in your home with a textile shade that spreads a diffused and decorative light. Light bulb sold separately. IKEA recommends LED bulb E12 globe opal white.",
+   "color": "beige, white",
+   "material": "Textile, Solid wood",
+   "image_url": "https://www.ikea.com/us/en/images/products/storsegel-table-lamp-ash-white__1285773_pe933400_s5.jpg",
+   "image_urls": [
+    "https://www.ikea.com/us/en/images/products/storsegel-table-lamp-ash-white__1285773_pe933400_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/storsegel-table-lamp-ash-white__1285772_pe933401_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/storsegel-table-lamp-ash-white__1285771_pe933398_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/storsegel-table-lamp-ash-white__1285774_pe933399_s5.jpg"
+   ],
+   "source_url": "https://www.ikea.com/us/en/p/storsegel-table-lamp-ash-white-60573576/",
+   "fetched_at": "2026-11-20T22:57:13+00:00"
+  },
+  {
+   "id": "ikea-arstid-table-lamp-brass-white-80321380",
+   "retailer": "IKEA",
+   "name": "ÅRSTID Table lamp - brass/white",
+   "article_number": "803.213.80",
+   "category": "table_lamp",
+   "price_usd": 39.99,
+   "price_note": null,
+   "dims_in": {
+    "w": 9.0,
+    "d": 9.0,
+    "h": 22.0
+   },
+   "dims_raw": {
+    "max.": null,
+    "height": 22.0,
+    "base diameter": 6.0,
+    "shade diameter": 9.0,
+    "cord length": 80.0,
+    "width": 9.0,
+    "depth": 9.0
+   },
+   "packages_in": [
+    {
+     "w": 9.5,
+     "d": 9.5,
+     "h": 8.75
+    }
+   ],
+   "rating": 4.8,
+   "review_count": 1785,
+   "description": "ÅRSTID Table lamp - brass/white. Fabric shade gives a diffused and decorative light. Light bulb sold separately. IKEA recommends LED bulb E26 globe opal white. Includes pull switch. Use an opal light bulb if you have an ordinary lamp shade or lamp and want an even, diffused distribution of light.",
+   "color": "yellow, white",
+   "material": "Metal, Textile",
+   "image_url": "https://www.ikea.com/us/en/images/products/arstid-table-lamp-brass-white__0609329_pe684454_s5.jpg",
+   "image_urls": [
+    "https://www.ikea.com/us/en/images/products/arstid-table-lamp-brass-white__0609329_pe684454_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/arstid-table-lamp-brass-white__0880725_pe617347_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/arstid-table-lamp-brass-white__0963368_ph170137_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/arstid-table-lamp-brass-white__0579912_ph145270_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/arstid-table-lamp-brass-white__0467338_ph132229_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/arstid-table-lamp-brass-white__0880709_pe614460_s5.jpg"
+   ],
+   "source_url": "https://www.ikea.com/us/en/p/arstid-table-lamp-brass-white-80321380/",
+   "fetched_at": "2026-11-20T22:57:14+00:00"
+  },
+  {
+   "id": "ikea-radmanso-wardrobe-brown-walnut-effect-46-5-8x25-3-8x74-5-8-00593841",
+   "retailer": "IKEA",
+   "name": "RÅDMANSÖ Wardrobe - brown walnut effect 46 5/8x25 3/8x74 5/8 \"",
+   "article_number": "005.938.41",
+   "category": "wardrobe",
+   "price_usd": 349.99,
+   "price_note": null,
+   "dims_in": {
+    "w": 46.625,
+    "d": 25.375,
+    "h": 74.625
+   },
+   "dims_raw": {
+    "depth": 25.375,
+    "height": 74.625,
+    "width": 46.625
+   },
+   "packages_in": [
+    {
+     "w": 25.0,
+     "d": 73.5,
+     "h": 2.5
+    },
+    {
+     "w": 25.0,
+     "d": 75.5,
+     "h": 2.25
+    },
+    {
+     "w": 24.5,
+     "d": 69.75,
+     "h": 1.75
+    }
+   ],
+   "rating": 4.3,
+   "review_count": 145,
+   "description": "RÅDMANSÖ Wardrobe - brown walnut effect 46 5/8x25 3/8x74 5/8 \". RÅDMANSÖ wardrobe has a wood expression with a warm walnut tone that creates a beautiful frame to store and organize your items.",
+   "color": "brown",
+   "material": "Wood (including board)",
+   "image_url": "https://www.ikea.com/us/en/images/products/radmansoe-wardrobe-brown-walnut-effect__1384140_pe962861_s5.jpg",
+   "image_urls": [
+    "https://www.ikea.com/us/en/images/products/radmansoe-wardrobe-brown-walnut-effect__1384140_pe962861_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/radmansoe-wardrobe-brown-walnut-effect__1416950_pe975727_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/radmansoe-wardrobe-brown-walnut-effect__1515835_pe1011634_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/radmansoe-wardrobe-brown-walnut-effect__1416953_pe975728_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/radmansoe-wardrobe-brown-walnut-effect__1416951_pe975730_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/radmansoe-wardrobe-brown-walnut-effect__1416952_pe975729_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/radmansoe-wardrobe-brown-walnut-effect__1445528_pe988271_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/radmansoe-wardrobe-brown-walnut-effect__1445527_pe988270_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/radmansoe-wardrobe-brown-walnut-effect__1395312_pe966951_s5.jpg"
+   ],
+   "source_url": "https://www.ikea.com/us/en/p/radmansoe-wardrobe-brown-walnut-effect-00593841/",
+   "fetched_at": "2026-11-20T22:57:06+00:00"
+  },
+  {
+   "id": "ikea-nordkisa-open-wardrobe-with-sliding-door-bamboo-47-1-4x73-1-4-00439468",
+   "retailer": "IKEA",
+   "name": "NORDKISA Open wardrobe with sliding door - bamboo 47 1/4x73 1/4 \"",
+   "article_number": "004.394.68",
+   "category": "wardrobe",
+   "price_usd": 399.99,
+   "price_note": null,
+   "dims_in": {
+    "w": 47.25,
+    "d": 18.5,
+    "h": 73.25
+   },
+   "dims_raw": {
+    "width": 47.25,
+    "depth": 18.5,
+    "height": 73.25
+   },
+   "packages_in": [
+    {
+     "w": 25.25,
+     "d": 66.25,
+     "h": 3.5
+    },
+    {
+     "w": 22.75,
+     "d": 66.0,
+     "h": 3.5
+    }
+   ],
+   "rating": 4.6,
+   "review_count": 368,
+   "description": "NORDKISA Open wardrobe with sliding door - bamboo 47 1/4x73 1/4 \". You can create a room divider by attaching one of the shorter sides of the wardrobe to the wall. This wardrobe is open yet it creates privacy thanks to a fixed wall on one side and a sliding door on the other.",
+   "color": "beige",
+   "material": "Bamboo",
+   "image_url": "https://www.ikea.com/us/en/images/products/nordkisa-open-wardrobe-with-sliding-door-bamboo__0756084_pe748766_s5.jpg",
+   "image_urls": [
+    "https://www.ikea.com/us/en/images/products/nordkisa-open-wardrobe-with-sliding-door-bamboo__0756084_pe748766_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/nordkisa-open-wardrobe-with-sliding-door-bamboo__0813677_ph165857_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/nordkisa-open-wardrobe-with-sliding-door-bamboo__0813679_ph165859_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/nordkisa-open-wardrobe-with-sliding-door-bamboo__0813678_ph165858_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/nordkisa-open-wardrobe-with-sliding-door-bamboo__0813688_ph165568_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/nordkisa-open-wardrobe-with-sliding-door-bamboo__0756083_pe748765_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/nordkisa-open-wardrobe-with-sliding-door-bamboo__0756113_pe748741_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/nordkisa-open-wardrobe-with-sliding-door-bamboo__0789785_pe764174_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/nordkisa-open-wardrobe-with-sliding-door-bamboo__0756110_pe748769_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/nordkisa-open-wardrobe-with-sliding-door-bamboo__0756087_pe748768_s5.jpg"
+   ],
+   "source_url": "https://www.ikea.com/us/en/p/nordkisa-open-wardrobe-with-sliding-door-bamboo-00439468/",
+   "fetched_at": "2026-11-20T22:57:07+00:00"
+  },
+  {
+   "id": "ikea-idanas-wardrobe-white-47-5-8x83-1-8-20458837",
+   "retailer": "IKEA",
+   "name": "IDANÄS Wardrobe - white 47 5/8x83 1/8 \"",
+   "article_number": "204.588.37",
+   "category": "wardrobe",
+   "price_usd": 549.99,
+   "price_note": null,
+   "dims_in": {
+    "w": 47.625,
+    "d": 23.25,
+    "h": 83.125
+   },
+   "dims_raw": {
+    "width": 47.625,
+    "depth": 23.25,
+    "height": 83.125
+   },
+   "packages_in": [
+    {
+     "w": 23.75,
+     "d": 75.0,
+     "h": 2.25
+    },
+    {
+     "w": 22.75,
+     "d": 75.25,
+     "h": 2.75
+    },
+    {
+     "w": 22.75,
+     "d": 75.25,
+     "h": 3.25
+    }
+   ],
+   "rating": 4.5,
+   "review_count": 429,
+   "description": "IDANÄS Wardrobe - white 47 5/8x83 1/8 \". Of course your home should be a safe place for the entire family. That’s why a safety fitting is included so that you can attach the wardrobe to the wall. Folding doors allow more room for furniture because they don’t take any space to open.",
+   "color": "white",
+   "material": "Wood (including board)",
+   "image_url": "https://www.ikea.com/us/en/images/products/idanaes-wardrobe-white__0898873_pe782674_s5.jpg",
+   "image_urls": [
+    "https://www.ikea.com/us/en/images/products/idanaes-wardrobe-white__0898873_pe782674_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/idanaes-wardrobe-white__0931763_pe791240_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/idanaes-wardrobe-white__0931764_pe791241_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/idanaes-wardrobe-white__0939230_pe794475_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/idanaes-wardrobe-white__0939231_pe794472_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/idanaes-wardrobe-white__0939210_pe794455_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/idanaes-wardrobe-white__0951525_pe801266_s5.jpg"
+   ],
+   "source_url": "https://www.ikea.com/us/en/p/idanaes-wardrobe-white-20458837/",
+   "fetched_at": "2026-11-20T22:57:08+00:00"
+  },
+  {
+   "id": "ikea-rakkestad-wardrobe-with-2-doors-black-brown-31-1-8x69-1-4-40586805",
+   "retailer": "IKEA",
+   "name": "RAKKESTAD Wardrobe with 2 doors - black-brown 31 1/8x69 1/4 \"",
+   "article_number": "405.868.05",
+   "category": "wardrobe",
+   "price_usd": 199.99,
+   "price_note": null,
+   "dims_in": {
+    "w": 31.125,
+    "d": 21.625,
+    "h": 69.25
+   },
+   "dims_raw": {
+    "width": 31.125,
+    "depth": 21.625,
+    "height": 69.25
+   },
+   "packages_in": [
+    {
+     "w": 22.0,
+     "d": 71.0,
+     "h": 2.25
+    },
+    {
+     "w": 22.0,
+     "d": 71.0,
+     "h": 2.25
+    }
+   ],
+   "rating": 4.4,
+   "review_count": 393,
+   "description": "RAKKESTAD Wardrobe with 2 doors - black-brown 31 1/8x69 1/4 \". Maximize your storage and create a coordinated look by building your own RAKKESTAD wardrobe combination. The clothes rail holds about 20 shirts on hangers. One shelf holds about 20 pairs of folded pants or 40 T-shirts.",
+   "color": "brown, black",
+   "material": "Wood (including board)",
+   "image_url": "https://www.ikea.com/us/en/images/products/rakkestad-wardrobe-with-2-doors-black-brown__0780372_pe760493_s5.jpg",
+   "image_urls": [
+    "https://www.ikea.com/us/en/images/products/rakkestad-wardrobe-with-2-doors-black-brown__0780372_pe760493_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/rakkestad-wardrobe-with-2-doors-black-brown__0780434_pe760492_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/rakkestad-wardrobe-with-2-doors-black-brown__0780376_pe760495_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/rakkestad-wardrobe-with-2-doors-black-brown__1335545_pe947081_s5.jpg"
+   ],
+   "source_url": "https://www.ikea.com/us/en/p/rakkestad-wardrobe-with-2-doors-black-brown-40586805/",
+   "fetched_at": "2026-11-20T22:57:09+00:00"
+  },
+  {
+   "id": "ikea-ankarudden-wardrobe-with-sliding-doors-oak-effect-38-3-4x23-5-8x74-3-4-00627153",
+   "retailer": "IKEA",
+   "name": "ANKARUDDEN Wardrobe with sliding doors - oak effect 38 3/4x23 5/8x74 3/4 \"",
+   "article_number": "006.271.53",
+   "category": "wardrobe",
+   "price_usd": 279.99,
+   "price_note": null,
+   "dims_in": {
+    "w": 38.75,
+    "d": 23.625,
+    "h": 74.75
+   },
+   "dims_raw": {
+    "width": 38.75,
+    "depth": 23.625,
+    "height": 74.75
+   },
+   "packages_in": [
+    {
+     "w": 24.0,
+     "d": 66.0,
+     "h": 1.75
+    },
+    {
+     "w": 24.0,
+     "d": 66.0,
+     "h": 1.75
+    },
+    {
+     "w": 23.25,
+     "d": 76.5,
+     "h": 1.75
+    },
+    {
+     "w": 24.0,
+     "d": 76.5,
+     "h": 1.75
+    }
+   ],
+   "rating": 4.1,
+   "review_count": 41,
+   "description": "ANKARUDDEN Wardrobe with sliding doors - oak effect 38 3/4x23 5/8x74 3/4 \". Sleek-looking wardrobe with drawers with integrated handles and practical storage for both hanging and folded clothes. Designed with recessed fronts that create a framed expression and highlight the elegant lines.",
+   "color": "brown",
+   "material": null,
+   "image_url": "https://www.ikea.com/us/en/images/products/ankarudden-wardrobe-with-sliding-doors-oak-effect__1486730_pe1002550_s5.jpg",
+   "image_urls": [
+    "https://www.ikea.com/us/en/images/products/ankarudden-wardrobe-with-sliding-doors-oak-effect__1486730_pe1002550_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/ankarudden-wardrobe-with-sliding-doors-oak-effect__1486729_pe1002551_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/ankarudden-wardrobe-with-sliding-doors-oak-effect__1486728_pe1002552_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/ankarudden-wardrobe-with-sliding-doors-oak-effect__1486727_pe1002549_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/ankarudden-wardrobe-with-sliding-doors-oak-effect__1486726_pe1002548_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/ankarudden-wardrobe-with-sliding-doors-oak-effect__1553314_pe1023596_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/ankarudden-wardrobe-with-sliding-doors-oak-effect__1561243_pe1025596_s5.jpg"
+   ],
+   "source_url": "https://www.ikea.com/us/en/p/ankarudden-wardrobe-with-sliding-doors-oak-effect-00627153/",
+   "fetched_at": "2026-11-20T22:57:10+00:00"
+  },
+  {
+   "id": "ikea-brimnes-wardrobe-with-2-doors-white-30-3-4x19-5-8x74-3-4-30574799",
+   "retailer": "IKEA",
+   "name": "BRIMNES Wardrobe with 2 doors - white 30 3/4x19 5/8x74 3/4 \"",
+   "article_number": "305.747.99",
+   "category": "wardrobe",
+   "price_usd": 199.99,
+   "price_note": null,
+   "dims_in": {
+    "w": 30.75,
+    "d": 19.625,
+    "h": 74.75
+   },
+   "dims_raw": {
+    "width": 30.75,
+    "depth": 19.625,
+    "height": 74.75
+   },
+   "packages_in": [
+    {
+     "w": 20.25,
+     "d": 76.75,
+     "h": 3.0
+    },
+    {
+     "w": 19.5,
+     "d": 76.5,
+     "h": 2.25
+    }
+   ],
+   "rating": 4.5,
+   "review_count": 1629,
+   "description": "BRIMNES Wardrobe with 2 doors - white 30 3/4x19 5/8x74 3/4 \". Of course your home should be a safe place for the entire family. That’s why a safety fitting is included so that you can attach the wardrobe to the wall. Perfect for folded as well as long and short hanging clothes.",
+   "color": "white",
+   "material": "Wood (including board)",
+   "image_url": "https://www.ikea.com/us/en/images/products/brimnes-wardrobe-with-2-doors-white__1268948_pe928889_s5.jpg",
+   "image_urls": [
+    "https://www.ikea.com/us/en/images/products/brimnes-wardrobe-with-2-doors-white__1268948_pe928889_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/brimnes-wardrobe-with-2-doors-white__1268944_pe928902_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/brimnes-wardrobe-with-2-doors-white__1268945_pe928903_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/brimnes-wardrobe-with-2-doors-white__1268946_pe928904_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/brimnes-wardrobe-with-2-doors-white__0778225_pe758860_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/brimnes-wardrobe-with-2-doors-white__1268947_pe928905_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/brimnes-wardrobe-with-2-doors-white__0380433_pe555354_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/brimnes-wardrobe-with-2-doors-white__1246508_pe922171_s5.jpg"
+   ],
+   "source_url": "https://www.ikea.com/us/en/p/brimnes-wardrobe-with-2-doors-white-30574799/",
+   "fetched_at": "2026-11-20T22:57:11+00:00"
+  },
+  {
+   "id": "ikea-gursken-wardrobe-with-2-doors-light-beige-23-3-8x21-5-8x73-1-8-60586809",
+   "retailer": "IKEA",
+   "name": "GURSKEN Wardrobe with 2 doors - light beige 23 3/8x21 5/8x73 1/8 \"",
+   "article_number": "605.868.09",
+   "category": "wardrobe",
+   "price_usd": 129.99,
+   "price_note": null,
+   "dims_in": {
+    "w": 23.375,
+    "d": 21.625,
+    "h": 73.125
+   },
+   "dims_raw": {
+    "depth": 21.625,
+    "height": 73.125,
+    "width": 23.375
+   },
+   "packages_in": [
+    {
+     "w": 22.5,
+     "d": 77.75,
+     "h": 3.5
+    }
+   ],
+   "rating": 4.4,
+   "review_count": 16,
+   "description": "GURSKEN Wardrobe with 2 doors - light beige 23 3/8x21 5/8x73 1/8 \". A simple and easy-to-place wardrobe with a clothes rail and an upper shelf. Of course your home should be a safe place for the entire family. That’s why a safety fitting is included so that you can attach the wardrobe to the wall.",
+   "color": "beige",
+   "material": "Wood (including board)",
+   "image_url": "https://www.ikea.com/us/en/images/products/gursken-wardrobe-with-2-doors-light-beige__0969439_pe810782_s5.jpg",
+   "image_urls": [
+    "https://www.ikea.com/us/en/images/products/gursken-wardrobe-with-2-doors-light-beige__0969439_pe810782_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/gursken-wardrobe-with-2-doors-light-beige__0969440_pe810784_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/gursken-wardrobe-with-2-doors-light-beige__0969442_pe810786_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/gursken-wardrobe-with-2-doors-light-beige__0992931_pe820349_s5.jpg"
+   ],
+   "source_url": "https://www.ikea.com/us/en/p/gursken-wardrobe-with-2-doors-light-beige-60586809/",
+   "fetched_at": "2026-11-20T22:57:12+00:00"
   }
  ]
 }

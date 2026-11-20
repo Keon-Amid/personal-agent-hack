@@ -12,5 +12,11 @@ export default defineConfig({
       '@repo': fileURLToPath(new URL('..', import.meta.url)),
     },
   },
-  server: { port: 5173, strictPort: true, fs: { allow: ['..'] } },
+  server: {
+    port: 5173,
+    strictPort: true,
+    fs: { allow: ['..'] },
+    // The agent server (server/app.py). Point API_TARGET at a teammate's machine to use theirs.
+    proxy: { '/api': { target: process.env.API_TARGET ?? 'http://localhost:8000', changeOrigin: true } },
+  },
 })

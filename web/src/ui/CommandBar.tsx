@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from 'react'
 import { CornerDownLeft, RotateCcw, ShoppingBag, Wallet } from 'lucide-react'
 import { motion } from 'motion/react'
-import { API_MODE } from '../api/api'
+import { wantsLive } from '../api/api'
 import { cn, slotLabel, usd } from '../lib/format'
-import { skipRun, startRun } from '../run'
+import { skipRun, startReplay, startRun } from '../run'
 import { useApp } from '../store'
 import { Kbd } from './bits'
 import { Tip } from './tooltip'
@@ -82,11 +82,16 @@ export default function CommandBar() {
   const runError = useApp((s) => s.runError)
   const budget = useApp((s) => s.budget)
   const [text, setText] = useState('')
+  const live = useApp((s) => wantsLive(s.server.ready))
+  const runMode = useApp((s) => s.runMode)
 
   // In replay mode the words are the ones the recorded run was given, so what you read matches what ran.
+  // Live, the words are yours and the agent acts on them.
+  const planId = plan?.plan_id
   useEffect(() => {
-    if (plan && API_MODE === 'mock') setText(plan.style.style_text)
-  }, [plan])
+    if (plan && stage !== 'running') setText(live ? '' : plan.style.style_text)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [planId, live])
   useEffect(() => {
     if (stage === 'ready') focusCommand()
   }, [stage])
@@ -127,7 +132,7 @@ export default function CommandBar() {
               value={text}
               onChange={(e) => setText(e.target.value)}
               name="style"
-              placeholder="Describe the room you want…"
+              placeholder={live ? 'Describe the room you want… warm minimal living room with a TV' : 'Describe the room you want…'}
               aria-label="Describe the room you want"
               autoComplete="off"
               spellCheck={false}
@@ -154,18 +159,21 @@ export default function CommandBar() {
                 {activeSlot ? `Working on the ${slotLabel(activeSlot).toLowerCase()}…` : 'Reading the room…'}
               </div>
               <div className="num text-xs text-fg-3">
-                {inCart} of {total} in the cart, {audit.length} steps logged
+                {inCart} of {runMode === 'live' ? 5 : total} in the cart, {audit.length} steps logged
+                {runMode === 'live' ? ', live' : ''}
               </div>
             </div>
             <div className="flex h-1 w-28 overflow-hidden rounded-full bg-white/8" aria-hidden>
               <div
                 className="h-full rounded-full bg-fg transition-[width] duration-500 ease-out"
-                style={{ width: `${Math.max(4, (audit.length / Math.max(1, plan.audit.length)) * 100)}%` }}
+                style={{ width: `${Math.max(4, Math.min(100, (audit.length / (runMode === 'live' ? 75 : Math.max(1, plan.audit.length))) * 100))}%` }}
               />
             </div>
-            <button type="button" onClick={skipRun} className="btn btn-ghost h-9">
-              Skip to the result
-            </button>
+            {runMode === 'mock' && (
+              <button type="button" onClick={skipRun} className="btn btn-ghost h-9">
+                Skip to the result
+              </button>
+            )}
           </div>
         )}
 
@@ -209,8 +217,11 @@ export default function CommandBar() {
         )}
 
         {runError && stage === 'ready' && (
-          <p className="border-t border-line px-4 py-2 text-xs text-nofit" role="alert">
-            {runError} Check that the agent server is running, then try again.
+          <p className="flex items-center justify-between gap-3 border-t border-line px-4 py-2 text-xs text-nofit" role="alert">
+            <span className="min-w-0">The live agent stopped: {runError}</span>
+            <button type="button" onClick={startReplay} className="shrink-0 text-fg underline">
+              Play the recorded run
+            </button>
           </p>
         )}
 

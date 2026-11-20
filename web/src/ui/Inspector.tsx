@@ -61,7 +61,8 @@ export default function Inspector() {
   const items = placedItems({ plan, placed })
   const idx = items.findIndex((i) => i.slot === slot)
   const go = (d: number) => items.length > 1 && select(items[(idx + d + items.length) % items.length].slot)
-  const options = optionsFor(plan.plan_id, slot).map((o) => refitOption(o, plan.room, overrides))
+  const roomPlanId = useApp.getState().roomPlanId
+  const options = optionsFor(plan.plan_id, slot, roomPlanId).map((o) => refitOption(o, plan.room, overrides))
   const failing = item.fit.results.find((r) => r.verdict === item.fit.verdict && r.verdict !== 'fits')
   const fitting = options.filter((o) => o.fit === 'fits' && o.id !== item.product_id && o.price_usd !== null)
   const rescue = fitting.find((o) => o.best_value) ?? [...fitting].sort((a, b) => (b.rating ?? 0) - (a.rating ?? 0))[0] ?? null
@@ -201,7 +202,7 @@ export default function Inspector() {
           >
             Why this one
           </SectionTitle>
-          <p className="text-sm leading-relaxed text-fg-2">{item.why}</p>
+          <p className="text-sm leading-relaxed text-fg-2">{item.why || 'The agent writes this when it adds the piece to the cart.'}</p>
           {item.style && (
             <p className="mt-2 text-xs leading-relaxed text-fg-3">
               Style match <span className="num text-fg-2">#{item.style.rank}</span> for “{plan.style.style_text}”, ranked by

@@ -1,6 +1,8 @@
-import { ArrowUpRight, Download, ShieldCheck, X } from 'lucide-react'
+import { useState } from 'react'
+import { ArrowUpRight, Check, Download, ShieldCheck, X } from 'lucide-react'
 import { motion } from 'motion/react'
-import { cn, slotLabel, splitName, usd } from '../lib/format'
+import { clock, cn, slotLabel, splitName, usd } from '../lib/format'
+import { approveCart } from '../run'
 import { placedItems, useApp } from '../store'
 import { Kbd, ProductPhoto, Ticker, VerdictIcon } from './bits'
 
@@ -20,7 +22,23 @@ export default function CartSheet() {
   const budget = useApp((s) => s.budget)
   const setCartOpen = useApp((s) => s.setCartOpen)
   const select = useApp((s) => s.select)
+  const stage = useApp((s) => s.stage)
+  const [busy, setBusy] = useState(false)
+  const [problem, setProblem] = useState<string | null>(null)
   if (!plan) return null
+  const approval = plan.cart.approval?.approved ? plan.cart.approval : null
+  const blocked = stage !== 'done' ? 'The agent is still working. Approve when it finishes.' : null
+  const approve = async () => {
+    setBusy(true)
+    setProblem(null)
+    try {
+      await approveCart()
+    } catch (e) {
+      setProblem(e instanceof Error ? e.message : 'The approval did not go through.')
+    } finally {
+      setBusy(false)
+    }
+  }
   const items = placedItems({ plan, placed })
   const total = Math.round(items.reduce((n, i) => n + (i.price_usd ?? 0), 0) * 100) / 100
   const unpriced = items.filter((i) => i.price_usd === null).length
@@ -132,13 +150,45 @@ export default function CartSheet() {
             </dd>
           </div>
         </dl>
-        <p className="mt-3 rounded-sm bg-white/4 px-2.5 py-2 text-xs leading-relaxed text-fg-2 ring-1 ring-inset ring-line">
-          No purchase is made. Each item opens on IKEA.com, where you check out yourself.
-        </p>
+        {approval ? (
+          <div className="mt-3 rounded-sm bg-fits/8 px-2.5 py-2 ring-1 ring-inset ring-fits/25" role="status">
+            <p className="flex items-center gap-1.5 text-sm font-medium text-fg">
+              <Check size={14} strokeWidth={2.4} className="text-fits" aria-hidden />
+              You approved this cart at <span className="num">{clock(approval.approved_at).slice(0, 5)}</span>
+            </p>
+            <p className="mt-1 text-xs leading-relaxed text-fg-2">
+              It is in the audit trail. Nothing is ordered until you pay on IKEA.com.
+            </p>
+          </div>
+        ) : (
+          <p className="mt-3 rounded-sm bg-white/4 px-2.5 py-2 text-xs leading-relaxed text-fg-2 ring-1 ring-inset ring-line">
+            Approving records your OK in the audit trail. No order is placed: you pay on IKEA.com.
+          </p>
+        )}
+        {problem && (
+          <p className="mt-2 text-xs text-nofit" role="alert">
+            {problem} Try again.
+          </p>
+        )}
+        {approval ? (
+          <button
+            type="button"
+            onClick={() => items.forEach((i) => window.open(i.source_url, '_blank', 'noopener'))}
+            className="btn btn-primary mt-3 w-full"
+            title="Opens each product page in a new tab. Your browser may ask to allow pop-ups."
+          >
+            Open all {items.length} on IKEA
+            <ArrowUpRight size={14} strokeWidth={2} aria-hidden />
+          </button>
+        ) : (
+          <button type="button" onClick={approve} disabled={busy || !!blocked || items.length === 0} title={blocked ?? undefined} className="btn btn-primary mt-3 w-full">
+            {busy ? 'Approving…' : `Approve ${items.length} pieces for ${usd(total)}`}
+          </button>
+        )}
         <button
           type="button"
           onClick={() => download(`audit-${plan.plan_id}.json`, { plan_id: plan.plan_id, room: plan.room, style: plan.style, cart: { ...plan.cart, total_usd: total }, items, audit })}
-          className="btn btn-ghost mt-3 w-full"
+          className="btn btn-ghost mt-2 w-full"
         >
           <Download size={14} strokeWidth={2} aria-hidden />
           Download the audit trail, <span className="num">{audit.length}</span> records

@@ -12,3 +12,7 @@ CLAUDE.local.md
 # build output
 dist/
 .cache/
+
+# local Claude Code state (worktrees hold copies of .env)
+.claude/settings.local.json
+.claude/worktrees/

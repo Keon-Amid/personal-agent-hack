@@ -20,10 +20,11 @@ TBD
 ## Interfaces
 
 ### Products: `data/products.json` (owner: alistair) — DRAFT, confirm
-`{"about", "products": [Product]}`, 73 real IKEA US products. Built by `python3 data/fetch_ikea.py $(cat data/sources.txt)`;
+`{"about", "products": [Product]}`, 102 real IKEA US products. Built by `python3 data/fetch_ikea.py $(cat data/sources.txt)`;
 every number is read from `source_url`, nothing typed by hand.
 Categories: sofa, armchair, coffee_table, side_table, desk, dining_table, dining_chair, dresser, nightstand,
-tv_bench, rug, floor_lamp, bookcase, bed.
+tv_bench, rug, floor_lamp, bookcase, bed, wardrobe, table_lamp (102 products; the bedroom set of beds Twin-King,
+nightstands, dressers, wardrobes and table lamps was added by brendan with this pipeline, unused by the living-room slots).
 ```json
 {"id": "ikea-kivik-sofa-tibbleby-beige-gray-39440593", "retailer": "IKEA", "name": "KIVIK Sofa - Tibbleby beige/gray",
  "article_number": "394.405.93", "category": "sofa", "price_usd": 799.0, "price_note": null,
@@ -148,6 +149,33 @@ One backend, two front doors. The tools enforce the rules; the model only orders
   `room_input` = `{"wall", "depth", "door_width", "door_height"}` in inches (exact, source "user"). Runs `claude -p` (Claude Code
   on the host's Claude subscription, no API key) with only the MCP tools below; `on_event(audit_record)` streams progress.
   Real run: 5 slots in 135 s, 42/46 Senso claims verified, cart $1,027.97 → `contracts/plan.live.json`.
+- **HTTP API (server/app.py, for keon's live mode):** run with `.venv/bin/pip install -r server/requirements.txt &&
+  .venv/bin/uvicorn server.app:app --port 8000`. `.env` is loaded at startup; CORS origins come from `ROOM_FURNISHER_CORS`
+  (comma-separated, default `http://localhost:5173,http://127.0.0.1:5173`). `run_agent` gained an optional `plan_id=` so
+  the server picks the id before the run starts.
+  - `POST /api/plan` `{room: {wall, depth, door_width, door_height}, style_text?, budget_usd? (per item), budget_total_usd? (whole room, what keon's live mode sends), photo_b64?, quiz_answers?}`
+    → `{plan_id, plan_url}` at once; the run happens in a thread. 400 with no measurements and no photo (or bad quiz
+    answers); 429 when 2 runs are already going. `quiz_answers` fill in `style_text` / `budget_usd` only when those are unset.
+  - `GET /api/plan/{id}` → Plan (`contracts/plan.live.json` shape, `items[]` and `audit[]` grow while it runs) plus
+    `run: {status: running|done|error|interrupted, error, persona}`. Before the plan file exists it returns an empty Plan
+    (same `cart` keys as `plan.live.json`, incl. `delivery_note`); 404 if unknown. Poll every second. A plan this server
+    process did not start (e.g. after a restart) takes its status from the last `agent` audit record: `done` ("agent
+    finished"), `error` ("agent failed" / "stopped: timeout"), otherwise `interrupted` (the run was cut off). A plan with
+    no `agent` records is `done`.
+  - `POST /api/plan/{id}/swap` `{slot}` → Plan plus `swap_result` (swap → senso_check → cart_add, each `{ok, error, picked}`).
+    First appends a `swap` record "swap requested by the person" (source `{kind: template, requested_by: person}`); if
+    the cart was approved, removes `cart.approval` and appends a `cart` record "approval withdrawn: cart changed by swap",
+    so the person must approve again. The `cart` record for the re-added item names the person's swap, not the agent.
+    400 bad slot, 404 unknown plan, 409 unless the run is done or error.
+  - `POST /api/plan/{id}/approve` (no body or `{}`) → Plan plus `shopping_list: [{name, article_number (may be null),
+    price_usd, source_url}]` (cart items joined to `data/products.json` by `product_id`) and `action: {kind: "shopping_list",
+    mocked_checkout: true, note: "No order is placed. Open each IKEA link to buy."}`. Sets `cart.approval = {approved: true,
+    approved_at (ISO-8601 UTC), total_usd, item_count, product_ids}` and appends one `cart` audit record (source `template`, status
+    `approved`, input `{total_usd, product_ids}`) in one `store.update`; `cart.no_purchase` stays true. A second approve
+    of the same cart (same `product_ids` and `total_usd`) returns 200 with the existing approval and adds no record; if the
+    cart changed it records a new approval. 404 unknown plan, 409 unless the run is done or error, or with an empty cart.
+  - `GET /api/quiz` → `agent/quiz.json`. `POST /api/quiz/score` `{answers: {question_id: option_id}}` → `quiz.score(...)` plus
+    `catalog_support`. `GET /api/health` → `{claude_code, superlinked_key, senso_key, runs: {running, max}}` (booleans, never keys).
 - **Tools** (`agent.tools`, also served by the MCP server): `create_plan`, `analyze_room`, `style_match`, `fit_options`, `pick`,
   `senso_check`, `swap`, `cart_add`, `get_plan`. `pick` only returns items that fit; `cart_add` refuses an item without a
   Senso check that has ≥1 verified claim and no conflict; every tool appends its own audit record and returns `plan_url`.
@@ -161,8 +189,8 @@ One backend, two front doors. The tools enforce the rules; the model only orders
   option_id}) -> {style, style_scores, style_text, budget_usd, trace}`; pass `style_text` and `budget_usd` straight to
   `run_agent`. `style` is always one of `sie.STYLES`; a quiz `style_text` replaces the style detected from the photo.
   `agent.quiz.catalog_support(style) -> {slots: {slot: [{id, name, score}]}, covered, summary}` reads alistair's
-  `product_styles` (≥0.05) to say how well our 48 products cover that style. Today: traditional 5/5 slots, warm minimal
-  4/5, scandinavian and dark modern 3/5, mid-century / industrial / coastal 1/5, bohemian 0/5. Picks still happen
+  `product_styles` (≥0.05) to say how well our products cover that style. Today (102 products): warm minimal and
+  traditional 5/5 slots, scandinavian 4/5, mid-century and dark modern 3/5, coastal 2/5, industrial 1/5, bohemian 0/5. Picks still happen
   (ranking is relative); the UI should show the summary instead of implying a perfect match.
   Images are hotlinked, owned by their sources; swap for IKEA photos before any public use beyond the demo.
 

@@ -39,6 +39,27 @@ RULES_TEXT = """Room rules used by the furnishing agent. These are the team's ch
 - Measurements estimated from a photo carry an error margin; if the answer depends on that margin, ask the person
   to measure that one thing before deciding."""
 
+BEDROOM_RULES_TITLE = "Room rules: bedroom (team defaults)"
+BEDROOM_RULES_TEXT = """Bedroom rules used by the furnishing agent. These are the team's chosen defaults, not a building code.
+- Bed sides: keep at least 24 inches of clear floor beside each side of the bed that someone gets in or out from.
+  A twin or full bed may go against a wall on one side; the open side still needs 24 inches.
+- Foot of bed: keep at least 24 inches of clear floor between the foot of the bed and the wall or the next item.
+- Dresser: keep at least 36 inches of clear floor in front of a dresser or chest so the drawers open and a person
+  can stand in front of them.
+- Wardrobe: keep at least 36 inches of clear floor in front of a wardrobe with hinged doors, and at least
+  24 inches in front of one with sliding doors.
+- Nightstand height: the nightstand top should be within 4 inches of the mattress top (above or below).
+- Nightstand gap: put a nightstand no more than 6 inches from the side of the bed.
+- Door: nothing on the floor inside the room door's swing, and at least 36 inches of clear floor from the doorway to
+  the nearest furniture.
+- Window: if the bedroom window is the emergency escape opening, nothing taller than the window sill may stand
+  directly in front of it.
+- Code fact (US IRC R310, not a team default): every sleeping room needs one operable emergency escape opening with a
+  net clear opening of at least 5.7 square feet (5 square feet at grade floor or below-grade), at least 24 inches
+  high and 20 inches wide, with the sill no more than 44 inches above the floor. Local codes can differ.
+- Measurements estimated from a photo carry an error margin; if the answer depends on that margin, ask the person
+  to measure that one thing before deciding."""
+
 
 def _key() -> str:
     k = os.environ.get("SENSO_API_KEY")
@@ -108,6 +129,7 @@ def load(products: list[dict], index: dict, rules: bool = False) -> dict:
     docs = [(p["id"], *product_doc(p)) for p in products]
     if rules:
         docs.append(("_rules", RULES_TITLE, RULES_TEXT))
+        docs.append(("_bedroom_rules", BEDROOM_RULES_TITLE, BEDROOM_RULES_TEXT))
     counts = {"created": 0, "unchanged": 0, "already_in_senso": 0, "failed": 0}
     for pid, title, text in docs:
         h = sha(text)
