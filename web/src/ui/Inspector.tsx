@@ -177,7 +177,17 @@ export default function Inspector() {
 
         <div className="hairline" />
         <section className="p-4">
-          <SectionTitle aside={item.why_source?.kind === 'claude' ? 'Written by the agent' : item.why_source?.kind === 'fit' ? 'From the fit check' : undefined}>
+          <SectionTitle
+            aside={
+              item.why_source?.kind === 'claude'
+                ? Object.keys(overrides).length
+                  ? 'Written by the agent, before you measured'
+                  : 'Written by the agent'
+                : item.why_source?.kind === 'fit'
+                  ? 'From the fit check'
+                  : undefined
+            }
+          >
             Why this one
           </SectionTitle>
           <p className="text-sm leading-relaxed text-fg-2">{item.why}</p>

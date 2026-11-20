@@ -1,13 +1,13 @@
 // New furniture, the rejected "ghost", and the drafting marks around them (frames, dimension callouts).
-import { useEffect, useMemo, useRef, useState, type CSSProperties, type RefObject } from 'react'
+import { Component, Suspense, useCallback, useEffect, useMemo, useRef, useState, type CSSProperties, type ReactNode, type RefObject } from 'react'
 import { useFrame } from '@react-three/fiber'
-import { Html, Line } from '@react-three/drei'
+import { Html, Line, useGLTF } from '@react-three/drei'
 import * as THREE from 'three'
 import type { Dims, Placement, PlanItem } from '../types'
 import { productById } from '../data'
 import { useApp, type Ghost, type Phase } from '../store'
 import { inches } from '../lib/format'
-import { COLORS, IN } from './roomModel'
+import { COLORS, IN, STILL } from './roomModel'
 import { categoryOf } from './layout'
 import { Shape } from './shapes'
 
@@ -207,6 +207,72 @@ const easeOutBack = (t: number) => {
   return 1 + c3 * Math.pow(t - 1, 3) + c1 * Math.pow(t - 1, 2)
 }
 
+/** A product's own 3D model (AI-generated from its IKEA photo), stretched to the listed W x D x H. */
+function PhotoModel({
+  url,
+  w,
+  d,
+  h,
+  rotY,
+  register,
+}: {
+  url: string
+  w: number
+  d: number
+  h: number
+  rotY: number
+  register: (m: THREE.Material[]) => void
+}) {
+  const { scene } = useGLTF(url)
+  const built = useMemo(() => {
+    const root = scene.clone(true)
+    const materials: THREE.Material[] = []
+    root.traverse((o) => {
+      const m = o as THREE.Mesh
+      if (!m.isMesh) return
+      m.castShadow = true
+      m.receiveShadow = true
+      m.renderOrder = 11
+      const own = (Array.isArray(m.material) ? m.material : [m.material]).map((x) => x.clone())
+      materials.push(...own)
+      m.material = Array.isArray(m.material) ? own : own[0]
+    })
+    root.rotation.set(0, rotY, 0)
+    root.updateMatrixWorld(true)
+    const box = new THREE.Box3().setFromObject(root)
+    const size = box.getSize(new THREE.Vector3())
+    const centre = box.getCenter(new THREE.Vector3())
+    root.position.set(-centre.x, -box.min.y, -centre.z)
+    const holder = new THREE.Group()
+    holder.add(root)
+    holder.scale.set(w / (size.x || 1), h / (size.y || 1), d / (size.z || 1))
+    return { holder, materials }
+  }, [scene, w, d, h, rotY])
+  useEffect(() => {
+    register(built.materials)
+    return () => {
+      register([])
+      built.materials.forEach((m) => m.dispose())
+    }
+  }, [built, register])
+  return <primitive object={built.holder} />
+}
+
+class ModelBoundary extends Component<{ fallback: ReactNode; children: ReactNode }, { failed: boolean }> {
+  state = { failed: false }
+  static getDerivedStateFromError() {
+    return { failed: true }
+  }
+  render() {
+    return this.state.failed ? this.props.fallback : this.props.children
+  }
+}
+
+export interface PhotoEntry {
+  url: string
+  rotY: number
+}
+
 export function Piece({
   item,
   placement,
@@ -214,6 +280,7 @@ export function Piece({
   selected,
   hovered,
   interactive,
+  photo,
 }: {
   item: PlanItem
   placement: Placement
@@ -221,6 +288,8 @@ export function Piece({
   selected: boolean
   hovered: boolean
   interactive: boolean
+  /** the product's own 3D model, when it has one and the person wants photo models */
+  photo?: PhotoEntry | null
 }) {
   const product = productById[item.product_id]
   const category = categoryOf(item)
@@ -234,34 +303,44 @@ export function Piece({
     const dark = new THREE.MeshStandardMaterial({ color: color.clone().multiplyScalar(0.84), roughness: 0.96, metalness: 0 })
     // depth-only pass so a translucent piece shows its surface, not its insides
     const pre = new THREE.MeshBasicMaterial({ colorWrite: false, transparent: true })
-    return { main, dark, pre }
+    // a piece that stopped fitting after a new measurement: the same red volume as a rejection, but it stays
+    const bad = new THREE.MeshBasicMaterial({ color: COLORS.nofit, transparent: true, opacity: 0.3, depthWrite: false, toneMapped: false })
+    return { main, dark, pre, bad }
   }, [product?.color, category])
   useEffect(() => () => Object.values(mats).forEach((m) => m.dispose()), [mats])
+
+  const photoMats = useRef<THREE.Material[]>([])
+  const register = useCallback((m: THREE.Material[]) => {
+    photoMats.current = m
+  }, [])
 
   const drop = useRef<THREE.Group>(null)
   const pre = useRef<THREE.Group>(null)
   const pulse = useRef<THREE.Group>(null)
-  const st = useRef({ t: 0, opacity: 0, pulse: -1, phase })
+  const st = useRef({ t: STILL ? 10 : 0, opacity: 0, pulse: -1, phase })
 
   useFrame((_, dt) => {
     const s = st.current
-    const step = Math.min(dt, 0.05)
+    const step = Math.min(dt, 0.1)
     s.t += step
     if (s.phase === 'picked' && phase !== 'picked') s.pulse = 0
     s.phase = phase
     const k = Math.min(s.t / 0.6, 1)
     if (drop.current) drop.current.position.y = (1 - easeOutBack(k)) * 0.45
     const target = (phase === 'picked' ? 0.68 : 1) * Math.min(s.t / 0.25, 1)
-    s.opacity += (target - s.opacity) * (1 - Math.exp(-step * 9))
+    s.opacity += (target - s.opacity) * (STILL ? 1 : 1 - Math.exp(-step * 9))
     const see = s.opacity < 0.985
-    for (const m of [mats.main, mats.dark]) {
+    const apply = (m: THREE.Material) => {
       m.opacity = see ? s.opacity : 1
       if (m.transparent !== see) {
         m.transparent = see
         m.needsUpdate = true
       }
     }
-    if (pre.current) pre.current.visible = see
+    apply(mats.main)
+    apply(mats.dark)
+    for (const m of photoMats.current) apply(m)
+    if (pre.current) pre.current.visible = see && photoMats.current.length === 0
     if (pulse.current) {
       if (s.pulse >= 0) {
         s.pulse += step
@@ -304,15 +383,41 @@ export function Piece({
   )
 
   const translucent = phase === 'picked'
+  const verdict = item.fit?.verdict
+  const noFit = verdict === 'no_fit'
+  const failing = noFit ? item.fit.results.find((r) => r.verdict === 'no_fit')?.math : undefined
+  const clay = <Shape category={category} w={w} d={d} h={h} mat={mats.main} dark={mats.dark} ro={11} shadow={category !== 'rug'} />
   return (
     <group position={[placement.x_in * IN, 0, placement.z_in * IN]} rotation-y={(placement.rotation * Math.PI) / 180} {...handlers}>
       <group ref={drop}>
         <group ref={pre} visible={false}>
-          <Shape category={category} w={w} d={d} h={h} mat={mats.pre} ro={10} shadow={false} />
+          {!noFit && <Shape category={category} w={w} d={d} h={h} mat={mats.pre} ro={10} shadow={false} />}
         </group>
-        <Shape category={category} w={w} d={d} h={h} mat={mats.main} dark={mats.dark} ro={11} shadow={category !== 'rug'} />
-        {translucent && !selected && <Frame w={w} h={h} d={d} color={COLORS.bone} width={1.1} opacity={0.6} dashed xray={false} />}
-        {hovered && !selected && <Frame w={w} h={h} d={d} color={COLORS.bone} width={1.3} opacity={0.75} />}
+        {noFit ? (
+          <Shape category={category} w={w} d={d} h={h} mat={mats.bad} ro={30} shadow={false} />
+        ) : photo ? (
+          <ModelBoundary fallback={clay}>
+            <Suspense fallback={clay}>
+              <PhotoModel url={photo.url} w={w} d={d} h={h} rotY={photo.rotY} register={register} />
+            </Suspense>
+          </ModelBoundary>
+        ) : (
+          clay
+        )}
+        {noFit && !selected && <Frame w={w} h={h} d={d} color={COLORS.nofit} width={1.8} />}
+        {noFit && (
+          <Label
+            position={[0, h + 0.2, 0]}
+            style={{ color: COLORS.nofit, borderColor: 'rgba(255,107,94,.45)', padding: '6px 8px', maxWidth: 320, whiteSpace: 'normal', lineHeight: 1.35 }}
+          >
+            {failing ?? 'Does not fit'}
+          </Label>
+        )}
+        {verdict === 'unsure' && !selected && <Frame w={w} h={h} d={d} color={COLORS.unsure} width={1.6} />}
+        {translucent && !selected && !noFit && verdict !== 'unsure' && (
+          <Frame w={w} h={h} d={d} color={COLORS.bone} width={1.1} opacity={0.6} dashed xray={false} />
+        )}
+        {hovered && !selected && !noFit && <Frame w={w} h={h} d={d} color={COLORS.bone} width={1.3} opacity={0.75} />}
         {selected && (
           <>
             <Frame w={w} h={h} d={d} color={COLORS.ice} width={1.7} />
@@ -349,7 +454,7 @@ export function GhostPiece({ ghost, placement }: { ghost: Ghost; placement: Plac
   const label = useRef<HTMLDivElement>(null)
   const t = useRef(0)
   useFrame((_, dt) => {
-    t.current += Math.min(dt, 0.05)
+    t.current += Math.min(dt, 0.1)
     const a = Math.min(t.current / 0.16, 1) * (1 - Math.min(Math.max((t.current - 1.38) / 0.4, 0), 1))
     mat.opacity = 0.26 * a
     if (label.current) label.current.style.opacity = String(a)

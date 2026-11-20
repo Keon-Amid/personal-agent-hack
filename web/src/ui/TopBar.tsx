@@ -45,12 +45,12 @@ function Measure({ k, m }: { k: MeasureKey; m: Measurement }) {
   const value = override ?? m.value_in
   const [draft, setDraft] = useState('')
   const inputRef = useRef<HTMLInputElement>(null)
+  // Open with an empty field: the number to type is the one on the tape, not an edit of the old one.
   useEffect(() => {
-    if (open) {
-      setDraft(inches(value))
-      requestAnimationFrame(() => inputRef.current?.select())
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    if (!open) return
+    setDraft('')
+    const t = setTimeout(() => inputRef.current?.focus(), 30)
+    return () => clearTimeout(t)
   }, [open])
   const parsed = Number.parseFloat(draft)
   const valid = Number.isFinite(parsed) && parsed > 0 && parsed < 2000
@@ -102,6 +102,7 @@ function Measure({ k, m }: { k: MeasureKey; m: Measurement }) {
                   inputMode="decimal"
                   autoComplete="off"
                   value={draft}
+                  placeholder={inches(value)}
                   onChange={(e) => setDraft(e.target.value)}
                   className="field num w-full pr-8"
                 />

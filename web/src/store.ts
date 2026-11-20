@@ -133,7 +133,8 @@ export const useApp = create<AppState>((set, get) => ({
   ...blank,
 
   openRoom: ({ plan, modelUrl, modelLabel }) =>
-    set((s) => ({ ...blank, modelStyle: s.modelStyle, stage: 'reading', plan, modelUrl, modelLabel, room: null })),
+    // The start screen already shows the demo scan; if it's the same model, keep what the scene measured.
+    set((s) => ({ ...blank, modelStyle: s.modelStyle, stage: 'reading', plan, modelUrl, modelLabel, room: s.modelUrl === modelUrl ? s.room : null })),
   setRoom: (room) => set({ room }),
   roomReady: () => {
     if (get().stage === 'reading') set({ stage: 'ready' })

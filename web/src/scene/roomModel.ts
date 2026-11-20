@@ -4,18 +4,21 @@ import * as THREE from 'three'
 import type { PlanRoom, RoomDoor, RoomExisting, RoomModel, RoomWall, Vec2 } from '../types'
 
 export const IN = 0.0254
+/** ?still in the URL: skip intros and fades so a single frame shows the settled state (for screenshots). */
+export const STILL = typeof location !== 'undefined' && new URLSearchParams(location.search).has('still')
 const M_TO_IN = 39.3701
 const r1 = (v: number) => Math.round(v * 10) / 10
 
 export const COLORS = {
   wall: '#d9d3c8',
-  floor: '#bfb8ac',
+  floor: '#b9b3a8',
   clay: '#e9e3d8',
   existing: '#8f8a82',
   tv: '#2c2c30',
   door: '#a9a195',
   ice: '#9fe3f0',
   nofit: '#ff6b5e',
+  unsure: '#f2b95a',
   bone: '#eeeae3',
   casing: '#0c0d0f',
 }
@@ -63,6 +66,8 @@ export function wallFrame(w: RoomWall, outline: Vec2[]): { t: Vec2; n: Vec2; mid
 export interface WallPart {
   id: string
   objects: THREE.Object3D[]
+  /** doors and the like: shown up to the wall's current height, never stretched */
+  extras: { object: THREE.Object3D; height: number }[]
   /** centre and outward normal on the floor plane, metres */
   cx: number
   cz: number
@@ -240,6 +245,7 @@ export function buildScanShell(scene: THREE.Object3D): Shell | null {
     walls.push({
       id: m.name,
       objects: [m],
+      extras: [],
       cx: (a[0] + e[0]) / 2,
       cz: (a[1] + e[1]) / 2,
       nx: 0,
@@ -318,7 +324,7 @@ export function buildScanShell(scene: THREE.Object3D): Shell | null {
     slab.name = `${m.name}_slab`
     slab.receiveShadow = true
     group.add(slab)
-    walls[wi].objects.push(slab)
+    walls[wi].extras.push({ object: slab, height: h })
     const nIn: Vec2 = axis === 'z' ? [1, 0] : [0, 1]
     const cIn: Vec2 = [cx * M_TO_IN, cz * M_TO_IN]
     const into: Vec2 = pointInPoly([cIn[0] + nIn[0] * 12, cIn[1] + nIn[1] * 12], outline) ? nIn : [-nIn[0], -nIn[1]]
@@ -450,9 +456,11 @@ export function buildTypedShell(pr: PlanRoom): Shell {
     m.receiveShadow = true
     return m
   }
-  const part = (id: string, objects: THREE.Object3D[], c: Vec2, n: Vec2, order: number): WallPart => {
-    objects.forEach((o) => group.add(o))
-    return { id, objects, cx: c[0] * IN, cz: c[1] * IN, nx: n[0], nz: n[1], height: H * IN, s: 0, order }
+  const part = (id: string, bits: THREE.Object3D[], c: Vec2, n: Vec2, order: number): WallPart => {
+    const g = new THREE.Group()
+    bits.forEach((o) => g.add(o))
+    group.add(g)
+    return { id, objects: [g], extras: [], cx: c[0] * IN, cz: c[1] * IN, nx: n[0], nz: n[1], height: H * IN, s: 0, order }
   }
 
   const doorZ = hd - 8 - dw / 2

@@ -7,13 +7,25 @@ import * as THREE from 'three'
 import type { Plan, Placement, RoomDoor, RoomWall, Vec2 } from '../types'
 import { useApp } from '../store'
 import { inches } from '../lib/format'
-import { buildMeshShell, buildScanShell, buildTypedShell, COLORS, IN, MAT, wallFrame, type Shell } from './roomModel'
+import { buildMeshShell, buildScanShell, buildTypedShell, COLORS, IN, MAT, STILL, wallFrame, type Shell } from './roomModel'
 import { layoutDetail, type LayoutDetail } from './layout'
 import { GhostPiece, Label, Mark, overlayRef, Piece } from './pieces'
+import { useModelManifest } from '../room3d/Model'
+
+const MODELS = '/models/'
 
 const CURB = 0.13 // height a wall is cut down to when it stands between you and the room (m)
+const CUT = 2.25 // every wall is sectioned here, like an architect's model: above the TV, below the ceiling
 const FOV = 34
 const rad = (d: number) => (d * Math.PI) / 180
+const CAMERA = { fov: FOV, near: 0.1, far: 120, position: [7, 6, 8] as [number, number, number] }
+const GL = {
+  antialias: true,
+  alpha: true,
+  powerPreference: 'high-performance' as const,
+  toneMapping: THREE.NeutralToneMapping,
+  toneMappingExposure: 1.02,
+}
 const clamp01 = (v: number) => Math.min(1, Math.max(0, v))
 const easeOut = (t: number) => 1 - Math.pow(1 - t, 3)
 
@@ -25,7 +37,7 @@ function ShellAnimator({ shell }: { shell: Shell }) {
   const low = useRef<boolean[]>([])
   const fade = useRef({ fill: 0, edge: 0, tv: 0, casting: true })
   useEffect(() => {
-    t.current = 0
+    t.current = STILL ? 10 : 0
     low.current = []
     shell.walls.forEach((w) => (w.s = 0))
     fade.current = { fill: 0, edge: 0, tv: 0, casting: true }
@@ -33,9 +45,9 @@ function ShellAnimator({ shell }: { shell: Shell }) {
 
   useFrame(({ camera }, dt) => {
     const s = useApp.getState()
-    const d = Math.min(dt, 0.05)
+    const d = Math.min(dt, 0.1)
     t.current += d
-    const k = 1 - Math.exp(-d * 7)
+    const k = STILL ? 1 : 1 - Math.exp(-d * 7)
     const dx = camera.position.x - shell.center.x
     const dz = camera.position.z - shell.center.z
     const plan = s.camera === 'top' && Math.hypot(dx, dz) < camera.position.y * 0.45
@@ -45,10 +57,11 @@ function ShellAnimator({ shell }: { shell: Shell }) {
       if (out > 0.35) low.current[i] = true
       else if (out < 0.05) low.current[i] = false
       const rise = easeOut(clamp01((t.current - 0.07 * w.order) / 0.75))
-      const target = (plan || low.current[i] ? CURB / w.height : 1) * rise
+      const target = ((plan || low.current[i] ? CURB : Math.min(CUT, w.height)) / w.height) * rise
       w.s += (target - w.s) * k
       const sy = Math.max(w.s, 0.003)
       for (const o of w.objects) o.scale.y = sy
+      for (const e of w.extras) e.object.scale.y = Math.max(0.003, Math.min(1, (w.s * w.height) / e.height))
     })
     for (const j of shell.joints) {
       const sy = j.walls.length ? Math.min(...j.walls.map((w) => w.s)) : 1
@@ -74,7 +87,7 @@ function ShellAnimator({ shell }: { shell: Shell }) {
     let tvTarget = appear
     for (const e of shell.existing) {
       if (e.mounted) {
-        if (e.wall && e.wall.s < 0.6) tvTarget = 0
+        if (e.wall && e.wall.s * e.wall.height < 1.6) tvTarget = 0
         continue
       }
       e.mesh.visible = f.fill > 0.012 || f.edge > 0.012
@@ -99,7 +112,7 @@ function ShellAnimator({ shell }: { shell: Shell }) {
 // ---------------------------------------------------------------------------------------------------------
 type Controls = InstanceType<typeof import('camera-controls').default>
 
-function Rig({ shell, layout, hero }: { shell: Shell; layout: LayoutDetail; hero: boolean }) {
+function Rig({ shell, layout, hero, plan }: { shell: Shell; layout: LayoutDetail; hero: boolean; plan: Plan | null }) {
   const controls = useRef<Controls>(null)
   const light = useRef<THREE.DirectionalLight>(null)
   const lightTarget = useMemo(() => new THREE.Object3D(), [])
@@ -107,7 +120,7 @@ function Rig({ shell, layout, hero }: { shell: Shell; layout: LayoutDetail; hero
   const size = useThree((s) => s.size)
   const preset = useApp((s) => s.camera)
   const nonce = useApp((s) => s.cameraNonce)
-  const state = useRef({ touched: false, sx: 0, sy: 0, w: 0, h: 0, first: true })
+  const state = useRef({ touched: false, sx: 0, sy: 0, w: 0, h: 0, first: true, idle: 0 })
 
   const target = useMemo(() => new THREE.Vector3(shell.center.x, Math.min(0.5, shell.height * 0.2), shell.center.z), [shell])
 
@@ -115,8 +128,8 @@ function Rig({ shell, layout, hero }: { shell: Shell; layout: LayoutDetail; hero
     const s = useApp.getState()
     const H = size.height
     const W = size.width
-    const freeW = hero ? W * 0.52 : Math.max(320, W - (W > 1000 ? 360 : 0))
-    const freeH = hero ? H * 0.72 : Math.max(240, H - 190)
+    const freeW = hero ? W * 0.52 : Math.max(320, W - (W > 1000 ? 348 : 0))
+    const freeH = hero ? H * 0.72 : Math.max(240, H - 180)
     const tanV = Math.tan(rad(FOV / 2)) * (freeH / H)
     const tanH = Math.tan(rad(FOV / 2)) * (freeW / H)
     const n = new THREE.Vector3(layout.facing[0], 0, layout.facing[1])
@@ -133,18 +146,25 @@ function Rig({ shell, layout, hero }: { shell: Shell; layout: LayoutDetail; hero
       const v = wide ? new THREE.Vector3(0, 0, 1) : new THREE.Vector3(1, 0, 0)
       return { pos: new THREE.Vector3(target.x, 0, target.z).addScaledVector(v, 0.004).setY(dist), tgt: new THREE.Vector3(target.x, 0, target.z) }
     }
-    let p = new THREE.Vector3(-n.z, 0, n.x)
-    if (p.z < -0.01 || (Math.abs(p.z) <= 0.01 && p.x < 0)) p = p.negate()
-    const fit = shell.radius / Math.sin(Math.atan(Math.min(tanV, tanH)))
+    const longX = wx >= wz
+    const short = longX ? new THREE.Vector3(0, 0, 1) : new THREE.Vector3(1, 0, 0)
+    const long = longX ? new THREE.Vector3(1, 0, 0) : new THREE.Vector3(0, 0, 1)
+    const along = n.dot(short)
+    // look across the short side so the long side spans the screen; lean toward what the sofa faces
+    const base = Math.abs(along) > 0.7 ? short.clone().multiplyScalar(Math.sign(along)) : short
+    const side = Math.abs(along) > 0.7 ? long : n
+    const cut = Math.min(CUT, shell.height)
+    const fit = Math.hypot(shell.radius, cut / 2) / Math.sin(Math.atan(Math.min(tanV, tanH)))
     if (which === 'front') {
       const polar = rad(70)
-      const dist = fit * 0.86
+      const dist = fit * 0.8
       return { pos: target.clone().add(new THREE.Vector3(n.x * Math.sin(polar), Math.cos(polar), n.z * Math.sin(polar)).multiplyScalar(dist)), tgt: target }
     }
-    const swing = which === 'intro' ? 14 : 38
-    const v = n.clone().multiplyScalar(Math.cos(rad(swing))).addScaledVector(p, Math.sin(rad(swing))).normalize()
-    const polar = rad(which === 'intro' ? 46 : 54)
-    const dist = fit * (which === 'intro' ? 1.02 : 0.8)
+    const lean = Math.abs(along) > 0.7 ? 24 : 12
+    const swing = which === 'intro' ? lean - 20 : lean
+    const v = base.clone().multiplyScalar(Math.cos(rad(swing))).addScaledVector(side, Math.sin(rad(swing))).normalize()
+    const polar = rad(which === 'intro' ? 44 : 52)
+    const dist = fit * (which === 'intro' ? 1.06 : hero ? 0.98 : 0.88)
     return { pos: target.clone().add(new THREE.Vector3(v.x * Math.sin(polar), Math.cos(polar), v.z * Math.sin(polar)).multiplyScalar(dist)), tgt: target }
   }
 
@@ -153,9 +173,9 @@ function Rig({ shell, layout, hero }: { shell: Shell; layout: LayoutDetail; hero
     const c = controls.current
     if (!c) return
     state.current.touched = false
-    const a = pose(hero || preset !== 'iso' ? (preset === 'iso' ? 'iso' : preset) : 'intro')
+    const a = pose(hero || STILL || preset !== 'iso' ? preset : 'intro')
     c.setLookAt(a.pos.x, a.pos.y, a.pos.z, a.tgt.x, a.tgt.y, a.tgt.z, false)
-    if (!hero && preset === 'iso') {
+    if (!hero && !STILL && preset === 'iso') {
       const b = pose('iso')
       c.setLookAt(b.pos.x, b.pos.y, b.pos.z, b.tgt.x, b.tgt.y, b.tgt.z, true)
     }
@@ -172,6 +192,31 @@ function Rig({ shell, layout, hero }: { shell: Shell; layout: LayoutDetail; hero
     c.setLookAt(a.pos.x, a.pos.y, a.pos.z, a.tgt.x, a.tgt.y, a.tgt.z, true)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [nonce])
+
+  // selecting a piece brings it to the middle of the free space; letting go returns to the room
+  const selected = useApp((s) => s.selectedSlot)
+  const focused = useRef(false)
+  useEffect(() => {
+    const c = controls.current
+    if (!c || hero) return
+    const pl = selected ? layout.placements[selected] : undefined
+    const item = selected ? plan?.items.find((i) => i.slot === selected) : undefined
+    if (pl && item) {
+      const big = Math.max(item.dims_in.w, item.dims_in.d, item.dims_in.h ?? 0) * IN
+      const room = pose(useApp.getState().camera)
+      const roomDist = room.pos.distanceTo(room.tgt)
+      const dist = Math.min(roomDist * 0.8, Math.max(5.2, big * 3.1))
+      c.moveTo(pl.x_in * IN, Math.min(((item.dims_in.h ?? 20) * IN) / 2, 0.6), pl.z_in * IN, !STILL)
+      c.dollyTo(dist, !STILL)
+      focused.current = true
+    } else if (focused.current) {
+      const room = pose(useApp.getState().camera)
+      c.moveTo(room.tgt.x, room.tgt.y, room.tgt.z, true)
+      c.dollyTo(room.pos.distanceTo(room.tgt), true)
+      focused.current = false
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selected, layout])
 
   useEffect(() => {
     const c = controls.current
@@ -196,7 +241,7 @@ function Rig({ shell, layout, hero }: { shell: Shell; layout: LayoutDetail; hero
     const c = controls.current
     const s = useApp.getState()
     const st = state.current
-    const d = Math.min(dt, 0.05)
+    const d = Math.min(dt, 0.1)
 
     // keep the room centred in the part of the screen the panels leave free
     const W = size.width
@@ -207,36 +252,40 @@ function Rig({ shell, layout, hero }: { shell: Shell; layout: LayoutDetail; hero
       cx = W * 0.7
       cy = H * 0.5
     } else {
-      const left = W > 1000 ? 360 : 0
-      const right = s.selectedSlot || s.cartOpen ? Math.min(400, W * 0.3) : 0
+      const wide = W > 1000
+      const left = wide && (s.stage === 'running' || s.stage === 'done') ? 348 : 0
+      const right = !wide ? 0 : s.cartOpen ? 432 : s.selectedSlot ? 396 : 0
       cx = (left + (W - right)) / 2
-      cy = (60 + (H - 130)) / 2
+      cy = (60 + (H - 120)) / 2
     }
     const tx = cx - W / 2
     const ty = cy - H / 2
-    const k = st.w === 0 ? 1 : 1 - Math.exp(-d * 6)
+    const k = st.w === 0 || STILL ? 1 : 1 - Math.exp(-d * 6)
     const nx = st.sx + (tx - st.sx) * k
     const ny = st.sy + (ty - st.sy) * k
-    if (Math.abs(nx - st.sx) > 0.05 || Math.abs(ny - st.sy) > 0.05 || st.w !== W || st.h !== H) {
+    if (Math.abs(nx - st.sx) > 0.05 || Math.abs(ny - st.sy) > 0.05 || st.w !== W || st.h !== H || !camera.view?.enabled) {
       st.sx = nx
       st.sy = ny
       st.w = W
       st.h = H
       camera.setViewOffset(W, H, -nx, -ny, W, H)
     }
-    {
-      const g = window as unknown as { __f?: number }
-      g.__f = (g.__f ?? 0) + 1
-      if ([1, 2, 5, 20, 60, 200].includes(g.__f)) console.log('DBG f', g.__f, 'dt', dt.toFixed(3), 'pm8', camera.projectionMatrix.elements[8].toFixed(3), 'pm9', camera.projectionMatrix.elements[9].toFixed(3), 'view', camera.view?.enabled)
-    }
 
     if (c) {
       const idle = hero || (!st.touched && !s.selectedSlot && !s.cartOpen && !s.measuring && s.camera !== 'top')
-      if (idle) c.azimuthAngle += d * rad(hero ? 3 : 2.4)
+      if (idle && !STILL) {
+        if (hero) c.azimuthAngle += d * rad(3)
+        else {
+          // a slow sway around the composed view, not a full turn: the long side stays across the screen
+          st.idle += d
+          const w = (Math.PI * 2) / 28
+          c.azimuthAngle += d * rad(12) * w * Math.cos(w * st.idle)
+        }
+      } else st.idle = 0
       // the key light rides with the camera, so the cut-away side is always the lit side
       if (light.current) {
-        const az = c.azimuthAngle - 0.75
-        const el = rad(50)
+        const az = c.azimuthAngle - 0.38
+        const el = rad(58)
         const L = shell.radius * 2 + 6
         light.current.position.set(
           target.x + Math.sin(az) * Math.cos(el) * L,
@@ -269,12 +318,12 @@ function Rig({ shell, layout, hero }: { shell: Shell; layout: LayoutDetail; hero
       <directionalLight
         ref={light}
         castShadow
-        intensity={2.5}
-        color="#fff6ea"
+        intensity={2.3}
+        color="#ffffff"
         shadow-mapSize={[2048, 2048]}
         shadow-bias={-0.0004}
         shadow-normalBias={0.03}
-        shadow-radius={5}
+        shadow-radius={9}
         shadow-intensity={0.9}
       >
         <orthographicCamera attach="shadow-camera" args={[-r, r, r, -r, 1, shell.radius * 4 + 16]} />
@@ -424,20 +473,32 @@ function RoomContents({ shell, plan, hero }: { shell: Shell; plan: Plan | null; 
   const selected = useApp((s) => s.selectedSlot)
   const hovered = useApp((s) => s.hoveredSlot)
   const ghost = useApp((s) => s.ghost)
+  const photoStyle = useApp((s) => s.modelStyle === 'photo')
+  const manifest = useModelManifest(`${MODELS}index.json`)
+  useEffect(() => {
+    // warm the cache so a piece doesn't pop from clay to its model as it lands
+    for (const i of plan?.items ?? []) {
+      const e = manifest[i.product_id]
+      if (e && photoStyle) useGLTF.preload(MODELS + e.file)
+    }
+  }, [manifest, plan, photoStyle])
   const fallback: Placement = { slot: '', x_in: shell.center.x / IN, z_in: shell.center.z / IN, rotation: 0 }
 
   return (
     <>
       <primitive object={shell.group} />
       <ShellAnimator shell={shell} />
-      <Rig shell={shell} layout={layout} hero={hero} />
+      <Rig shell={shell} layout={layout} hero={hero} plan={plan} />
       {!hero && <Marks shell={shell} layout={layout} plan={plan} />}
       {!hero &&
         plan?.items
           .filter((i) => placed[i.slot] && layout.placements[i.slot])
-          .map((item) => (
+          .map((item) => {
+            const e = photoStyle ? manifest[item.product_id] : undefined
+            return (
             <Piece
               key={`${item.slot}:${item.product_id}`}
+              photo={e ? { url: MODELS + e.file, rotY: ((e.rot_y_deg ?? 0) * Math.PI) / 180 } : null}
               item={item}
               placement={layout.placements[item.slot]}
               phase={placed[item.slot]}
@@ -445,7 +506,8 @@ function RoomContents({ shell, plan, hero }: { shell: Shell; plan: Plan | null; 
               hovered={hovered === item.slot}
               interactive
             />
-          ))}
+            )
+          })}
       {!hero && ghost && <GhostPiece key={ghost.key} ghost={ghost} placement={layout.placements[ghost.slot] ?? fallback} />}
     </>
   )
@@ -553,14 +615,8 @@ export default function RoomScene() {
       <Canvas
         shadows="percentage"
         dpr={[1, 2]}
-        camera={{ fov: FOV, near: 0.1, far: 120, position: [7, 6, 8] }}
-        gl={{
-          antialias: true,
-          alpha: true,
-          powerPreference: 'high-performance',
-          toneMapping: THREE.NeutralToneMapping,
-          toneMappingExposure: 1.02,
-        }}
+        camera={CAMERA}
+        gl={GL}
         onCreated={({ gl }) => {
           gl.localClippingEnabled = true
           gl.setClearColor(0x000000, 0)
@@ -570,11 +626,11 @@ export default function RoomScene() {
           if (s.stage !== 'start' && s.selectedSlot) s.select(null)
         }}
       >
-        <hemisphereLight args={['#ffffff', '#a39c90', 0.55]} />
+        <hemisphereLight args={['#f3f6ff', '#b9b7b3', 0.62]} />
         <Environment resolution={64} environmentIntensity={0.55}>
           <color attach="background" args={['#15161a']} />
-          <Lightformer form="rect" intensity={2.2} color="#fff8ee" position={[0, 6, 0]} rotation-x={Math.PI / 2} scale={[12, 12, 1]} />
-          <Lightformer form="rect" intensity={1.1} color="#ffe9d2" position={[-7, 2.5, 3]} rotation-y={Math.PI / 2} scale={[8, 4, 1]} />
+          <Lightformer form="rect" intensity={2.2} color="#ffffff" position={[0, 6, 0]} rotation-x={Math.PI / 2} scale={[12, 12, 1]} />
+          <Lightformer form="rect" intensity={1.0} color="#fff3e6" position={[-7, 2.5, 3]} rotation-y={Math.PI / 2} scale={[8, 4, 1]} />
           <Lightformer form="rect" intensity={0.7} color="#dfeaf2" position={[7, 2, -4]} rotation-y={-Math.PI / 2} scale={[8, 4, 1]} />
         </Environment>
         <Desk />

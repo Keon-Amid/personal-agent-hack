@@ -3,7 +3,7 @@ import { useEffect, useMemo, useRef, useState } from 'react'
 import { Check, ListOrdered, Quote, Ruler, ShieldCheck, ShoppingBag, Repeat2, Terminal, X } from 'lucide-react'
 import { AnimatePresence, motion } from 'motion/react'
 import { productById } from '../data'
-import { cn, sinceStart, slotLabel, splitName, usd } from '../lib/format'
+import { clock, cn, sinceStart, slotLabel, splitName, usd } from '../lib/format'
 import { useApp } from '../store'
 import type { AuditRecord, PlanItem } from '../types'
 import { ProductPhoto } from './bits'
@@ -120,7 +120,7 @@ function RowView({ row, start, open, onToggle }: { row: Row; start: string; open
           >
             {row.title}
           </span>
-          <span className="num shrink-0 text-2xs text-fg-3">{sinceStart(row.r.ts, start)}</span>
+          <span className="num shrink-0 text-2xs text-fg-3">{row.r.source.kind === 'you' ? clock(row.r.ts).slice(0, 5) : sinceStart(row.r.ts, start)}</span>
         </span>
         <span className={cn('mt-0.5 block text-xs leading-relaxed text-fg-2', !open && 'line-clamp-2', row.minor && 'text-fg-3')}>
           <span className="text-fg-3">{row.source}. </span>
