@@ -6,6 +6,9 @@ the fit math, Superlinked or Senso. The `why` line is built from those facts (Br
 Claude's sentence). Needs SIE_API_KEY and SENSO_API_KEY.
 
     python3 scripts/make_fixture.py [--no-senso]
+    # our own scanned room (inches; error = how far off the scan/tape could be):
+    python3 scripts/make_fixture.py --wall 132 --depth 150 --door 32x80 --error 1 --source scan:lidar \
+        --photo room.jpg --model room.glb
 """
 from __future__ import annotations
 
@@ -46,13 +49,20 @@ def senso_check(text: str) -> dict:
     }
 
 
-def main(use_senso: bool = True) -> dict:
+def main(use_senso: bool = True, wall=88.0, depth=150.0, door=(30.0, 80.0), error=None,
+         source=None, photo: str | None = None, model: str | None = None) -> dict:
     products = json.loads((ROOT / "data/products.json").read_text())["products"]
     by_id = {p["id"]: p for p in products}
     emb = json.loads((ROOT / "data/style_embeddings.json").read_text())
-    rm = room(measurement(88, 4, "estimated:door"), measurement(150, 6, "estimated:door"),
-              measurement(30, 0, "user"), measurement(80, 0, "user"))
-    R = sie.analyze_room(room_photo=sie.fetch_image(PHOTO_URL))
+    if source is None:  # the roadmap's default demo room: walls estimated from a photo
+        rm = room(measurement(wall, 4, "estimated:door"), measurement(depth, 6, "estimated:door"),
+                  measurement(door[0], 0, "user"), measurement(door[1], 0, "user"))
+    else:  # a measured room (scan or tape): same error on every measurement
+        e = error or 0.0
+        rm = room(measurement(wall, e, source), measurement(depth, e, source),
+                  measurement(door[0], e, source), measurement(door[1], e, source))
+    photo_bytes = Path(photo).read_bytes() if photo else sie.fetch_image(PHOTO_URL)
+    R = sie.analyze_room(room_photo=photo_bytes)
     items, audit = [], []
     for slot in SLOTS:
         style = sie.style_match(products, slot, emb, room=R)
@@ -89,7 +99,8 @@ def main(use_senso: bool = True) -> dict:
         "plan_id": "demo-1",
         "generated": {"at": now, "by": "scripts/make_fixture.py (real run: Superlinked + fit + Senso)",
                       "note": "why lines are built from facts; the agent will write the final sentence"},
-        "room": {**rm, "photo_url": PHOTO_URL, "detected_style": R["detected_style"][:3] if R["detected_style"] else None},
+        "room": {**rm, "photo_url": None if photo else PHOTO_URL, "photo_file": Path(photo).name if photo else None,
+                 "model_file": model, "detected_style": R["detected_style"][:3] if R["detected_style"] else None},
         "items": items,
         "cart": {"total_usd": round(sum(i["price_usd"] for i in items), 2),
                  "delivery_note": "IKEA home delivery from $29 ($19 with IKEA Family); no delivery date available",
@@ -98,8 +109,24 @@ def main(use_senso: bool = True) -> dict:
     }
 
 
+def _args(argv: list[str]) -> dict:
+    a, kw = argv, {}
+    def val(flag):
+        return a[a.index(flag) + 1] if flag in a else None
+    if val("--wall"): kw["wall"] = float(val("--wall"))
+    if val("--depth"): kw["depth"] = float(val("--depth"))
+    if val("--door"): kw["door"] = tuple(float(x) for x in val("--door").lower().split("x"))
+    if val("--error"): kw["error"] = float(val("--error"))
+    if val("--source"): kw["source"] = val("--source")
+    if val("--photo"): kw["photo"] = val("--photo")
+    if val("--model"): kw["model"] = val("--model")
+    if ("--wall" in a or "--depth" in a) and "source" not in kw:
+        kw["source"] = "user"
+    return kw
+
+
 if __name__ == "__main__":
-    plan = main(use_senso="--no-senso" not in sys.argv)
+    plan = main(use_senso="--no-senso" not in sys.argv, **_args(sys.argv[1:]))
     out = ROOT / "contracts" / "plan.example.json"
     out.parent.mkdir(exist_ok=True)
     out.write_text(json.dumps(plan, indent=1, ensure_ascii=False))
