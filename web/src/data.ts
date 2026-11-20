@@ -1,5 +1,5 @@
 // Real run files, read straight from the repo. Every plan here is one recorded run of the team's agent.
-import type { Option, Plan, Product } from './types'
+import type { Option, Plan, Product, WhyAlternative } from './types'
 import productsFile from '@repo/data/products.json'
 import scanUrl from '@repo/assets/room_scan_roomplan.glb?url'
 
@@ -8,6 +8,37 @@ const optionFiles = import.meta.glob<Record<string, Option[]>>('./fixtures/optio
   eager: true,
   import: 'default',
 })
+
+interface ArceePareto {
+  plan: string
+  models: {
+    model: string
+    on_frontier?: boolean
+    items: { slot: string; text: string; latency_ms?: number; cost_usd?: number; grounded?: boolean }[]
+  }[]
+}
+const paretoFiles = import.meta.glob<ArceePareto>('@repo/contracts/arcee_pareto.json', { eager: true, import: 'default' })
+const pareto = Object.values(paretoFiles)[0] as ArceePareto | undefined
+const paretoPlanId = pareto
+  ? Object.entries(planFiles).find(([path]) => path.endsWith(pareto.plan.split('/').pop() ?? '\0'))?.[1]?.plan_id
+  : undefined
+
+/**
+ * Arcee's line for a pick, from contracts/arcee_pareto.json (alistair's recorded comparison: every model writes
+ * a why for every item of one plan). Only for that plan, and only the model on the cost/quality frontier.
+ */
+export function recordedArceeWhy(planId: string, slot: string): WhyAlternative | null {
+  if (!pareto || planId !== paretoPlanId) return null
+  const m = pareto.models.find((x) => x.on_frontier) ?? pareto.models[0]
+  const it = m?.items.find((i) => i.slot === slot)
+  if (!m || !it) return null
+  return {
+    text: it.text,
+    source: { kind: 'arcee', model: m.model, cost_usd: it.cost_usd, latency_ms: it.latency_ms },
+    grounded: it.grounded,
+    recorded: true,
+  }
+}
 
 export const products = (productsFile as unknown as { products: Product[] }).products
 export const productById: Record<string, Product> = Object.fromEntries(products.map((p) => [p.id, p]))

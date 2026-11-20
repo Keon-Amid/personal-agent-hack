@@ -94,6 +94,7 @@ def product(url: str, category: str) -> dict:
          or dims.get("base diameter"))     # arc lamps: width given, depth is the base
     hh = (dims.get("height") or dims.get("height including back cushions") or dims.get("max. height")
           or dims.get("backrest height")
+          or dims.get("headboard height")  # some IKEA beds list only this; it's the bed's tallest part
           or (dims.get("pile length") or dims.get("thickness") if category == "rug" else None))
 
     pk_key = '"packaging":{"id":"measurements-packaging","title":"Packaging","contentProps":'

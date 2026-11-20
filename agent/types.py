@@ -8,11 +8,11 @@ from typing import Any, Literal, NotRequired, TypedDict
 
 SLOTS = ("sofa", "armchair", "coffee_table", "rug", "floor_lamp")
 STEPS = ("estimate_room", "rank", "pick", "senso_check", "swap", "cart", "agent")
-SOURCE_KINDS = ("photo", "catalog", "fit", "superlinked", "senso", "claude", "template")
+SOURCE_KINDS = ("photo", "catalog", "fit", "superlinked", "senso", "claude", "template", "arcee")
 DELIVERY_NOTE = "IKEA home delivery from $29"
 
 Step = Literal["estimate_room", "rank", "pick", "senso_check", "swap", "cart", "agent"]
-SourceKind = Literal["photo", "catalog", "fit", "superlinked", "senso", "claude", "template"]
+SourceKind = Literal["photo", "catalog", "fit", "superlinked", "senso", "claude", "template", "arcee"]
 Verdict = Literal["verified", "conflict", "unsupported", "not_verifiable"]
 
 

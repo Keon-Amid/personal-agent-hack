@@ -280,4 +280,11 @@ def run_agent(room_input: dict, photo_b64: str | None = None, style_text: str | 
     emit(audit("agent", source={"kind": "template"}, decision="agent finished",
                input={"num_turns": result.get("num_turns"), "duration_ms": result.get("duration_ms")},
                why="Claude Code finished; see the tool records above for every decision.", status="done"))
+    if os.environ.get("ARCEE_WHY_MODEL"):  # optional sponsor step: Arcee writes an alternative why per item
+        try:
+            from . import arcee
+            arcee.add_arcee_whys(pid, os.environ["ARCEE_WHY_MODEL"])  # audits itself; Claude's why stays default
+        except Exception as e:  # noqa: BLE001 - never fail a finished run over the optional step
+            emit(audit("agent", source={"kind": "arcee"}, decision="arcee step failed", status="error",
+                       why=f"{type(e).__name__}: {e}"))
     return tools.get_plan(pid)

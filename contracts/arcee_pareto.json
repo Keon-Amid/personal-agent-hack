@@ -1,0 +1,551 @@
+{
+ "plan": "contracts/plan.live.json",
+ "prices": "Arcee /models list prices, $ per token",
+ "models": [
+  {
+   "model": "zai-org/glm-5.3-flash",
+   "items": [
+    {
+     "slot": "sofa",
+     "text": "At $449, the GULLVALLA sofa fits your space: its 71.625-inch width is under your 88-inch limit, and it was your top style match.",
+     "latency_ms": 2480,
+     "input_tokens": 260,
+     "output_tokens": 455,
+     "reasoning_tokens": 314,
+     "cost_usd": 0.0002665,
+     "quality": 1.0,
+     "grounded": true,
+     "invented_numbers": [],
+     "names_price": true,
+     "names_fit": true
+    },
+    {
+     "slot": "armchair",
+     "text": "The POÄNG armchair costs $149 and fits your room: its 26.75-inch width stays well within your 88 inches of available space, and it's your top style match.",
+     "latency_ms": 1348,
+     "input_tokens": 256,
+     "output_tokens": 148,
+     "reasoning_tokens": 106,
+     "cost_usd": 0.0001124,
+     "quality": 1.0,
+     "grounded": true,
+     "invented_numbers": [],
+     "names_price": true,
+     "names_fit": true
+    },
+    {
+     "slot": "coffee_table",
+     "text": "This $199.99 BORGEBY coffee table fits your room: its 27.5-inch depth plus a 36-inch walkway stays within your 150 inches, and it's your top style match.",
+     "latency_ms": 2450,
+     "input_tokens": 258,
+     "output_tokens": 391,
+     "reasoning_tokens": 326,
+     "cost_usd": 0.0002342,
+     "quality": 1.0,
+     "grounded": true,
+     "invented_numbers": [],
+     "names_price": true,
+     "names_fit": true
+    },
+    {
+     "slot": "rug",
+     "text": "At $129.99, this LOHALS rug (63x91 in) fits your 88x150 in space with 6 in margins on each side, while the larger rugs you considered didn't fit.",
+     "latency_ms": 2964,
+     "input_tokens": 368,
+     "output_tokens": 510,
+     "reasoning_tokens": 351,
+     "cost_usd": 0.0003102,
+     "quality": 1.0,
+     "grounded": true,
+     "invented_numbers": [],
+     "names_price": true,
+     "names_fit": true
+    },
+    {
+     "slot": "floor_lamp",
+     "text": "This AKTERSPRING floor lamp fits your room—its 12-inch width is under your 88-inch limit—and at $99.99 it was also your top style match.",
+     "latency_ms": 2616,
+     "input_tokens": 249,
+     "output_tokens": 390,
+     "reasoning_tokens": 319,
+     "cost_usd": 0.0002323,
+     "quality": 1.0,
+     "grounded": true,
+     "invented_numbers": [],
+     "names_price": true,
+     "names_fit": true
+    }
+   ],
+   "cost_usd_per_item": 0.0002311,
+   "latency_ms_avg": 2372,
+   "quality_avg": 1.0,
+   "grounded_rate": 1.0,
+   "errors": 0,
+   "on_frontier": true
+  },
+  {
+   "model": "deepseek/deepseek-v4.1-flash-1017",
+   "items": [
+    {
+     "slot": "sofa",
+     "text": "This GULLVALLA sofa costs $449 and its 71.625-inch width fits your 88-inch space.",
+     "latency_ms": 1732,
+     "input_tokens": 276,
+     "output_tokens": 154,
+     "reasoning_tokens": 128,
+     "cost_usd": 0.0002676,
+     "quality": 1.0,
+     "grounded": true,
+     "invented_numbers": [],
+     "names_price": true,
+     "names_fit": true
+    },
+    {
+     "slot": "armchair",
+     "text": "This POÄNG armchair costs $149 and its 26.75-inch width fits your 88-inch space.",
+     "latency_ms": 2426,
+     "input_tokens": 277,
+     "output_tokens": 185,
+     "reasoning_tokens": 159,
+     "cost_usd": 0.0003051,
+     "quality": 1.0,
+     "grounded": true,
+     "invented_numbers": [],
+     "names_price": true,
+     "names_fit": true
+    },
+    {
+     "slot": "coffee_table",
+     "text": "This BORGEBY coffee table costs $199.99 and fits your room because its 27.5-inch width is within your 88-inch space.",
+     "latency_ms": 2118,
+     "input_tokens": 279,
+     "output_tokens": 273,
+     "reasoning_tokens": 212,
+     "cost_usd": 0.0004113,
+     "quality": 1.0,
+     "grounded": true,
+     "invented_numbers": [],
+     "names_price": true,
+     "names_fit": true
+    },
+    {
+     "slot": "rug",
+     "text": "This LOHALS rug costs $129.99 and fits because its 63-inch width plus 6-inch margins on each side is 75 inches, within your 88-inch space.",
+     "latency_ms": 2598,
+     "input_tokens": 393,
+     "output_tokens": 284,
+     "reasoning_tokens": 234,
+     "cost_usd": 0.0004587,
+     "quality": 1.0,
+     "grounded": true,
+     "invented_numbers": [],
+     "names_price": true,
+     "names_fit": true
+    },
+    {
+     "slot": "floor_lamp",
+     "text": "This floor lamp costs $99.99 and fits your room, with its 12-inch width under your 88-inch space.",
+     "latency_ms": 2708,
+     "input_tokens": 273,
+     "output_tokens": 238,
+     "reasoning_tokens": 210,
+     "cost_usd": 0.0003675,
+     "quality": 1.0,
+     "grounded": true,
+     "invented_numbers": [],
+     "names_price": true,
+     "names_fit": true
+    }
+   ],
+   "cost_usd_per_item": 0.000362,
+   "latency_ms_avg": 2316,
+   "quality_avg": 1.0,
+   "grounded_rate": 1.0,
+   "errors": 0,
+   "on_frontier": false
+  },
+  {
+   "model": "deepseek/deepseek-v4.1-flash",
+   "items": [
+    {
+     "slot": "sofa",
+     "text": "This GULLVALLA sofa costs $449 and fits your room because its 71.625-inch width is within your 88-inch limit.",
+     "latency_ms": 1737,
+     "input_tokens": 276,
+     "output_tokens": 241,
+     "reasoning_tokens": 191,
+     "cost_usd": 0.0003499,
+     "quality": 1.0,
+     "grounded": true,
+     "invented_numbers": [],
+     "names_price": true,
+     "names_fit": true
+    },
+    {
+     "slot": "armchair",
+     "text": "This POÄNG armchair costs $149 and fits because its 26.75-inch width is within your 88-inch space.",
+     "latency_ms": 1374,
+     "input_tokens": 277,
+     "output_tokens": 176,
+     "reasoning_tokens": 147,
+     "cost_usd": 0.0002721,
+     "quality": 1.0,
+     "grounded": true,
+     "invented_numbers": [],
+     "names_price": true,
+     "names_fit": true
+    },
+    {
+     "slot": "coffee_table",
+     "text": "This BORGEBY coffee table costs $199.99 and its 27.5-inch width fits your 88-inch space.",
+     "latency_ms": 1709,
+     "input_tokens": 279,
+     "output_tokens": 242,
+     "reasoning_tokens": 204,
+     "cost_usd": 0.0003518,
+     "quality": 1.0,
+     "grounded": true,
+     "invented_numbers": [],
+     "names_price": true,
+     "names_fit": true
+    },
+    {
+     "slot": "rug",
+     "text": "This LOHALS rug costs $129.99 and its 63-inch width plus a 6-inch margin on each side fits your 88-inch space.",
+     "latency_ms": 1721,
+     "input_tokens": 393,
+     "output_tokens": 326,
+     "reasoning_tokens": 253,
+     "cost_usd": 0.0004777,
+     "quality": 1.0,
+     "grounded": true,
+     "invented_numbers": [],
+     "names_price": true,
+     "names_fit": true
+    },
+    {
+     "slot": "floor_lamp",
+     "text": "This AKTERSPRING floor lamp costs $99.99 and fits your room because its 12-inch width and 10-inch depth leave a 36-inch walkway.",
+     "latency_ms": 2813,
+     "input_tokens": 273,
+     "output_tokens": 496,
+     "reasoning_tokens": 401,
+     "cost_usd": 0.0006553,
+     "quality": 1.0,
+     "grounded": true,
+     "invented_numbers": [],
+     "names_price": true,
+     "names_fit": true
+    }
+   ],
+   "cost_usd_per_item": 0.0004214,
+   "latency_ms_avg": 1871,
+   "quality_avg": 1.0,
+   "grounded_rate": 1.0,
+   "errors": 0,
+   "on_frontier": false
+  },
+  {
+   "model": "zai-org/glm-5.3",
+   "items": [
+    {
+     "slot": "sofa",
+     "text": "",
+     "latency_ms": 8087,
+     "input_tokens": 260,
+     "output_tokens": 900,
+     "reasoning_tokens": 712,
+     "cost_usd": 0.004324,
+     "quality": 0.0,
+     "grounded": false,
+     "invented_numbers": [],
+     "names_price": false,
+     "names_fit": false,
+     "empty": true
+    },
+    {
+     "slot": "armchair",
+     "text": "The $149 POÄNG armchair was chosen because it fits your room: its 32.25-inch depth plus a 36-inch walkway totals 68.25 inches, within your 150-inch space.",
+     "latency_ms": 3936,
+     "input_tokens": 256,
+     "output_tokens": 401,
+     "reasoning_tokens": 327,
+     "cost_usd": 0.0021228,
+     "quality": 1.0,
+     "grounded": true,
+     "invented_numbers": [],
+     "names_price": true,
+     "names_fit": true
+    },
+    {
+     "slot": "coffee_table",
+     "text": "We chose the $199.99 BORGEBY coffee table because it fits: its 27.5-inch depth plus a 36-inch walkway uses only 63.5 of your 150 available inches.",
+     "latency_ms": 5547,
+     "input_tokens": 258,
+     "output_tokens": 631,
+     "reasoning_tokens": 472,
+     "cost_usd": 0.0031376,
+     "quality": 1.0,
+     "grounded": true,
+     "invented_numbers": [],
+     "names_price": true,
+     "names_fit": true
+    },
+    {
+     "slot": "rug",
+     "text": "We chose the $129.99 LOHALS flatwoven rug because its 63-by-91-inch size fits your space with a 6-inch margin on each side.",
+     "latency_ms": 8317,
+     "input_tokens": 368,
+     "output_tokens": 360,
+     "reasoning_tokens": 287,
+     "cost_usd": 0.0020992,
+     "quality": 1.0,
+     "grounded": true,
+     "invented_numbers": [],
+     "names_price": true,
+     "names_fit": true
+    },
+    {
+     "slot": "floor_lamp",
+     "text": "We chose the $99.99 AKTERSPRING floor lamp because it fits: its 12-inch width sits well within your 88 inches of available space, and it ranked first in style.",
+     "latency_ms": 5603,
+     "input_tokens": 249,
+     "output_tokens": 595,
+     "reasoning_tokens": 474,
+     "cost_usd": 0.0029666,
+     "quality": 1.0,
+     "grounded": true,
+     "invented_numbers": [],
+     "names_price": true,
+     "names_fit": true
+    }
+   ],
+   "cost_usd_per_item": 0.00293,
+   "latency_ms_avg": 6298,
+   "quality_avg": 0.8,
+   "grounded_rate": 0.8,
+   "errors": 0,
+   "on_frontier": false
+  },
+  {
+   "model": "moonshotai/kimi-k3.1-pro",
+   "items": [
+    {
+     "slot": "sofa",
+     "text": "The $449 GULLVALLA sofa in Silkeryd dark gray-beige was chosen because its 71.625-inch width fits your 88-inch limit, and it ranked first for style.",
+     "latency_ms": 6345,
+     "input_tokens": 339,
+     "output_tokens": 464,
+     "reasoning_tokens": 409,
+     "cost_usd": 0.005318,
+     "quality": 1.0,
+     "grounded": true,
+     "invented_numbers": [],
+     "names_price": true,
+     "names_fit": true
+    },
+    {
+     "slot": "armchair",
+     "text": "The $149 POÄNG armchair was chosen because it fits: its 32.25-inch depth plus a 36-inch walkway totals 68.25 inches, within your 150-inch limit.",
+     "latency_ms": 9868,
+     "input_tokens": 338,
+     "output_tokens": 709,
+     "reasoning_tokens": 644,
+     "cost_usd": 0.007766,
+     "quality": 1.0,
+     "grounded": true,
+     "invented_numbers": [],
+     "names_price": true,
+     "names_fit": true
+    },
+    {
+     "slot": "coffee_table",
+     "text": "The $199.99 BORGEBY coffee table fits because its 27.5-inch depth plus a 36-inch walkway totals 63.5 inches, within your 150-inch limit.",
+     "latency_ms": 6111,
+     "input_tokens": 341,
+     "output_tokens": 420,
+     "reasoning_tokens": 367,
+     "cost_usd": 0.004882,
+     "quality": 1.0,
+     "grounded": true,
+     "invented_numbers": [],
+     "names_price": true,
+     "names_fit": true
+    },
+    {
+     "slot": "rug",
+     "text": "The $129.99 LOHALS flatwoven rug fits because its 63-by-91-inch size, with 6-inch margins, stays within your 88-by-150-inch space.",
+     "latency_ms": 10234,
+     "input_tokens": 453,
+     "output_tokens": 398,
+     "reasoning_tokens": 346,
+     "cost_usd": 0.004886,
+     "quality": 1.0,
+     "grounded": true,
+     "invented_numbers": [],
+     "names_price": true,
+     "names_fit": true
+    },
+    {
+     "slot": "floor_lamp",
+     "text": "",
+     "latency_ms": 10923,
+     "input_tokens": 333,
+     "output_tokens": 900,
+     "reasoning_tokens": 803,
+     "cost_usd": 0.009666,
+     "quality": 0.0,
+     "grounded": false,
+     "invented_numbers": [],
+     "names_price": false,
+     "names_fit": false,
+     "empty": true
+    }
+   ],
+   "cost_usd_per_item": 0.0065036,
+   "latency_ms_avg": 8696,
+   "quality_avg": 0.8,
+   "grounded_rate": 0.8,
+   "errors": 0,
+   "on_frontier": false
+  },
+  {
+   "model": "moonshotai/kimi-k3",
+   "items": [
+    {
+     "slot": "sofa",
+     "text": "At $449, the GULLVALLA sofa is your top style match and fits: its 71.625-inch width stays under your 88-inch limit while keeping a 36-inch walkway.",
+     "latency_ms": 15741,
+     "input_tokens": 339,
+     "output_tokens": 898,
+     "reasoning_tokens": 675,
+     "cost_usd": 0.014487,
+     "quality": 1.0,
+     "grounded": true,
+     "invented_numbers": [],
+     "names_price": true,
+     "names_fit": true
+    },
+    {
+     "slot": "armchair",
+     "text": "At $149, the POÄNG armchair was chosen because its 26.75-inch width fits your 88-inch space, and it ranked first for style among the options.",
+     "latency_ms": 5921,
+     "input_tokens": 338,
+     "output_tokens": 290,
+     "reasoning_tokens": 225,
+     "cost_usd": 0.005364,
+     "quality": 1.0,
+     "grounded": true,
+     "invented_numbers": [],
+     "names_price": true,
+     "names_fit": true
+    },
+    {
+     "slot": "coffee_table",
+     "text": "At $199.99, the BORGEBY coffee table was chosen because its 27.5-inch width fits your 88-inch space, and its depth plus a 36-inch walkway stays within your 150-inch room.",
+     "latency_ms": 7357,
+     "input_tokens": 341,
+     "output_tokens": 376,
+     "reasoning_tokens": 279,
+     "cost_usd": 0.006663,
+     "quality": 1.0,
+     "grounded": true,
+     "invented_numbers": [],
+     "names_price": true,
+     "names_fit": true
+    },
+    {
+     "slot": "rug",
+     "text": "At $129.99, this LOHALS rug fits your room: its 63-inch width plus margins needs 75 inches of your 88, while the larger rugs exceeded that limit.",
+     "latency_ms": 6332,
+     "input_tokens": 453,
+     "output_tokens": 300,
+     "reasoning_tokens": 230,
+     "cost_usd": 0.005859,
+     "quality": 1.0,
+     "grounded": true,
+     "invented_numbers": [],
+     "names_price": true,
+     "names_fit": true
+    },
+    {
+     "slot": "floor_lamp",
+     "text": "This $99.99 floor lamp fits because its 10-inch depth plus a 36-inch walkway totals 46 inches, within your 150-inch limit, and it ranked first for style.",
+     "latency_ms": 10272,
+     "input_tokens": 333,
+     "output_tokens": 546,
+     "reasoning_tokens": 407,
+     "cost_usd": 0.009189,
+     "quality": 1.0,
+     "grounded": true,
+     "invented_numbers": [],
+     "names_price": true,
+     "names_fit": true
+    }
+   ],
+   "cost_usd_per_item": 0.0083124,
+   "latency_ms_avg": 9125,
+   "quality_avg": 1.0,
+   "grounded_rate": 1.0,
+   "errors": 0,
+   "on_frontier": false
+  }
+ ],
+ "claude_baseline": {
+  "items": [
+   {
+    "slot": "sofa",
+    "text": "The GULLVALLA Sofa ($449) is the #1 style match for your warm minimal room, and at 71.625 in wide it leaves 16.38 in spare on your 88 in wall; Senso verified its size, box and the fit rules.",
+    "quality": 0.5,
+    "grounded": false,
+    "invented_numbers": [
+     16.38
+    ],
+    "names_price": true,
+    "names_fit": true
+   },
+   {
+    "slot": "armchair",
+    "text": "The POÄNG Armchair ($149) is the #1 style match for your warm minimal room, is only 26.75 in wide, and its two boxes fit your 30 in door; Senso verified its size, boxes and price.",
+    "quality": 1.0,
+    "grounded": true,
+    "invented_numbers": [],
+    "names_price": true,
+    "names_fit": true
+   },
+   {
+    "slot": "coffee_table",
+    "text": "The BORGEBY Coffee table ($199.99) is the #1 style match for your warm minimal room, and at 27.5 x 27.5 in it leaves 86.5 in of floor spare after the 36 in walkway; Senso verified its size, box and price.",
+    "quality": 0.5,
+    "grounded": false,
+    "invented_numbers": [
+     86.5
+    ],
+    "names_price": true,
+    "names_fit": true
+   },
+   {
+    "slot": "rug",
+    "text": "The 63 x 91 in LOHALS Rug ($129.99) is the best style match that fits: the two ranked above it break the 6 in wall-margin rule on your 88 in width, while this one has 13 in to spare; Senso verified its size, box and price.",
+    "quality": 0.5,
+    "grounded": false,
+    "invented_numbers": [
+     13.0
+    ],
+    "names_price": true,
+    "names_fit": true
+   },
+   {
+    "slot": "floor_lamp",
+    "text": "The AKTERSPRING Floor lamp ($99.99) is the #1 style match for your warm minimal room, takes up only 12 x 10 in of floor, and its box fits your 30 in door; Senso verified its size, box and price.",
+    "quality": 1.0,
+    "grounded": true,
+    "invented_numbers": [],
+    "names_price": true,
+    "names_fit": true
+   }
+  ],
+  "quality_avg": 0.7
+ },
+ "notes": "Quality is judge-free: 0.5 for no number absent from the facts, +0.25 names the price, +0.25 names a fit fact. It penalises correct arithmetic (Claude's 'leaves 16.38 in spare' = 88 - 71.625 counts as a new number), so the Claude baseline's lower score is not evidence that Arcee's lines are better, only that they quote the facts verbatim."
+}
