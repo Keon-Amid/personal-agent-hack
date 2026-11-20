@@ -1,0 +1,3 @@
+fastapi
+uvicorn
+httpx  # tests only (FastAPI TestClient)

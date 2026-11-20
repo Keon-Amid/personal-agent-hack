@@ -173,15 +173,17 @@ def _records_for(event: dict, calls: dict) -> list[dict]:
 
 def run_agent(room_input: dict, photo_b64: str | None = None, style_text: str | None = None,
               budget_usd: float | None = None, on_event: Callable[[dict], None] | None = None,
-              budget_total_usd: float | None = None) -> dict:
+              budget_total_usd: float | None = None,
+              plan_id: str | None = None) -> dict:
     """Furnish a room end to end and return the Plan (agent.tools.get_plan).
 
     room_input: exact inches the person measured, {"wall", "depth", "door_width", "door_height"} (any subset;
     numbers, or fit.measurement dicts with source "user"). Missing keys are estimated from the photo by
     analyze_room. Raises AgentError (with .plan_id once the plan exists) or AgentTimeout after TIMEOUT_S.
+    plan_id: use this id for the new plan (the web server hands it to the browser before the run starts).
     """
     check_claude()
-    plan = store.new_plan()
+    plan = store.new_plan(plan_id=plan_id)
     pid = plan["plan_id"]
 
     def emit(rec: dict) -> None:
