@@ -1,6 +1,6 @@
 // Live mode: the HTTP wrapper around agent.agent.run_agent (see CONTRACT.md, "Agent: agent/").
 // STUBBED until that server exists. Two calls, as agreed in the team channel:
-//   POST {base}/api/plan   {room:{wall,depth,door_width,door_height}, style_text, budget_usd}  -> {plan_id}
+//   POST {base}/api/plan   {room:{wall,depth,door_width,door_height}, style_text, budget_total_usd}  -> {plan_id}
 //   GET  {base}/api/plan/{id}   -> Plan (contracts/plan.live.json shape); items[] and audit[] grow while it runs
 // The UI polls the second one once a second and plays each new audit record as it appears.
 import type { Plan } from '../types'
@@ -24,7 +24,8 @@ export const liveApi: Api = {
       const res = await fetch(`${BASE}/api/plan`, {
         method: 'POST',
         headers: { 'content-type': 'application/json' },
-        body: JSON.stringify({ room, style_text: styleText, budget_usd: budgetUsd }),
+        // The budget chip is a budget for the whole room, which the agent calls budget_total_usd.
+        body: JSON.stringify({ room, style_text: styleText, budget_total_usd: budgetUsd }),
         signal: ctrl.signal,
       })
       if (!res.ok) throw new Error(`The agent server answered ${res.status}.`)
