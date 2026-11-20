@@ -26,7 +26,7 @@ import time
 from pathlib import Path
 
 from fit.checks import FITS
-from fit.layout import add_product, check_layout, door_zone, find_spot, layout_from_scan
+from fit.layout import add_product, check_layout, door_zone, entry_zone, find_spot, layout_from_scan
 from fit.scan import load_scan
 
 from . import arcee
@@ -44,10 +44,18 @@ SYSTEM = (
 RULES = [
     "Every corner of a piece must be inside room_outline.",
     "A piece must not overlap existing furniture or another new piece. Exception: anything may stand on a rug.",
-    "Keep every keep_clear zone (the door swing) empty.",
+    "Keep every keep_clear zone (the door swing) and every entry_path_keep_clear zone (the way in) empty.",
+    "Don't cluster furniture near the door: put the main pieces on the walls farthest from it.",
     "Keep at least 12 in between a new piece and other furniture, and leave 18 in free on some side to reach it.",
     "Sofas, armchairs, lamps and storage go against a wall with their back to it, front facing the room.",
     "Rugs and coffee tables go in the open part of the room; put the coffee table in front of the sofa.",
+    # designers' rules of thumb (Apartment Therapy, Homes & Gardens, Houzz living-room clearance guides)
+    "Sofa: on the longest wall with no door, facing the room's open centre (or the TV if there is one).",
+    "Coffee table: centred on the sofa, 14-18 in from the sofa's front edge.",
+    "Armchairs: across from or beside the sofa, angled toward the coffee table, within 7-9 ft of the sofa.",
+    "Rug: under the seating group, big enough for at least the front legs of the sofa and chairs.",
+    "Floor lamp: beside the sofa's arm or an armchair, or in a corner; never in a walkway.",
+    "Walkways: 30-36 in for the main path from the door through the room, 24-30 in behind or between pieces.",
 ]
 
 
@@ -63,7 +71,8 @@ def room_facts(room: dict) -> dict:
         "room_outline": room["outline"],
         "x_range": [min(xs), max(xs)], "z_range": [min(zs), max(zs)],
         "doors": [{"id": d["id"], "center": d["center"], "width_in": d["width_in"],
-                   "keep_clear": dict(zip(("x0", "z0", "x1", "z1"), [round(v, 1) for v in door_zone(d)]))}
+                   "keep_clear": dict(zip(("x0", "z0", "x1", "z1"), [round(v, 1) for v in door_zone(d)])),
+                   "entry_path_keep_clear": dict(zip(("x0", "z0", "x1", "z1"), [round(v, 1) for v in entry_zone(d)]))}
                   for d in room.get("doors", [])],
         "existing": [{"id": i["id"], "label": i["label"], "category": i["category"], "x_in": i["x_in"],
                       "z_in": i["z_in"], "w_in": i["w_in"], "d_in": i["d_in"], "rotation": i.get("rotation", 0),
@@ -91,6 +100,36 @@ def _ask(messages: list[dict], model: str) -> tuple[dict, dict]:
     return parsed, {**call, "reply_chars": len(text), "parsed": bool(parsed.get("placements"))}
 
 
+def _ask_claude(messages: list[dict], model: str) -> tuple[dict, dict]:
+    """The same request answered by the person's local Claude (Claude Code, `claude -p`, signed in). No tools."""
+    import subprocess
+    system = "\n".join(m["content"] for m in messages if m["role"] == "system")
+    convo = "\n\n".join(f'{m["role"].upper()}: {m["content"]}' for m in messages if m["role"] != "system")
+    cmd = ["claude", "-p", convo, "--append-system-prompt", system, "--output-format", "json",
+           "--tools", "", "--no-session-persistence"]
+    cmd += ["--model", model if model and model != "claude" else os.environ.get("LAYOUT_CLAUDE_MODEL", "sonnet")]
+    t0 = time.monotonic()
+    proc = subprocess.run(cmd, capture_output=True, text=True, timeout=480, cwd=str(ROOT))
+    ms = round((time.monotonic() - t0) * 1000)
+    if proc.returncode != 0:
+        raise RuntimeError(f"claude -p failed: {(proc.stderr or proc.stdout)[-300:]}")
+    out = json.loads(proc.stdout)
+    text = (out.get("result") or "").strip()
+    usage = out.get("usage") or {}
+    m = re.search(r"\{.*\}", text, re.S)
+    try:
+        parsed = json.loads(m.group(0)) if m else {}
+    except json.JSONDecodeError:
+        parsed = {}
+    return parsed, {"latency_ms": ms, "input_tokens": usage.get("input_tokens") or 0,
+                    "output_tokens": usage.get("output_tokens") or 0,
+                    "cost_usd": round(float(out.get("total_cost_usd") or 0), 7), "provider": "claude",
+                    "reply_chars": len(text), "parsed": bool(parsed.get("placements"))}
+
+
+PROVIDERS = {"arcee": _ask, "claude": _ask_claude}
+
+
 def _clean(p: dict) -> dict | None:
     try:
         rot = int(round(float(p.get("rotation", 0)) / 90.0)) * 90 % 360
@@ -108,12 +147,18 @@ def _try(room: dict, lay: list[dict], product: dict, spot: dict) -> tuple[bool, 
     return (not bad), res[product["id"]], bad
 
 
-def plan_layout(room: dict, picks: list[dict], model: str | None = None, ask=_ask) -> dict:
+def plan_layout(room: dict, picks: list[dict], model: str | None = None, ask=None, provider: str | None = None) -> dict:
     """picks = [{"slot", "product"}] with catalog products. Returns placements plus the record of every call.
 
+    provider: "arcee" (default) or "claude" (the local, signed-in Claude Code); also LAYOUT_PROVIDER in the env.
     `ask` can be replaced in tests with a function that returns canned proposals.
     """
-    model = model or _model()
+    provider = (provider or os.environ.get("LAYOUT_PROVIDER") or "arcee").lower()
+    if provider not in PROVIDERS:
+        raise ValueError(f"unknown layout provider {provider!r}; use one of {sorted(PROVIDERS)}")
+    if ask is None:
+        ask = PROVIDERS[provider]
+    model = model or (_model() if provider == "arcee" else "claude")
     by_id = {p["product"]["id"]: p for p in picks}
     to_place = [{"id": p["product"]["id"], "slot": p["slot"], "name": p["product"]["name"],
                  "category": p["product"]["category"], "w_in": p["product"]["dims_in"]["w"],
@@ -144,7 +189,7 @@ def plan_layout(room: dict, picks: list[dict], model: str | None = None, ask=_as
             ok, results, bad = _try(room, lay, by_id[pid]["product"], spot)
             if ok:
                 lay = add_product(lay, by_id[pid]["product"], spot["x_in"], spot["z_in"], spot["rotation"])
-                done[pid] = {**spot, "by": "arcee" if round_no == 1 else "arcee (2nd try)", "results": results}
+                done[pid] = {**spot, "by": provider if round_no == 1 else f"{provider} (2nd try)", "results": results}
             else:
                 rejected[pid].append({**spot, "round": round_no, "failed": bad[:4]})
                 failures[pid] = bad[:4]
@@ -165,7 +210,7 @@ def plan_layout(room: dict, picks: list[dict], model: str | None = None, ask=_as
         if spot:
             lay = add_product(lay, by_id[pid]["product"], spot["x_in"], spot["z_in"], spot["rotation"])
             done[pid] = {"x_in": spot["x_in"], "z_in": spot["z_in"], "rotation": spot["rotation"],
-                         "why": "placed by fit.layout.find_spot after Arcee's proposals failed the checks",
+                         "why": f"placed by fit.layout.find_spot after {provider}'s proposals failed the checks",
                          "by": "find_spot", "results": spot["results"]}
 
     placements = [{"slot": by_id[pid]["slot"], "product_id": pid, "name": by_id[pid]["product"]["name"],
@@ -173,11 +218,13 @@ def plan_layout(room: dict, picks: list[dict], model: str | None = None, ask=_as
                    "rejected_proposals": rejected[pid]} for pid in by_id]
     count = lambda label: sum(1 for p in placements if p["by"] == label)  # noqa: E731
     return {
-        "model": model, "calls": calls,
+        "provider": provider, "model": model, "calls": calls,
         "cost_usd": round(sum(c.get("cost_usd", 0) for c in calls), 7),
         "latency_ms": sum(c.get("latency_ms", 0) for c in calls),
-        "summary": {"pieces": len(placements), "arcee_first_try": count("arcee"),
-                    "arcee_second_try": count("arcee (2nd try)"), "find_spot_fallback": count("find_spot"),
+        "summary": {"pieces": len(placements), "first_try": count(provider),
+                    "second_try": count(f"{provider} (2nd try)"), "find_spot_fallback": count("find_spot"),
+                    # old names kept so existing callers/tests don't break
+                    "arcee_first_try": count(provider), "arcee_second_try": count(f"{provider} (2nd try)"),
                     "unplaced": count("unplaced"),
                     "proposals_rejected_by_fit_checks": sum(len(v) for v in rejected.values())},
         "placements": placements,
@@ -197,7 +244,7 @@ def main(argv: list[str]) -> int:
     room = load_scan(str(ROOT / scan))
     catalog = {p["id"]: p for p in json.loads((ROOT / "data" / "products.json").read_text(encoding="utf-8"))["products"]}
     picks = [{"slot": it["slot"], "product": catalog[it["product_id"]]} for it in plan["items"] if it["product_id"] in catalog]
-    out = plan_layout(room, picks, opt.get("model"))
+    out = plan_layout(room, picks, opt.get("model"), provider=opt.get("provider"))
     result = {
         "about": "Where each picked piece goes in the scanned room. Arcee proposed; fit.layout checked every "
                  "proposal; find_spot placed whatever failed. Written by python3 -m agent.arcee_layout.",

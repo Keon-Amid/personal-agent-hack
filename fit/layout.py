@@ -13,9 +13,10 @@ Checks per floor item:
   in_room    every footprint corner inside the walls (the scan's outline)
   overlap    footprint doesn't overlap another floor item (chairs may tuck under tables; anything may stand on a rug)
   door_swing nothing on the floor inside the door's swing (a door-width square in front of it)
+  door_path  a new piece stays out of the way in (door width + 12 in each side, 48 in deep)
   spacing    a new piece keeps 12 in from other furniture ("unsure" if closer)
   clearance  at least 18 in to other floor items / walls on some side to get to it ("unsure" if tighter)
-Wall-mounted items (bottom > 24 in, e.g. the TV) are skipped for floor checks.
+Wall-mounted items (bottom > 24 in, e.g. the TV) skip floor checks, but `on_wall` keeps them on a wall when moved.
 """
 from __future__ import annotations
 
@@ -27,6 +28,7 @@ from .scan import point_in_poly
 CLEARANCE_IN = 18.0  # minimum gap to reach an item (team default, not a code)
 RUG_MARGIN_IN = 6.0  # same as fit.checks.DEFAULT_RUG_MARGIN_IN
 EDGE_TOL_IN = 0.25  # rounding tolerance for touching a wall
+WALL_MOUNT_TOL_IN = 4.0  # a wall-mounted item's back must stay within this of a wall
 SPACING_IN = 12.0  # a new piece keeps this far from other furniture (team default, not a code)
 TUCK_UNDER = {("dining_chair", "table"), ("dining_chair", "dining_table"), ("desk_chair", "table"),
               ("desk_chair", "desk"), ("desk_chair", "dining_table")}
@@ -81,9 +83,43 @@ def door_zone(door: dict) -> tuple[float, float, float, float]:
     return cx - w / 2, z0, cx + w / 2, z0 + w
 
 
+ENTRY_SIDE_IN = 12.0   # walkway into the room: door width + this much each side ...
+ENTRY_DEPTH_IN = 48.0  # ... and this deep from the door (team default, not a code)
+
+
+def entry_zone(door: dict) -> tuple[float, float, float, float]:
+    """The way in: a door-width-plus-12-in-each-side strip, 48 in deep, in front of the door. New furniture stays out."""
+    cx, cz = door["center"]
+    half = door["width_in"] / 2 + ENTRY_SIDE_IN
+    nx, nz = door["into_room"]
+    if door["axis"] == "z":  # door runs along z, opens along x
+        x0 = cx if nx > 0 else cx - ENTRY_DEPTH_IN
+        return x0, cz - half, x0 + ENTRY_DEPTH_IN, cz + half
+    z0 = cz if nz > 0 else cz - ENTRY_DEPTH_IN
+    return cx - half, z0, cx + half, z0 + ENTRY_DEPTH_IN
+
+
+def _dist_to_seg(p, a, b) -> float:
+    (px, pz), (ax, az), (bx, bz) = p, a, b
+    vx, vz = bx - ax, bz - az
+    L = vx * vx + vz * vz
+    t = 0 if L == 0 else max(0.0, min(1.0, ((px - ax) * vx + (pz - az) * vz) / L))
+    return ((px - ax - t * vx) ** 2 + (pz - az - t * vz) ** 2) ** 0.5
+
+
+def _door_distance(room: dict, x: float, z: float) -> float:
+    return min((((x - d["center"][0]) ** 2 + (z - d["center"][1]) ** 2) ** 0.5 for d in room["doors"]), default=1e9)
+
+
 def check_item(room: dict, lay: list[dict], it: dict) -> list[dict]:
-    if not _on_floor(it):
-        return [_res("in_room", FITS, f'{it["label"]} is wall-mounted ({it["bottom_in"]:g} in up); floor checks skipped')]
+    if not _on_floor(it):  # wall-mounted (e.g. the TV): it may move along a wall, but must stay on one
+        gap = min(_dist_to_seg((it["x_in"], it["z_in"]), room["outline"][i], room["outline"][(i + 1) % len(room["outline"])])
+                  for i in range(len(room["outline"])))
+        half_d = min(it["w_in"], it["d_in"]) / 2
+        on_wall = gap <= half_d + WALL_MOUNT_TOL_IN
+        return [_res("on_wall", FITS if on_wall else NO_FIT,
+                     f'{it["label"]} is wall-mounted ({it["bottom_in"]:g} in up): {gap - half_d:.1f} in from the nearest wall'
+                     + ("" if on_wall else f' (must be within {WALL_MOUNT_TOL_IN:g} in)'))]
     fp = _footprint(it)
     out = []
     m = RUG_MARGIN_IN if it["category"] == "rug" else 0.0  # team rule: rugs stay 6 in from every wall
@@ -109,6 +145,12 @@ def check_item(room: dict, lay: list[dict], it: dict) -> list[dict]:
             if gap < SPACING_IN:
                 out.append(_res("spacing", UNSURE, f'only {gap:.1f} in from {other["label"]} ({other["id"]}); '
                                                    f'want {SPACING_IN:g} in', with_id=other["id"], gap_in=round(gap, 1)))
+    if it.get("kind") == "new" and it["category"] != "rug":  # don't crowd the way in
+        for door in room["doors"]:
+            ox, oz = _overlap(fp, entry_zone(door))
+            if ox > 0.5 and oz > 0.5:
+                out.append(_res("door_path", NO_FIT, f'blocks the way in from {door["id"]} by {ox:.0f} x {oz:.0f} in '
+                                                     f'(keep {door["width_in"] + 2 * ENTRY_SIDE_IN:g} x {ENTRY_DEPTH_IN:g} in clear)'))
     for door in ([] if it["category"] == "rug" else room["doors"]):  # a flat rug doesn't stop a door
         dz = door_zone(door)
         ox, oz = _overlap(fp, dz)
@@ -170,7 +212,8 @@ def find_spot(room: dict, lay: list[dict], product: dict, step_in: float = 6.0) 
                 res = check_layout(room, trial)
                 if all(r["verdict"] == FITS for rs in res.values() for r in rs):
                     gap = min(x - w / 2 - min(xs), max(xs) - x - w / 2, z - dd / 2 - min(zs), max(zs) - z - dd / 2)
-                    score = ((x - cx) ** 2 + (z - cz) ** 2) if centre else gap
+                    # wall pieces: hug a wall, then prefer the spot farthest from the door (no crowding the way in)
+                    score = (((x - cx) ** 2 + (z - cz) ** 2) if centre else round(gap, 1)) - _door_distance(room, x, z) / 1000
                     if best is None or score < best["_score"]:
                         best = {"x_in": round(x, 1), "z_in": round(z, 1), "rotation": rot,
                                 "wall_gap_in": round(gap, 1), "results": res[product["id"]], "_score": score}

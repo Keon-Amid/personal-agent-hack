@@ -58,10 +58,18 @@ function aabb(r: Rect): Box {
 const boxesOverlap = (a: Box, b: Box, gap = 0) =>
   a.x0 < b.x1 + gap && a.x1 > b.x0 - gap && a.z0 < b.z1 + gap && a.z1 > b.z0 - gap
 
+// The way in: door width + 12 in each side, 48 in deep (designers' 30-36 in main path, plus the door swing).
+// New pieces stay out of it so nothing crowds the door. Matches fit.layout.entry_zone.
+const ENTRY_SIDE_IN = 12
+const ENTRY_DEPTH_IN = 48
 function doorZone(d: RoomDoor, inset: number): Box {
-  const c = add(d.center, d.into_room, d.width_in / 2 + inset)
-  const h = d.width_in / 2
-  return { x0: c[0] - h, z0: c[1] - h, x1: c[0] + h, z1: c[1] + h }
+  const c = add(d.center, d.into_room, ENTRY_DEPTH_IN / 2 + inset)
+  const along: Vec2 = [Math.abs(d.into_room[1]), Math.abs(d.into_room[0])] // the door's own direction
+  const hAlong = d.width_in / 2 + ENTRY_SIDE_IN
+  const hIn = ENTRY_DEPTH_IN / 2
+  const hx = along[0] * hAlong + Math.abs(d.into_room[0]) * hIn
+  const hz = along[1] * hAlong + Math.abs(d.into_room[1]) * hIn
+  return { x0: c[0] - hx, z0: c[1] - hz, x1: c[0] + hx, z1: c[1] + hz }
 }
 
 export function layoutDetail(room: RoomModel, items: PlanItem[]): LayoutDetail {
@@ -112,7 +120,9 @@ export function layoutDetail(room: RoomModel, items: PlanItem[]): LayoutDetail {
   const lamp = byCat('floor_lamp')
   const tv = room.existing.find((e) => e.category === 'television')
 
-  let order = [...frames].sort((a, b) => b.w.length_in - a.w.length_in)
+  // longest wall first, but a wall with a door in it goes last: the sofa shouldn't back onto the way in
+  const hasDoor = (f: (typeof frames)[number]) => room.doors.some((d) => distToSegment(d.center, f.w.a, f.w.b) < 12)
+  let order = [...frames].sort((a, b) => Number(hasDoor(a)) - Number(hasDoor(b)) || b.w.length_in - a.w.length_in)
   const typedWall = frames.find((f) => f.w.id === 'wall')
   if (typedWall) order = [typedWall, ...order.filter((f) => f !== typedWall)]
   let tvPoint: Vec2 | null = null
@@ -243,7 +253,7 @@ export function layoutDetail(room: RoomModel, items: PlanItem[]): LayoutDetail {
       const c = add(aCenter, n, front + leg + alongN / 2)
       const r: Rect = { cx: c[0], cz: c[1], hw: d.w / 2, hd: d.d / 2, rot: rotOf(n) + (longAlongT ? 90 : 0) }
       tableRect = r
-      if (inRoom(r, 2) && clear(r, { doors: false })) break
+      if (inRoom(r, 2) && clear(r)) break
     }
     if (tableRect) put(table, tableRect)
   }

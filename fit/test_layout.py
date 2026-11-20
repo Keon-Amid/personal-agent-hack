@@ -83,6 +83,22 @@ class Layout(unittest.TestCase):
             lay = add_product(lay, P[it["product_id"]], s["x_in"], s["z_in"], s["rotation"])
         self.assertTrue(all(overall(rs) == FITS for rs in check_layout(R, lay).values()))
 
+    def test_tv_moves_along_a_wall_but_not_into_the_room(self):
+        lay = layout_from_scan(R)
+        tv = next(i for i in lay if i["category"] == "television")
+        _, res = move(R, lay, tv["id"], tv["x_in"], tv["z_in"] - 30)  # slide along its wall
+        self.assertEqual(res[tv["id"]][0]["verdict"], FITS)
+        _, res = move(R, lay, tv["id"], 0, 0)  # middle of the room
+        self.assertEqual(res[tv["id"]][0]["verdict"], NO_FIT)
+        self.assertIn("from the nearest wall", res[tv["id"]][0]["math"])
+
+    def test_new_piece_kept_out_of_the_way_in(self):
+        door = R["doors"][0]
+        lamp = P["ikea-barlast-floor-lamp-black-white-59-70437814"]
+        x, z = door["center"][0] + door["into_room"][0] * 20, door["center"][1]
+        res = check_layout(R, add_product(layout_from_scan(R), lamp, x, z, 0))[lamp["id"]]
+        self.assertTrue(any(r["check"] == "door_path" and r["verdict"] == NO_FIT for r in res))
+
 
 if __name__ == "__main__":
     unittest.main()
