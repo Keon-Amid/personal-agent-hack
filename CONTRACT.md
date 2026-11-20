@@ -20,7 +20,7 @@ TBD
 ## Interfaces
 
 ### Products: `data/products.json` (owner: alistair) — DRAFT, confirm
-`{"about", "products": [Product]}`, 48 real IKEA US products. Built by `python3 data/fetch_ikea.py $(cat data/sources.txt)`;
+`{"about", "products": [Product]}`, 73 real IKEA US products. Built by `python3 data/fetch_ikea.py $(cat data/sources.txt)`;
 every number is read from `source_url`, nothing typed by hand.
 Categories: sofa, armchair, coffee_table, side_table, desk, dining_table, dining_chair, dresser, nightstand,
 tv_bench, rug, floor_lamp, bookcase, bed.
