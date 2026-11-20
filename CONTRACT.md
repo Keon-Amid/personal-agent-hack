@@ -153,7 +153,7 @@ One backend, two front doors. The tools enforce the rules; the model only orders
   .venv/bin/uvicorn server.app:app --port 8000`. `.env` is loaded at startup; CORS origins come from `ROOM_FURNISHER_CORS`
   (comma-separated, default `http://localhost:5173,http://127.0.0.1:5173`). `run_agent` gained an optional `plan_id=` so
   the server picks the id before the run starts.
-  - `POST /api/plan` `{room: {wall, depth, door_width, door_height}, style_text?, budget_usd?, photo_b64?, quiz_answers?}`
+  - `POST /api/plan` `{room: {wall, depth, door_width, door_height}, style_text?, budget_usd? (per item), budget_total_usd? (whole room, what keon's live mode sends), photo_b64?, quiz_answers?}`
     → `{plan_id, plan_url}` at once; the run happens in a thread. 400 with no measurements and no photo (or bad quiz
     answers); 429 when 2 runs are already going. `quiz_answers` fill in `style_text` / `budget_usd` only when those are unset.
   - `GET /api/plan/{id}` → Plan (`contracts/plan.live.json` shape, `items[]` and `audit[]` grow while it runs) plus

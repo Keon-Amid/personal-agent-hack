@@ -5,7 +5,7 @@
 A thin layer over agent/: no new decisions are made here. Every plan change still goes through agent.tools,
 so the fit and Senso rules (and their audit records) apply exactly as in an agent run.
 
-POST /api/plan            {room, style_text?, budget_usd?, photo_b64?, quiz_answers?} -> {plan_id} at once
+POST /api/plan            {room, style_text?, budget_usd? (per item), budget_total_usd? (whole room), photo_b64?, quiz_answers?} -> {plan_id} at once
 GET  /api/plan/{id}       the Plan (contracts/plan.live.json shape) + "run": {status, error}; poll it
 POST /api/plan/{id}/swap  {slot} -> swap, Senso check, cart_add; returns the Plan
 POST /api/plan/{id}/approve  the person approves the cart (no purchase); returns the Plan + shopping_list
@@ -74,6 +74,7 @@ class PlanRequest(BaseModel):
     room: Room = Room()
     style_text: str | None = None
     budget_usd: float | None = None
+    budget_total_usd: float | None = None
     photo_b64: str | None = None
     quiz_answers: dict[str, str] | None = None
 
@@ -94,7 +95,8 @@ def _set_run(pid: str, **kw) -> None:
 def _run(pid: str, req: PlanRequest, style_text: str | None, budget: float | None) -> None:
     try:
         agent_mod.run_agent(req.room.model_dump(exclude_none=True), photo_b64=req.photo_b64,
-                            style_text=style_text, budget_usd=budget, plan_id=pid)
+                            style_text=style_text, budget_usd=budget, budget_total_usd=req.budget_total_usd,
+                            plan_id=pid)
         _set_run(pid, status="done", finished_at=time.time())
     except Exception as e:  # AgentError, AgentTimeout, or a bug: the browser must see it, not a silent hang
         _set_run(pid, status="error", error=f"{type(e).__name__}: {e}", finished_at=time.time())

@@ -30,7 +30,7 @@ def test_start_returns_at_once_and_plan_grows(client, monkeypatch):
     gate = threading.Event()
     seen = {}
 
-    def fake_run_agent(room_input, photo_b64=None, style_text=None, budget_usd=None, on_event=None, plan_id=None):
+    def fake_run_agent(room_input, photo_b64=None, style_text=None, budget_usd=None, on_event=None, plan_id=None, **kw):
         seen.update(room=room_input, style_text=style_text, budget=budget_usd)
         store.new_plan(plan_id=plan_id)
         store.append_audit(plan_id, {"step": "agent", "decision": "start", "why": "", "source": {"kind": "template"}})
@@ -55,7 +55,7 @@ def test_start_returns_at_once_and_plan_grows(client, monkeypatch):
 def test_quiz_answers_fill_style_and_budget(client, monkeypatch):
     seen = {}
     monkeypatch.setattr(srv.agent_mod, "run_agent",
-                        lambda room, photo_b64=None, style_text=None, budget_usd=None, plan_id=None:
+                        lambda room, photo_b64=None, style_text=None, budget_usd=None, plan_id=None, **kw:
                         seen.update(style_text=style_text, budget=budget_usd))
     answers = {"q1_mood": "light", "q2_touch": "linen_oak", "q3_never": "loft", "q4_life": "kids_pets",
                "q5_budget": "mid"}
@@ -254,3 +254,12 @@ def test_empty_placeholder_has_plan_live_cart_shape(client, monkeypatch):
     assert p["run"]["status"] == "running" and status == 409
     assert p["cart"]["delivery_note"] == srv.DELIVERY_NOTE
     assert set(p["cart"]) == set(store.new_plan()["cart"])
+
+
+def test_room_budget_reaches_run_agent(client, monkeypatch):
+    seen = {}
+    monkeypatch.setattr(srv.agent_mod, "run_agent", lambda *a, **k: seen.update(k))
+    pid = client.post("/api/plan", json={"room": {"wall": 88}, "style_text": "warm minimal",
+                                         "budget_total_usd": 1200}).json()["plan_id"]
+    _wait(client, pid, "done")
+    assert seen["budget_total_usd"] == 1200 and seen["budget_usd"] is None
