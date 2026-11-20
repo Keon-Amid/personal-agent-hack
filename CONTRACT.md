@@ -76,3 +76,27 @@ rebuild with `python3 data/sie.py build`, needs `SIE_API_KEY`). At run time:
 ```
 `style_score` is cosine similarity. **Compare scores only within one query:** photo→photo scores sit around 0.5–0.9,
 text→photo around 0–0.1. Show rank (and the score) in the audit trail, not an absolute threshold.
+
+**Full style step (use this):** `sie.style_match(products, category, emb, room_photo=bytes | style_text=str)`
+1. Room photo → SigLIP → `detected_style` (zero-shot over `sie.STYLES`, e.g. "dark modern 0.124").
+2. Photo match: product photos vs the room photo.
+3. Text match: Superlinked reranker `Qwen/Qwen3-Reranker-4B` over IKEA's name/colour/material/description vs the style.
+4. Reciprocal rank fusion (k=60) of the two rankings.
+```json
+{"category": "sofa", "style_text": "...", "detected_style": [{"style": "dark modern", "score": 0.1244}] | null,
+ "source": {"kind": "superlinked", "embed_model": "google/siglip-so400m-patch14-384",
+            "rerank_model": "Qwen/Qwen3-Reranker-4B", "fusion": "reciprocal rank fusion, k=60"},
+ "ranked": [{"id": "...", "style_rank": 1, "style_fused": 0.0328, "photo_rank": 1, "photo_score": 0.062,
+             "text_rank": 3, "text_score": 0.995}]}
+```
+Cost: 2–3 SIE calls per category (~3 credits for the rerank). ~2–5 s.
+
+### Pick one product per slot: `fit.pick.pick(options, style_match_result, budget_usd=None)` (owner: alistair) — DRAFT
+Walks Superlinked's style ranking best-first; picks the first product that fits (and is within budget). Everything
+ranked above it is rejected with the reason. Returns `{"slot", "picked": Option + style, "rejected": [...],
+"audit": [AuditRecord]}` where the audit records follow brendan's shape (`step` rank/pick, `decision`
+ranked/rejected/picked, `status`, `source`, `why`). Example `why` lines from a real run:
+- `rejected` KIVIK: `style #1 of 7 (photo #1 0.062, text #3 0.995); no_fit: width 89.75 in > 88 in (user)`
+- `picked` GLOSTAD: `style #3 of 7 (photo #2 0.057, text #4 0.966); fits; $199, 4.0★ (90 reviews), best value`
+
+Senso's fact-check (brendan) runs on the picked item's claim after this.

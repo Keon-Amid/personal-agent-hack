@@ -36,5 +36,32 @@ class Encode(unittest.TestCase):
             self.assertEqual(req.headers["Authorization"], "Bearer sk-sie-test")
 
 
+class StyleMatch(unittest.TestCase):
+    def test_fusion_and_sources(self):
+        # photo ranks a > b; reranker ranks b > a by a lot; fused tie broken stably, both ranks recorded
+        with mock.patch.object(sie, "query_text", return_value=[1, 0]), \
+                mock.patch.object(sie, "score", return_value={"a": 0.1, "b": 0.9}):
+            r = sie.style_match(PRODUCTS, "sofa", EMB, style_text="warm minimal")
+        a = {o["id"]: o for o in r["ranked"]}
+        self.assertEqual((a["a"]["photo_rank"], a["a"]["text_rank"]), (1, 2))
+        self.assertEqual((a["b"]["photo_rank"], a["b"]["text_rank"]), (2, 1))
+        self.assertEqual(a["a"]["style_fused"], a["b"]["style_fused"])
+        self.assertEqual(r["source"]["rerank_model"], sie.RERANKER)
+        self.assertIsNone(r["detected_style"])
+
+    def test_room_photo_detects_style(self):
+        with mock.patch.object(sie, "query_photo", return_value=[1, 0]), \
+                mock.patch.object(sie, "encode", return_value=[[0, 1], [1, 0]]), \
+                mock.patch.object(sie, "score", return_value={"a": 0.5, "b": 0.1}):
+            r = sie.style_match(PRODUCTS, "sofa", EMB, room_photo=b"img")
+        self.assertEqual(r["detected_style"][0]["style"], sie.STYLES[1])
+        self.assertEqual(r["style_text"], f"{sie.STYLES[1]} style living room")
+        self.assertEqual(r["ranked"][0]["id"], "a")
+
+    def test_needs_input(self):
+        with self.assertRaises(ValueError):
+            sie.style_match(PRODUCTS, "sofa", EMB)
+
+
 if __name__ == "__main__":
     unittest.main()

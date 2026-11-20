@@ -133,6 +133,7 @@ def product(url: str, category: str) -> dict:
         "packages_in": packages or None,
         "rating": float(ar["ratingValue"]) if ar.get("ratingValue") else None,  # IKEA customer rating, 1-5
         "review_count": int(ar["reviewCount"]) if ar.get("reviewCount") else 0,
+        "description": htmllib.unescape(ld.get("description") or "") or None,  # IKEA's own product text
         "color": htmllib.unescape(ld.get("color") or "") or None,
         "material": htmllib.unescape(ld.get("material") or "") or None,
         "image_url": images[0] if images else None,  # IKEA's main product shot
