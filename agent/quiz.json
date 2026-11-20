@@ -1,0 +1,139 @@
+{
+  "about": "Persona quiz: 5 questions -> run_agent(style_text=..., budget_usd=...). Scored by agent/quiz.py. Styles are data/sie.py STYLES. Images are hotlinked from their sources (not ours, not committed); each option names the page it came from and the search that found it, collected 2026-11-20.",
+  "image_rights": "Images belong to their owners. Hotlinked for the demo with source credit. Several Pinterest pins look AI-generated. Replace with our own or IKEA catalog photos before any public use beyond the demo.",
+  "styles": ["warm minimal", "scandinavian", "mid-century modern", "industrial", "bohemian eclectic", "traditional", "dark modern", "coastal"],
+  "questions": [
+    {
+      "id": "q1_mood",
+      "kind": "image_choice",
+      "prompt": "It's Friday night. Which room do you want to walk into?",
+      "psychology": "Gut reaction first. People rarely know style names but react to a room quickly and consistently. Four options keep the choice fast (Hick's law).",
+      "references": [
+        "Zajonc, R. B. (1980). Feeling and thinking: Preferences need no inferences. American Psychologist, 35(2), 151-175.",
+        "Hick, W. E. (1952). On the rate of gain of information. Quarterly Journal of Experimental Psychology, 4(1), 11-26."
+      ],
+      "image_source": "pinterest",
+      "options": [
+        {"id": "light", "label": "Light & airy",
+         "image_url": "https://i.pinimg.com/originals/9a/f5/36/9af536cbb69213f128ef33b9d36a7887.jpg",
+         "ref_url": "https://www.pinterest.com/pin/4610771304832049472/",
+         "search": "pinterest: light airy scandinavian living room white oak",
+         "weights": {"scandinavian": 3, "warm minimal": 1, "coastal": 1}},
+        {"id": "retro", "label": "Warm wood & leather",
+         "image_url": "https://i.pinimg.com/originals/c9/02/df/c902df52ea6f6a81d3fd9b3037028242.jpg",
+         "ref_url": "https://www.pinterest.com/pin/1030550327267573974/",
+         "search": "pinterest: mid century modern living room walnut",
+         "weights": {"mid-century modern": 3, "traditional": 1}},
+        {"id": "moody", "label": "Dark & moody",
+         "image_url": "https://i.pinimg.com/originals/a0/b1/7d/a0b17da6dd08357824ebaa11711a9ae9.jpg",
+         "ref_url": "https://www.pinterest.com/pin/1101833865140648754/",
+         "search": "pinterest: dark moody modern living room",
+         "weights": {"dark modern": 3, "industrial": 1}},
+        {"id": "layered", "label": "Colorful & collected",
+         "image_url": "https://i.pinimg.com/originals/57/c7/32/57c7329ac7cdd1a08708796dd26d0046.jpg",
+         "ref_url": "https://www.pinterest.com/pin/4603523322332504448/",
+         "search": "pinterest: eclectic layered vintage living room rugs plants",
+         "weights": {"bohemian eclectic": 2, "traditional": 2}}
+      ]
+    },
+    {
+      "id": "q2_touch",
+      "kind": "image_choice",
+      "prompt": "Which one would you want to touch every day?",
+      "psychology": "Materials, not rooms. Touch preference is a stable personal trait and separates styles that look alike from across a room (oak vs walnut, linen vs leather). These words also go into style_text, which the Superlinked reranker matches against IKEA's colour and material text.",
+      "references": [
+        "Peck, J., & Childers, T. L. (2003). Individual differences in haptic information processing: The \"need for touch\" scale. Journal of Consumer Research, 30(3), 430-442."
+      ],
+      "image_source": "google_images",
+      "options": [
+        {"id": "linen_oak", "label": "Linen & pale oak",
+         "image_url": "https://eloquence.com/cdn/shop/files/SRH07-HL-WO-3.jpg",
+         "ref_url": "https://eloquence.com/products/eloquence-scandinavian-sofa-in-harvest-linen-slipcover-and-worn-oak-finish",
+         "search": "google images: linen sofa light oak scandinavian living room",
+         "weights": {"scandinavian": 2, "warm minimal": 2, "coastal": 1},
+         "style_words": "linen, light oak, beige"},
+        {"id": "walnut", "label": "Walnut & tapered legs",
+         "image_url": "https://midcenturyloft.com/cdn/shop/files/Walnut_Credenza_with_Cabinet_Storage_Display_Compartment.png",
+         "ref_url": "https://midcenturyloft.com/products/walnut-credenza-with-cabinet-storage-display-compartment",
+         "search": "google images: walnut credenza tapered legs mid century",
+         "weights": {"mid-century modern": 2, "traditional": 2},
+         "style_words": "walnut, dark brown wood, tapered legs"},
+        {"id": "leather_metal", "label": "Black leather & metal",
+         "image_url": "https://www.dallasdesignerfurniture.com/images/Modern_Industrial_Black_Top_Grain_Leather_Langston_Sofa.jpg",
+         "ref_url": "https://www.dallasdesignerfurniture.com/item_8599/Modern-Industrial-Black-Top-Grain-Leather-Langston-Sofa.htm",
+         "search": "google images: industrial living room leather sofa black metal",
+         "weights": {"industrial": 3, "dark modern": 2},
+         "style_words": "black, leather, metal"},
+        {"id": "jute", "label": "Woven jute & stripes",
+         "image_url": "https://www.ourboathouse.com/cdn/shop/files/moana-stripe-woven-jute-rug-400706.png",
+         "ref_url": "https://www.ourboathouse.com/products/moana-stripe-woven-jute-rug",
+         "search": "google images: coastal living room rattan jute rug",
+         "weights": {"coastal": 3, "bohemian eclectic": 2},
+         "style_words": "jute, natural fiber, blue and white"}
+      ]
+    },
+    {
+      "id": "q3_never",
+      "kind": "image_choice",
+      "prompt": "Which room would you NOT want to live in?",
+      "psychology": "People are surer about what they dislike than what they like, and a bad pick costs them more than a good one pleases them. One rejection removes a whole style. It only lowers that style's score; it is never written into style_text, because a reranker can match the word in 'not industrial' and rank industrial higher.",
+      "references": [
+        "Baumeister, R. F., Bratslavsky, E., Finkenauer, C., & Vohs, K. D. (2001). Bad is stronger than good. Review of General Psychology, 5(4), 323-370.",
+        "Kahneman, D., & Tversky, A. (1979). Prospect theory: An analysis of decision under risk. Econometrica, 47(2), 263-291."
+      ],
+      "image_source": "pinterest",
+      "options": [
+        {"id": "maximal", "label": "Bold maximalist",
+         "image_url": "https://i.pinimg.com/736x/68/9e/a6/689ea65d1c1f098c574f626241f751bc.jpg",
+         "ref_url": "https://www.pinterest.com/pin/492862752993369940/",
+         "search": "pinterest: maximalist bohemian living room",
+         "weights": {"bohemian eclectic": -3}},
+        {"id": "loft", "label": "Brick loft",
+         "image_url": "https://i.pinimg.com/736x/32/1e/0a/321e0a4bfd1a2a977a71b9a0c2e053b3.jpg",
+         "ref_url": "https://www.pinterest.com/pin/473018767136722675/",
+         "search": "pinterest: industrial loft living room exposed brick",
+         "weights": {"industrial": -3}},
+        {"id": "stark", "label": "All white",
+         "image_url": "https://i.pinimg.com/736x/54/6f/80/546f8071eeabbf911edfa35263b88424.jpg",
+         "ref_url": "https://www.pinterest.com/pin/4597471600906299648/",
+         "search": "pinterest: all white minimalist living room",
+         "weights": {"warm minimal": -2, "scandinavian": -1}},
+        {"id": "formal", "label": "Formal traditional",
+         "image_url": "https://i.pinimg.com/736x/34/82/b2/3482b28d17c955e00863672127243b41.jpg",
+         "ref_url": "https://www.pinterest.com/pin/784752303862534258/",
+         "search": "pinterest: formal traditional living room chesterfield",
+         "weights": {"traditional": -3}}
+      ]
+    },
+    {
+      "id": "q4_life",
+      "kind": "text_choice",
+      "prompt": "Who really uses this room?",
+      "psychology": "Ask what the room is for, not what the person likes. Use beats taste when the two disagree (white linen with a dog). The answer adds words to style_text that the reranker reads; it changes no style score.",
+      "references": [
+        "Christensen, C. M., Hall, T., Dillon, K., & Duncan, D. S. (2016). Competing Against Luck: The Story of Innovation and Customer Choice. Harper Business."
+      ],
+      "options": [
+        {"id": "solo", "label": "Mostly me, winding down", "style_words": "cozy, comfortable, soft"},
+        {"id": "hosting", "label": "Friends over a lot", "style_words": "roomy seating, sociable"},
+        {"id": "kids_pets", "label": "Kids or pets", "style_words": "durable, easy to clean, washable cover"},
+        {"id": "small", "label": "It's a small space", "style_words": "compact, space-saving, light"}
+      ]
+    },
+    {
+      "id": "q5_budget",
+      "kind": "text_choice",
+      "prompt": "What's the most you'd spend on any one piece, like the sofa?",
+      "psychology": "Fixed bands with no default selected, so we don't plant an anchor number. Per piece because the agent applies budget_usd to each pick. 'Not sure' is allowed instead of forcing a guess.",
+      "references": [
+        "Tversky, A., & Kahneman, D. (1974). Judgment under uncertainty: Heuristics and biases. Science, 185(4157), 1124-1131."
+      ],
+      "options": [
+        {"id": "tight", "label": "Up to $250", "budget_usd": 250},
+        {"id": "mid", "label": "Up to $500", "budget_usd": 500},
+        {"id": "comfortable", "label": "Up to $1,000", "budget_usd": 1000},
+        {"id": "unsure", "label": "Not sure / no limit", "budget_usd": null}
+      ]
+    }
+  ]
+}

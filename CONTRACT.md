@@ -150,6 +150,15 @@ One backend, two front doors. The tools enforce the rules; the model only orders
 - **Plan** = `contracts/plan.live.json` shape: `plan_id, plan_url, room, style, items[] (slot, product, style rank/scores,
   fit {verdict, results}, senso {check_id, accuracy_pct, claims}, why, why_source, rejected[]), cart {items, total_usd,
   delivery_note, no_purchase: true}, audit[]`. Plans persist as JSON in `~/.cache/room-furnisher/plans/` (shared across processes).
+- **Persona quiz (optional input, keon's screen):** `agent/quiz.json` = 5 questions (3 photo choices with `image_url`,
+  `ref_url` = the Pinterest / Google Images page it came from, and a psychology reference each). `agent.quiz.score({question_id:
+  option_id}) -> {style, style_scores, style_text, budget_usd, trace}`; pass `style_text` and `budget_usd` straight to
+  `run_agent`. `style` is always one of `sie.STYLES`; a quiz `style_text` replaces the style detected from the photo.
+  `agent.quiz.catalog_support(style) -> {slots: {slot: [{id, name, score}]}, covered, summary}` reads alistair's
+  `product_styles` (≥0.05) to say how well our 48 products cover that style. Today: traditional 5/5 slots, warm minimal
+  4/5, scandinavian and dark modern 3/5, mid-century / industrial / coastal 1/5, bohemian 0/5. Picks still happen
+  (ranking is relative); the UI should show the summary instead of implying a perfect match.
+  Images are hotlinked, owned by their sources; swap for IKEA photos before any public use beyond the demo.
 
 ### Scanned room + rearranging: `fit/scan.py`, `fit/layout.py` (owner: alistair) — DRAFT, confirm
 `assets/room_scan_roomplan.glb` is a Polycam **Floorplan** (Apple RoomPlan) scan of the room we're in: every wall, the
