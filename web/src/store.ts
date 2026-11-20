@@ -46,6 +46,8 @@ export interface AppState {
   cartOpen: boolean
   budget: number | null
   runError: string | null
+  /** photo = kyle's image-to-3D product models where one exists; clay = plain shapes for everything. */
+  modelStyle: 'photo' | 'clay'
 
   openRoom: (o: { plan: Plan; modelUrl: string | null; modelLabel: string | null }) => void
   setRoom: (room: RoomModel | null) => void
@@ -63,6 +65,7 @@ export interface AppState {
   setOverride: (k: MeasureKey, v: number | null) => void
   setCartOpen: (open: boolean) => void
   setBudget: (b: number | null) => void
+  setModelStyle: (m: 'photo' | 'clay') => void
   /** Replace a slot's item with another catalog product (fit re-checked by fit.options; Senso not yet). */
   swap: (slot: string, productId: string) => void
   reset: () => void
@@ -90,6 +93,7 @@ const blank = {
   cartOpen: false,
   budget: null,
   runError: null,
+  modelStyle: 'photo' as 'photo' | 'clay',
 }
 
 /** Fold one audit record into what the room shows. This is the only place run state changes. */
@@ -129,7 +133,7 @@ export const useApp = create<AppState>((set, get) => ({
   ...blank,
 
   openRoom: ({ plan, modelUrl, modelLabel }) =>
-    set({ ...blank, stage: 'reading', plan, modelUrl, modelLabel, room: null }),
+    set((s) => ({ ...blank, modelStyle: s.modelStyle, stage: 'reading', plan, modelUrl, modelLabel, room: null })),
   setRoom: (room) => set({ room }),
   roomReady: () => {
     if (get().stage === 'reading') set({ stage: 'ready' })
@@ -208,6 +212,7 @@ export const useApp = create<AppState>((set, get) => ({
     }),
   setCartOpen: (cartOpen) => set({ cartOpen, selectedSlot: cartOpen ? null : get().selectedSlot }),
   setBudget: (budget) => set({ budget }),
+  setModelStyle: (modelStyle) => set({ modelStyle }),
   swap: (slot, productId) =>
     set((s) => {
       if (!s.plan) return {}
@@ -259,7 +264,7 @@ export const useApp = create<AppState>((set, get) => ({
         placed: { ...s.placed, [slot]: 'picked' },
       }
     }),
-  reset: () => set({ ...blank }),
+  reset: () => set((s) => ({ ...blank, modelStyle: s.modelStyle })),
 }))
 
 export const itemBySlot = (plan: Plan | null, slot: string | null): PlanItem | null =>
