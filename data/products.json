@@ -1,0 +1,31 @@
+{
+  "about": "Real IKEA US products. Every number was read from the source_url page on fetched_at. Inches. packages_in: Width->w, Height->h, Length->d.",
+  "fetched_at": "2026-11-20T12:50:00-08:00",
+  "products": [
+    {"id": "ikea-kivik-sofa", "retailer": "IKEA", "name": "KIVIK Sofa, Tibbleby beige/gray", "article_number": "394.405.93", "category": "sofa", "price_usd": 799.0, "price_note": null,
+     "dims_in": {"w": 89.75, "d": 37.375, "h": 32.625},
+     "packages_in": [{"w": 37.5, "d": 72.5, "h": 19.75}, {"w": 36.25, "d": 38.5, "h": 11.0}, {"w": 14.75, "d": 22.25, "h": 3.5}],
+     "source_url": "https://www.ikea.com/us/en/p/kivik-sofa-tibbleby-beige-gray-s39440593/"},
+    {"id": "ikea-uppland-sofa", "retailer": "IKEA", "name": "UPPLAND Sofa, Blekinge white", "article_number": "193.841.16", "category": "sofa", "price_usd": 699.0, "price_note": "IKEA Family price Nov 5-24, 2026; regular $899",
+     "dims_in": {"w": 88.25, "d": 36.25, "h": 36.25},
+     "packages_in": [{"w": 36.25, "d": 80.0, "h": 19.25}, {"w": 14.75, "d": 22.25, "h": 4.0}],
+     "source_url": "https://www.ikea.com/us/en/p/uppland-sofa-blekinge-white-s19384116/"},
+    {"id": "ikea-poang-armchair", "retailer": "IKEA", "name": "POÄNG Armchair, birch veneer/Knisa light beige", "article_number": "593.059.28", "category": "armchair", "price_usd": 149.0, "price_note": null,
+     "dims_in": {"w": 26.75, "d": 32.25, "h": 39.375},
+     "packages_in": [{"w": 26.25, "d": 29.0, "h": 2.75}, {"w": 9.75, "d": 23.25, "h": 9.75}],
+     "packages_note": "Cushion package is listed as length 23 1/4 in, diameter 9 3/4 in; stored as a 9.75 x 23.25 x 9.75 bounding box.",
+     "source_url": "https://www.ikea.com/us/en/p/poaeng-armchair-birch-veneer-knisa-light-beige-s59305928/"},
+    {"id": "ikea-billy-bookcase", "retailer": "IKEA", "name": "BILLY Bookcase, white, 31 1/2x11x79 1/2", "article_number": "205.220.46", "category": "bookcase", "price_usd": 65.0, "price_note": "IKEA Family price Nov 16-Dec 24, 2026; regular $79",
+     "dims_in": {"w": 31.5, "d": 11.0, "h": 79.5},
+     "packages_in": [{"w": 11.75, "d": 81.25, "h": 5.25}],
+     "source_url": "https://www.ikea.com/us/en/p/billy-bookcase-white-20522046/"},
+    {"id": "ikea-kallax-shelf", "retailer": "IKEA", "name": "KALLAX Shelf unit, white, 30 1/8x57 5/8", "article_number": "206.316.63", "category": "bookcase", "price_usd": 79.99, "price_note": "Underframe sold separately",
+     "dims_in": {"w": 30.125, "d": 15.375, "h": 57.625},
+     "packages_in": [{"w": 15.75, "d": 59.0, "h": 6.5}],
+     "source_url": "https://www.ikea.com/us/en/p/kallax-shelf-unit-white-20631663/"},
+    {"id": "ikea-malm-bed-queen", "retailer": "IKEA", "name": "MALM Bed frame, dark-brown veneer/Luröy, Queen", "article_number": "495.743.65", "category": "bed", "price_usd": 299.0, "price_note": "Mattress and bedding sold separately; slatted base included",
+     "dims_in": {"w": 66.125, "d": 83.125, "h": 39.375},
+     "packages_in": [{"w": 30.5, "d": 67.25, "h": 3.5}, {"w": 9.75, "d": 81.25, "h": 3.0}, {"w": 2.5, "d": 54.75, "h": 2.25}, {"w": 9.5, "d": 30.25, "h": 4.25}],
+     "source_url": "https://www.ikea.com/us/en/p/malm-bed-frame-dark-brown-veneer-luroey-s49574365/"}
+  ]
+}
