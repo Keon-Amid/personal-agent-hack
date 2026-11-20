@@ -55,6 +55,8 @@ function toRow(r: AuditRecord): Row {
   if (r.step === 'cart') return { ...base, title: 'Added to the cart', source: 'Claude', icon: ShoppingBag }
   if (r.step === 'measure') return { ...base, title: r.decision.charAt(0).toUpperCase() + r.decision.slice(1), source: 'You', icon: Ruler, tone: r.status === 'no_fit' ? 'nofit' : 'fits' }
   if (r.step === 'swap') return { ...base, title: `You swapped in ${family(r.product_id)}`, source: 'You', icon: Repeat2 }
+  if (r.source.kind === 'arcee')
+    return { ...base, title: 'An open model wrote a second explanation', source: `Arcee, ${String(r.source.model ?? '').split('/').pop()}`, icon: Quote }
   if (r.step === 'agent' && r.decision === 'said') return { ...base, title: 'Agent note', source: 'Claude', icon: Quote, minor: true }
   if (r.step === 'agent' && r.decision.startsWith('call '))
     return { ...base, title: r.decision.slice(5), source: 'Tool call', icon: Terminal, minor: true }

@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react'
 import { ArrowUpRight, ChevronLeft, ChevronRight, Star, X } from 'lucide-react'
 import { motion } from 'motion/react'
-import { optionsFor, productById } from '../data'
+import { optionsFor, productById, recordedArceeWhy } from '../data'
 import { checkLabel, cn, inches, slotLabel, splitName, usd } from '../lib/format'
 import { refitOption } from '../lib/refit'
 import { itemBySlot, placedItems, useApp } from '../store'
@@ -66,6 +66,8 @@ export default function Inspector() {
   const failing = item.fit.results.find((r) => r.verdict === item.fit.verdict && r.verdict !== 'fits')
   const fitting = options.filter((o) => o.fit === 'fits' && o.id !== item.product_id && o.price_usd !== null)
   const rescue = fitting.find((o) => o.best_value) ?? [...fitting].sort((a, b) => (b.rating ?? 0) - (a.rating ?? 0))[0] ?? null
+  const recorded = item.why_source?.kind === 'claude' ? recordedArceeWhy(plan.plan_id, slot) : null
+  const secondOpinions = item.why_alternatives?.length ? item.why_alternatives : recorded ? [recorded] : []
   const claims = item.senso?.claims ?? []
   const verified = claims.filter((c) => c.verdict === 'verified').length
   const shownClaims = allClaims ? claims : claims.slice(0, 3)
@@ -203,6 +205,31 @@ export default function Inspector() {
             Why this one
           </SectionTitle>
           <p className="text-sm leading-relaxed text-fg-2">{item.why || 'The agent writes this when it adds the piece to the cart.'}</p>
+          {secondOpinions.map((alt, i) => {
+            const model = (alt.source.model ?? 'an open model').split('/').pop()
+            return (
+              <div key={i} className="mt-3 border-l border-line-2 pl-3">
+                <p className="text-sm leading-relaxed text-fg-2">{alt.text}</p>
+                <p className="mt-1 text-2xs leading-relaxed text-fg-3">
+                  The same facts, written by <span className="num text-fg-2">{model}</span> on Arcee
+                  {alt.source.cost_usd !== undefined && (
+                    <>
+                      {' '}
+                      for <span className="num text-fg-2">${alt.source.cost_usd.toFixed(5)}</span>
+                    </>
+                  )}
+                  {alt.source.latency_ms !== undefined && (
+                    <>
+                      {' '}
+                      in <span className="num text-fg-2">{(alt.source.latency_ms / 1000).toFixed(1)} s</span>
+                    </>
+                  )}
+                  .{alt.grounded ? ' Every number in it comes from the tools.' : ''}
+                  {alt.recorded ? ' From the team\u2019s recorded model comparison.' : ''}
+                </p>
+              </div>
+            )
+          })}
           {item.style && (
             <p className="mt-2 text-xs leading-relaxed text-fg-3">
               Style match <span className="num text-fg-2">#{item.style.rank}</span> for “{plan.style.style_text}”, ranked by

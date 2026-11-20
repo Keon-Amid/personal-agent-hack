@@ -74,6 +74,17 @@ export interface PlanItem {
   fit: { verdict: Verdict; results: FitResult[] }
   senso: Senso | null
   rejected: Rejected[]
+  /** Other models' one-line why for the same pick (agent/arcee.py), with what each cost. */
+  why_alternatives?: WhyAlternative[]
+}
+
+export interface WhyAlternative {
+  text: string
+  source: { kind: string; model?: string; cost_usd?: number; latency_ms?: number; [k: string]: unknown }
+  /** true when every number in the sentence appears in the tools' facts */
+  grounded?: boolean
+  /** set when this comes from the recorded comparison file, not from this plan's own run */
+  recorded?: boolean
 }
 
 export interface CartItem {
