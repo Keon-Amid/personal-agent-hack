@@ -101,6 +101,8 @@ function Measure({ k, m }: { k: MeasureKey; m: Measurement }) {
                   id={`measure-${k}`}
                   ref={inputRef}
                   name={`measure-${k}`}
+                  // The popover exists to take one number; desktop only, one field.
+                  autoFocus
                   inputMode="decimal"
                   autoComplete="off"
                   value={draft}

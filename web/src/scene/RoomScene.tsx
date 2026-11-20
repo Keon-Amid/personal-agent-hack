@@ -205,10 +205,11 @@ function Rig({ shell, layout, hero, plan }: { shell: Shell; layout: LayoutDetail
     const pl = selected ? layout.placements[selected] : undefined
     const item = selected ? plan?.items.find((i) => i.slot === selected) : undefined
     if (pl && item) {
-      // ease toward the piece, but keep about half the room in frame around it
+      // lean toward the piece and step back a little: the inspector takes a third of the screen, and the
+      // walls should stay in frame around the piece
       const room = pose(useApp.getState().camera)
       const roomDist = room.pos.distanceTo(room.tgt)
-      const k = 0.6
+      const k = 0.35
       const y = Math.min(((item.dims_in.h ?? 20) * IN) / 2, 0.6)
       c.moveTo(
         room.tgt.x + (pl.x_in * IN - room.tgt.x) * k,
@@ -216,7 +217,7 @@ function Rig({ shell, layout, hero, plan }: { shell: Shell; layout: LayoutDetail
         room.tgt.z + (pl.z_in * IN - room.tgt.z) * k,
         !STILL,
       )
-      c.dollyTo(roomDist * 0.94, !STILL)
+      c.dollyTo(roomDist * 1.18, !STILL)
       focused.current = true
     } else if (focused.current) {
       const room = pose(useApp.getState().camera)

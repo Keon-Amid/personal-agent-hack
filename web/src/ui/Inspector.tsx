@@ -11,6 +11,9 @@ import { useModelManifest } from '../room3d/Model'
 import AltChart from './AltChart'
 import { Kbd, ProductPhoto, SectionTitle, SensoChip, VerdictChip, VerdictIcon } from './bits'
 
+/** fit.options writes "no_fit: <math>"; say it in words. */
+const sayWhy = (why: string) => why.replace(/^no_fit:\s*/, 'Does not fit: ').replace(/^unsure:\s*/, 'Too close to call: ')
+
 function Fit({ r }: { r: FitResult }) {
   const margin = r.margin_in
   return (
@@ -299,7 +302,7 @@ export default function Inspector() {
                             {f} <span className="text-fg-3">{d.replace(/^[^,]*,\s*/, '')}</span>
                           </span>
                           <span className={cn('block truncate text-xs', o.fit === 'no_fit' ? 'text-nofit' : o.fit === 'unsure' ? 'text-unsure' : 'text-fg-3')}>
-                            {current ? 'In the room now' : o.fit === 'fits' ? (o.best_value ? 'Fits, best value' : 'Fits') : o.why}
+                            {current ? 'In the room now' : o.fit === 'fits' ? (o.best_value ? 'Fits, best value' : 'Fits') : sayWhy(o.why)}
                           </span>
                         </span>
                         <span className="shrink-0 text-right">
@@ -342,7 +345,7 @@ export default function Inspector() {
           ) : (
             <p className="text-xs leading-relaxed text-fg-2">
               <span className="font-medium text-fg">{splitName(alt.name)[0]}</span> can't go in this room.{' '}
-              <span className="num text-nofit">{alt.why}</span>
+              <span className="num text-nofit">{sayWhy(alt.why)}</span>
             </p>
           )}
         </motion.div>

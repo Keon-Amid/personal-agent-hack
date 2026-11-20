@@ -63,6 +63,18 @@ function useKeys() {
         return
       }
       if (typing(e.target) || e.metaKey || e.ctrlKey || e.altKey) return
+      // While a measurement is being entered, digits belong to that field wherever focus happens to be.
+      if (s.measuring) {
+        const field = document.getElementById(`measure-${s.measuring}`)
+        if (field && (/^[0-9.]$/.test(e.key) || e.key === 'Enter')) {
+          field.focus()
+          if (e.key === 'Enter') {
+            e.preventDefault()
+            ;(field as HTMLInputElement).form?.requestSubmit()
+          }
+        }
+        return
+      }
       if (e.key === '1') s.setCamera('iso')
       if (e.key === '2') s.setCamera('top')
       if (e.key === '3') s.setCamera('front')

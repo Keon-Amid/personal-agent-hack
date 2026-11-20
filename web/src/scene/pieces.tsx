@@ -456,7 +456,13 @@ export function Piece({
           clay
         )}
         {noFit && !selected && <Frame w={w} h={h} d={d} color={COLORS.nofit} width={1.8} />}
-        {noFit && <FitTag position={[0, h + 0.14, 0]} name={item.name} math={failing ? `Does not fit: ${failing}` : 'Does not fit'} />}
+        {noFit && (
+          <FitTag
+            position={h < 0.1 ? [0, 0.32, d / 2 + 0.25] : [0, Math.max(h + 0.14, 0.95), 0]}
+            name={item.name}
+            math={failing ? `Does not fit: ${failing}` : 'Does not fit'}
+          />
+        )}
         {verdict === 'unsure' && !selected && <Frame w={w} h={h} d={d} color={COLORS.unsure} width={1.6} />}
         {translucent && !selected && !noFit && verdict !== 'unsure' && (
           <Frame w={w} h={h} d={d} color={COLORS.bone} width={1.1} opacity={0.6} dashed xray={false} />
@@ -517,7 +523,7 @@ export function GhostPiece({ ghost, placement }: { ghost: Ghost; placement: Plac
         <Shape category={category} w={w} d={d} h={h} mat={mat} ro={30} shadow={false} />
         <Frame w={w} h={h} d={d} color={COLORS.nofit} width={1.8} />
       </group>
-      <FitTag position={[0, h + 0.14, 0]} name={ghost.name} math={math} opacityRef={label} />
+      <FitTag position={[0, Math.max(h + 0.14, 0.95), 0]} name={ghost.name} math={math} opacityRef={label} />
     </group>
   )
 }
