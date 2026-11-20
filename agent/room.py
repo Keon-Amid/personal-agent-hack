@@ -260,3 +260,67 @@ def estimate(photo_bytes: bytes | None = None, exact: dict | None = None, scan_b
             status="exact", why="typed by the person; error 0, they override any photo estimate."))
 
     return make_room(m["wall"], m["depth"], m["door_width"], m["door_height"]), records
+
+
+def is_roomplan(path: str) -> bool:
+    """True for a RoomPlan-style GLB (Polycam Floorplan): named Wall_* objects. Read with alistair's fit.scan."""
+    import json as _json
+    import struct as _struct
+    try:
+        with open(path, "rb") as fh:
+            head = fh.read(20)
+            if head[:4] != b"glTF":
+                return False
+            clen = _struct.unpack_from("<I", head, 12)[0]
+            js = _json.loads(fh.read(clen))
+    except (OSError, ValueError):
+        return False
+    return any((n.get("name") or "").startswith("Wall_") for n in js.get("nodes", []))
+
+
+def estimate_roomplan(path: str, scan_wall: str | None = None, exact: dict | None = None) -> tuple[dict, list[dict]]:
+    """Room measurements from a RoomPlan GLB via alistair's fit.scan.load_scan (walls, doors, existing furniture).
+
+    wall = scan_wall's inner length (default: the longest wall); depth = the room's inner extent straight out from
+    that wall; door = the narrowest door (what furniture must get through). Source "scanned:roomplan", error 1 in.
+    exact values (source "user") override key by key, e.g. a tape-measured wall section.
+    """
+    from fit.scan import load_scan
+    sc = load_scan(path)
+    walls = sc["walls"]
+    if not walls:
+        raise ValueError(f"no walls in {path}")
+    wl = (lambda w: w.get("inner_length_in") or w["length_in"])
+    chosen = next((w for w in walls if w["id"] == scan_wall), None) if scan_wall else max(walls, key=wl)
+    if chosen is None:
+        raise ValueError(f"no wall {scan_wall!r} in the scan; walls are "
+                         + ", ".join(f'{w["id"]} {wl(w):g} in' for w in walls))
+    xs, zs = [q[0] for q in sc["outline"]], [q[1] for q in sc["outline"]]
+    (ax, az), (bx, bz) = chosen["a"], chosen["b"]
+    depth = (max(zs) - min(zs)) if abs(az - bz) < abs(ax - bx) else (max(xs) - min(xs))
+    m = {"wall": measurement(round(wl(chosen), 1), 1.0, "scanned:roomplan"),
+         "depth": measurement(round(depth, 1), 1.0, "scanned:roomplan")}
+    doors = sorted((d for d in sc["doors"] if d.get("kind", "door") == "door"), key=lambda d: d["width_in"])
+    if doors:
+        m["door_width"] = measurement(doors[0]["width_in"], 1.0, "scanned:roomplan")
+        m["door_height"] = measurement(doors[0]["height_in"], 1.0, "scanned:roomplan")
+    for k, v in (exact or {}).items():
+        if v is not None:
+            m[k] = measurement(float(v), 0.0, "user")
+    rec = audit(
+        "estimate_room",
+        source={"kind": "lidar_scan", "reader": "fit.scan (RoomPlan)", "file": path,
+                "walls": [{"id": w["id"], "inner_length_in": wl(w)} for w in walls], "doors": sc["doors"],
+                "existing_items": [{"id": i["id"], "category": i["category"], "w_in": i["w_in"], "d_in": i["d_in"]}
+                                   for i in sc["items"]]},
+        input={"scan": path, "scan_wall": chosen["id"], "exact": sorted(k for k, v in (exact or {}).items() if v is not None)},
+        decision="scanned room: " + ", ".join(f'{k} {v["value_in"]:g} ±{v["error_in"]:g} in ({v["source"]})'
+                                             for k, v in m.items()),
+        status="measured",
+        why=(f'RoomPlan scan with {len(walls)} named walls, {len(sc["doors"])} door(s), {len(sc["items"])} existing '
+             f'items. Wall = {chosen["id"]} (inner face); depth = inner extent out from it; door = narrowest door.'
+             + (" Exact values typed by the person override the scan." if exact else "")))
+    missing = [k for k in ("door_width", "door_height") if k not in m]
+    if missing:
+        raise ValueError(f"the scan has no door; give {missing} as exact measurements")
+    return make_room(m["wall"], m["depth"], m["door_width"], m["door_height"]), [rec]

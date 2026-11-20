@@ -280,10 +280,13 @@ def analyze_room(plan_id: str, photo_b64: str | None = None, style_text: str | N
         # LiDAR scan (GLB/OBJ/PLY on this machine): measures wall (longest, or scan_wall), depth and any open door.
         # Precedence per key: exact > scan > photo; agent.room.estimate applies it and writes the audit records.
         try:
-            with open(scan_path, "rb") as fh:
-                est, est_records = _room_estimator().estimate(photo, exact, scan_bytes=fh.read(),
-                                                              scan_name=os.path.basename(scan_path),
-                                                              scan_wall=scan_wall)
+            est_mod = _room_estimator()
+            if est_mod.is_roomplan(scan_path):  # named walls/doors: alistair's fit.scan (gives the real door)
+                est, est_records = est_mod.estimate_roomplan(scan_path, scan_wall, exact)
+            else:  # raw LiDAR mesh: agent.room_scan
+                with open(scan_path, "rb") as fh:
+                    est, est_records = est_mod.estimate(photo, exact, scan_bytes=fh.read(),
+                                                        scan_name=os.path.basename(scan_path), scan_wall=scan_wall)
         except Exception as e:
             return _refuse(plan, "estimate_room", f"room scan failed: {type(e).__name__}: {e}")
         room.update({k: est[k] for k in ROOM_KEYS if isinstance(est.get(k), dict)})
