@@ -54,6 +54,9 @@ the room arithmetic. So the split is:
 ```
 Slots: `sofa`, `armchair`, `coffee_table`, `rug`, `floor_lamp`. Layout is a fixed template per slot (no LLM coordinates).
 
+## Update 13:30
+alistair shipped `sie.style_match()` and `fit.pick.pick()` (d77ec25): real run rejects style #1 KIVIK (89.75 in > 88 in wall) and picks GLOSTAD, with audit records in our shape. A5 shrinks to glue + Claude reason + Senso check.
+
 ## Work packages
 
 Each package owns its files, so packages can run as parallel agents without touching the same file.
@@ -64,10 +67,10 @@ Each package owns its files, so packages can run as parallel agents without touc
 | Id | Package | Files it owns | Done when | Depends |
 |---|---|---|---|---|
 | **A1** | Fixture + types | `contracts/plan.example.json`, `agent/types.py` | Fixture valid JSON, uses real catalog ids, includes 1 rejected item | — (do first, ~15 min) |
-| **A2** | Senso KB loader | `agent/senso_kb.py`, `data/senso_index.json` | Rules doc + 1 doc per catalog product (name, dims, boxes, price, URL) loaded idempotently; `senso search context "KIVIK width"` returns the spec | — |
+| **A2** | Senso KB loader (offer to alistair: data-adjacent, his lane is free) | `agent/senso_kb.py`, `data/senso_index.json` | Rules doc + 1 doc per catalog product (name, dims, boxes, price, URL) loaded idempotently; `senso search context "KIVIK width"` returns the spec | — |
 | **A3** | Senso check client | `agent/senso.py`, `agent/test_senso.py` | `check(text, question) → {check_id, accuracy_pct, claims:[{claim, verdict, quote}]}`; sets a User-Agent; caches by text hash; test against the live rules doc | — |
 | **A4** | Room estimator | `agent/room.py`, `agent/test_room.py` | Claude vision on a photo → `fit.room()` with `error_in` and `source: "estimated:door"`; exact values override; works with no photo | needs `ANTHROPIC_API_KEY` |
-| **A5** | Orchestrator | `agent/plan.py`, `agent/test_plan.py` | `plan(room, style_query) → Plan` matching the fixture: per slot `sie.rank` ∩ `fit.options` → Claude picks + writes reason → `senso.check` → swap on `no_fit`/`conflict` → audit records; `swap(plan, slot)` | A1 shape; mocks A3/A4 until they land |
+| **A5** | Orchestrator (slimmed: alistair's `fit.pick` + `sie.style_match` already do rank → fit → pick → rejected → audit) | `agent/plan.py`, `agent/test_plan.py` | `plan(room, photo) → Plan` matching the fixture: per slot call `sie.style_match` + `fit.options` + `fit.pick`; Claude writes the one-line reason from the picked item's facts; `senso.check` on that reason; on `conflict`, rewrite once then reject; merge audit records; `swap(plan, slot)` = next item from pick's ranking | A1 shape; mocks A3/A4 until they land |
 | **S1** | Spike: room facts in Senso | `agent/spike_room_senso.py` (throwaway) | Answer in one line: does adding "living room north wall is 88 in" to the KB make "KIVIK (89.75 in) fits the north wall" come back `conflict`? | A2 rules loaded ✓ |
 
 ### Other lanes (owners confirm)
@@ -77,7 +80,7 @@ Each package owns its files, so packages can run as parallel agents without touc
 | U1 | keon | 3D room from `plan.example.json` (R3F boxes at real W×D×H) | Renders the fixture |
 | U2 | keon | Item panel + audit timeline | Shows fit math, style rank, Senso verdict + quote, rejected items |
 | U3 | keon | Measurement input + cart panel + Amplitude events | `unsure` prompts one measurement; cart lists IKEA links, total, "no purchase" |
-| D1 | alistair | Rug-from-walls check + room-photo query in `sie` | `check_rug`, `sie.query_photo` used by A5 |
+| D1 | alistair | ✓ done (d77ec25): `sie.style_match` + `fit.pick`. Next: rug-from-walls check | `check_rug` in `fit/` |
 | D2 | alistair | Catalog QA: every slot has ≥1 fitting + ≥1 non-fitting item for the demo room | Listed in a comment in `data/` |
 | K1 | kyle | FastAPI app wrapping `agent.plan` / `swap` / `room` per CONTRACT endpoints; serves the fixture until A5 lands | `curl /api/plan` returns the fixture, then real data |
 | K2 | kyle | Demo video + submission checklist | Video link by 16:00 |

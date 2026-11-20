@@ -1,5 +1,5 @@
 {
- "about": "Real IKEA US products. Every number is read from the source_url page by data/fetch_ikea.py (URLs in data/sources.txt) at fetched_at. Inches. dims_in w=width, d=depth/length, h=height; round items use the diameter for w and d. packages_in: one box per package (Width->w, Length->d, Height->h). price_usd is the price shown on the page that day and may be a temporary IKEA Family price; null if the page showed none. image_url is IKEA's main product photo, image_urls all photos on the page. rating/review_count are IKEA's customer reviews (1-5) shown on the page; color and material are IKEA's labels. dims_raw keeps every measurement the page listed.",
+ "about": "Real IKEA US products. Every number is read from the source_url page by data/fetch_ikea.py (URLs in data/sources.txt) at fetched_at. Inches. dims_in w=width, d=depth/length, h=height; round items use the diameter for w and d. packages_in: one box per package (Width->w, Length->d, Height->h). price_usd is the price shown on the page that day and may be a temporary IKEA Family price; null if the page showed none. image_url is IKEA's main product photo, image_urls all photos on the page. rating/review_count are IKEA's customer reviews (1-5) shown on the page; description, color and material are IKEA's labels. dims_raw keeps every measurement the page listed.",
  "products": [
   {
    "id": "ikea-glostad-sofa-knisa-dark-gray-40595942",
@@ -30,6 +30,7 @@
    ],
    "rating": 4.0,
    "review_count": 90,
+   "description": "GLOSTAD Sofa - Knisa dark gray. GLOSTAD sofa has a simple design which is also comfortable with its thick seat, padded armrests and soft back cushions that sit firmly in place. The sofa's low weight makes it easy to move – in your current home or when moving to a new home. Stationary cover.",
    "color": "gray",
    "material": null,
    "image_url": "https://www.ikea.com/us/en/images/products/glostad-sofa-knisa-dark-gray__1234948_pe917261_s5.jpg",
@@ -44,7 +45,7 @@
     "https://www.ikea.com/us/en/images/products/glostad-sofa-knisa-dark-gray__1387199_pe964151_s5.jpg"
    ],
    "source_url": "https://www.ikea.com/us/en/p/glostad-sofa-knisa-dark-gray-40595942/",
-   "fetched_at": "2026-11-20T21:00:16+00:00"
+   "fetched_at": "2026-11-20T21:19:36+00:00"
   },
   {
    "id": "ikea-gullvalla-sofa-silkeryd-dark-gray-beige-70618503",
@@ -80,6 +81,7 @@
    ],
    "rating": 4.6,
    "review_count": 20,
+   "description": "GULLVALLA Sofa - Silkeryd dark gray-beige. Soft, simple shapes with well-thought-out details, such as wrinkles on the back cushions and rounded legs – creating a timeless sofa that feels both inviting and traditional. 10-year limited warranty. Read about the terms in the limited warranty brochure.",
    "color": "beige, gray",
    "material": "Fabric",
    "image_url": "https://www.ikea.com/us/en/images/products/gullvalla-sofa-silkeryd-dark-gray-beige__1578444_pe1034087_s5.jpg",
@@ -91,7 +93,7 @@
     "https://www.ikea.com/us/en/images/products/gullvalla-sofa-silkeryd-dark-gray-beige__1558991_ph209553_s5.jpg"
    ],
    "source_url": "https://www.ikea.com/us/en/p/gullvalla-sofa-silkeryd-dark-gray-beige-70618503/",
-   "fetched_at": "2026-11-20T21:00:16+00:00"
+   "fetched_at": "2026-11-20T21:19:36+00:00"
   },
   {
    "id": "ikea-hyltarp-sofa-gransel-gray-89514930",
@@ -136,6 +138,7 @@
    ],
    "rating": 4.1,
    "review_count": 143,
+   "description": "HYLTARP Sofa - Gransel gray. Skillful craftsmanship and a perfect fit means that the sofa will always shows off its best side. This cover is made of Gransel, a fabric with elements of linen and viscose that add a slight luster. The threads in different sizes create a natural, vibrant expression.",
    "color": "gray",
    "material": "Fabric",
    "image_url": "https://www.ikea.com/us/en/images/products/hyltarp-sofa-gransel-gray__1577693_pe1033440_s5.jpg",
@@ -147,7 +150,7 @@
     "https://www.ikea.com/us/en/images/products/hyltarp-sofa-gransel-gray__1256064_pe924900_s5.jpg"
    ],
    "source_url": "https://www.ikea.com/us/en/p/hyltarp-sofa-gransel-gray-s89514930/",
-   "fetched_at": "2026-11-20T21:00:17+00:00"
+   "fetched_at": "2026-11-20T21:19:37+00:00"
   },
   {
    "id": "ikea-kivik-sofa-grann-bomstad-black-80519531",
@@ -184,6 +187,7 @@
    ],
    "rating": 4.2,
    "review_count": 70,
+   "description": "KIVIK Sofa - Grann/Bomstad black. Enjoy the super comfy KIVIK sofa with deep seat cushions made of pocket springs, high resilience foam and polyester fibers – adding both firm support and relaxing softness. The cover is easy to keep clean as it can be wiped clean with a damp cloth.",
    "color": "black",
    "material": "Leather, Coated fabric",
    "image_url": "https://www.ikea.com/us/en/images/products/kivik-sofa-grann-bomstad-black__0137863_pe296632_s5.jpg",
@@ -197,7 +201,7 @@
     "https://www.ikea.com/us/en/images/products/kivik-sofa-grann-bomstad-black__1300924_pe937215_s5.jpg"
    ],
    "source_url": "https://www.ikea.com/us/en/p/kivik-sofa-grann-bomstad-black-80519531/",
-   "fetched_at": "2026-11-20T21:00:17+00:00"
+   "fetched_at": "2026-11-20T21:19:37+00:00"
   },
   {
    "id": "ikea-lillesater-sofa-axvall-off-white-40619085",
@@ -247,6 +251,7 @@
    ],
    "rating": 4.0,
    "review_count": 31,
+   "description": "LILLESÄTER Sofa - Axvall off-white. Suitable for use in public environments. The fabric has a silicone-based, water-repellent treatment that stops liquids from seeping in, so they stay on the surface and are easily absorbed with a dry cloth or paper towel.",
    "color": "white",
    "material": "Fabric",
    "image_url": "https://www.ikea.com/us/en/images/products/lillesaeter-sofa-axvall-off-white__1576111_pe1032230_s5.jpg",
@@ -261,7 +266,7 @@
     "https://www.ikea.com/us/en/images/products/lillesaeter-sofa-axvall-off-white__1549106_ph208675_s5.jpg"
    ],
    "source_url": "https://www.ikea.com/us/en/p/lillesaeter-sofa-axvall-off-white-40619085/",
-   "fetched_at": "2026-11-20T21:00:18+00:00"
+   "fetched_at": "2026-11-20T21:19:38+00:00"
   },
   {
    "id": "ikea-arnasvall-recliner-rocker-and-swivel-armchair-hakebo-beige-50613912",
@@ -294,6 +299,7 @@
    ],
    "rating": null,
    "review_count": 0,
+   "description": "ARNÄSVALL Recliner rocker and swivel armchair - Hakebo beige. Comfortable recliner chair with rocking and 360˚ swivel function, soft armrests and a cozy design – made for snuggling up and relaxing. Adjustable so that you can choose three positions, from upright sitting to reclining.",
    "color": "beige",
    "material": "Fabric, Metal, Polyester",
    "image_url": "https://www.ikea.com/us/en/images/products/arnaesvall-recliner-rocker-and-swivel-armchair-hakebo-beige__1426047_pe979671_s5.jpg",
@@ -313,7 +319,7 @@
     "https://www.ikea.com/us/en/images/products/arnaesvall-recliner-rocker-and-swivel-armchair-hakebo-beige__1446540_pe988625_s5.jpg"
    ],
    "source_url": "https://www.ikea.com/us/en/p/arnaesvall-recliner-rocker-and-swivel-armchair-hakebo-beige-50613912/",
-   "fetched_at": "2026-11-20T21:00:19+00:00"
+   "fetched_at": "2026-11-20T21:19:39+00:00"
   },
   {
    "id": "ikea-ekenaset-armchair-jonsbyn-black-80539015",
@@ -348,6 +354,7 @@
    ],
    "rating": 4.2,
    "review_count": 32,
+   "description": "EKENÄSET Armchair - Jonsbyn black. Clean lines and supportive comfort, regardless if you’re reading, socializing with friends or just relaxing for a moment. The tall legs in solid wood make it easy to vacuum or reach things hiding under the armchair to avoid clutter.",
    "color": "black",
    "material": "Coated fabric, Solid wood",
    "image_url": "https://www.ikea.com/us/en/images/products/ekenaeset-armchair-jonsbyn-black__1109680_pe870147_s5.jpg",
@@ -359,7 +366,7 @@
     "https://www.ikea.com/us/en/images/products/ekenaeset-armchair-jonsbyn-black__0940909_pe795235_s5.jpg"
    ],
    "source_url": "https://www.ikea.com/us/en/p/ekenaeset-armchair-jonsbyn-black-80539015/",
-   "fetched_at": "2026-11-20T21:00:19+00:00"
+   "fetched_at": "2026-11-20T21:19:40+00:00"
   },
   {
    "id": "ikea-gryteryd-recliner-rocker-armchair-hakebo-beige-20613904",
@@ -392,6 +399,7 @@
    ],
    "rating": null,
    "review_count": 0,
+   "description": "GRYTERYD Recliner rocker armchair - Hakebo beige. Comfortable recliner chair with rocking function and a modern design – made for relaxing. You easily raise the footrest with a lever and recline the backrest to the desired angle by gently pressing back with your body weight. Tested for 353 lb.",
    "color": "beige",
    "material": "Fabric, Metal, Polyester",
    "image_url": "https://www.ikea.com/us/en/images/products/gryteryd-recliner-rocker-armchair-hakebo-beige__1426044_pe979668_s5.jpg",
@@ -411,7 +419,7 @@
     "https://www.ikea.com/us/en/images/products/gryteryd-recliner-rocker-armchair-hakebo-beige__1446545_pe988626_s5.jpg"
    ],
    "source_url": "https://www.ikea.com/us/en/p/gryteryd-recliner-rocker-armchair-hakebo-beige-20613904/",
-   "fetched_at": "2026-11-20T21:00:20+00:00"
+   "fetched_at": "2026-11-20T21:19:41+00:00"
   },
   {
    "id": "ikea-borgeby-coffee-table-birch-veneer-27-1-2-70389356",
@@ -444,6 +452,7 @@
    ],
    "rating": 4.4,
    "review_count": 405,
+   "description": "BORGEBY Coffee table - birch veneer 27 1/2 \". BORGEBY storage table has an elegant, simple and stylish design with a harmonious and balanced expression. The rounded airy shape, smooth surface and natural material make the table suitable for many different living situations and interior styles.",
    "color": "beige",
    "material": null,
    "image_url": "https://www.ikea.com/us/en/images/products/borgeby-coffee-table-birch-veneer__0987623_pe817609_s5.jpg",
@@ -456,7 +465,7 @@
     "https://www.ikea.com/us/en/images/products/borgeby-coffee-table-birch-veneer__0977133_pe813414_s5.jpg"
    ],
    "source_url": "https://www.ikea.com/us/en/p/borgeby-coffee-table-birch-veneer-70389356/",
-   "fetched_at": "2026-11-20T21:00:21+00:00"
+   "fetched_at": "2026-11-20T21:19:42+00:00"
   },
   {
    "id": "ikea-lack-coffee-table-black-brown-46-1-2x30-3-4-00104291",
@@ -486,6 +495,7 @@
    ],
    "rating": 4.5,
    "review_count": 1201,
+   "description": "LACK Coffee table - black-brown 46 1/2x30 3/4 \". Separate shelf for magazines, etc. helps you keep your things organized and the table top clear. Max load on table top: 44 lbs. Product is possible to recycle or use for energy recovery, if available in your community.",
    "color": "brown, black",
    "material": null,
    "image_url": "https://www.ikea.com/us/en/images/products/lack-coffee-table-black-brown__57537_pe163119_s5.jpg",
@@ -497,7 +507,7 @@
     "https://www.ikea.com/us/en/images/products/lack-coffee-table-black-brown__1083778_pe859098_s5.jpg"
    ],
    "source_url": "https://www.ikea.com/us/en/p/lack-coffee-table-black-brown-00104291/",
-   "fetched_at": "2026-11-20T21:00:22+00:00"
+   "fetched_at": "2026-11-20T21:19:43+00:00"
   },
   {
    "id": "ikea-ortrask-coffee-table-black-ash-veneer-43-1-4x26-3-4-30635849",
@@ -528,6 +538,7 @@
    ],
    "rating": 3.5,
    "review_count": 4,
+   "description": "ÖRTRÄSK Coffee table - black ash veneer 43 1/4x26 3/4 \". The table top's ash veneer and legs in solid ash give the room a warm and natural feel. The generous size has space for everything you need to enjoy a relaxing moment on the sofa – even if you have guests. Max load on table top: 44 lbs.",
    "color": "black",
    "material": "Solid wood, Wood veneer",
    "image_url": "https://www.ikea.com/us/en/images/products/oertraesk-coffee-table-black-ash-veneer__1543874_pe1018964_s5.jpg",
@@ -539,7 +550,7 @@
     "https://www.ikea.com/us/en/images/products/oertraesk-coffee-table-black-ash-veneer__1539520_pe1018983_s5.jpg"
    ],
    "source_url": "https://www.ikea.com/us/en/p/oertraesk-coffee-table-black-ash-veneer-30635849/",
-   "fetched_at": "2026-11-20T21:00:22+00:00"
+   "fetched_at": "2026-11-20T21:19:44+00:00"
   },
   {
    "id": "ikea-ostavall-adjustable-coffee-table-black-35-3-8-40534152",
@@ -579,6 +590,7 @@
    ],
    "rating": 4.0,
    "review_count": 275,
+   "description": "ÖSTAVALL Adjustable coffee table - black 35 3/8 \". This coffee table adds functionality to a living room and allows you to easily switch between various activities since the table top can be raised or lowered to a comfortable level whenever you like. Max load on table top: 22 lbs.",
    "color": "black",
    "material": null,
    "image_url": "https://www.ikea.com/us/en/images/products/oestavall-adjustable-coffee-table-black__1213707_pe911231_s5.jpg",
@@ -594,7 +606,7 @@
     "https://www.ikea.com/us/en/images/products/oestavall-adjustable-coffee-table-black__1328564_pe944862_s5.jpg"
    ],
    "source_url": "https://www.ikea.com/us/en/p/oestavall-adjustable-coffee-table-black-40534152/",
-   "fetched_at": "2026-11-20T21:00:23+00:00"
+   "fetched_at": "2026-11-20T21:19:45+00:00"
   },
   {
    "id": "ikea-baggboda-side-table-white-28x19-5-8-20556507",
@@ -624,6 +636,7 @@
    ],
    "rating": 4.4,
    "review_count": 95,
+   "description": "BAGGBODA Side table - white 28x19 5/8 \". Part of the Nytillverkad collection where several IKEA classics have been given a new look. Karin Mobring's coffee table was launched with the fitting name CROMI in our 1971 catalogue. In the Nytillverkad collection, it is named BAGGBODA.",
    "color": "white",
    "material": null,
    "image_url": "https://www.ikea.com/us/en/images/products/baggboda-side-table-white__1265558_pe927740_s5.jpg",
@@ -635,7 +648,7 @@
     "https://www.ikea.com/us/en/images/products/baggboda-side-table-white__1596060_ph207463_s5.jpg"
    ],
    "source_url": "https://www.ikea.com/us/en/p/baggboda-side-table-white-20556507/",
-   "fetched_at": "2026-11-20T21:00:24+00:00"
+   "fetched_at": "2026-11-20T21:19:46+00:00"
   },
   {
    "id": "ikea-borgeby-side-table-birch-veneer-18-1-8-80619880",
@@ -668,6 +681,7 @@
    ],
    "rating": 4.8,
    "review_count": 68,
+   "description": "BORGEBY Side table - birch veneer 18 1/8 \". The gently rounded expression is both simple and tastefully elegant, giving the table a sense of balance and harmony. Suitable for use in public environments. Max. load/shelf: 33 lbs. Max load on table top: 33 lbs.",
    "color": "beige",
    "material": null,
    "image_url": "https://www.ikea.com/us/en/images/products/borgeby-side-table-birch-veneer__1472146_pe997462_s5.jpg",
@@ -681,7 +695,7 @@
     "https://www.ikea.com/us/en/images/products/borgeby-side-table-birch-veneer__1462469_pe994346_s5.jpg"
    ],
    "source_url": "https://www.ikea.com/us/en/p/borgeby-side-table-birch-veneer-80619880/",
-   "fetched_at": "2026-11-20T21:00:25+00:00"
+   "fetched_at": "2026-11-20T21:19:47+00:00"
   },
   {
    "id": "ikea-anfallare-alex-desk-bamboo-black-brown-55-1-8x25-5-8-89417745",
@@ -726,6 +740,7 @@
    ],
    "rating": 4.5,
    "review_count": 71,
+   "description": "ANFALLARE / ALEX Desk - bamboo/black-brown 55 1/8x25 5/8 \". A neat desk that fits even where you have a little less space. Pre-drilled holes for legs, for easy assembly. Adjustable feet make the table stand steady also on uneven floors. This product has been developed and tested for domestic use.",
    "color": null,
    "material": null,
    "image_url": "https://www.ikea.com/us/en/images/products/anfallare-alex-desk-bamboo-black-brown__0976199_pe813092_s5.jpg",
@@ -739,7 +754,7 @@
     "https://www.ikea.com/us/en/images/products/anfallare-alex-desk-bamboo-black-brown__1045176_pe842454_s5.jpg"
    ],
    "source_url": "https://www.ikea.com/us/en/p/anfallare-alex-desk-bamboo-black-brown-s89417745/",
-   "fetched_at": "2026-11-20T21:00:25+00:00"
+   "fetched_at": "2026-11-20T21:19:48+00:00"
   },
   {
    "id": "ikea-brytning-desk-green-43-1-4x20-7-8x29-1-2-50609750",
@@ -773,6 +788,7 @@
    ],
    "rating": 3.7,
    "review_count": 38,
+   "description": "BRYTNING Desk - green 43 1/4x20 7/8x29 1/2 \". Arts and crafts, studying or putting on make-up – the desk’s surface is large enough for many different activities, and is suitable as a children´s desk from early school years to late teens. Recommended for ages 7 years and older.",
    "color": null,
    "material": null,
    "image_url": "https://www.ikea.com/us/en/images/products/brytning-desk-green__1515768_pe1011581_s5.jpg",
@@ -786,7 +802,7 @@
     "https://www.ikea.com/us/en/images/products/brytning-desk-green__1515766_pe1011579_s5.jpg"
    ],
    "source_url": "https://www.ikea.com/us/en/p/brytning-desk-green-50609750/",
-   "fetched_at": "2026-11-20T21:00:26+00:00"
+   "fetched_at": "2026-11-20T21:19:48+00:00"
   },
   {
    "id": "ikea-kallax-desk-black-brown-43-3-4x15-3-8-00582442",
@@ -818,6 +834,7 @@
    ],
    "rating": 4.6,
    "review_count": 403,
+   "description": "KALLAX Desk - black-brown 43 3/4x15 3/8 \". Takes up little space since the depth of the desk is 15⅜\". You can mount the shelving unit on the right or left side. Simple to assemble and ready to use in a flash. Hide or display your things by combining open and closed storage.",
    "color": null,
    "material": null,
    "image_url": "https://www.ikea.com/us/en/images/products/kallax-desk-black-brown__1327541_pe944488_s5.jpg",
@@ -833,7 +850,7 @@
     "https://www.ikea.com/us/en/images/products/kallax-desk-black-brown__1328006_pe944612_s5.jpg"
    ],
    "source_url": "https://www.ikea.com/us/en/p/kallax-desk-black-brown-00582442/",
-   "fetched_at": "2026-11-20T21:00:27+00:00"
+   "fetched_at": "2026-11-20T21:19:49+00:00"
   },
   {
    "id": "ikea-lagkapten-adils-desk-black-brown-black-47-1-4x23-5-8-49417021",
@@ -883,6 +900,7 @@
    ],
    "rating": 4.4,
    "review_count": 417,
+   "description": "LAGKAPTEN / ADILS Desk - black-brown/black 47 1/4x23 5/8 \". Pre-drilled holes for legs, for easy assembly. Adjustable feet make the table stand steady also on uneven floors. The tabletop has pre-drilled holes to make it easier to attach to the underframe.",
    "color": null,
    "material": null,
    "image_url": "https://www.ikea.com/us/en/images/products/lagkapten-adils-desk-black-brown-black__0977217_pe813462_s5.jpg",
@@ -895,7 +913,7 @@
     "https://www.ikea.com/us/en/images/products/lagkapten-adils-desk-black-brown-black__0734618_pe739551_s5.jpg"
    ],
    "source_url": "https://www.ikea.com/us/en/p/lagkapten-adils-desk-black-brown-black-s49417021/",
-   "fetched_at": "2026-11-20T21:00:27+00:00"
+   "fetched_at": "2026-11-20T21:19:50+00:00"
   },
   {
    "id": "ikea-alhult-extendable-table-beige-brown-47-1-4-66-7-8x31-1-2-60597921",
@@ -930,6 +948,7 @@
    ],
    "rating": 4.0,
    "review_count": 18,
+   "description": "ÅLHULT Extendable table - beige/brown 47 1/4/66 7/8x31 1/2 \". Easily extends from seating 4-6, accommodating various dining needs. The extension leaf increases the overhang at each end of the table creating generous space for two more people at the short ends. Recommended for indoor use only.",
    "color": "beige, brown",
    "material": "Wood (including board), Wood veneer",
    "image_url": "https://www.ikea.com/us/en/images/products/alhult-extendable-table-beige-brown__1403281_pe969288_s5.jpg",
@@ -942,7 +961,7 @@
     "https://www.ikea.com/us/en/images/products/alhult-extendable-table-beige-brown__1546448_ph206716_s5.jpg"
    ],
    "source_url": "https://www.ikea.com/us/en/p/alhult-extendable-table-beige-brown-60597921/",
-   "fetched_at": "2026-11-20T21:00:28+00:00"
+   "fetched_at": "2026-11-20T21:19:51+00:00"
   },
   {
    "id": "ikea-bergshyttan-table-dark-brown-ash-veneer-94-1-2x36-5-8-40608242",
@@ -978,6 +997,7 @@
    ],
    "rating": 4.9,
    "review_count": 34,
+   "description": "BERGSHYTTAN Table - dark-brown ash veneer 94 1/2x36 5/8 \". Generous design with ample space for many. Scratch-resistant top of lacquered wood veneer. Every table is unique with distinctive grain patterns and natural color variations. Stands evenly on an uneven floor as it has adjustable feet.",
    "color": "brown",
    "material": "Wood veneer",
    "image_url": "https://www.ikea.com/us/en/images/products/bergshyttan-table-dark-brown-ash-veneer__1424600_pe979311_s5.jpg",
@@ -991,7 +1011,7 @@
     "https://www.ikea.com/us/en/images/products/bergshyttan-table-dark-brown-ash-veneer__1443500_pe987191_s5.jpg"
    ],
    "source_url": "https://www.ikea.com/us/en/p/bergshyttan-table-dark-brown-ash-veneer-40608242/",
-   "fetched_at": "2026-11-20T21:00:28+00:00"
+   "fetched_at": "2026-11-20T21:19:52+00:00"
   },
   {
    "id": "ikea-docksta-table-black-black-40-1-2-99418848",
@@ -1026,6 +1046,7 @@
    ],
    "rating": 4.1,
    "review_count": 592,
+   "description": "DOCKSTA Table - black/black 40 1/2 \". The round shape of the table makes it great for socializing since everyone can see each other. Recommended for indoor use only. Seats 4.",
    "color": "black",
    "material": "Wood (including board), Metal",
    "image_url": "https://www.ikea.com/us/en/images/products/docksta-table-black-black__1079719_pe857670_s5.jpg",
@@ -1038,7 +1059,7 @@
     "https://www.ikea.com/us/en/images/products/docksta-table-black-black__0981151_pe815274_s5.jpg"
    ],
    "source_url": "https://www.ikea.com/us/en/p/docksta-table-black-black-s99418848/",
-   "fetched_at": "2026-11-20T21:00:29+00:00"
+   "fetched_at": "2026-11-20T21:19:53+00:00"
   },
   {
    "id": "ikea-alhult-chair-beige-kabusa-light-beige-60600773",
@@ -1067,6 +1088,7 @@
    ],
    "rating": 4.1,
    "review_count": 131,
+   "description": "ÅLHULT Chair - beige/Kabusa light beige. The soft seat paired with the high angled backrest offers exceptional comfort for extended sitting, enhancing the overall dining experience. The solid pine frame offers a robust and sturdy build, ensuring long-lasting use and stability.",
    "color": "beige",
    "material": "Fabric, Solid wood",
    "image_url": "https://www.ikea.com/us/en/images/products/alhult-chair-beige-kabusa-light-beige__1403273_pe969296_s5.jpg",
@@ -1082,7 +1104,7 @@
     "https://www.ikea.com/us/en/images/products/alhult-chair-beige-kabusa-light-beige__1451081_pe990575_s5.jpg"
    ],
    "source_url": "https://www.ikea.com/us/en/p/alhult-chair-beige-kabusa-light-beige-60600773/",
-   "fetched_at": "2026-11-20T21:00:29+00:00"
+   "fetched_at": "2026-11-20T21:19:54+00:00"
   },
   {
    "id": "ikea-bergmund-chair-oak-effect-gunnared-medium-gray-49471701",
@@ -1120,6 +1142,7 @@
    ],
    "rating": 4.4,
    "review_count": 517,
+   "description": "BERGMUND Chair - oak effect/Gunnared medium gray. The upholstery of the chair consists of straight polyester fibres with small gaps between them, providing comfy elasticity and better ventilation so you enjoy a pleasant temperature when sitting. Recommended for indoor use only.",
    "color": "beige, brown, gray",
    "material": "Fabric, Solid wood",
    "image_url": "https://www.ikea.com/us/en/images/products/bergmund-chair-oak-effect-gunnared-medium-gray__0926590_pe789373_s5.jpg",
@@ -1132,7 +1155,7 @@
     "https://www.ikea.com/us/en/images/products/bergmund-chair-oak-effect-gunnared-medium-gray__1181421_pe896684_s5.jpg"
    ],
    "source_url": "https://www.ikea.com/us/en/p/bergmund-chair-oak-effect-gunnared-medium-gray-s49471701/",
-   "fetched_at": "2026-11-20T21:00:30+00:00"
+   "fetched_at": "2026-11-20T21:19:54+00:00"
   },
   {
    "id": "ikea-gronsta-chair-indoor-outdoor-gray-dark-brown-wood-70637238",
@@ -1170,6 +1193,7 @@
    ],
    "rating": 4.5,
    "review_count": 185,
+   "description": "GRÖNSTA Chair - indoor/outdoor gray/dark brown/wood. The molded seat shell has a comfy flexy feel and an embracing scoop design that supports the back for comfortable seating. Solid eucalyptus legs screw onto the seat shell easily without having to use tools. Suitable for indoor and outdoor use.",
    "color": "brown, gray",
    "material": "Plastic, Solid wood",
    "image_url": "https://www.ikea.com/us/en/images/products/groensta-chair-indoor-outdoor-gray-dark-brown-wood__1575702_pe1032163_s5.jpg",
@@ -1182,7 +1206,7 @@
     "https://www.ikea.com/us/en/images/products/groensta-chair-indoor-outdoor-gray-dark-brown-wood__1273245_pe929936_s5.jpg"
    ],
    "source_url": "https://www.ikea.com/us/en/p/groensta-chair-indoor-outdoor-gray-dark-brown-wood-70637238/",
-   "fetched_at": "2026-11-20T21:00:31+00:00"
+   "fetched_at": "2026-11-20T21:19:55+00:00"
   },
   {
    "id": "ikea-ankarudden-6-drawer-dresser-with-2-inner-drawers-oak-effect-54-1-2x18-7-8x34-3-8-80598057",
@@ -1224,6 +1248,7 @@
    ],
    "rating": 3.8,
    "review_count": 67,
+   "description": "ANKARUDDEN 6-drawer dresser - with 2 inner drawers/oak effect 54 1/2x18 7/8x34 3/8 \". Sleek-looking chest of drawers with integrated handles and practical storage for folded clothes. Designed with recessed fronts that create a framed expression and highlight the elegant lines.",
    "color": "brown",
    "material": "Wood (including board)",
    "image_url": "https://www.ikea.com/us/en/images/products/ankarudden-6-drawer-dresser-with-2-inner-drawers-oak-effect__1486741_pe1002562_s5.jpg",
@@ -1237,7 +1262,7 @@
     "https://www.ikea.com/us/en/images/products/ankarudden-6-drawer-dresser-with-2-inner-drawers-oak-effect__1559357_pe1025000_s5.jpg"
    ],
    "source_url": "https://www.ikea.com/us/en/p/ankarudden-6-drawer-dresser-with-2-inner-drawers-oak-effect-80598057/",
-   "fetched_at": "2026-11-20T21:00:31+00:00"
+   "fetched_at": "2026-11-20T21:19:56+00:00"
   },
   {
    "id": "ikea-brimnes-4-drawer-dresser-black-30-3-4x18-1-8x48-7-8-70574245",
@@ -1275,6 +1300,7 @@
    ],
    "rating": 4.4,
    "review_count": 1311,
+   "description": "BRIMNES 4-drawer dresser - black 30 3/4x18 1/8x48 7/8 \". The drawers on this chest of drawers extend 19 cm, a solution that reduces the tip-over risk in combination with wall-anchoring. This high chest gives you plenty of storage without taking up too much room.",
    "color": "black",
    "material": "Wood (including board), Glass",
    "image_url": "https://www.ikea.com/us/en/images/products/brimnes-4-drawer-dresser-black__1291238_pe934851_s5.jpg",
@@ -1286,7 +1312,7 @@
     "https://www.ikea.com/us/en/images/products/brimnes-4-drawer-dresser-black__1361751_pe954747_s5.jpg"
    ],
    "source_url": "https://www.ikea.com/us/en/p/brimnes-4-drawer-dresser-black-70574245/",
-   "fetched_at": "2026-11-20T21:00:32+00:00"
+   "fetched_at": "2026-11-20T21:19:57+00:00"
   },
   {
    "id": "ikea-fagelfjallet-3-drawer-dresser-black-oak-effect-32-1-4x20-1-8x30-3-4-90598603",
@@ -1324,6 +1350,7 @@
    ],
    "rating": 4.1,
    "review_count": 40,
+   "description": "FÅGELFJÄLLET 3-drawer dresser - black oak effect 32 1/4x20 1/8x30 3/4 \". In the FÅGELFJÄLLET series, you’ll find furniture for various storage needs – all in an elegant, traditional design that helps you create a practical, organised and inspiring home. The surface is durable and easy to keep clean.",
    "color": "black",
    "material": "Wood (including board)",
    "image_url": "https://www.ikea.com/us/en/images/products/fagelfjaellet-3-drawer-dresser-black-oak-effect__1509883_pe1009885_s5.jpg",
@@ -1338,7 +1365,7 @@
     "https://www.ikea.com/us/en/images/products/fagelfjaellet-3-drawer-dresser-black-oak-effect__1559287_pe1024984_s5.jpg"
    ],
    "source_url": "https://www.ikea.com/us/en/p/fagelfjaellet-3-drawer-dresser-black-oak-effect-90598603/",
-   "fetched_at": "2026-11-20T21:00:33+00:00"
+   "fetched_at": "2026-11-20T21:19:58+00:00"
   },
   {
    "id": "ikea-blastasen-nightstand-black-19-5-8x14-5-8x29-7-8-90617574",
@@ -1371,6 +1398,7 @@
    ],
    "rating": 4.3,
    "review_count": 49,
+   "description": "BLÄSTÅSEN Nightstand - black 19 5/8x14 5/8x29 7/8 \". Traditional design and a crafted feel in solid wood create a timeless look, with natural variations that make each bedside table unique. Solid pine is a natural material that ages beautifully and acquires its own unique character over time.",
    "color": "black",
    "material": "Solid wood",
    "image_url": "https://www.ikea.com/us/en/images/products/blaestasen-nightstand-black__1450961_pe990526_s5.jpg",
@@ -1383,7 +1411,7 @@
     "https://www.ikea.com/us/en/images/products/blaestasen-nightstand-black__1425394_pe979511_s5.jpg"
    ],
    "source_url": "https://www.ikea.com/us/en/p/blaestasen-nightstand-black-90617574/",
-   "fetched_at": "2026-11-20T21:00:34+00:00"
+   "fetched_at": "2026-11-20T21:19:59+00:00"
   },
   {
    "id": "ikea-brimnes-nightstand-black-15-3-8x16-1-8x20-7-8-80340454",
@@ -1414,6 +1442,7 @@
    ],
    "rating": 4.6,
    "review_count": 1377,
+   "description": "BRIMNES Nightstand - black 15 3/8x16 1/8x20 7/8 \". In the drawer there is room for an power strip for your chargers. You can run the plug to the outlet through the back. Coordinates with other furniture in the BRIMNES series.",
    "color": "black",
    "material": "Wood (including board)",
    "image_url": "https://www.ikea.com/us/en/images/products/brimnes-nightstand-black__0624434_pe691841_s5.jpg",
@@ -1425,7 +1454,7 @@
     "https://www.ikea.com/us/en/images/products/brimnes-nightstand-black__1150832_pe884683_s5.jpg"
    ],
    "source_url": "https://www.ikea.com/us/en/p/brimnes-nightstand-black-80340454/",
-   "fetched_at": "2026-11-20T21:00:34+00:00"
+   "fetched_at": "2026-11-20T21:20:00+00:00"
   },
   {
    "id": "ikea-besta-tv-bench-with-doors-black-brown-bjorkoviken-brown-stained-oak-veneer-70-7-8x16-1-2x15-09568026",
@@ -1501,6 +1530,7 @@
    ],
    "rating": 3.8,
    "review_count": 400,
+   "description": "BESTÅ TV bench with doors - black-brown Björköviken/brown stained oak veneer 70 7/8x16 1/2x15 \". 10 year guarantee. Read about the terms in the guarantee brochure. BJÖRKÖVIKEN front is made of oak veneer, giving each door a sense of quality with a natural expression.",
    "color": null,
    "material": null,
    "image_url": "https://www.ikea.com/us/en/images/products/besta-tv-bench-with-doors-black-brown-bjoerkoeviken-brown-stained-oak-veneer__0993133_pe820433_s5.jpg",
@@ -1515,7 +1545,7 @@
     "https://www.ikea.com/us/en/images/products/besta-tv-bench-with-doors-black-brown-bjoerkoeviken-brown-stained-oak-veneer__1482864_pe1001193_s5.jpg"
    ],
    "source_url": "https://www.ikea.com/us/en/p/besta-tv-bench-with-doors-black-brown-bjoerkoeviken-brown-stained-oak-veneer-s09568026/",
-   "fetched_at": "2026-11-20T21:00:35+00:00"
+   "fetched_at": "2026-11-20T21:20:01+00:00"
   },
   {
    "id": "ikea-brimnes-tv-unit-black-85-1-8x16-1-4x21-1-8-20593091",
@@ -1554,6 +1584,7 @@
    ],
    "rating": 4.5,
    "review_count": 23,
+   "description": "BRIMNES TV unit - black 85 1/8x16 1/4x21 1/8 \". An extra-wide TV bench is perfect for a larger TV – and has plenty of space for all the accessories you want to keep close at hand. The top panel of the TV bench is intended for a TV with a maximum weight of 88 lbs.",
    "color": "black",
    "material": "Wood (including board)",
    "image_url": "https://www.ikea.com/us/en/images/products/brimnes-tv-unit-black__1490477_pe1004159_s5.jpg",
@@ -1566,7 +1597,7 @@
     "https://www.ikea.com/us/en/images/products/brimnes-tv-unit-black__1441915_pe986554_s5.jpg"
    ],
    "source_url": "https://www.ikea.com/us/en/p/brimnes-tv-unit-black-20593091/",
-   "fetched_at": "2026-11-20T21:00:35+00:00"
+   "fetched_at": "2026-11-20T21:20:02+00:00"
   },
   {
    "id": "ikea-fjallbo-tv-unit-black-78x17-3-4x21-1-4-00579034",
@@ -1597,6 +1628,7 @@
    ],
    "rating": 4.4,
    "review_count": 897,
+   "description": "FJÄLLBO TV unit - black 78x17 3/4x21 1/4 \". This rustic metal and solid wood TV bench has an open back, so it’s easy to arrange cords and cables. You can place electronic equipment behind the metal mesh doors since they allow signals to get through from your remote control.",
    "color": "black",
    "material": "Metal, Solid wood",
    "image_url": "https://www.ikea.com/us/en/images/products/fjaellbo-tv-unit-black__1360141_pe954365_s5.jpg",
@@ -1614,7 +1646,7 @@
     "https://www.ikea.com/us/en/images/products/fjaellbo-tv-unit-black__1441233_pe986264_s5.jpg"
    ],
    "source_url": "https://www.ikea.com/us/en/p/fjaellbo-tv-unit-black-00579034/",
-   "fetched_at": "2026-11-20T21:00:36+00:00"
+   "fetched_at": "2026-11-20T21:20:03+00:00"
   },
   {
    "id": "ikea-arende-rug-00576436",
@@ -1646,6 +1678,7 @@
    ],
    "rating": 4.3,
    "review_count": 283,
+   "description": "ÄRENDE Rug, high pile - gray 5 ' 3 \"x7 ' 7 \". The soft, shaggy surface adds warmth and coziness to your living room or bedroom. The high pile dampens sound and provides a soft surface to walk on. Durable, stain resistant and easy to care for since the rug is made of synthetic fibers.",
    "color": "gray",
    "material": "Synthetic fibers",
    "image_url": "https://www.ikea.com/us/en/images/products/aerende-rug-high-pile-gray__1389856_pe965285_s5.jpg",
@@ -1658,7 +1691,7 @@
     "https://www.ikea.com/us/en/images/products/aerende-rug-high-pile-gray__1449345_pe989858_s5.jpg"
    ],
    "source_url": "https://www.ikea.com/us/en/p/aerende-rug-high-pile-gray-00576436/",
-   "fetched_at": "2026-11-20T21:00:37+00:00"
+   "fetched_at": "2026-11-20T21:20:04+00:00"
   },
   {
    "id": "ikea-grejsimojs-rug-00602001",
@@ -1688,6 +1721,7 @@
    ],
    "rating": 4.8,
    "review_count": 56,
+   "description": "GREJSIMOJS Rug, high pile - green 5 ' 0 \"x7 ' 1 \". Go exploring in the forest, swim in a lake or hike by a field – with this rug and a little imagination, anything’s possible! The rug’s pile has different heights, making the landscape pattern even more exciting and realistic.",
    "color": "green",
    "material": "Synthetic fibers",
    "image_url": "https://www.ikea.com/us/en/images/products/grejsimojs-rug-high-pile-green__1450783_pe990412_s5.jpg",
@@ -1701,7 +1735,7 @@
     "https://www.ikea.com/us/en/images/products/grejsimojs-rug-high-pile-green__1474423_pe998064_s5.jpg"
    ],
    "source_url": "https://www.ikea.com/us/en/p/grejsimojs-rug-high-pile-green-00602001/",
-   "fetched_at": "2026-11-20T21:00:37+00:00"
+   "fetched_at": "2026-11-20T21:20:05+00:00"
   },
   {
    "id": "ikea-halved-rug-20328228",
@@ -1733,6 +1767,7 @@
    ],
    "rating": 4.5,
    "review_count": 254,
+   "description": "HALVED Rug, flatwoven - handmade multicolor 5 ' 7 \"x7 ' 10 \". Handwoven by skilled craftspeople, each one is unique. Made in India in organized weaving centers. The durable, soil-resistant wool surface makes this rug perfect in your living room or under your dining table. The rug is hand-woven.",
    "color": "blue, red, multicolor",
    "material": "Wool",
    "image_url": "https://www.ikea.com/us/en/images/products/halved-rug-flatwoven-handmade-multicolor__0603024_pe680632_s5.jpg",
@@ -1747,7 +1782,7 @@
     "https://www.ikea.com/us/en/images/products/halved-rug-flatwoven-handmade-multicolor__1341646_pe948865_s5.jpg"
    ],
    "source_url": "https://www.ikea.com/us/en/p/halved-rug-flatwoven-handmade-multicolor-20328228/",
-   "fetched_at": "2026-11-20T21:00:38+00:00"
+   "fetched_at": "2026-11-20T21:20:05+00:00"
   },
   {
    "id": "ikea-akterspring-floor-lamp-opal-glass-brass-plated-64-00618808",
@@ -1779,6 +1814,7 @@
    ],
    "rating": 4.7,
    "review_count": 18,
+   "description": "AKTERSPRING Floor lamp - opal glass/brass plated 64 \". The glass lampshades are mouth blown by a skilled craftsperson. Creates a soft, cozy mood light in your home. Light bulbs sold separately. IKEA recommends LED bulb E12 globe opal white (2 pcs).",
    "color": "yellow, white",
    "material": "Metal, Glass",
    "image_url": "https://www.ikea.com/us/en/images/products/akterspring-floor-lamp-opal-glass-brass-plated__1531221_pe1015569_s5.jpg",
@@ -1791,7 +1827,7 @@
     "https://www.ikea.com/us/en/images/products/akterspring-floor-lamp-opal-glass-brass-plated__1543268_pe1018828_s5.jpg"
    ],
    "source_url": "https://www.ikea.com/us/en/p/akterspring-floor-lamp-opal-glass-brass-plated-00618808/",
-   "fetched_at": "2026-11-20T21:00:38+00:00"
+   "fetched_at": "2026-11-20T21:20:06+00:00"
   },
   {
    "id": "ikea-arstid-floor-lamp-brass-white-60321324",
@@ -1824,6 +1860,7 @@
    ],
    "rating": 4.7,
    "review_count": 1532,
+   "description": "ÅRSTID Floor lamp - brass/white. Fabric shade gives a diffused and decorative light. Light bulb sold separately. IKEA recommends LED bulb E26 globe opal white. Use an opal light bulb if you have an ordinary lamp shade or lamp and want an even, diffused distribution of light. Includes pull switch.",
    "color": "yellow, white",
    "material": "Metal, Textile",
    "image_url": "https://www.ikea.com/us/en/images/products/arstid-floor-lamp-brass-white__0390610_pe566328_s5.jpg",
@@ -1835,7 +1872,7 @@
     "https://www.ikea.com/us/en/images/products/arstid-floor-lamp-brass-white__0879656_pe614370_s5.jpg"
    ],
    "source_url": "https://www.ikea.com/us/en/p/arstid-floor-lamp-brass-white-60321324/",
-   "fetched_at": "2026-11-20T21:00:39+00:00"
+   "fetched_at": "2026-11-20T21:20:07+00:00"
   },
   {
    "id": "ikea-barlast-floor-lamp-black-white-59-70437814",
@@ -1868,6 +1905,7 @@
    ],
    "rating": 3.7,
    "review_count": 1212,
+   "description": "BARLAST Floor lamp - black/white 59 \". Gives a diffused light which is good for spreading a lot of light around the room. A shade for soft, glare-free lighting. Light bulb sold separately. IKEA recommends LED bulb E26 globe opal white.",
    "color": "black, white",
    "material": "Metal, Plastic",
    "image_url": "https://www.ikea.com/us/en/images/products/barlast-floor-lamp-black-white__0957676_pe805130_s5.jpg",
@@ -1878,7 +1916,7 @@
     "https://www.ikea.com/us/en/images/products/barlast-floor-lamp-black-white__0957678_pe805133_s5.jpg"
    ],
    "source_url": "https://www.ikea.com/us/en/p/barlast-floor-lamp-black-white-70437814/",
-   "fetched_at": "2026-11-20T21:00:40+00:00"
+   "fetched_at": "2026-11-20T21:20:08+00:00"
   },
   {
    "id": "ikea-kivik-sofa-tibbleby-beige-gray-39440593",
@@ -1920,6 +1958,7 @@
    ],
    "rating": 4.1,
    "review_count": 570,
+   "description": "KIVIK Sofa - Tibbleby beige/gray. Enjoy the super comfy KIVIK sofa with deep seat cushions made of pocket springs, high resilience foam and polyester fibers – adding both firm support and relaxing softness. 10-year limited warranty. Read about the terms in the limited warranty brochure.",
    "color": "beige, gray",
    "material": "Fabric",
    "image_url": "https://www.ikea.com/us/en/images/products/kivik-sofa-tibbleby-beige-gray__1577303_pe1033081_s5.jpg",
@@ -1933,7 +1972,7 @@
     "https://www.ikea.com/us/en/images/products/kivik-sofa-tibbleby-beige-gray__1399650_ph191619_s5.jpg"
    ],
    "source_url": "https://www.ikea.com/us/en/p/kivik-sofa-tibbleby-beige-gray-s39440593/",
-   "fetched_at": "2026-11-20T21:00:41+00:00"
+   "fetched_at": "2026-11-20T21:20:09+00:00"
   },
   {
    "id": "ikea-uppland-sofa-blekinge-white-19384116",
@@ -1974,6 +2013,7 @@
    ],
    "rating": 3.6,
    "review_count": 183,
+   "description": "UPPLAND Sofa - Blekinge white. Enjoy the super comfy UPPLAND sofa with embracing feel and deep seat cushions made of pocket springs, high resilience foam and polyester fibers, adding both firm support and relaxing softness.",
    "color": "white",
    "material": "Fabric",
    "image_url": "https://www.ikea.com/us/en/images/products/uppland-sofa-blekinge-white__1578502_pe1034145_s5.jpg",
@@ -1990,7 +2030,7 @@
     "https://www.ikea.com/us/en/images/products/uppland-sofa-blekinge-white__0739096_pe225167_s5.jpg"
    ],
    "source_url": "https://www.ikea.com/us/en/p/uppland-sofa-blekinge-white-s19384116/",
-   "fetched_at": "2026-11-20T21:00:41+00:00"
+   "fetched_at": "2026-11-20T21:20:09+00:00"
   },
   {
    "id": "ikea-poang-armchair-birch-veneer-knisa-light-beige-59305928",
@@ -2027,6 +2067,7 @@
    ],
    "rating": 4.5,
    "review_count": 1369,
+   "description": "POÄNG Armchair - birch veneer/Knisa light beige. The layer-glued bent wood frame gives the armchair a comfortable resilience, making it perfect to relax in. The high back provides good support for your neck. 10-year limited warranty. Read about the terms in the limited warranty brochure.",
    "color": "beige",
    "material": "Fabric",
    "image_url": "https://www.ikea.com/us/en/images/products/poaeng-armchair-birch-veneer-knisa-light-beige__0571500_pe666933_s5.jpg",
@@ -2039,7 +2080,7 @@
     "https://www.ikea.com/us/en/images/products/poaeng-armchair-birch-veneer-knisa-light-beige__1314996_pe940336_s5.jpg"
    ],
    "source_url": "https://www.ikea.com/us/en/p/poaeng-armchair-birch-veneer-knisa-light-beige-s59305928/",
-   "fetched_at": "2026-11-20T21:00:42+00:00"
+   "fetched_at": "2026-11-20T21:20:11+00:00"
   },
   {
    "id": "ikea-billy-bookcase-white-31-1-2x11x79-1-2-20522046",
@@ -2069,6 +2110,7 @@
    ],
    "rating": 4.5,
    "review_count": 2133,
+   "description": "BILLY Bookcase - white 31 1/2x11x79 1/2 \". Adjustable shelves can be arranged according to your needs. A simple unit can be enough storage for a limited space or the foundation for a larger storage solution if your needs change. 1 stationary shelf and 4 adjustable shelves included.",
    "color": "white",
    "material": "Wood (including board)",
    "image_url": "https://www.ikea.com/us/en/images/products/billy-bookcase-white__1590272_pe1038911_s5.jpg",
@@ -2081,7 +2123,7 @@
     "https://www.ikea.com/us/en/images/products/billy-bookcase-white__0723342_pe733920_s5.jpg"
    ],
    "source_url": "https://www.ikea.com/us/en/p/billy-bookcase-white-20522046/",
-   "fetched_at": "2026-11-20T21:00:43+00:00"
+   "fetched_at": "2026-11-20T21:20:12+00:00"
   },
   {
    "id": "ikea-kallax-shelf-unit-white-30-1-8x57-5-8-20631663",
@@ -2111,6 +2153,7 @@
    ],
    "rating": 4.8,
    "review_count": 33,
+   "description": "KALLAX Shelf unit - white 30 1/8x57 5/8 \". The simple design with clean lines makes KALLAX flexible and easy to use at home. Choose whether to place it standing and use it as a shelving unit or lying and use it as a sideboard. This furniture can take a max load of 55 lbs. on the top.",
    "color": "white",
    "material": "Wood (including board)",
    "image_url": "https://www.ikea.com/us/en/images/products/kallax-shelf-unit-white__0644757_pe702939_s5.jpg",
@@ -2126,7 +2169,7 @@
     "https://www.ikea.com/us/en/images/products/kallax-shelf-unit-white__1215327_pe911964_s5.jpg"
    ],
    "source_url": "https://www.ikea.com/us/en/p/kallax-shelf-unit-white-20631663/",
-   "fetched_at": "2026-11-20T21:00:44+00:00"
+   "fetched_at": "2026-11-20T21:20:12+00:00"
   },
   {
    "id": "ikea-malm-bed-frame-dark-brown-veneer-luroy-queen-49574365",
@@ -2176,6 +2219,7 @@
    ],
    "rating": 3.9,
    "review_count": 1020,
+   "description": "MALM Bed frame - dark-brown veneer/Luröy Queen. Wood veneer gives you the same look, feel and beauty as solid wood with unique variations in grain, color and texture. This versatile bed frame will look great with your choice of textiles and bedroom furniture. Suitable for business use.",
    "color": "brown",
    "material": "Wood (including board)",
    "image_url": "https://www.ikea.com/us/en/images/products/malm-bed-frame-dark-brown-veneer-luroey__1364773_pe956029_s5.jpg",
@@ -2188,7 +2232,7 @@
     "https://www.ikea.com/us/en/images/products/malm-bed-frame-dark-brown-veneer-luroey__1499339_pe1006573_s5.jpg"
    ],
    "source_url": "https://www.ikea.com/us/en/p/malm-bed-frame-dark-brown-veneer-luroey-s49574365/",
-   "fetched_at": "2026-11-20T21:00:45+00:00"
+   "fetched_at": "2026-11-20T21:20:13+00:00"
   }
  ]
 }
