@@ -52,3 +52,15 @@ FitResult (goes straight into the audit record):
  "available": {"value_in": 88, "error_in": 0, "source": "user"}, "margin_in": -1.75}
 ```
 `unsure` = the answer depends on the measurement error → the UI asks the person to measure that one thing.
+
+### Price vs. quality options: `fit.options` (owner: alistair) — DRAFT, confirm
+`room(wall, depth, door_width, door_height)` (each a `measurement`), then `options(products, category, room)` →
+list sorted by price:
+```json
+{"id": "...", "name": "...", "price_usd": 449.0, "rating": 4.6, "review_count": 20,
+ "image_url": "...", "source_url": "...", "fit": "fits|unsure|no_fit", "fit_results": [FitResult],
+ "best_value": true, "why": "best value: nothing that fits is cheaper and better rated"}
+```
+Quality = IKEA's customer rating (`rating`, 1–5, with `review_count`). `best_value` = fits, 10+ reviews, and no other
+fitting product with 10+ reviews is both cheaper and better rated (the price/quality frontier). `why` is one line
+for the audit trail. Chart: price on x, rating on y, dot size = reviews, shape/colour = fit, line through best values.

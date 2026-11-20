@@ -110,6 +110,7 @@ def product(url: str, category: str) -> dict:
             box = {"w": ms.get("width"), "d": ms.get("length"), "h": ms.get("height")}
             packages += [box] * qty
 
+    ar = ld.get("aggregateRating") or {}
     imgs = ld.get("image") or []
     imgs = imgs if isinstance(imgs, list) else [imgs]
     images = [i.get("contentUrl") if isinstance(i, dict) else i for i in imgs]
@@ -130,6 +131,10 @@ def product(url: str, category: str) -> dict:
         "dims_in": {"w": w, "d": d, "h": hh},
         "dims_raw": dims,
         "packages_in": packages or None,
+        "rating": float(ar["ratingValue"]) if ar.get("ratingValue") else None,  # IKEA customer rating, 1-5
+        "review_count": int(ar["reviewCount"]) if ar.get("reviewCount") else 0,
+        "color": htmllib.unescape(ld.get("color") or "") or None,
+        "material": htmllib.unescape(ld.get("material") or "") or None,
         "image_url": images[0] if images else None,  # IKEA's main product shot
         "image_urls": images,
         "source_url": url,
