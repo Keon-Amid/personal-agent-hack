@@ -262,5 +262,16 @@
    1.62
   ],
   "bytes": 487484
+ },
+ "ikea-kivik-sofa-grann-bomstad-black-80519531": {
+  "file": "ikea-kivik-sofa-grann-bomstad-black-80519531.glb",
+  "source": "AI-generated from the IKEA photo (Hyper3D Rodin Gen-2.5-Low)",
+  "rot_y_deg": 0,
+  "stretch_w_d_h": [
+   1.1,
+   0.98,
+   0.93
+  ],
+  "bytes": 1020108
  }
 }
