@@ -41,7 +41,7 @@ def fake_style_match(products, category, emb, room=None, **kw):
 
 def fake_senso(verdict: str = "verified"):
     m = types.ModuleType("agent.senso")
-    m.build_claim = mock.Mock(side_effect=lambda item, room: f'The {item["name"]} costs ${item["price_usd"]:g}.')
+    m.build_claim = mock.Mock(side_effect=lambda item: f'The {item["name"]} costs ${item["price_usd"]:g}.')
     m.check = mock.Mock(return_value={"check_id": "mock-eval", "accuracy_pct": 100.0, "claims": [
         {"claim": "price", "verdict": verdict, "quote": "mock quote"},
         {"claim": "The room wall is 88 inches wide.", "verdict": "unsupported", "quote": None}]})
@@ -52,11 +52,13 @@ def fake_senso(verdict: str = "verified"):
 
 def fake_room(wall=88, err=4):
     m = types.ModuleType("agent.room")
-    m.estimate = mock.Mock(return_value={
+    m.estimate = mock.Mock(return_value=({
         "wall": {"value_in": float(wall), "error_in": float(err), "source": "estimated:door"},
         "depth": {"value_in": 150.0, "error_in": 6.0, "source": "estimated:door"},
         "door_width": {"value_in": 30.0, "error_in": 1.0, "source": "estimated:door"},
-        "door_height": {"value_in": 80.0, "error_in": 2.0, "source": "estimated:door"}})
+        "door_height": {"value_in": 80.0, "error_in": 2.0, "source": "estimated:door"}},
+        [{"ts": "2026-11-20T20:00:00Z", "step": "estimate_room", "source": {"kind": "superlinked", "model": "mock"},
+          "decision": "estimated wall, door_width, door_height", "status": "estimated", "why": "mock"}]))
     return m
 
 

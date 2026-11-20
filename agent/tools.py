@@ -9,7 +9,7 @@ Every tool takes plain JSON values and returns a JSON-serializable dict that inc
 On a rule violation a tool returns {"ok": False, "error": ..., plan_id, plan_url} (and audits the refusal)
 rather than raising, so the model can read why and recover. Unknown plan_id / slot raises ValueError.
 
-A3 (agent.senso) and A4 (agent.room) are imported lazily inside the tools that use them.
+Claims are checked by agent.senso (A3); room photos are measured by agent.room (A4).
 """
 from __future__ import annotations
 
@@ -53,11 +53,11 @@ def _sie():
 
 
 def _senso():
-    return importlib.import_module("agent.senso")  # A3, lands on its own branch
+    return importlib.import_module("agent.senso")  # looked up at call time so tests can swap the module
 
 
 def _room_estimator():
-    return importlib.import_module("agent.room")  # A4, lands on its own branch
+    return importlib.import_module("agent.room")
 
 
 def _load(plan_id: str) -> dict:
@@ -276,25 +276,18 @@ def analyze_room(plan_id: str, photo_b64: str | None = None, style_text: str | N
     room = dict(plan.get("room") or {})
     records: list[dict] = []
     if photo is not None and len(exact) < len(ROOM_KEYS):
+        # agent.room.estimate(photo, exact) -> (room, [AuditRecord]); exact values (source user) override the
+        # photo estimate key by key, and it writes its own estimate_room records.
         try:
-            est = _room_estimator().estimate(photo)
+            est, est_records = _room_estimator().estimate(photo, exact)
         except Exception as e:
-            est, est_err = None, f"room estimate failed: {type(e).__name__}: {e}"
-        else:
-            est_err = None
-        if est:
-            got = {k: est[k] for k in ROOM_KEYS if isinstance(est.get(k), dict) and k not in exact}
-            room.update(got)
-            if est.get("photo_url"):
-                room["photo_url"] = est["photo_url"]
-            records.append(audit(
-                "estimate_room", input={"photo": True}, source={"kind": "photo", **(est.get("source") or {})},
-                decision="measurements estimated from photo",
-                why="; ".join(f'{k} {m["value_in"]:g} ± {m["error_in"]:g} in ({m["source"]})' for k, m in got.items())
-                    or "no measurements could be estimated"))
-        elif est_err:
             records.append(audit("estimate_room", input={"photo": True}, source={"kind": "photo"},
-                                 decision="estimate failed", status="error", why=est_err))
+                                 decision="estimate failed", status="error",
+                                 why=f"room estimate failed: {type(e).__name__}: {e}"))
+        else:
+            room.update({k: est[k] for k in ROOM_KEYS if isinstance(est.get(k), dict)})
+            records.extend(est_records)
+            exact = {}  # already applied by estimate()
     if exact:
         try:
             for k, v in exact.items():
@@ -422,8 +415,8 @@ def senso_check(plan_id: str, slot: str) -> dict:
         return _refuse(plan, "senso_check", f"nothing picked for {slot}: call pick first", slot)
     try:
         sn = _senso()
-        text = sn.build_claim(item, plan["room"])
-        res = sn.check(text)
+        text = sn.build_claim(item)
+        res = sn.check(text, f'Does the {item["name"]} match its catalog specs and the Room Furnisher rules?')
     except Exception as e:  # never fake a check: report the failure
         return _refuse(plan, "senso_check", f"Senso check failed: {type(e).__name__}: {e}", slot,
                        product_id=item["product_id"])
