@@ -509,5 +509,222 @@
   "kb_node_id": "1d627850-355a-4c29-b900-f4f509f1fb06",
   "content_id": "65512d79-5ed0-4a47-a53b-09aaff1218ec",
   "status": "complete"
+ },
+ "ikea-vihals-bed-frame-white-twin-10602449": {
+  "title": "IKEA 106.024.49 VIHALS Bed frame - white Twin",
+  "sha256": "8edc3084fc71cc2ea53c5e71ea5d20499f548b04073090bb06720ee7bef33861",
+  "kb_node_id": "700c9590-30ab-4c59-8d34-a3b351c7798d",
+  "content_id": "1f7f14a3-0aaf-4f92-8e43-7cf58036d8e7",
+  "status": "complete"
+ },
+ "ikea-stjarno-bed-frame-anthracite-luroy-twin-09563340": {
+  "title": "IKEA 095.633.40 STJÄRNÖ Bed frame - anthracite/Luröy Twin",
+  "sha256": "bca814f5ede002aec7f169f746e14b17e04d02700270195e24d79d56cd64e838",
+  "kb_node_id": "1270e7eb-b73f-4ce6-bb49-85e0e98444e5",
+  "content_id": "35b395ca-f57f-4085-96c0-4c3592961c24",
+  "status": "complete"
+ },
+ "ikea-kleppstad-bed-frame-white-vissle-beige-full-double-40492680": {
+  "title": "IKEA 404.926.80 KLEPPSTAD Bed frame - white/Vissle beige Full/Double",
+  "sha256": "7a59d3d8d8bdcc4c3873254fa199bde91d0f2249cdb7b188c307ec59a9aadf31",
+  "kb_node_id": "a9c2b7ac-aa9c-4466-a481-68d3c5430000",
+  "content_id": "6979d605-84aa-4eb3-b549-111688c4dced",
+  "status": "complete"
+ },
+ "ikea-tonstad-bed-frame-off-white-full-60603620": {
+  "title": "IKEA 606.036.20 TONSTAD Bed frame - off-white Full",
+  "sha256": "2561ec8fea0140274ac5be3b58df0af4b7487e1e3361d9e992f7e8016a6bf268",
+  "kb_node_id": "a98340e6-4121-406f-a2f9-53b53340de6a",
+  "content_id": "56c82a50-5082-4520-91cf-bbbde6822f29",
+  "status": "complete"
+ },
+ "ikea-mellgrund-bed-frame-off-white-queen-50603767": {
+  "title": "IKEA 506.037.67 MELLGRUND Bed frame - off-white Queen",
+  "sha256": "4b2162fc3a110f96c154616e7ddb47b28d5ee2701898aaee96f35961c4e5df9b",
+  "kb_node_id": "bd1ecf00-78e4-4623-b59d-e928851ca289",
+  "content_id": "72c6204b-4dd6-4409-9ba9-0912f9c2a6b3",
+  "status": "complete"
+ },
+ "ikea-gullaberg-bed-frame-white-luroy-queen-69614515": {
+  "title": "IKEA 696.145.15 GULLABERG Bed frame - white/Luröy Queen",
+  "sha256": "16bd353b6f66a7aaa71179f6d20e3700a9cdc5f7d4990fe69ccca8f21d8f796e",
+  "kb_node_id": "331c6db0-803e-4f8e-a797-6f4b2ff0929b",
+  "content_id": "2c723b56-898b-46ef-8bed-7ba0c38102b5",
+  "status": "complete"
+ },
+ "ikea-malm-bed-frame-white-luroy-king-49009481": {
+  "title": "IKEA 490.094.81 MALM Bed frame - white/Luröy King",
+  "sha256": "8259e3656dc78cd2943f23d5b5389a32a3743fc6336a61aa20a59b272ad1d63d",
+  "kb_node_id": "184b2a3f-d7ac-4b29-9784-66348383da10",
+  "content_id": "48bfe968-65ea-40da-a89d-7616ead79de1",
+  "status": "complete"
+ },
+ "ikea-hemnes-8-drawer-dresser-black-brown-63x37-3-4-30576190": {
+  "title": "IKEA 305.761.90 HEMNES 8-drawer dresser - black-brown 63x37 3/4 \"",
+  "sha256": "87f41697025a1e4490b1590fe2d2d570992f0410ce08e649bda6ddad5f44ec37",
+  "kb_node_id": "fe7dee4b-a413-40ae-8428-f72d9ee269ec",
+  "content_id": "66849943-bd93-4a05-b1c6-62c63797a3ba",
+  "status": "complete"
+ },
+ "ikea-rast-3-drawer-dresser-pine-24-3-8x26-3-4-70582165": {
+  "title": "IKEA 705.821.65 RAST 3-drawer dresser - pine 24 3/8x26 3/4 \"",
+  "sha256": "ac996087ab4ec39e661879f9db0d9dab9645e1415eb7dbe1dba19756cb5f486a",
+  "kb_node_id": "c84fd88a-1701-4833-a2de-13b1b539bc49",
+  "content_id": "45d29995-89ad-4859-b618-ccd8d87ad052",
+  "status": "complete"
+ },
+ "ikea-radmanso-6-drawer-dresser-brown-walnut-effect-62-5-8x18-7-8x31-7-8-40593839": {
+  "title": "IKEA 405.938.39 RÅDMANSÖ 6-drawer dresser - brown walnut effect 62 5/8x18 7/8x31 7/8 \"",
+  "sha256": "0cb70d25c55b777ca491a3a1a9a2fbcb17cbd070f0cfd36e510082d4b9884220",
+  "kb_node_id": "0c1d71a3-5b41-4053-a397-d153b11270cd",
+  "content_id": "0cfc3cad-46cd-4576-9940-4ec981fbfef2",
+  "status": "complete"
+ },
+ "ikea-storklinta-5-drawer-dresser-white-anchor-unlock-function-15-3-4x18-7-8x47-1-4-20559285": {
+  "title": "IKEA 205.592.85 STORKLINTA 5-drawer dresser - white/anchor/unlock function 15 3/4x18 7/8x47 1/4 \"",
+  "sha256": "69b2b224392bc36f1932dc8f6f00c95b103b96645ec0c7975068a9985bbf1c99",
+  "kb_node_id": "7bc3b215-44ad-4b5d-b9df-64cbb1cf0691",
+  "content_id": "07cd9093-8a31-4c67-bec6-30692bd66e1d",
+  "status": "complete"
+ },
+ "ikea-lillberget-6-drawer-dresser-white-55-1-8x16-7-8x26-3-4-30639852": {
+  "title": "IKEA 306.398.52 LILLBERGET 6-drawer dresser - white 55 1/8x16 7/8x26 3/4 \"",
+  "sha256": "fa0418614f2b4fb9a106f18f9c6925e78e7ba5df62a7f730c1ece26d508aa10d",
+  "kb_node_id": "8df9be63-b9ff-4f4c-8061-bab02ee81a6a",
+  "content_id": "c34de89c-477c-493a-b904-970bd0204409",
+  "status": "complete"
+ },
+ "ikea-hemnes-nightstand-white-stain-18-1-8x13-3-4-20200456": {
+  "title": "IKEA 202.004.56 HEMNES Nightstand - white stain 18 1/8x13 3/4 \"",
+  "sha256": "2325ffbb4d3ca86cc25f45d505cc66fc6a8fb82de0663af3cec41608482dc555",
+  "kb_node_id": "886ae354-d65d-45e1-a079-1f5a7828b32f",
+  "content_id": "912416b7-2433-4972-a2a5-30f55e505829",
+  "status": "complete"
+ },
+ "ikea-tonstad-nightstand-oak-veneer-15-3-4x15-3-4x23-1-4-80489322": {
+  "title": "IKEA 804.893.22 TONSTAD Nightstand - oak veneer 15 3/4x15 3/4x23 1/4 \"",
+  "sha256": "df86469d075c64f02f4984a48c0617a7c04d8029c28403ed59131307292ca884",
+  "kb_node_id": "298f9be0-6a18-4a07-8df4-2554e4d68fd9",
+  "content_id": "266a1018-3e6d-4574-8f17-b3b056c7b98a",
+  "status": "complete"
+ },
+ "ikea-radmanso-nightstand-brown-walnut-effect-21-1-4x15-1-8x22-7-8-80593597": {
+  "title": "IKEA 805.935.97 RÅDMANSÖ Nightstand - brown walnut effect 21 1/4x15 1/8x22 7/8 \"",
+  "sha256": "f6d8bebe2c110fba19e8572e0d7729257282a59b0bf4e76e6a176e80ba6292fd",
+  "kb_node_id": "db5ce11c-a86b-47d7-93af-1603dfd4f297",
+  "content_id": "e910e3c4-b483-49d8-b7d7-f36c5d1eb7ea",
+  "status": "complete"
+ },
+ "ikea-nordkisa-nightstand-bamboo-23-5-8x15-3-4-00430745": {
+  "title": "IKEA 004.307.45 NORDKISA Nightstand - bamboo 23 5/8x15 3/4 \"",
+  "sha256": "cc85f92ff6e1dba0b4cab20e16413003f4befd6ccdee808102556bce1d269a53",
+  "kb_node_id": "741755a8-a039-4862-a20c-5923ccf16f72",
+  "content_id": "bb3762cc-0ced-4daa-86a2-4289ed3c347d",
+  "status": "complete"
+ },
+ "ikea-knarrevik-nightstand-black-16-1-2x13-1-4x20-1-2-20569977": {
+  "title": "IKEA 205.699.77 KNARREVIK Nightstand - black 16 1/2x13 1/4x20 1/2 \"",
+  "sha256": "517c21234525dc6835acc570afa8e953ad1e15b1fce8181d3afb95407e10dee7",
+  "kb_node_id": "2d83df1e-740c-46c4-84ed-247646c183ac",
+  "content_id": "285cee19-46e5-4c9c-99c2-1363a4ab387e",
+  "status": "complete"
+ },
+ "ikea-varptross-table-lamp-bamboo-10-50601240": {
+  "title": "IKEA 506.012.40 VARPTROSS Table lamp - bamboo 10 \"",
+  "sha256": "7e90cbb7e41431f2d4dbd1f922b47ce757eeb4e091ed1d60e42fb16fef4d1645",
+  "kb_node_id": "94786e46-e4bc-4e04-87d6-631b7ad0663a",
+  "content_id": "44086b8f-b77b-40cb-ab4f-1fb69cc61926",
+  "status": "complete"
+ },
+ "ikea-tarnaby-table-lamp-dimmable-anthracite-10-00323887": {
+  "title": "IKEA 003.238.87 TÄRNABY Table lamp - dimmable anthracite 10 \"",
+  "sha256": "62b525cdd1a9f986b9975f1f3c58cedb1b15f81513a5eabe115828c4785da818",
+  "kb_node_id": "19944d95-6c40-425b-b1d9-9d15d637eff8",
+  "content_id": "fc3bea9e-f93d-4102-858d-0d80be774eea",
+  "status": "complete"
+ },
+ "ikea-fado-table-lamp-white-10-70096377": {
+  "title": "IKEA 700.963.77 FADO Table lamp - white 10 \"",
+  "sha256": "072323e6afa184f73888939bc044a40cbe0030505cbac38a6c5fd41a12d04c0e",
+  "kb_node_id": "21e6f6fb-c155-4121-9c7b-5ef499b82a28",
+  "content_id": "568e283a-877a-4f85-abbe-aaf0a71000a5",
+  "status": "complete"
+ },
+ "ikea-storsegel-table-lamp-ash-white-60573576": {
+  "title": "IKEA 605.735.76 STORSEGEL Table lamp - ash/white",
+  "sha256": "46258f3e156c2203eb2bbf91378b646de2f4c267d87ed5f0fce66b5ef1a32c8c",
+  "kb_node_id": "c0a84335-d46a-40ac-844d-984946e575c5",
+  "content_id": "00381e00-2c2f-4989-83c7-e1583236fd88",
+  "status": "complete"
+ },
+ "ikea-arstid-table-lamp-brass-white-80321380": {
+  "title": "IKEA 803.213.80 ÅRSTID Table lamp - brass/white",
+  "sha256": "660e4345544bb7218040f0e8a06a865ece5642029839992a6ef5feeaed5b5648",
+  "kb_node_id": "95927971-ba5a-4ef9-854d-1492326b7287",
+  "content_id": "9bca2b64-8dd5-40fc-8b34-0badafe20b5a",
+  "status": "complete"
+ },
+ "ikea-radmanso-wardrobe-brown-walnut-effect-46-5-8x25-3-8x74-5-8-00593841": {
+  "title": "IKEA 005.938.41 RÅDMANSÖ Wardrobe - brown walnut effect 46 5/8x25 3/8x74 5/8 \"",
+  "sha256": "2eb662f1107bc3c6edc2059d7e9e2c6a201487e314355d07bdb4cc034f790174",
+  "kb_node_id": "c2cb9c2d-ff79-46dc-8e1b-2d0a5d392af8",
+  "content_id": "941cb40d-a9d2-44fc-bada-bf149bb3082a",
+  "status": "complete"
+ },
+ "ikea-nordkisa-open-wardrobe-with-sliding-door-bamboo-47-1-4x73-1-4-00439468": {
+  "title": "IKEA 004.394.68 NORDKISA Open wardrobe with sliding door - bamboo 47 1/4x73 1/4 \"",
+  "sha256": "622e39a9e9426e28f7a3ed281848dacd5d78b6b567a1c30ba54b36e593e99499",
+  "kb_node_id": "088d869e-38ed-4590-9745-308456070462",
+  "content_id": "cd9ca4b8-be12-425f-9b91-7e24d6174809",
+  "status": "complete"
+ },
+ "ikea-idanas-wardrobe-white-47-5-8x83-1-8-20458837": {
+  "title": "IKEA 204.588.37 IDANÄS Wardrobe - white 47 5/8x83 1/8 \"",
+  "sha256": "0781799df93a0e228dbe8d22f2d7ef193578ba811ce48295f79bf24dbec36e7a",
+  "kb_node_id": "d48f8824-023a-4a8d-886f-b05f188b2214",
+  "content_id": "bb8177e5-bd30-42a2-bd52-131fc5732615",
+  "status": "complete"
+ },
+ "ikea-rakkestad-wardrobe-with-2-doors-black-brown-31-1-8x69-1-4-40586805": {
+  "title": "IKEA 405.868.05 RAKKESTAD Wardrobe with 2 doors - black-brown 31 1/8x69 1/4 \"",
+  "sha256": "e8f692e5350979a0a1eef9ea90dfce7016aaae6191afaa59c580ece5c6913732",
+  "kb_node_id": "e145b9a5-3962-42a2-a3f4-1d0de7d1cec7",
+  "content_id": "44a6aa1b-b21c-43ab-a265-3e161781e0a4",
+  "status": "complete"
+ },
+ "ikea-ankarudden-wardrobe-with-sliding-doors-oak-effect-38-3-4x23-5-8x74-3-4-00627153": {
+  "title": "IKEA 006.271.53 ANKARUDDEN Wardrobe with sliding doors - oak effect 38 3/4x23 5/8x74 3/4 \"",
+  "sha256": "96099402d2c0ad0f5efdad99bb2aa8979ed12d589f9a2f4b4a776f7040bb97b5",
+  "kb_node_id": "31d3d095-36c1-4c7c-b7f7-83357672f148",
+  "content_id": "d0a33da9-43ad-4241-932b-c68eb7c1d814",
+  "status": "complete"
+ },
+ "ikea-brimnes-wardrobe-with-2-doors-white-30-3-4x19-5-8x74-3-4-30574799": {
+  "title": "IKEA 305.747.99 BRIMNES Wardrobe with 2 doors - white 30 3/4x19 5/8x74 3/4 \"",
+  "sha256": "3bc1e8265ec6c1f5ec82558376912bee767b6243c30bfbf5aeca3c3e108943c3",
+  "kb_node_id": "e36d4af3-c6a4-4752-b726-a118e304d39b",
+  "content_id": "4f9f7e78-6e2b-47d0-a93c-3342010a084c",
+  "status": "complete"
+ },
+ "ikea-gursken-wardrobe-with-2-doors-light-beige-23-3-8x21-5-8x73-1-8-60586809": {
+  "title": "IKEA 605.868.09 GURSKEN Wardrobe with 2 doors - light beige 23 3/8x21 5/8x73 1/8 \"",
+  "sha256": "f6e0daa5929cd6c958ea942f01c9815f0ed3fff0248d0579ca655bc1eb77fa4f",
+  "kb_node_id": "662c8109-265c-4f4a-a349-0fe2039dde16",
+  "content_id": "79c52784-211b-43cb-be6a-41222cc3a360",
+  "status": "complete"
+ },
+ "_rules": {
+  "title": "Room rules (team defaults for this app)",
+  "sha256": "77093eedf5a20079a54648afd7437c0d998bfdf63524a9668a20b97dfed39e2e",
+  "kb_node_id": "875859da-ef72-43a2-8490-379e3855ad32",
+  "content_id": "a4f21d0e-bae8-414f-831c-30e37868f026",
+  "status": "complete"
+ },
+ "_bedroom_rules": {
+  "title": "Room rules: bedroom (team defaults)",
+  "sha256": "bda2cefdb84473f6ba9f68c0bcb0b2c0b87b19d1ec4138ededc0669287168688",
+  "kb_node_id": "3f0e0feb-b06a-486b-bad8-b243a1507699",
+  "content_id": "37b68b50-2e50-4afb-8017-52a75722c984",
+  "status": "complete"
  }
 }

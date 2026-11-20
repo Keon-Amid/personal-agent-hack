@@ -20,10 +20,11 @@ TBD
 ## Interfaces
 
 ### Products: `data/products.json` (owner: alistair) — DRAFT, confirm
-`{"about", "products": [Product]}`, 73 real IKEA US products. Built by `python3 data/fetch_ikea.py $(cat data/sources.txt)`;
+`{"about", "products": [Product]}`, 102 real IKEA US products. Built by `python3 data/fetch_ikea.py $(cat data/sources.txt)`;
 every number is read from `source_url`, nothing typed by hand.
 Categories: sofa, armchair, coffee_table, side_table, desk, dining_table, dining_chair, dresser, nightstand,
-tv_bench, rug, floor_lamp, bookcase, bed.
+tv_bench, rug, floor_lamp, bookcase, bed, wardrobe, table_lamp (102 products; the bedroom set of beds Twin-King,
+nightstands, dressers, wardrobes and table lamps was added by brendan with this pipeline, unused by the living-room slots).
 ```json
 {"id": "ikea-kivik-sofa-tibbleby-beige-gray-39440593", "retailer": "IKEA", "name": "KIVIK Sofa - Tibbleby beige/gray",
  "article_number": "394.405.93", "category": "sofa", "price_usd": 799.0, "price_note": null,
@@ -188,8 +189,8 @@ One backend, two front doors. The tools enforce the rules; the model only orders
   option_id}) -> {style, style_scores, style_text, budget_usd, trace}`; pass `style_text` and `budget_usd` straight to
   `run_agent`. `style` is always one of `sie.STYLES`; a quiz `style_text` replaces the style detected from the photo.
   `agent.quiz.catalog_support(style) -> {slots: {slot: [{id, name, score}]}, covered, summary}` reads alistair's
-  `product_styles` (≥0.05) to say how well our 48 products cover that style. Today: traditional 5/5 slots, warm minimal
-  4/5, scandinavian and dark modern 3/5, mid-century / industrial / coastal 1/5, bohemian 0/5. Picks still happen
+  `product_styles` (≥0.05) to say how well our products cover that style. Today (102 products): warm minimal and
+  traditional 5/5 slots, scandinavian 4/5, mid-century and dark modern 3/5, coastal 2/5, industrial 1/5, bohemian 0/5. Picks still happen
   (ranking is relative); the UI should show the summary instead of implying a perfect match.
   Images are hotlinked, owned by their sources; swap for IKEA photos before any public use beyond the demo.
 
