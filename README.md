@@ -38,7 +38,7 @@ It loads `.env` at startup and allows the Vite dev server (`localhost:5173`) by 
 | `GET /api/quiz`, `POST /api/quiz/score` | The 5-question style quiz and its scoring |
 | `GET /api/health` | Whether Claude Code and the sponsor keys are available (never the keys) |
 
-Checkout is not automated: approving the cart produces a shopping list of IKEA links and places no order (**MOCKED checkout**).
+Checkout: after Approve, `.venv/bin/python scripts/ikea_checkout.py <plan_id>` fills a real IKEA bag in a visible Chrome window, checks it against the cart (`POST /api/plan/{id}/bag`) and leaves the person on IKEA's bag page to pay. Nothing is bought by us. See `docs/ikea-cart-browser.md`.
 Full request and response shapes are in `CONTRACT.md` under the Agent section.
 
 **Guardrail eval:** `.venv/bin/python scripts/eval_guardrails.py` runs the agent's own tools (no LLM) against live Superlinked and Senso to show they block bad picks (too wide, too big for the door, over budget, wrong fact, unverified) and allow a good one; results go to `contracts/eval.json` (headline: scenarios passed out of 6; each scenario says what its counts count). Its offline wiring test is `agent/test_eval_guardrails.py`.

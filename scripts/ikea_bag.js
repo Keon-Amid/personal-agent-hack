@@ -23,7 +23,9 @@ async function addToBag(qty) {
   for (let i = 1; i < qty; i++) { inc.click(); await sleep(250); }
   const qIn = document.querySelector('input[aria-label="Quantity input value"]');
   const qtySet = qIn ? Number(qIn.value) : null;
-  if (qtySet !== qty) return { ok: false, error: `quantity box shows ${qtySet}, wanted ${qty}`, url: location.pathname };
+  // Sofa/armchair pages can have no quantity box; for 1 piece the box doesn't matter (the bag check verifies qty).
+  if (qtySet !== qty && !(qty === 1 && qtySet === null))
+    return { ok: false, error: `quantity box shows ${qtySet}, wanted ${qty}`, url: location.pathname };
   add.click();
   await sleep(2500);
   const badge = (document.querySelector('a[href*="shoppingcart"]') || {}).innerText || "";

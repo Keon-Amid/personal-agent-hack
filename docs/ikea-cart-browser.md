@@ -33,3 +33,14 @@ not the Family price. Use the bag's total as the price the person sees.
 - Article numbers are `206.316.63` in the bag and `20631663` in the catalog: compare digits only.
 - `get_page_text` on the bag page returns nothing; read it with the script.
 - Not yet tested: an out-of-stock item (`addToBag` returns `ok:false` if no "Add to bag" button), and speed when automated end to end.
+
+## One command for anyone on the team (no Claude session needed)
+```sh
+.venv/bin/pip install -r server/requirements.txt     # includes playwright; uses the Google Chrome already installed
+.venv/bin/python scripts/ikea_checkout.py <plan_id>  # after Approve in the app
+```
+Opens a visible Chrome window (own profile in `.cache/ikea-browser`, so the bag survives), adds only what is missing,
+reads the bag back, posts it to `POST /api/plan/{id}/bag` (the app's cart then shows the verdict), and leaves the window
+on IKEA's bag page for the person to check out. Nothing is bought; no login; no form is submitted.
+Live 2026-11-20 on plan 739e77ac7237 (scanned room, $900 budget): 5 items, IKEA bag total $887.97 = cart, verdict PASS.
+The bag is per browser profile: it shows in that Chrome window, not in your everyday Chrome.

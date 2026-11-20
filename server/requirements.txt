@@ -1,3 +1,4 @@
 fastapi
 uvicorn
 httpx  # tests only (FastAPI TestClient)
+playwright  # scripts/ikea_checkout.py only: drives the local Google Chrome to fill the IKEA bag
