@@ -129,6 +129,19 @@ def detect_style(room_vec: list[float], styles: list[str] = STYLES) -> list[dict
     return sorted(out, key=lambda o: -o["score"])
 
 
+def product_styles(emb: dict, styles: list[str] = STYLES, top: int = 3) -> dict:
+    """Zero-shot style labels per product photo (one API call for the label texts). Not hand-written:
+    SigLIP scores each stored product photo against "a photo of {style} furniture". Scores are cosine
+    similarity; under ~0.05 the label is weak (rugs and lamps mostly land there)."""
+    vecs = encode([{"text": f"a photo of {s} furniture"} for s in styles])
+    out = {}
+    for pid, pv in emb["vectors"].items():
+        sc = sorted(({"style": s, "score": round(cosine(pv, v), 4)} for s, v in zip(styles, vecs)),
+                    key=lambda o: -o["score"])
+        out[pid] = sc[:top]
+    return out
+
+
 def analyze_room(room_photo: bytes | None = None, style_text: str | None = None) -> dict:
     """Do the room's Superlinked calls once, then pass the result to style_match for every slot.
 
@@ -169,6 +182,7 @@ def style_match(products: list[dict], category: str, emb: dict,
         (p_rank, p_score), (t_rank, t_score) = pr[o["id"]], tr.get(o["id"], (len(tr) + 1, 0.0))
         fused.append({
             "id": o["id"], "name": o["name"],
+            "product_styles": (emb.get("product_styles") or {}).get(o["id"], []),
             "style_fused": round(1 / (RRF_K + p_rank) + 1 / (RRF_K + t_rank), 6),
             "photo_rank": p_rank, "photo_score": p_score, "text_rank": t_rank, "text_score": t_score,
         })
@@ -196,8 +210,14 @@ if __name__ == "__main__":
     a = sys.argv[1:]
     if a[:1] == ["build"]:
         emb = build(products)
+        emb["product_styles"] = product_styles(emb)
         EMB_PATH.write_text(json.dumps(emb))
         print(f"embedded {len(emb['vectors'])} products with {emb['model']} -> {EMB_PATH.name}")
+    elif a[:1] == ["labels"]:  # add/refresh style labels without re-embedding the photos
+        emb = json.loads(EMB_PATH.read_text())
+        emb["product_styles"] = product_styles(emb)
+        EMB_PATH.write_text(json.dumps(emb))
+        print(f"labelled {len(emb['product_styles'])} products")
     elif a[:1] == ["rank"] and len(a) >= 3:
         emb = json.loads(EMB_PATH.read_text())
         if a[2] == "--photo":

@@ -91,6 +91,11 @@ text→photo around 0–0.1. Show rank (and the score) in the audit trail, not a
 ```
 Cost: 2–3 SIE calls per category (~3 credits for the rerank). ~2–5 s.
 
+**Style labels per product (for cards):** each `ranked` entry has `product_styles`, e.g.
+`[{"style": "scandinavian", "score": 0.0962}, {"style": "warm minimal", "score": 0.0944}]` (BORGEBY birch table).
+Zero-shot by Superlinked SigLIP over the product photo, not hand-written; stored in `style_embeddings.json`
+(`python3 data/sie.py labels` refreshes). Scores under ~0.05 are weak (most rugs and lamps): show them muted or not at all.
+
 **Whole room:** call `R = sie.analyze_room(room_photo=bytes)` once (2 calls: embed + style labels), then
 `sie.style_match(products, slot, emb, room=R)` per slot (1 rerank call each). Real run, 5 living-room slots from one
 IKEA room photo: 4.7 s total, detected "dark modern".

@@ -67,6 +67,12 @@ class StyleMatch(unittest.TestCase):
         enc.assert_not_called()
         self.assertEqual(r["detected_style"], [{"style": "x"}])
 
+    def test_product_styles(self):
+        with mock.patch.object(sie, "encode", return_value=[[1, 0], [0, 1]]):
+            out = sie.product_styles(EMB, styles=["dark", "light"], top=2)
+        self.assertEqual(out["a"][0], {"style": "dark", "score": 1.0})
+        self.assertEqual(out["b"][0]["style"], "light")  # [0.6, 0.8] is closer to [0, 1]
+
     def test_needs_input(self):
         with self.assertRaises(ValueError):
             sie.style_match(PRODUCTS, "sofa", EMB)
