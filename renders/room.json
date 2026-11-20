@@ -11,9 +11,9 @@
     "d": 37.375,
     "h": 32.625
    },
-   "x_in": -20.1,
-   "z_in": -53.3,
-   "rotation": 0,
+   "x_in": -76.3,
+   "z_in": 8.9,
+   "rotation": 90,
    "wall_gap_in": 0.0
   },
   {
@@ -25,8 +25,8 @@
     "d": 32.25,
     "h": 39.375
    },
-   "x_in": -81.6,
-   "z_in": -19.9,
+   "x_in": -27.6,
+   "z_in": -55.9,
    "rotation": 0,
    "wall_gap_in": 0.0
   },
@@ -39,10 +39,10 @@
     "d": 35.375,
     "h": 24.75
    },
-   "x_in": -40.6,
-   "z_in": -0.3,
-   "rotation": 0,
-   "wall_gap_in": 42.0
+   "x_in": 18.7,
+   "z_in": -59.6,
+   "rotation": 90,
+   "wall_gap_in": 0.0
   },
   {
    "product_id": "ikea-barlast-floor-lamp-black-white-59-70437814",
@@ -53,10 +53,10 @@
     "d": 13.0,
     "h": 59.0
    },
-   "x_in": -88.5,
-   "z_in": 6.5,
+   "x_in": 19.5,
+   "z_in": 60.5,
    "rotation": 0,
-   "wall_gap_in": 0.0
+   "wall_gap_in": 0.7
   },
   {
    "product_id": "ikea-onsevig-rug-10559894",
@@ -72,5 +72,11 @@
    "rotation": 0,
    "wall_gap_in": 9.7
   }
+ ],
+ "shots": [
+  "room_before.png",
+  "room_after.png",
+  "room_sofa.png",
+  "room_door.png"
  ]
 }

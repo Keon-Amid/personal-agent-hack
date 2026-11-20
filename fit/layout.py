@@ -13,6 +13,7 @@ Checks per floor item:
   in_room    every footprint corner inside the walls (the scan's outline)
   overlap    footprint doesn't overlap another floor item (chairs may tuck under tables; anything may stand on a rug)
   door_swing nothing on the floor inside the door's swing (a door-width square in front of it)
+  spacing    a new piece keeps 12 in from other furniture ("unsure" if closer)
   clearance  at least 18 in to other floor items / walls on some side to get to it ("unsure" if tighter)
 Wall-mounted items (bottom > 24 in, e.g. the TV) are skipped for floor checks.
 """
@@ -25,6 +26,8 @@ from .scan import point_in_poly
 
 CLEARANCE_IN = 18.0  # minimum gap to reach an item (team default, not a code)
 RUG_MARGIN_IN = 6.0  # same as fit.checks.DEFAULT_RUG_MARGIN_IN
+EDGE_TOL_IN = 0.25  # rounding tolerance for touching a wall
+SPACING_IN = 12.0  # a new piece keeps this far from other furniture (team default, not a code)
 TUCK_UNDER = {("dining_chair", "table"), ("dining_chair", "dining_table"), ("desk_chair", "table"),
               ("desk_chair", "desk"), ("desk_chair", "dining_table")}
 CENTRE_CATEGORIES = {"rug", "coffee_table", "dining_table", "table"}  # these go in the open, not against a wall
@@ -84,9 +87,10 @@ def check_item(room: dict, lay: list[dict], it: dict) -> list[dict]:
     fp = _footprint(it)
     out = []
     m = RUG_MARGIN_IN if it["category"] == "rug" else 0.0  # team rule: rugs stay 6 in from every wall
+    m -= EDGE_TOL_IN  # a corner exactly on the wall line counts as inside (positions are rounded to 0.1 in)
     corners = [(fp[0] - m, fp[1] - m), (fp[2] + m, fp[1] - m), (fp[2] + m, fp[3] + m), (fp[0] - m, fp[3] + m)]
     outside = [c for c in corners if not point_in_poly(c, room["outline"])]
-    within = f" (with the {m:g} in rug margin)" if m else ""
+    within = f" (with the {RUG_MARGIN_IN:g} in rug margin)" if it["category"] == "rug" else ""
     out.append(_res("in_room", NO_FIT if outside else FITS,
                     f'corner ({outside[0][0]:.0f}, {outside[0][1]:.0f}) in is outside the walls{within}' if outside
                     else f"all four corners inside the walls{within}"))
@@ -99,6 +103,12 @@ def check_item(room: dict, lay: list[dict], it: dict) -> list[dict]:
                 continue
             out.append(_res("overlap", NO_FIT, f'overlaps {other["label"]} ({other["id"]}) by {ox:.0f} x {oz:.0f} in',
                             with_id=other["id"]))
+        elif it.get("kind") == "new" and not _shares_floor(it, other):
+            # a new piece shouldn't be jammed against existing furniture (looks like a collision, can't walk past)
+            gap = (-ox if oz > 0 else -oz if ox > 0 else ((max(0, -ox)) ** 2 + (max(0, -oz)) ** 2) ** 0.5)
+            if gap < SPACING_IN:
+                out.append(_res("spacing", UNSURE, f'only {gap:.1f} in from {other["label"]} ({other["id"]}); '
+                                                   f'want {SPACING_IN:g} in', with_id=other["id"], gap_in=round(gap, 1)))
     for door in ([] if it["category"] == "rug" else room["doors"]):  # a flat rug doesn't stop a door
         dz = door_zone(door)
         ox, oz = _overlap(fp, dz)
