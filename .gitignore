@@ -8,3 +8,7 @@ CLAUDE.local.md
 
 # keep the template tracked
 !.env.example
+
+# build output
+dist/
+.cache/
