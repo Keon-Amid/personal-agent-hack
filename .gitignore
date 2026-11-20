@@ -5,3 +5,6 @@ __pycache__/
 .venv/
 .DS_Store
 CLAUDE.local.md
+
+# keep the template tracked
+!.env.example
