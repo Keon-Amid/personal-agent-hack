@@ -113,6 +113,9 @@ export function layoutDetail(room: RoomModel, items: PlanItem[]): LayoutDetail {
     placed.push({ slot: item.slot, box: aabb(r), rug: categoryOf(item) === 'rug' })
   }
   const dims = (item: PlanItem) => ({ w: item.dims_in.w, d: item.dims_in.d })
+  /** distance from a piece's centre to the nearest door: farther is better, so nothing gathers at the way in */
+  const doorDist = (r: Rect) =>
+    room.doors.length ? Math.min(...room.doors.map((d) => Math.hypot(r.cx - d.center[0], r.cz - d.center[1]))) : 0
   const byCat = (...cats: string[]) => items.find((i) => cats.includes(categoryOf(i)))
 
   // ---------- anchor: the sofa (or bed) backs onto a wall ----------
@@ -175,7 +178,11 @@ export function layoutDetail(room: RoomModel, items: PlanItem[]): LayoutDetail {
           if (!inRoom(r, 0) || !clear(r)) continue
           let lr: Rect | null = null
           if (needLamp) {
-            lr = lampBeside(f, s, a, 1) ?? lampBeside(f, s, a, -1)
+            const ends = [1, -1]
+              .map((side) => lampBeside(f, s, a, side))
+              .filter((x): x is Rect => x !== null)
+              .sort((p, q) => doorDist(q) - doorDist(p))
+            lr = ends[0] ?? null
             if (!lr) continue
           }
           anchorFrame = f
@@ -284,7 +291,8 @@ export function layoutDetail(room: RoomModel, items: PlanItem[]): LayoutDetail {
         const c = add(add(focus, n, focusHalfN + gap + d.d / 2), t, sg * 14)
         candidates.push({ cx: c[0], cz: c[1], hw: d.w / 2, hd: d.d / 2, rot: rotOf([-n[0], -n[1]]) + sg * 25 })
       }
-    chairRect = candidates.find((r) => inRoom(r, 1) && clear(r, { gap: 3 })) ?? candidates[0]
+    const okChairs = candidates.filter((r) => inRoom(r, 1) && clear(r, { gap: 3 }))
+    chairRect = okChairs.sort((a, b) => doorDist(b) - doorDist(a))[0] ?? candidates[0]
     put(chair, chairRect)
   }
 
@@ -294,7 +302,10 @@ export function layoutDetail(room: RoomModel, items: PlanItem[]): LayoutDetail {
     let r: Rect | null = lampRect
     if (!r && f0 && anchorRect) {
       const s = dot([A.cx - f0.w.a[0], A.cz - f0.w.a[1]], f0.t)
-      r = lampBeside(f0, s, { w: A.hw * 2, d: A.hd * 2 }, 1) ?? lampBeside(f0, s, { w: A.hw * 2, d: A.hd * 2 }, -1)
+      r = [1, -1]
+        .map((side) => lampBeside(f0, s, { w: A.hw * 2, d: A.hd * 2 }, side))
+        .filter((x): x is Rect => x !== null)
+        .sort((p, q) => doorDist(q) - doorDist(p))[0] ?? null
     }
     if (!r && chairRect) {
       const fdir: Vec2 = [Math.sin(rad(chairRect.rot)), Math.cos(rad(chairRect.rot))]
