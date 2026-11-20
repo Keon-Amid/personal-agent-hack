@@ -110,6 +110,11 @@ def product(url: str, category: str) -> dict:
             box = {"w": ms.get("width"), "d": ms.get("length"), "h": ms.get("height")}
             packages += [box] * qty
 
+    imgs = ld.get("image") or []
+    imgs = imgs if isinstance(imgs, list) else [imgs]
+    images = [i.get("contentUrl") if isinstance(i, dict) else i for i in imgs]
+    images = [i for i in images if i]
+
     name = htmllib.unescape(ld.get("name", ""))
     sku = ld.get("sku") or ""
     ascii_name = unicodedata.normalize("NFKD", name).encode("ascii", "ignore").decode()
@@ -125,6 +130,8 @@ def product(url: str, category: str) -> dict:
         "dims_in": {"w": w, "d": d, "h": hh},
         "dims_raw": dims,
         "packages_in": packages or None,
+        "image_url": images[0] if images else None,  # IKEA's main product shot
+        "image_urls": images,
         "source_url": url,
         "fetched_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
     }

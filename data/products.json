@@ -1,5 +1,5 @@
 {
- "about": "Real IKEA US products. Every number is read from the source_url page by data/fetch_ikea.py (URLs in data/sources.txt) at fetched_at. Inches. dims_in w=width, d=depth/length, h=height; round items use the diameter for w and d. packages_in: one box per package (Width->w, Length->d, Height->h). price_usd is the price shown on the page that day and may be a temporary IKEA Family price; null if the page showed none. dims_raw keeps every measurement the page listed.",
+ "about": "Real IKEA US products. Every number is read from the source_url page by data/fetch_ikea.py (URLs in data/sources.txt) at fetched_at. Inches. dims_in w=width, d=depth/length, h=height; round items use the diameter for w and d. packages_in: one box per package (Width->w, Length->d, Height->h). price_usd is the price shown on the page that day and may be a temporary IKEA Family price; null if the page showed none. image_url is IKEA's main product photo, image_urls all photos on the page. dims_raw keeps every measurement the page listed.",
  "products": [
   {
    "id": "ikea-glostad-sofa-knisa-dark-gray-40595942",
@@ -28,8 +28,19 @@
      "h": 7.5
     }
    ],
+   "image_url": "https://www.ikea.com/us/en/images/products/glostad-sofa-knisa-dark-gray__1234948_pe917261_s5.jpg",
+   "image_urls": [
+    "https://www.ikea.com/us/en/images/products/glostad-sofa-knisa-dark-gray__1234948_pe917261_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/glostad-sofa-knisa-dark-gray__1235175_pe917294_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/glostad-sofa-knisa-dark-gray__1235896_pe917385_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/glostad-sofa-knisa-dark-gray__1235914_pe917391_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/glostad-sofa-knisa-dark-gray__1235913_pe917389_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/glostad-sofa-knisa-dark-gray__1235176_pe917297_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/glostad-sofa-knisa-dark-gray__1235915_pe917390_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/glostad-sofa-knisa-dark-gray__1387199_pe964151_s5.jpg"
+   ],
    "source_url": "https://www.ikea.com/us/en/p/glostad-sofa-knisa-dark-gray-40595942/",
-   "fetched_at": "2026-11-20T20:50:01+00:00"
+   "fetched_at": "2026-11-20T20:58:38+00:00"
   },
   {
    "id": "ikea-gullvalla-sofa-silkeryd-dark-gray-beige-70618503",
@@ -63,8 +74,16 @@
      "h": 13.75
     }
    ],
+   "image_url": "https://www.ikea.com/us/en/images/products/gullvalla-sofa-silkeryd-dark-gray-beige__1578444_pe1034087_s5.jpg",
+   "image_urls": [
+    "https://www.ikea.com/us/en/images/products/gullvalla-sofa-silkeryd-dark-gray-beige__1578444_pe1034087_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/gullvalla-sofa-silkeryd-dark-gray-beige__1517561_pe1012391_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/gullvalla-sofa-silkeryd-dark-gray-beige__1517562_pe1012390_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/gullvalla-sofa-silkeryd-dark-gray-beige__1517563_pe1012389_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/gullvalla-sofa-silkeryd-dark-gray-beige__1558991_ph209553_s5.jpg"
+   ],
    "source_url": "https://www.ikea.com/us/en/p/gullvalla-sofa-silkeryd-dark-gray-beige-70618503/",
-   "fetched_at": "2026-11-20T20:50:01+00:00"
+   "fetched_at": "2026-11-20T20:58:39+00:00"
   },
   {
    "id": "ikea-hyltarp-sofa-gransel-gray-89514930",
@@ -107,8 +126,16 @@
      "h": 4.5
     }
    ],
+   "image_url": "https://www.ikea.com/us/en/images/products/hyltarp-sofa-gransel-gray__1577693_pe1033440_s5.jpg",
+   "image_urls": [
+    "https://www.ikea.com/us/en/images/products/hyltarp-sofa-gransel-gray__1577693_pe1033440_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/hyltarp-sofa-gransel-gray__1193809_pe901636_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/hyltarp-sofa-gransel-gray__1194014_pe901766_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/hyltarp-sofa-gransel-gray__1194015_pe901767_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/hyltarp-sofa-gransel-gray__1256064_pe924900_s5.jpg"
+   ],
    "source_url": "https://www.ikea.com/us/en/p/hyltarp-sofa-gransel-gray-s89514930/",
-   "fetched_at": "2026-11-20T20:50:02+00:00"
+   "fetched_at": "2026-11-20T20:58:39+00:00"
   },
   {
    "id": "ikea-kivik-sofa-grann-bomstad-black-80519531",
@@ -143,8 +170,18 @@
      "h": 11.0
     }
    ],
+   "image_url": "https://www.ikea.com/us/en/images/products/kivik-sofa-grann-bomstad-black__0137863_pe296632_s5.jpg",
+   "image_urls": [
+    "https://www.ikea.com/us/en/images/products/kivik-sofa-grann-bomstad-black__0137863_pe296632_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/kivik-sofa-grann-bomstad-black__0788744_pe763716_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/kivik-sofa-grann-bomstad-black__0777003_pe758392_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/kivik-sofa-grann-bomstad-black__1056167_pe848292_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/kivik-sofa-grann-bomstad-black__0807812_pe585566_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/kivik-sofa-grann-bomstad-black__1134553_pe878803_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/kivik-sofa-grann-bomstad-black__1300924_pe937215_s5.jpg"
+   ],
    "source_url": "https://www.ikea.com/us/en/p/kivik-sofa-grann-bomstad-black-80519531/",
-   "fetched_at": "2026-11-20T20:50:02+00:00"
+   "fetched_at": "2026-11-20T20:58:40+00:00"
   },
   {
    "id": "ikea-lillesater-sofa-axvall-off-white-40619085",
@@ -192,8 +229,19 @@
      "h": 18.5
     }
    ],
+   "image_url": "https://www.ikea.com/us/en/images/products/lillesaeter-sofa-axvall-off-white__1576111_pe1032230_s5.jpg",
+   "image_urls": [
+    "https://www.ikea.com/us/en/images/products/lillesaeter-sofa-axvall-off-white__1576111_pe1032230_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/lillesaeter-sofa-axvall-off-white__1507861_pe1009416_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/lillesaeter-sofa-axvall-off-white__1507862_pe1009418_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/lillesaeter-sofa-axvall-off-white__1507863_pe1009417_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/lillesaeter-sofa-axvall-off-white__1522906_pe1013784_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/lillesaeter-sofa-axvall-off-white__1538642_pe1017411_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/lillesaeter-sofa-axvall-off-white__1526888_ph208679_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/lillesaeter-sofa-axvall-off-white__1549106_ph208675_s5.jpg"
+   ],
    "source_url": "https://www.ikea.com/us/en/p/lillesaeter-sofa-axvall-off-white-40619085/",
-   "fetched_at": "2026-11-20T20:50:03+00:00"
+   "fetched_at": "2026-11-20T20:58:41+00:00"
   },
   {
    "id": "ikea-arnasvall-recliner-rocker-and-swivel-armchair-hakebo-beige-50613912",
@@ -224,8 +272,24 @@
      "h": 32.5
     }
    ],
+   "image_url": "https://www.ikea.com/us/en/images/products/arnaesvall-recliner-rocker-and-swivel-armchair-hakebo-beige__1426047_pe979671_s5.jpg",
+   "image_urls": [
+    "https://www.ikea.com/us/en/images/products/arnaesvall-recliner-rocker-and-swivel-armchair-hakebo-beige__1426047_pe979671_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/arnaesvall-recliner-rocker-and-swivel-armchair-hakebo-beige__1426048_pe979678_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/arnaesvall-recliner-rocker-and-swivel-armchair-hakebo-beige__1431765_pe982592_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/arnaesvall-recliner-rocker-and-swivel-armchair-hakebo-beige__1431763_pe982593_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/arnaesvall-recliner-rocker-and-swivel-armchair-hakebo-beige__1431764_pe982594_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/arnaesvall-recliner-rocker-and-swivel-armchair-hakebo-beige__1436979_pe984362_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/arnaesvall-recliner-rocker-and-swivel-armchair-hakebo-beige__1431760_pe982590_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/arnaesvall-recliner-rocker-and-swivel-armchair-hakebo-beige__1431762_pe982595_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/arnaesvall-recliner-rocker-and-swivel-armchair-hakebo-beige__1431761_pe982591_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/arnaesvall-recliner-rocker-and-swivel-armchair-hakebo-beige__1436980_pe984361_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/arnaesvall-recliner-rocker-and-swivel-armchair-hakebo-beige__1445823_pe988397_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/arnaesvall-recliner-rocker-and-swivel-armchair-hakebo-beige__1444909_pe987800_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/arnaesvall-recliner-rocker-and-swivel-armchair-hakebo-beige__1446540_pe988625_s5.jpg"
+   ],
    "source_url": "https://www.ikea.com/us/en/p/arnaesvall-recliner-rocker-and-swivel-armchair-hakebo-beige-50613912/",
-   "fetched_at": "2026-11-20T20:50:04+00:00"
+   "fetched_at": "2026-11-20T20:58:41+00:00"
   },
   {
    "id": "ikea-ekenaset-armchair-jonsbyn-black-80539015",
@@ -258,8 +322,16 @@
      "h": 14.5
     }
    ],
+   "image_url": "https://www.ikea.com/us/en/images/products/ekenaeset-armchair-jonsbyn-black__1109680_pe870147_s5.jpg",
+   "image_urls": [
+    "https://www.ikea.com/us/en/images/products/ekenaeset-armchair-jonsbyn-black__1109680_pe870147_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/ekenaeset-armchair-jonsbyn-black__1179058_pe895830_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/ekenaeset-armchair-jonsbyn-black__1109678_pe870145_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/ekenaeset-armchair-jonsbyn-black__1109722_pe870189_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/ekenaeset-armchair-jonsbyn-black__0940909_pe795235_s5.jpg"
+   ],
    "source_url": "https://www.ikea.com/us/en/p/ekenaeset-armchair-jonsbyn-black-80539015/",
-   "fetched_at": "2026-11-20T20:50:05+00:00"
+   "fetched_at": "2026-11-20T20:58:42+00:00"
   },
   {
    "id": "ikea-gryteryd-recliner-rocker-armchair-hakebo-beige-20613904",
@@ -290,8 +362,24 @@
      "h": 28.25
     }
    ],
+   "image_url": "https://www.ikea.com/us/en/images/products/gryteryd-recliner-rocker-armchair-hakebo-beige__1426044_pe979668_s5.jpg",
+   "image_urls": [
+    "https://www.ikea.com/us/en/images/products/gryteryd-recliner-rocker-armchair-hakebo-beige__1426044_pe979668_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/gryteryd-recliner-rocker-armchair-hakebo-beige__1426043_pe979667_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/gryteryd-recliner-rocker-armchair-hakebo-beige__1440613_pe985902_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/gryteryd-recliner-rocker-armchair-hakebo-beige__1440612_pe985904_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/gryteryd-recliner-rocker-armchair-hakebo-beige__1440611_pe985903_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/gryteryd-recliner-rocker-armchair-hakebo-beige__1440615_pe985906_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/gryteryd-recliner-rocker-armchair-hakebo-beige__1440609_pe985901_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/gryteryd-recliner-rocker-armchair-hakebo-beige__1440610_pe985905_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/gryteryd-recliner-rocker-armchair-hakebo-beige__1440608_pe985900_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/gryteryd-recliner-rocker-armchair-hakebo-beige__1436982_pe984363_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/gryteryd-recliner-rocker-armchair-hakebo-beige__1445825_pe988399_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/gryteryd-recliner-rocker-armchair-hakebo-beige__1444909_pe987800_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/gryteryd-recliner-rocker-armchair-hakebo-beige__1446545_pe988626_s5.jpg"
+   ],
    "source_url": "https://www.ikea.com/us/en/p/gryteryd-recliner-rocker-armchair-hakebo-beige-20613904/",
-   "fetched_at": "2026-11-20T20:50:05+00:00"
+   "fetched_at": "2026-11-20T20:58:43+00:00"
   },
   {
    "id": "ikea-borgeby-coffee-table-birch-veneer-27-1-2-70389356",
@@ -322,8 +410,17 @@
      "h": 5.75
     }
    ],
+   "image_url": "https://www.ikea.com/us/en/images/products/borgeby-coffee-table-birch-veneer__0987623_pe817609_s5.jpg",
+   "image_urls": [
+    "https://www.ikea.com/us/en/images/products/borgeby-coffee-table-birch-veneer__0987623_pe817609_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/borgeby-coffee-table-birch-veneer__0949801_pe800020_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/borgeby-coffee-table-birch-veneer__0949800_pe800017_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/borgeby-coffee-table-birch-veneer__0986539_pe817189_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/borgeby-coffee-table-birch-veneer__0949802_pe800019_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/borgeby-coffee-table-birch-veneer__0977133_pe813414_s5.jpg"
+   ],
    "source_url": "https://www.ikea.com/us/en/p/borgeby-coffee-table-birch-veneer-70389356/",
-   "fetched_at": "2026-11-20T20:50:06+00:00"
+   "fetched_at": "2026-11-20T20:58:44+00:00"
   },
   {
    "id": "ikea-lack-coffee-table-black-brown-46-1-2x30-3-4-00104291",
@@ -351,8 +448,16 @@
      "h": 2.75
     }
    ],
+   "image_url": "https://www.ikea.com/us/en/images/products/lack-coffee-table-black-brown__57537_pe163119_s5.jpg",
+   "image_urls": [
+    "https://www.ikea.com/us/en/images/products/lack-coffee-table-black-brown__57537_pe163119_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/lack-coffee-table-black-brown__0836233_pe601379_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/lack-coffee-table-black-brown__0258008_pe401976_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/lack-coffee-table-black-brown__0664928_pe712923_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/lack-coffee-table-black-brown__1083778_pe859098_s5.jpg"
+   ],
    "source_url": "https://www.ikea.com/us/en/p/lack-coffee-table-black-brown-00104291/",
-   "fetched_at": "2026-11-20T20:50:07+00:00"
+   "fetched_at": "2026-11-20T20:58:44+00:00"
   },
   {
    "id": "ikea-ortrask-coffee-table-black-ash-veneer-43-1-4x26-3-4-30635849",
@@ -381,8 +486,16 @@
      "h": 3.0
     }
    ],
+   "image_url": "https://www.ikea.com/us/en/images/products/oertraesk-coffee-table-black-ash-veneer__1543874_pe1018964_s5.jpg",
+   "image_urls": [
+    "https://www.ikea.com/us/en/images/products/oertraesk-coffee-table-black-ash-veneer__1543874_pe1018964_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/oertraesk-coffee-table-black-ash-veneer__1579089_pe1034321_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/oertraesk-coffee-table-black-ash-veneer__1579090_pe1034320_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/oertraesk-coffee-table-black-ash-veneer__1579088_pe1034319_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/oertraesk-coffee-table-black-ash-veneer__1539520_pe1018983_s5.jpg"
+   ],
    "source_url": "https://www.ikea.com/us/en/p/oertraesk-coffee-table-black-ash-veneer-30635849/",
-   "fetched_at": "2026-11-20T20:50:07+00:00"
+   "fetched_at": "2026-11-20T20:58:45+00:00"
   },
   {
    "id": "ikea-ostavall-adjustable-coffee-table-black-35-3-8-40534152",
@@ -420,8 +533,20 @@
      "h": 1.75
     }
    ],
+   "image_url": "https://www.ikea.com/us/en/images/products/oestavall-adjustable-coffee-table-black__1213707_pe911231_s5.jpg",
+   "image_urls": [
+    "https://www.ikea.com/us/en/images/products/oestavall-adjustable-coffee-table-black__1213707_pe911231_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/oestavall-adjustable-coffee-table-black__1486001_pe1002252_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/oestavall-adjustable-coffee-table-black__1213708_pe911237_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/oestavall-adjustable-coffee-table-black__1366748_pe957148_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/oestavall-adjustable-coffee-table-black__1213704_pe911228_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/oestavall-adjustable-coffee-table-black__1213705_pe911229_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/oestavall-adjustable-coffee-table-black__1434734_ph201513_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/oestavall-adjustable-coffee-table-black__1248865_pe923238_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/oestavall-adjustable-coffee-table-black__1328564_pe944862_s5.jpg"
+   ],
    "source_url": "https://www.ikea.com/us/en/p/oestavall-adjustable-coffee-table-black-40534152/",
-   "fetched_at": "2026-11-20T20:50:08+00:00"
+   "fetched_at": "2026-11-20T20:58:46+00:00"
   },
   {
    "id": "ikea-baggboda-side-table-white-28x19-5-8-20556507",
@@ -449,8 +574,16 @@
      "h": 3.75
     }
    ],
+   "image_url": "https://www.ikea.com/us/en/images/products/baggboda-side-table-white__1265558_pe927740_s5.jpg",
+   "image_urls": [
+    "https://www.ikea.com/us/en/images/products/baggboda-side-table-white__1265558_pe927740_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/baggboda-side-table-white__1272580_ph195673_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/baggboda-side-table-white__1265557_pe927741_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/baggboda-side-table-white__1247405_pe922663_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/baggboda-side-table-white__1596060_ph207463_s5.jpg"
+   ],
    "source_url": "https://www.ikea.com/us/en/p/baggboda-side-table-white-20556507/",
-   "fetched_at": "2026-11-20T20:50:09+00:00"
+   "fetched_at": "2026-11-20T20:58:47+00:00"
   },
   {
    "id": "ikea-borgeby-side-table-birch-veneer-18-1-8-80619880",
@@ -481,8 +614,18 @@
      "h": 6.0
     }
    ],
+   "image_url": "https://www.ikea.com/us/en/images/products/borgeby-side-table-birch-veneer__1472146_pe997462_s5.jpg",
+   "image_urls": [
+    "https://www.ikea.com/us/en/images/products/borgeby-side-table-birch-veneer__1472146_pe997462_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/borgeby-side-table-birch-veneer__1460566_pe993976_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/borgeby-side-table-birch-veneer__1460563_pe993973_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/borgeby-side-table-birch-veneer__1460565_pe993975_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/borgeby-side-table-birch-veneer__1460564_pe993974_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/borgeby-side-table-birch-veneer__1448514_pe989620_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/borgeby-side-table-birch-veneer__1462469_pe994346_s5.jpg"
+   ],
    "source_url": "https://www.ikea.com/us/en/p/borgeby-side-table-birch-veneer-80619880/",
-   "fetched_at": "2026-11-20T20:50:09+00:00"
+   "fetched_at": "2026-11-20T20:58:48+00:00"
   },
   {
    "id": "ikea-anfallare-alex-desk-bamboo-black-brown-55-1-8x25-5-8-89417745",
@@ -525,8 +668,18 @@
      "h": 4.25
     }
    ],
+   "image_url": "https://www.ikea.com/us/en/images/products/anfallare-alex-desk-bamboo-black-brown__0976199_pe813092_s5.jpg",
+   "image_urls": [
+    "https://www.ikea.com/us/en/images/products/anfallare-alex-desk-bamboo-black-brown__0976199_pe813092_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/anfallare-alex-desk-bamboo-black-brown__1015211_pe829922_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/anfallare-alex-desk-bamboo-black-brown__0977787_pe813771_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/anfallare-alex-desk-bamboo-black-brown__0977786_pe813770_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/anfallare-alex-desk-bamboo-black-brown__0734618_pe739551_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/anfallare-alex-desk-bamboo-black-brown__0993390_pe820897_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/anfallare-alex-desk-bamboo-black-brown__1045176_pe842454_s5.jpg"
+   ],
    "source_url": "https://www.ikea.com/us/en/p/anfallare-alex-desk-bamboo-black-brown-s89417745/",
-   "fetched_at": "2026-11-20T20:50:10+00:00"
+   "fetched_at": "2026-11-20T20:58:48+00:00"
   },
   {
    "id": "ikea-brytning-desk-green-43-1-4x20-7-8x29-1-2-50609750",
@@ -558,8 +711,18 @@
      "h": 3.0
     }
    ],
+   "image_url": "https://www.ikea.com/us/en/images/products/brytning-desk-green__1515768_pe1011581_s5.jpg",
+   "image_urls": [
+    "https://www.ikea.com/us/en/images/products/brytning-desk-green__1515768_pe1011581_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/brytning-desk-green__1515767_pe1011580_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/brytning-desk-green__1582998_pe1035831_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/brytning-desk-green__1551270_pe1023017_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/brytning-desk-green__1515718_pe1011551_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/brytning-desk-green__1515765_pe1011578_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/brytning-desk-green__1515766_pe1011579_s5.jpg"
+   ],
    "source_url": "https://www.ikea.com/us/en/p/brytning-desk-green-50609750/",
-   "fetched_at": "2026-11-20T20:50:11+00:00"
+   "fetched_at": "2026-11-20T20:58:49+00:00"
   },
   {
    "id": "ikea-kallax-desk-black-brown-43-3-4x15-3-8-00582442",
@@ -589,8 +752,20 @@
      "h": 6.75
     }
    ],
+   "image_url": "https://www.ikea.com/us/en/images/products/kallax-desk-black-brown__1327541_pe944488_s5.jpg",
+   "image_urls": [
+    "https://www.ikea.com/us/en/images/products/kallax-desk-black-brown__1327541_pe944488_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/kallax-desk-black-brown__1470674_pe996909_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/kallax-desk-black-brown__1470676_pe996910_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/kallax-desk-black-brown__1328003_pe944609_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/kallax-desk-black-brown__1328005_pe944611_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/kallax-desk-black-brown__1328002_pe944608_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/kallax-desk-black-brown__1328004_pe944613_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/kallax-desk-black-brown__1328007_pe944610_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/kallax-desk-black-brown__1328006_pe944612_s5.jpg"
+   ],
    "source_url": "https://www.ikea.com/us/en/p/kallax-desk-black-brown-00582442/",
-   "fetched_at": "2026-11-20T20:50:12+00:00"
+   "fetched_at": "2026-11-20T20:58:50+00:00"
   },
   {
    "id": "ikea-lagkapten-adils-desk-black-brown-black-47-1-4x23-5-8-49417021",
@@ -638,8 +813,17 @@
      "h": 2.25
     }
    ],
+   "image_url": "https://www.ikea.com/us/en/images/products/lagkapten-adils-desk-black-brown-black__0977217_pe813462_s5.jpg",
+   "image_urls": [
+    "https://www.ikea.com/us/en/images/products/lagkapten-adils-desk-black-brown-black__0977217_pe813462_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/lagkapten-adils-desk-black-brown-black__1013517_pe829229_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/lagkapten-adils-desk-black-brown-black__1486277_pe1002380_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/lagkapten-adils-desk-black-brown-black__1449205_pe989816_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/lagkapten-adils-desk-black-brown-black__0977790_pe813774_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/lagkapten-adils-desk-black-brown-black__0734618_pe739551_s5.jpg"
+   ],
    "source_url": "https://www.ikea.com/us/en/p/lagkapten-adils-desk-black-brown-black-s49417021/",
-   "fetched_at": "2026-11-20T20:50:12+00:00"
+   "fetched_at": "2026-11-20T20:58:51+00:00"
   },
   {
    "id": "ikea-alhult-extendable-table-beige-brown-47-1-4-66-7-8x31-1-2-60597921",
@@ -672,8 +856,17 @@
      "h": 2.75
     }
    ],
+   "image_url": "https://www.ikea.com/us/en/images/products/alhult-extendable-table-beige-brown__1403281_pe969288_s5.jpg",
+   "image_urls": [
+    "https://www.ikea.com/us/en/images/products/alhult-extendable-table-beige-brown__1403281_pe969288_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/alhult-extendable-table-beige-brown__1447089_pe988951_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/alhult-extendable-table-beige-brown__1447111_pe988978_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/alhult-extendable-table-beige-brown__1447112_pe988979_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/alhult-extendable-table-beige-brown__1451072_pe990568_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/alhult-extendable-table-beige-brown__1546448_ph206716_s5.jpg"
+   ],
    "source_url": "https://www.ikea.com/us/en/p/alhult-extendable-table-beige-brown-60597921/",
-   "fetched_at": "2026-11-20T20:50:13+00:00"
+   "fetched_at": "2026-11-20T20:58:51+00:00"
   },
   {
    "id": "ikea-bergshyttan-table-dark-brown-ash-veneer-94-1-2x36-5-8-40608242",
@@ -707,8 +900,18 @@
      "h": 2.75
     }
    ],
+   "image_url": "https://www.ikea.com/us/en/images/products/bergshyttan-table-dark-brown-ash-veneer__1424600_pe979311_s5.jpg",
+   "image_urls": [
+    "https://www.ikea.com/us/en/images/products/bergshyttan-table-dark-brown-ash-veneer__1424600_pe979311_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/bergshyttan-table-dark-brown-ash-veneer__1547415_pe1020478_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/bergshyttan-table-dark-brown-ash-veneer__1451785_pe990798_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/bergshyttan-table-dark-brown-ash-veneer__1451778_pe990808_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/bergshyttan-table-dark-brown-ash-veneer__1451787_pe990807_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/bergshyttan-table-dark-brown-ash-veneer__1498002_pe1006139_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/bergshyttan-table-dark-brown-ash-veneer__1443500_pe987191_s5.jpg"
+   ],
    "source_url": "https://www.ikea.com/us/en/p/bergshyttan-table-dark-brown-ash-veneer-40608242/",
-   "fetched_at": "2026-11-20T20:50:15+00:00"
+   "fetched_at": "2026-11-20T20:58:51+00:00"
   },
   {
    "id": "ikea-docksta-table-black-black-40-1-2-99418848",
@@ -741,8 +944,17 @@
      "h": 8.75
     }
    ],
+   "image_url": "https://www.ikea.com/us/en/images/products/docksta-table-black-black__1079719_pe857670_s5.jpg",
+   "image_urls": [
+    "https://www.ikea.com/us/en/images/products/docksta-table-black-black__1079719_pe857670_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/docksta-table-black-black__1339178_pe948416_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/docksta-table-black-black__1339176_pe948410_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/docksta-table-black-black__1339182_pe948412_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/docksta-table-black-black__0979425_pe814532_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/docksta-table-black-black__0981151_pe815274_s5.jpg"
+   ],
    "source_url": "https://www.ikea.com/us/en/p/docksta-table-black-black-s99418848/",
-   "fetched_at": "2026-11-20T20:50:15+00:00"
+   "fetched_at": "2026-11-20T20:58:52+00:00"
   },
   {
    "id": "ikea-alhult-chair-beige-kabusa-light-beige-60600773",
@@ -769,8 +981,20 @@
      "h": 4.25
     }
    ],
+   "image_url": "https://www.ikea.com/us/en/images/products/alhult-chair-beige-kabusa-light-beige__1403273_pe969296_s5.jpg",
+   "image_urls": [
+    "https://www.ikea.com/us/en/images/products/alhult-chair-beige-kabusa-light-beige__1403273_pe969296_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/alhult-chair-beige-kabusa-light-beige__1447082_pe988962_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/alhult-chair-beige-kabusa-light-beige__1447065_pe988936_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/alhult-chair-beige-kabusa-light-beige__1546417_ph206717_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/alhult-chair-beige-kabusa-light-beige__1447105_pe988974_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/alhult-chair-beige-kabusa-light-beige__1447106_pe988975_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/alhult-chair-beige-kabusa-light-beige__1447107_pe988976_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/alhult-chair-beige-kabusa-light-beige__1447108_pe988977_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/alhult-chair-beige-kabusa-light-beige__1451081_pe990575_s5.jpg"
+   ],
    "source_url": "https://www.ikea.com/us/en/p/alhult-chair-beige-kabusa-light-beige-60600773/",
-   "fetched_at": "2026-11-20T20:50:16+00:00"
+   "fetched_at": "2026-11-20T20:58:53+00:00"
   },
   {
    "id": "ikea-bergmund-chair-oak-effect-gunnared-medium-gray-49471701",
@@ -806,8 +1030,17 @@
      "h": 1.75
     }
    ],
+   "image_url": "https://www.ikea.com/us/en/images/products/bergmund-chair-oak-effect-gunnared-medium-gray__0926590_pe789373_s5.jpg",
+   "image_urls": [
+    "https://www.ikea.com/us/en/images/products/bergmund-chair-oak-effect-gunnared-medium-gray__0926590_pe789373_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/bergmund-chair-oak-effect-gunnared-medium-gray__1059652_pe849749_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/bergmund-chair-oak-effect-gunnared-medium-gray__1059651_pe849750_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/bergmund-chair-oak-effect-gunnared-medium-gray__1090288_pe861954_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/bergmund-chair-oak-effect-gunnared-medium-gray__1059649_pe849748_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/bergmund-chair-oak-effect-gunnared-medium-gray__1181421_pe896684_s5.jpg"
+   ],
    "source_url": "https://www.ikea.com/us/en/p/bergmund-chair-oak-effect-gunnared-medium-gray-s49471701/",
-   "fetched_at": "2026-11-20T20:50:17+00:00"
+   "fetched_at": "2026-11-20T20:58:53+00:00"
   },
   {
    "id": "ikea-gronsta-chair-indoor-outdoor-gray-dark-brown-wood-70637238",
@@ -843,8 +1076,17 @@
      "h": 2.0
     }
    ],
+   "image_url": "https://www.ikea.com/us/en/images/products/groensta-chair-indoor-outdoor-gray-dark-brown-wood__1575702_pe1032163_s5.jpg",
+   "image_urls": [
+    "https://www.ikea.com/us/en/images/products/groensta-chair-indoor-outdoor-gray-dark-brown-wood__1575702_pe1032163_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/groensta-chair-indoor-outdoor-gray-dark-brown-wood__1548698_pe1021410_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/groensta-chair-indoor-outdoor-gray-dark-brown-wood__1548700_pe1021412_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/groensta-chair-indoor-outdoor-gray-dark-brown-wood__1575750_pe1032200_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/groensta-chair-indoor-outdoor-gray-dark-brown-wood__1575751_pe1032199_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/groensta-chair-indoor-outdoor-gray-dark-brown-wood__1273245_pe929936_s5.jpg"
+   ],
    "source_url": "https://www.ikea.com/us/en/p/groensta-chair-indoor-outdoor-gray-dark-brown-wood-70637238/",
-   "fetched_at": "2026-11-20T20:50:18+00:00"
+   "fetched_at": "2026-11-20T20:58:54+00:00"
   },
   {
    "id": "ikea-ankarudden-6-drawer-dresser-with-2-inner-drawers-oak-effect-54-1-2x18-7-8x34-3-8-80598057",
@@ -884,8 +1126,18 @@
      "h": 4.5
     }
    ],
+   "image_url": "https://www.ikea.com/us/en/images/products/ankarudden-6-drawer-dresser-with-2-inner-drawers-oak-effect__1486741_pe1002562_s5.jpg",
+   "image_urls": [
+    "https://www.ikea.com/us/en/images/products/ankarudden-6-drawer-dresser-with-2-inner-drawers-oak-effect__1486741_pe1002562_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/ankarudden-6-drawer-dresser-with-2-inner-drawers-oak-effect__1515829_pe1011628_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/ankarudden-6-drawer-dresser-with-2-inner-drawers-oak-effect__1590208_pe1038847_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/ankarudden-6-drawer-dresser-with-2-inner-drawers-oak-effect__1486739_pe1002564_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/ankarudden-6-drawer-dresser-with-2-inner-drawers-oak-effect__1486740_pe1002563_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/ankarudden-6-drawer-dresser-with-2-inner-drawers-oak-effect__1486779_pe1002585_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/ankarudden-6-drawer-dresser-with-2-inner-drawers-oak-effect__1559357_pe1025000_s5.jpg"
+   ],
    "source_url": "https://www.ikea.com/us/en/p/ankarudden-6-drawer-dresser-with-2-inner-drawers-oak-effect-80598057/",
-   "fetched_at": "2026-11-20T20:50:19+00:00"
+   "fetched_at": "2026-11-20T20:58:55+00:00"
   },
   {
    "id": "ikea-brimnes-4-drawer-dresser-black-30-3-4x18-1-8x48-7-8-70574245",
@@ -921,8 +1173,16 @@
      "h": 3.0
     }
    ],
+   "image_url": "https://www.ikea.com/us/en/images/products/brimnes-4-drawer-dresser-black__1291238_pe934851_s5.jpg",
+   "image_urls": [
+    "https://www.ikea.com/us/en/images/products/brimnes-4-drawer-dresser-black__1291238_pe934851_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/brimnes-4-drawer-dresser-black__1602276_pe1043366_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/brimnes-4-drawer-dresser-black__1269008_pe928921_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/brimnes-4-drawer-dresser-black__0380555_pe555454_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/brimnes-4-drawer-dresser-black__1361751_pe954747_s5.jpg"
+   ],
    "source_url": "https://www.ikea.com/us/en/p/brimnes-4-drawer-dresser-black-70574245/",
-   "fetched_at": "2026-11-20T20:50:20+00:00"
+   "fetched_at": "2026-11-20T20:58:55+00:00"
   },
   {
    "id": "ikea-fagelfjallet-3-drawer-dresser-black-oak-effect-32-1-4x20-1-8x30-3-4-90598603",
@@ -958,8 +1218,19 @@
      "h": 3.5
     }
    ],
+   "image_url": "https://www.ikea.com/us/en/images/products/fagelfjaellet-3-drawer-dresser-black-oak-effect__1509883_pe1009885_s5.jpg",
+   "image_urls": [
+    "https://www.ikea.com/us/en/images/products/fagelfjaellet-3-drawer-dresser-black-oak-effect__1509883_pe1009885_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/fagelfjaellet-3-drawer-dresser-black-oak-effect__1509879_pe1009882_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/fagelfjaellet-3-drawer-dresser-black-oak-effect__1509886_pe1009888_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/fagelfjaellet-3-drawer-dresser-black-oak-effect__1606074_pe1045538_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/fagelfjaellet-3-drawer-dresser-black-oak-effect__1509889_pe1009891_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/fagelfjaellet-3-drawer-dresser-black-oak-effect__1509892_pe1009894_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/fagelfjaellet-3-drawer-dresser-black-oak-effect__1509897_pe1009897_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/fagelfjaellet-3-drawer-dresser-black-oak-effect__1559287_pe1024984_s5.jpg"
+   ],
    "source_url": "https://www.ikea.com/us/en/p/fagelfjaellet-3-drawer-dresser-black-oak-effect-90598603/",
-   "fetched_at": "2026-11-20T20:50:21+00:00"
+   "fetched_at": "2026-11-20T20:58:56+00:00"
   },
   {
    "id": "ikea-blastasen-nightstand-black-19-5-8x14-5-8x29-7-8-90617574",
@@ -990,8 +1261,17 @@
      "h": 2.5
     }
    ],
+   "image_url": "https://www.ikea.com/us/en/images/products/blaestasen-nightstand-black__1450961_pe990526_s5.jpg",
+   "image_urls": [
+    "https://www.ikea.com/us/en/images/products/blaestasen-nightstand-black__1450961_pe990526_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/blaestasen-nightstand-black__1474437_pe998077_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/blaestasen-nightstand-black__1474436_pe998076_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/blaestasen-nightstand-black__1474434_pe998074_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/blaestasen-nightstand-black__1474435_pe998075_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/blaestasen-nightstand-black__1425394_pe979511_s5.jpg"
+   ],
    "source_url": "https://www.ikea.com/us/en/p/blaestasen-nightstand-black-90617574/",
-   "fetched_at": "2026-11-20T20:50:22+00:00"
+   "fetched_at": "2026-11-20T20:58:56+00:00"
   },
   {
    "id": "ikea-brimnes-nightstand-black-15-3-8x16-1-8x20-7-8-80340454",
@@ -1020,8 +1300,16 @@
      "h": 4.25
     }
    ],
+   "image_url": "https://www.ikea.com/us/en/images/products/brimnes-nightstand-black__0624434_pe691841_s5.jpg",
+   "image_urls": [
+    "https://www.ikea.com/us/en/images/products/brimnes-nightstand-black__0624434_pe691841_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/brimnes-nightstand-black__1326549_pe944271_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/brimnes-nightstand-black__1326550_pe944270_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/brimnes-nightstand-black__0439570_pe592288_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/brimnes-nightstand-black__1150832_pe884683_s5.jpg"
+   ],
    "source_url": "https://www.ikea.com/us/en/p/brimnes-nightstand-black-80340454/",
-   "fetched_at": "2026-11-20T20:50:22+00:00"
+   "fetched_at": "2026-11-20T20:58:57+00:00"
   },
   {
    "id": "ikea-besta-tv-bench-with-doors-black-brown-bjorkoviken-brown-stained-oak-veneer-70-7-8x16-1-2x15-09568026",
@@ -1095,8 +1383,19 @@
      "h": 0.75
     }
    ],
+   "image_url": "https://www.ikea.com/us/en/images/products/besta-tv-bench-with-doors-black-brown-bjoerkoeviken-brown-stained-oak-veneer__0993133_pe820433_s5.jpg",
+   "image_urls": [
+    "https://www.ikea.com/us/en/images/products/besta-tv-bench-with-doors-black-brown-bjoerkoeviken-brown-stained-oak-veneer__0993133_pe820433_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/besta-tv-bench-with-doors-black-brown-bjoerkoeviken-brown-stained-oak-veneer__0995919_pe821959_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/besta-tv-bench-with-doors-black-brown-bjoerkoeviken-brown-stained-oak-veneer__0995920_pe821904_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/besta-tv-bench-with-doors-black-brown-bjoerkoeviken-brown-stained-oak-veneer__0998426_pe823027_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/besta-tv-bench-with-doors-black-brown-bjoerkoeviken-brown-stained-oak-veneer__0843438_pe535720_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/besta-tv-bench-with-doors-black-brown-bjoerkoeviken-brown-stained-oak-veneer__0720089_pe732401_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/besta-tv-bench-with-doors-black-brown-bjoerkoeviken-brown-stained-oak-veneer__1026887_pe834619_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/besta-tv-bench-with-doors-black-brown-bjoerkoeviken-brown-stained-oak-veneer__1482864_pe1001193_s5.jpg"
+   ],
    "source_url": "https://www.ikea.com/us/en/p/besta-tv-bench-with-doors-black-brown-bjoerkoeviken-brown-stained-oak-veneer-s09568026/",
-   "fetched_at": "2026-11-20T20:50:23+00:00"
+   "fetched_at": "2026-11-20T20:58:58+00:00"
   },
   {
    "id": "ikea-brimnes-tv-unit-black-85-1-8x16-1-4x21-1-8-20593091",
@@ -1133,8 +1432,17 @@
      "h": 2.25
     }
    ],
+   "image_url": "https://www.ikea.com/us/en/images/products/brimnes-tv-unit-black__1490477_pe1004159_s5.jpg",
+   "image_urls": [
+    "https://www.ikea.com/us/en/images/products/brimnes-tv-unit-black__1490477_pe1004159_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/brimnes-tv-unit-black__1494294_pe1004675_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/brimnes-tv-unit-black__1490475_pe1004161_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/brimnes-tv-unit-black__1490476_pe1004160_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/brimnes-tv-unit-black__1469059_pe996386_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/brimnes-tv-unit-black__1441915_pe986554_s5.jpg"
+   ],
    "source_url": "https://www.ikea.com/us/en/p/brimnes-tv-unit-black-20593091/",
-   "fetched_at": "2026-11-20T20:50:23+00:00"
+   "fetched_at": "2026-11-20T20:58:58+00:00"
   },
   {
    "id": "ikea-fjallbo-tv-unit-black-78x17-3-4x21-1-4-00579034",
@@ -1163,8 +1471,22 @@
      "h": 4.25
     }
    ],
+   "image_url": "https://www.ikea.com/us/en/images/products/fjaellbo-tv-unit-black__1360141_pe954365_s5.jpg",
+   "image_urls": [
+    "https://www.ikea.com/us/en/images/products/fjaellbo-tv-unit-black__1360141_pe954365_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/fjaellbo-tv-unit-black__1360154_pe954366_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/fjaellbo-tv-unit-black__1360155_pe954367_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/fjaellbo-tv-unit-black__0925815_ph157836_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/fjaellbo-tv-unit-black__1107159_pe868960_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/fjaellbo-tv-unit-black__1107158_pe868961_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/fjaellbo-tv-unit-black__1107157_pe868958_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/fjaellbo-tv-unit-black__0476530_pe616398_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/fjaellbo-tv-unit-black__0851649_pe616393_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/fjaellbo-tv-unit-black__1360363_pe954396_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/fjaellbo-tv-unit-black__1441233_pe986264_s5.jpg"
+   ],
    "source_url": "https://www.ikea.com/us/en/p/fjaellbo-tv-unit-black-00579034/",
-   "fetched_at": "2026-11-20T20:50:24+00:00"
+   "fetched_at": "2026-11-20T20:58:59+00:00"
   },
   {
    "id": "ikea-arende-rug-00576436",
@@ -1194,8 +1516,17 @@
      "h": 7.5
     }
    ],
+   "image_url": "https://www.ikea.com/us/en/images/products/aerende-rug-high-pile-gray__1389856_pe965285_s5.jpg",
+   "image_urls": [
+    "https://www.ikea.com/us/en/images/products/aerende-rug-high-pile-gray__1389856_pe965285_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/aerende-rug-high-pile-gray__1489190_pe1003672_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/aerende-rug-high-pile-gray__1522212_pe1013543_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/aerende-rug-high-pile-gray__1392310_pe966045_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/aerende-rug-high-pile-gray__1392309_pe966046_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/aerende-rug-high-pile-gray__1449345_pe989858_s5.jpg"
+   ],
    "source_url": "https://www.ikea.com/us/en/p/aerende-rug-high-pile-gray-00576436/",
-   "fetched_at": "2026-11-20T20:50:25+00:00"
+   "fetched_at": "2026-11-20T20:59:00+00:00"
   },
   {
    "id": "ikea-grejsimojs-rug-00602001",
@@ -1223,8 +1554,18 @@
      "h": 7.5
     }
    ],
+   "image_url": "https://www.ikea.com/us/en/images/products/grejsimojs-rug-high-pile-green__1450783_pe990412_s5.jpg",
+   "image_urls": [
+    "https://www.ikea.com/us/en/images/products/grejsimojs-rug-high-pile-green__1450783_pe990412_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/grejsimojs-rug-high-pile-green__1474938_pe998305_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/grejsimojs-rug-high-pile-green__1474937_pe998306_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/grejsimojs-rug-high-pile-green__1474936_pe998304_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/grejsimojs-rug-high-pile-green__1474822_pe998259_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/grejsimojs-rug-high-pile-green__1430970_pe982201_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/grejsimojs-rug-high-pile-green__1474423_pe998064_s5.jpg"
+   ],
    "source_url": "https://www.ikea.com/us/en/p/grejsimojs-rug-high-pile-green-00602001/",
-   "fetched_at": "2026-11-20T20:50:25+00:00"
+   "fetched_at": "2026-11-20T20:59:00+00:00"
   },
   {
    "id": "ikea-halved-rug-20328228",
@@ -1254,8 +1595,19 @@
      "h": 4.75
     }
    ],
+   "image_url": "https://www.ikea.com/us/en/images/products/halved-rug-flatwoven-handmade-multicolor__0603024_pe680632_s5.jpg",
+   "image_urls": [
+    "https://www.ikea.com/us/en/images/products/halved-rug-flatwoven-handmade-multicolor__0603024_pe680632_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/halved-rug-flatwoven-handmade-multicolor__0464902_pe609763_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/halved-rug-flatwoven-handmade-multicolor__0891754_pe609762_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/halved-rug-flatwoven-handmade-multicolor__0545666_ph141141_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/halved-rug-flatwoven-handmade-multicolor__0801233_ph149337_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/halved-rug-flatwoven-handmade-multicolor__0509821_ph138640_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/halved-rug-flatwoven-handmade-multicolor__0801231_ph138643_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/halved-rug-flatwoven-handmade-multicolor__1341646_pe948865_s5.jpg"
+   ],
    "source_url": "https://www.ikea.com/us/en/p/halved-rug-flatwoven-handmade-multicolor-20328228/",
-   "fetched_at": "2026-11-20T20:50:26+00:00"
+   "fetched_at": "2026-11-20T20:59:01+00:00"
   },
   {
    "id": "ikea-akterspring-floor-lamp-opal-glass-brass-plated-64-00618808",
@@ -1285,8 +1637,17 @@
      "h": 7.0
     }
    ],
+   "image_url": "https://www.ikea.com/us/en/images/products/akterspring-floor-lamp-opal-glass-brass-plated__1531221_pe1015569_s5.jpg",
+   "image_urls": [
+    "https://www.ikea.com/us/en/images/products/akterspring-floor-lamp-opal-glass-brass-plated__1531221_pe1015569_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/akterspring-floor-lamp-opal-glass-brass-plated__1543271_pe1018829_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/akterspring-floor-lamp-opal-glass-brass-plated__1543270_pe1018830_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/akterspring-floor-lamp-opal-glass-brass-plated__1573992_ph300307_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/akterspring-floor-lamp-opal-glass-brass-plated__1543269_pe1018831_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/akterspring-floor-lamp-opal-glass-brass-plated__1543268_pe1018828_s5.jpg"
+   ],
    "source_url": "https://www.ikea.com/us/en/p/akterspring-floor-lamp-opal-glass-brass-plated-00618808/",
-   "fetched_at": "2026-11-20T20:50:27+00:00"
+   "fetched_at": "2026-11-20T20:59:02+00:00"
   },
   {
    "id": "ikea-arstid-floor-lamp-brass-white-60321324",
@@ -1317,8 +1678,16 @@
      "h": 14.75
     }
    ],
+   "image_url": "https://www.ikea.com/us/en/images/products/arstid-floor-lamp-brass-white__0390610_pe566328_s5.jpg",
+   "image_urls": [
+    "https://www.ikea.com/us/en/images/products/arstid-floor-lamp-brass-white__0390610_pe566328_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/arstid-floor-lamp-brass-white__0812946_ph164458_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/arstid-floor-lamp-brass-white__0747835_ph156736_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/arstid-floor-lamp-brass-white__0879662_pe671329_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/arstid-floor-lamp-brass-white__0879656_pe614370_s5.jpg"
+   ],
    "source_url": "https://www.ikea.com/us/en/p/arstid-floor-lamp-brass-white-60321324/",
-   "fetched_at": "2026-11-20T20:50:27+00:00"
+   "fetched_at": "2026-11-20T20:59:03+00:00"
   },
   {
    "id": "ikea-barlast-floor-lamp-black-white-59-70437814",
@@ -1349,8 +1718,15 @@
      "h": 3.0
     }
    ],
+   "image_url": "https://www.ikea.com/us/en/images/products/barlast-floor-lamp-black-white__0957676_pe805130_s5.jpg",
+   "image_urls": [
+    "https://www.ikea.com/us/en/images/products/barlast-floor-lamp-black-white__0957676_pe805130_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/barlast-floor-lamp-black-white__0959617_pe806101_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/barlast-floor-lamp-black-white__0957677_pe805131_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/barlast-floor-lamp-black-white__0957678_pe805133_s5.jpg"
+   ],
    "source_url": "https://www.ikea.com/us/en/p/barlast-floor-lamp-black-white-70437814/",
-   "fetched_at": "2026-11-20T20:50:28+00:00"
+   "fetched_at": "2026-11-20T20:59:04+00:00"
   },
   {
    "id": "ikea-kivik-sofa-tibbleby-beige-gray-39440593",
@@ -1390,8 +1766,18 @@
      "h": 3.5
     }
    ],
+   "image_url": "https://www.ikea.com/us/en/images/products/kivik-sofa-tibbleby-beige-gray__1577303_pe1033081_s5.jpg",
+   "image_urls": [
+    "https://www.ikea.com/us/en/images/products/kivik-sofa-tibbleby-beige-gray__1577303_pe1033081_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/kivik-sofa-tibbleby-beige-gray__1564646_pe1026741_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/kivik-sofa-tibbleby-beige-gray__1564643_pe1026740_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/kivik-sofa-tibbleby-beige-gray__1564644_pe1026739_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/kivik-sofa-tibbleby-beige-gray__1134553_pe878803_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/kivik-sofa-tibbleby-beige-gray__1300924_pe937215_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/kivik-sofa-tibbleby-beige-gray__1399650_ph191619_s5.jpg"
+   ],
    "source_url": "https://www.ikea.com/us/en/p/kivik-sofa-tibbleby-beige-gray-s39440593/",
-   "fetched_at": "2026-11-20T20:50:29+00:00"
+   "fetched_at": "2026-11-20T20:59:05+00:00"
   },
   {
    "id": "ikea-uppland-sofa-blekinge-white-19384116",
@@ -1430,8 +1816,21 @@
      "h": 4.0
     }
    ],
+   "image_url": "https://www.ikea.com/us/en/images/products/uppland-sofa-blekinge-white__1578502_pe1034145_s5.jpg",
+   "image_urls": [
+    "https://www.ikea.com/us/en/images/products/uppland-sofa-blekinge-white__1578502_pe1034145_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/uppland-sofa-blekinge-white__0818564_pe774486_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/uppland-sofa-blekinge-white__0818534_pe774464_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/uppland-sofa-blekinge-white__0261000_pe404970_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/uppland-sofa-blekinge-white__0934662_pe792483_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/uppland-sofa-blekinge-white__0937793_pe793848_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/uppland-sofa-blekinge-white__0252533_pe391799_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/uppland-sofa-blekinge-white__0948958_pe799429_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/uppland-sofa-blekinge-white__0928381_pe789853_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/uppland-sofa-blekinge-white__0739096_pe225167_s5.jpg"
+   ],
    "source_url": "https://www.ikea.com/us/en/p/uppland-sofa-blekinge-white-s19384116/",
-   "fetched_at": "2026-11-20T20:50:29+00:00"
+   "fetched_at": "2026-11-20T20:59:05+00:00"
   },
   {
    "id": "ikea-poang-armchair-birch-veneer-knisa-light-beige-59305928",
@@ -1466,8 +1865,17 @@
      "h": 9.75
     }
    ],
+   "image_url": "https://www.ikea.com/us/en/images/products/poaeng-armchair-birch-veneer-knisa-light-beige__0571500_pe666933_s5.jpg",
+   "image_urls": [
+    "https://www.ikea.com/us/en/images/products/poaeng-armchair-birch-veneer-knisa-light-beige__0571500_pe666933_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/poaeng-armchair-birch-veneer-knisa-light-beige__0837298_pe666936_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/poaeng-armchair-birch-veneer-knisa-light-beige__0837295_pe666935_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/poaeng-armchair-birch-veneer-knisa-light-beige__1128876_pe876716_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/poaeng-armchair-birch-veneer-knisa-light-beige__0837285_pe666934_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/poaeng-armchair-birch-veneer-knisa-light-beige__1314996_pe940336_s5.jpg"
+   ],
    "source_url": "https://www.ikea.com/us/en/p/poaeng-armchair-birch-veneer-knisa-light-beige-s59305928/",
-   "fetched_at": "2026-11-20T20:50:30+00:00"
+   "fetched_at": "2026-11-20T20:59:06+00:00"
   },
   {
    "id": "ikea-billy-bookcase-white-31-1-2x11x79-1-2-20522046",
@@ -1495,8 +1903,17 @@
      "h": 5.25
     }
    ],
+   "image_url": "https://www.ikea.com/us/en/images/products/billy-bookcase-white__1590272_pe1038911_s5.jpg",
+   "image_urls": [
+    "https://www.ikea.com/us/en/images/products/billy-bookcase-white__1590272_pe1038911_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/billy-bookcase-white__1237507_pe917999_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/billy-bookcase-white__1424760_pe979354_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/billy-bookcase-white__1237435_pe917974_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/billy-bookcase-white__1237565_pe918022_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/billy-bookcase-white__0723342_pe733920_s5.jpg"
+   ],
    "source_url": "https://www.ikea.com/us/en/p/billy-bookcase-white-20522046/",
-   "fetched_at": "2026-11-20T20:50:31+00:00"
+   "fetched_at": "2026-11-20T20:59:07+00:00"
   },
   {
    "id": "ikea-kallax-shelf-unit-white-30-1-8x57-5-8-20631663",
@@ -1524,8 +1941,20 @@
      "h": 6.5
     }
    ],
+   "image_url": "https://www.ikea.com/us/en/images/products/kallax-shelf-unit-white__0644757_pe702939_s5.jpg",
+   "image_urls": [
+    "https://www.ikea.com/us/en/images/products/kallax-shelf-unit-white__0644757_pe702939_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/kallax-shelf-unit-white__1084790_pe859876_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/kallax-shelf-unit-white__1084796_pe859882_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/kallax-shelf-unit-white__1051325_pe845148_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/kallax-shelf-unit-white__1099106_pe865602_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/kallax-shelf-unit-white__1106842_pe868819_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/kallax-shelf-unit-white__1117445_pe872744_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/kallax-shelf-unit-white__1106846_pe868822_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/kallax-shelf-unit-white__1215327_pe911964_s5.jpg"
+   ],
    "source_url": "https://www.ikea.com/us/en/p/kallax-shelf-unit-white-20631663/",
-   "fetched_at": "2026-11-20T20:50:32+00:00"
+   "fetched_at": "2026-11-20T20:59:08+00:00"
   },
   {
    "id": "ikea-malm-bed-frame-dark-brown-veneer-luroy-queen-49574365",
@@ -1573,8 +2002,17 @@
      "h": 4.25
     }
    ],
+   "image_url": "https://www.ikea.com/us/en/images/products/malm-bed-frame-dark-brown-veneer-luroey__1364773_pe956029_s5.jpg",
+   "image_urls": [
+    "https://www.ikea.com/us/en/images/products/malm-bed-frame-dark-brown-veneer-luroey__1364773_pe956029_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/malm-bed-frame-dark-brown-veneer-luroey__1364772_pe956028_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/malm-bed-frame-dark-brown-veneer-luroey__1364771_pe956027_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/malm-bed-frame-dark-brown-veneer-luroey__1364775_pe956031_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/malm-bed-frame-dark-brown-veneer-luroey__1364774_pe956030_s5.jpg",
+    "https://www.ikea.com/us/en/images/products/malm-bed-frame-dark-brown-veneer-luroey__1499339_pe1006573_s5.jpg"
+   ],
    "source_url": "https://www.ikea.com/us/en/p/malm-bed-frame-dark-brown-veneer-luroey-s49574365/",
-   "fetched_at": "2026-11-20T20:50:32+00:00"
+   "fetched_at": "2026-11-20T20:59:08+00:00"
   }
  ]
 }

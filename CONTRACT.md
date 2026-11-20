@@ -30,6 +30,8 @@ tv_bench, rug, floor_lamp, bookcase, bed.
  "dims_in": {"w": 89.75, "d": 37.375, "h": 32.625},
  "dims_raw": {"width": 89.75, "seat height": 17.75, "...": "every measurement the page lists"},
  "packages_in": [{"w": 37.5, "d": 72.5, "h": 19.75}],
+ "image_url": "https://www.ikea.com/us/en/images/products/...__..._s5.jpg",
+ "image_urls": ["main photo first, then every other photo on the page (4-13 per product)"],
  "source_url": "https://www.ikea.com/us/en/p/...", "fetched_at": "2026-11-20T20:49:27+00:00"}
 ```
 Round items (tables, lamps) use the diameter for w and d. `price_usd` can be null (1 product) and may be a
