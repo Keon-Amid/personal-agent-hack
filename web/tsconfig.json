@@ -8,9 +8,11 @@
     "strict": true,
     "noEmit": true,
     "skipLibCheck": true,
-    "isolatedModules": true,
     "resolveJsonModule": true,
-    "types": ["vite/client"]
+    "isolatedModules": true,
+    "allowImportingTsExtensions": false,
+    "types": ["vite/client"],
+    "paths": { "@/*": ["./src/*"], "@repo/*": ["../*"] }
   },
   "include": ["src"]
 }
