@@ -26,7 +26,8 @@ from .scan import point_in_poly
 CLEARANCE_IN = 18.0  # minimum gap to reach an item (team default, not a code)
 RUG_MARGIN_IN = 6.0  # same as fit.checks.DEFAULT_RUG_MARGIN_IN
 TUCK_UNDER = {("dining_chair", "table"), ("dining_chair", "dining_table"), ("desk_chair", "table"),
-              ("desk_chair", "desk"), ("desk_chair", "dining_table"), ("armchair", "coffee_table")}
+              ("desk_chair", "desk"), ("desk_chair", "dining_table")}
+CENTRE_CATEGORIES = {"rug", "coffee_table", "dining_table", "table"}  # these go in the open, not against a wall
 
 
 def _footprint(it: dict) -> tuple[float, float, float, float]:
@@ -140,11 +141,14 @@ def find_spot(room: dict, lay: list[dict], product: dict, step_in: float = 6.0) 
 
     Tries every position on a `step_in` grid at 0° and 90°; keeps spots where the product and every existing item
     still check out (all `fits`). Returns {"x_in", "z_in", "rotation", "wall_gap_in", "results"} for the spot
-    closest to a wall (sofas, dressers and shelves go against walls), or None if nothing fits anywhere.
+    closest to a wall (sofas, dressers and shelves go against walls) or, for rugs and tables, closest to the room's
+    centre; None if nothing fits anywhere.
     """
     xs = [p[0] for p in room["outline"]]
     zs = [p[1] for p in room["outline"]]
     d = product["dims_in"]
+    centre = product["category"] in CENTRE_CATEGORIES
+    cx, cz = (min(xs) + max(xs)) / 2, (min(zs) + max(zs)) / 2
     best = None
     for rot in (0, 90):
         w, dd = (d["d"], d["w"]) if rot == 90 else (d["w"], d["d"])
@@ -156,11 +160,14 @@ def find_spot(room: dict, lay: list[dict], product: dict, step_in: float = 6.0) 
                 res = check_layout(room, trial)
                 if all(r["verdict"] == FITS for rs in res.values() for r in rs):
                     gap = min(x - w / 2 - min(xs), max(xs) - x - w / 2, z - dd / 2 - min(zs), max(zs) - z - dd / 2)
-                    if best is None or gap < best["wall_gap_in"]:
+                    score = ((x - cx) ** 2 + (z - cz) ** 2) if centre else gap
+                    if best is None or score < best["_score"]:
                         best = {"x_in": round(x, 1), "z_in": round(z, 1), "rotation": rot,
-                                "wall_gap_in": round(gap, 1), "results": res[product["id"]]}
+                                "wall_gap_in": round(gap, 1), "results": res[product["id"]], "_score": score}
                 z += step_in
             x += step_in
+    if best:
+        best.pop("_score")
     return best
 
 
