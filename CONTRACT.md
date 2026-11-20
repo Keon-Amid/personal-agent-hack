@@ -228,11 +228,10 @@ Rules: chairs may tuck under tables, anything may stand on a rug, rugs keep 6 in
 door swing" + "corner outside the walls"; table pushed back → hits the L-shape notch; `find_spot(KIVIK)` → flush on
 the 146 in wall.
 
-### HTTP API for the web app: `agent/server.py` (owner: brendan; kyle handed the backend over) — DRAFT, confirm
-`python -m agent.server --port 8000` (stdlib, no new dependency). CORS for http://localhost:5173 (`WEB_ORIGIN`).
-- `POST /api/plan` `{room: {wall, depth, door_width, door_height}, style_text, budget_usd, scan_path?, scan_wall?}`
-  → `202 {plan_id, plan_url}` at once; the agent runs in the background (claude -p + the MCP tools).
-  `scan_path` (e.g. `assets/room_scan_roomplan.glb`) replaces the room numbers; `room` values then override the scan.
-- `GET /api/plan/{id}` → the Plan (`contracts/plan.live.json` shape) with `items[]`, `audit[]` and `cart` growing while
-  it runs, plus `status: running | done | error` and `error`. keon polls every second. Live test: done in ~70 s.
-- `GET /api/health` → `{ok: true}`. Swap and quiz endpoints: later.
+### Room scans in the agent (owner: brendan) — DRAFT, confirm
+`run_agent(..., scan_path=None, scan_wall=None)` and `POST /api/plan {scan_path?, scan_wall?}` (server/app.py).
+A GLB with named `Wall_*` objects (RoomPlan / Polycam Floorplan) is read with alistair's `fit.scan.load_scan`: wall =
+`scan_wall`'s inner length (default longest), depth = inner extent out from it, door = narrowest door, source
+`scanned:roomplan` ±1 in. Any other GLB/OBJ/PLY mesh is read with `agent.room_scan` (`scanned:lidar`). Exact `room`
+values (source `user`, e.g. a tape-measured wall) override the scan key by key. Live: `assets/room_scan_roomplan.glb`
+→ wall 190.6, depth 139.7, door 32 × 96.8 in; 58/58 Senso claims verified (`contracts/plan.roomplan.json`).
