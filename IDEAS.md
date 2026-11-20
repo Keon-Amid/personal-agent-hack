@@ -2,6 +2,17 @@
 
 The challenge says **shopping agent with an audit trail**: real context, a real action, and visible steps behind each decision. Past winners at this organizer and similar events share a few traits. They lead with **one specific person who isn't in SF**, an **action you can check** (an email sent, a claim filed, a cart built), and **a number** (dollars recovered, errors caught). They lose when they're a chat box with a recommendation at the end. Past tokens& winners we shouldn't copy: FDA recall alerts, scam-inbox shield, pharmacy price finder, senior check-in calls, wildfire family alerts.
 
+## Real winners these ideas are based on
+- **people-coming-over** (Creators Corner, the same organizers, Multimodal Agents Hack 2025, **grand prize + 4 awards**): photograph your room, get furniture suggestions, and the agent **completes the checkout**. It's the closest precedent to today's shopping brief: it ran the full loop to a real purchase and made a sponsor tool (AgentQL) the step that does the buying. https://www.agentql.com/blog/2025-multimodal-agents-hackathon
+- **Dealwise** (ElevenLabs hackathon, SF 1st): phones local businesses for quotes and books the appointment. It came from the founders' own couch-cleaning hassle. **Procuro** (NYC 2nd) phones suppliers to chase late parts. A live call on stage is the most common winning demo moment.
+- **Smooth Operator** (Berkeley LLM Agents, 1st): negotiates moving quotes over real voice calls.
+- **CrossBeam** (Anthropic Opus 4.6 hackathon, 1st): permit corrections, pitched with a real number (90%+ of CA permits are rejected the first time) and a city considering using it.
+- **MaestrIA** (Anthropic Opus 4.7, prize): a 20-year-old in Chiloé, Chile. Photo of a home-repair problem → cost estimate → tradespeople → drafted WhatsApp. It showed a measured eval going from 74% to 81% on 12 real cases. A "beyond SF" user plus numbers.
+- **Digital Guardian** (Cursor Hamburg, 1st + fan favorite): blocks scam calls to elderly relatives, and can only ever neutralize, monitor or escalate. **CallFlow** and **Second Voice** also won with a visible approval step. Judges reward autonomy that has guardrails.
+- **What lost:** do-anything concierges (the Retell "personal phone concierge" lost to a narrow property-maintenance dispatcher), trip planners, email and meeting summarizers, daily planners, job-application bots.
+
+**Takeaways:** finish the job with a real transaction, use real data and show a number, pick a specific person outside SF, show a visible trust boundary, and make sponsor tools do the work that matters.
+
 Each idea lists the person, what triggers it, the action it takes, what goes in the audit trail, which sponsors carry real weight, and the demo moment.
 
 ---
@@ -47,6 +58,9 @@ Each idea lists the person, what triggers it, the action it takes, what goes in 
 - **Risk:** supply-house data is hard to get live. We'd need real catalogs.
 
 ---
+
+## Twist: it picks up the phone
+Several of the winners above won with a live call. If a store only gives price adjustments or refunds over the phone (Clawback) or a supply house won't quote online (Right Part, Trades), the agent calls, and the transcript goes into the audit trail. It's high risk and high reward: only add it after the main path works.
 
 ## Twist we can add to any of these
 **The agent rehearses before it acts.** Every claim, order or email first runs in a Firedrill simulation. Only the actions that pass go live, and the drill report becomes part of the audit trail. That makes the Firedrill prize real and gives the demo a strong "safe autonomy" story.
