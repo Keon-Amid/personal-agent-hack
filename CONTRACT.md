@@ -135,3 +135,18 @@ ranked/rejected/picked, `status`, `source`, `why`). Example `why` lines from a r
 fits; the excluded ones are logged as `swapped_out`. Reuse the same `style_match` result, so a swap makes no SIE call.
 
 Senso's fact-check (brendan) runs on the picked item's claim after this.
+
+### Agent: `agent/` (owner: brendan) — DRAFT, confirm
+One backend, two front doors. The tools enforce the rules; the model only orders and explains them.
+- **Web app (kyle wraps this):** `agent.agent.run_agent(room_input, photo_b64=None, style_text=None, budget_usd=None, on_event=None) -> Plan`.
+  `room_input` = `{"wall", "depth", "door_width", "door_height"}` in inches (exact, source "user"). Runs `claude -p` (Claude Code
+  on the host's Claude subscription, no API key) with only the MCP tools below; `on_event(audit_record)` streams progress.
+  Real run: 5 slots in 135 s, 42/46 Senso claims verified, cart $1,027.97 → `contracts/plan.live.json`.
+- **Tools** (`agent.tools`, also served by the MCP server): `create_plan`, `analyze_room`, `style_match`, `fit_options`, `pick`,
+  `senso_check`, `swap`, `cart_add`, `get_plan`. `pick` only returns items that fit; `cart_add` refuses an item without a
+  Senso check that has ≥1 verified claim and no conflict; every tool appends its own audit record and returns `plan_url`.
+- **Anyone's own Claude:** `python -m agent.mcp_server` (stdio, for Claude Desktop / Claude Code) or `--http --port N`
+  (claude.ai, needs public HTTPS). Setup in `docs/mcp.md`.
+- **Plan** = `contracts/plan.live.json` shape: `plan_id, plan_url, room, style, items[] (slot, product, style rank/scores,
+  fit {verdict, results}, senso {check_id, accuracy_pct, claims}, why, why_source, rejected[]), cart {items, total_usd,
+  delivery_note, no_purchase: true}, audit[]`. Plans persist as JSON in `~/.cache/room-furnisher/plans/` (shared across processes).
