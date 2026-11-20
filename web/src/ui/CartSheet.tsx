@@ -2,7 +2,7 @@ import { ArrowUpRight, Download, ShieldCheck, X } from 'lucide-react'
 import { motion } from 'motion/react'
 import { cn, slotLabel, splitName, usd } from '../lib/format'
 import { placedItems, useApp } from '../store'
-import { Kbd, ProductPhoto, VerdictIcon } from './bits'
+import { Kbd, ProductPhoto, Ticker, VerdictIcon } from './bits'
 
 function download(name: string, data: unknown) {
   const url = URL.createObjectURL(new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' }))
@@ -49,7 +49,7 @@ export default function CartSheet() {
       </div>
       <div className="hairline" />
 
-      <div className="min-h-0 flex-1 overflow-y-auto">
+      <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain">
         {items.length === 0 ? (
           <p className="p-4 text-sm leading-relaxed text-fg-2">
             Nothing here yet. Describe the room you want and the agent adds each piece once it passes the fit check and Senso.
@@ -107,7 +107,7 @@ export default function CartSheet() {
       <div className="shrink-0 border-t border-line bg-black/20 p-4">
         <div className="flex items-baseline justify-between">
           <span className="text-sm text-fg-2">Total</span>
-          <span className="num text-xl font-medium text-fg">{usd(total)}</span>
+          <Ticker value={total} className="text-xl font-medium text-fg" />
         </div>
         {unpriced > 0 && <p className="mt-1 text-xs text-unsure">{unpriced} piece has no price on its IKEA page, so it isn't in the total.</p>}
         {budget !== null && (

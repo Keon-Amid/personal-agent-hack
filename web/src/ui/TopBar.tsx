@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { useNavigate } from 'react-router'
-import { Armchair, ShoppingBag } from 'lucide-react'
+import { Armchair, Box, ShoppingBag } from 'lucide-react'
 import { AnimatePresence, motion } from 'motion/react'
 import { API_MODE } from '../api/api'
 import { demoRoomForPlan } from '../data'
@@ -8,11 +8,12 @@ import { cn, inches, usd } from '../lib/format'
 import { useApp, type CameraPreset, type ExistingMode } from '../store'
 import type { MeasureKey, Measurement } from '../types'
 import { cancelRun } from '../run'
-import { Kbd } from './bits'
+import { Kbd, Ticker } from './bits'
+import { Tip } from './tooltip'
 
 export function Wordmark({ className }: { className?: string }) {
   return (
-    <span className={cn('inline-flex items-center gap-2 text-base font-semibold tracking-[-0.01em] text-fg', className)}>
+    <span translate="no" className={cn('inline-flex items-center gap-2 text-base font-semibold tracking-[-0.01em] text-fg', className)}>
       <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden>
         <path d="M3.5 15V3.5H15M3.5 9.25h8" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="square" />
       </svg>
@@ -99,6 +100,7 @@ function Measure({ k, m }: { k: MeasureKey; m: Measurement }) {
                 <input
                   id={`measure-${k}`}
                   ref={inputRef}
+                  name={`measure-${k}`}
                   inputMode="decimal"
                   autoComplete="off"
                   value={draft}
@@ -143,6 +145,8 @@ export default function TopBar() {
   const setCartOpen = useApp((s) => s.setCartOpen)
   const placed = useApp((s) => s.placed)
   const modelLabel = useApp((s) => s.modelLabel)
+  const modelStyle = useApp((s) => s.modelStyle)
+  const setModelStyle = useApp((s) => s.setModelStyle)
   if (!plan) return null
   const demo = demoRoomForPlan(plan.plan_id)
   const inCart = plan.items.filter((i) => placed[i.slot] === 'in_cart' || (stage === 'done' && placed[i.slot]))
@@ -207,21 +211,36 @@ export default function TopBar() {
               <Kbd className="h-4 min-w-4 px-1 opacity-70">{c.key}</Kbd>
             </button>
           ))}
+          <span className="mx-1 h-4 w-px bg-line-2" aria-hidden />
+          <Tip label={modelStyle === 'photo' ? '3D models made from the IKEA photos. Click for plain shapes.' : 'Plain shapes at the listed sizes. Click for photo models.'}>
+            <button
+              type="button"
+              onClick={() => setModelStyle(modelStyle === 'photo' ? 'clay' : 'photo')}
+              aria-pressed={modelStyle === 'photo'}
+              aria-label={modelStyle === 'photo' ? 'Photo models on. Switch to plain shapes.' : 'Plain shapes. Switch to photo models.'}
+              className={cn(
+                'flex h-8 w-8 items-center justify-center rounded-sm transition-colors duration-150 hover:bg-white/6',
+                modelStyle === 'photo' ? 'text-fg' : 'text-fg-3',
+              )}
+            >
+              <Box size={15} strokeWidth={1.8} />
+            </button>
+          </Tip>
           {floorItems > 0 && (
             <>
-              <span className="mx-1 h-4 w-px bg-line-2" aria-hidden />
-              <button
-                type="button"
-                onClick={() => setExisting(nextExisting[existing])}
-                title={`${existingWords[existing]}. The scan found ${floorItems} pieces already in the room.`}
-                aria-label={existingWords[existing]}
-                className={cn(
-                  'flex h-8 w-8 items-center justify-center rounded-sm transition-colors duration-150 hover:bg-white/6',
-                  existing === 'show' ? 'text-fg' : existing === 'ghost' ? 'text-fg-2' : 'text-fg-3',
-                )}
-              >
-                <Armchair size={15} strokeWidth={1.8} className={existing === 'hidden' ? 'opacity-50' : ''} />
-              </button>
+              <Tip label={`${existingWords[existing]}. The scan found ${floorItems} pieces already in the room.`}>
+                <button
+                  type="button"
+                  onClick={() => setExisting(nextExisting[existing])}
+                  aria-label={existingWords[existing]}
+                  className={cn(
+                    'flex h-8 w-8 items-center justify-center rounded-sm transition-colors duration-150 hover:bg-white/6',
+                    existing === 'show' ? 'text-fg' : existing === 'ghost' ? 'text-fg-2' : 'text-fg-3',
+                  )}
+                >
+                  <Armchair size={15} strokeWidth={1.8} className={existing === 'hidden' ? 'opacity-50' : ''} />
+                </button>
+              </Tip>
             </>
           )}
         </div>
@@ -242,7 +261,7 @@ export default function TopBar() {
             <>
               <span className="num text-fg-2">{inCart.length}</span>
               <span className="h-3.5 w-px bg-line-2" aria-hidden />
-              <span className="num">{usd(total)}</span>
+              <Ticker value={total} />
             </>
           )}
         </button>

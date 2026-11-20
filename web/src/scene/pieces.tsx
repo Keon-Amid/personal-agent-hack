@@ -115,6 +115,57 @@ export function Label({ position, children, style }: { position: P3; children: R
 
 const tmp = new THREE.Vector3()
 
+/** The red tag over a piece that does not fit: name on one line, the real math under it. Sits above the piece. */
+function FitTag({ position, name, math, opacityRef }: { position: P3; name?: string; math: string; opacityRef?: RefObject<HTMLDivElement | null> }) {
+  return (
+    <Html position={position} portal={portal} zIndexRange={[40, 31]} style={{ pointerEvents: 'none' }}>
+      <div
+        ref={opacityRef}
+        style={{
+          ...pill,
+          transform: 'translate(-50%, -100%)',
+          width: 'max-content',
+          maxWidth: 300,
+          padding: '7px 9px 8px',
+          borderColor: 'rgba(255,107,94,.45)',
+          borderRadius: 7,
+          whiteSpace: 'normal',
+          textAlign: 'left',
+          boxShadow: '0 12px 30px -12px rgba(0,0,0,.8)',
+        }}
+      >
+        {name && (
+          <div
+            style={{
+              font: '600 12px/1.25 var(--font-sans)',
+              letterSpacing: 0,
+              color: COLORS.bone,
+              marginBottom: 4,
+              whiteSpace: 'nowrap',
+              overflow: 'hidden',
+              textOverflow: 'ellipsis',
+            }}
+          >
+            {name}
+          </div>
+        )}
+        <div
+          style={{
+            font: '500 11px/1.4 var(--font-mono)',
+            color: COLORS.nofit,
+            display: '-webkit-box',
+            WebkitLineClamp: 2,
+            WebkitBoxOrient: 'vertical',
+            overflow: 'hidden',
+          }}
+        >
+          {math}
+        </div>
+      </div>
+    </Html>
+  )
+}
+
 /** W x D x H along the three edges nearest the camera. */
 function Callouts({ w, d, h, dims }: { w: number; d: number; h: number; dims: Dims }) {
   const g = useRef<THREE.Group>(null)
@@ -405,14 +456,7 @@ export function Piece({
           clay
         )}
         {noFit && !selected && <Frame w={w} h={h} d={d} color={COLORS.nofit} width={1.8} />}
-        {noFit && (
-          <Label
-            position={[0, h + 0.2, 0]}
-            style={{ color: COLORS.nofit, borderColor: 'rgba(255,107,94,.45)', padding: '6px 8px', maxWidth: 320, whiteSpace: 'normal', lineHeight: 1.35 }}
-          >
-            {failing ?? 'Does not fit'}
-          </Label>
-        )}
+        {noFit && <FitTag position={[0, h + 0.14, 0]} name={item.name} math={failing ? `Does not fit: ${failing}` : 'Does not fit'} />}
         {verdict === 'unsure' && !selected && <Frame w={w} h={h} d={d} color={COLORS.unsure} width={1.6} />}
         {translucent && !selected && !noFit && verdict !== 'unsure' && (
           <Frame w={w} h={h} d={d} color={COLORS.bone} width={1.1} opacity={0.6} dashed xray={false} />
@@ -473,25 +517,7 @@ export function GhostPiece({ ghost, placement }: { ghost: Ghost; placement: Plac
         <Shape category={category} w={w} d={d} h={h} mat={mat} ro={30} shadow={false} />
         <Frame w={w} h={h} d={d} color={COLORS.nofit} width={1.8} />
       </group>
-      <Html position={[0, h + 0.22, 0]} center portal={portal} zIndexRange={[40, 31]} style={{ pointerEvents: 'none' }}>
-        <div
-          ref={label}
-          style={{
-            ...pill,
-            opacity: 0,
-            padding: '7px 9px 8px',
-            borderColor: 'rgba(255,107,94,.45)',
-            borderRadius: 7,
-            maxWidth: 340,
-            whiteSpace: 'normal',
-            textAlign: 'left',
-            boxShadow: '0 12px 30px -12px rgba(0,0,0,.8)',
-          }}
-        >
-          <div style={{ font: '600 12px/1.25 var(--font-sans)', color: COLORS.bone, marginBottom: 4 }}>{ghost.name}</div>
-          <div style={{ color: COLORS.nofit, lineHeight: 1.35 }}>{math}</div>
-        </div>
-      </Html>
+      <FitTag position={[0, h + 0.14, 0]} name={ghost.name} math={math} opacityRef={label} />
     </group>
   )
 }

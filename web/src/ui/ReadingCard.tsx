@@ -69,7 +69,7 @@ export default function ReadingCard() {
             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-fg/50" />
             <span className="relative inline-flex h-2 w-2 rounded-full bg-fg" />
           </span>
-          <h2 className="text-base font-medium text-fg">Reading your room</h2>
+          <h2 className="text-base font-medium text-fg">Reading your room…</h2>
         </div>
         <ul className="mt-3 min-h-[5.5rem] space-y-1.5">
           {steps.slice(0, shown).map((s) => (
@@ -84,7 +84,7 @@ export default function ReadingCard() {
               <span className="num">{s}</span>
             </motion.li>
           ))}
-          {!steps.length && <li className="text-sm text-fg-3">Opening the scan</li>}
+          {!steps.length && <li className="text-sm text-fg-3">Opening the scan…</li>}
         </ul>
       </div>
     </motion.div>

@@ -1,7 +1,35 @@
-import type { ReactNode } from 'react'
+import { useEffect, useRef, type ReactNode } from 'react'
+import { useMotionValue, useReducedMotion, useSpring } from 'motion/react'
 import { Check, HelpCircle, ShieldCheck, X } from 'lucide-react'
 import type { Verdict } from '../types'
-import { cn } from '../lib/format'
+import { cn, usd } from '../lib/format'
+
+/**
+ * A dollar amount that rolls to its new value when a piece lands in the cart.
+ * Adapted from Magic UI's number-ticker (spring value written straight to the DOM, no re-render per frame).
+ */
+export function Ticker({ value, className }: { value: number; className?: string }) {
+  const ref = useRef<HTMLSpanElement>(null)
+  const reduced = useReducedMotion()
+  const mv = useMotionValue(value)
+  const spring = useSpring(mv, { damping: 36, stiffness: 190 })
+  useEffect(() => {
+    if (reduced) spring.jump(value)
+    else mv.set(value)
+  }, [mv, spring, value, reduced])
+  useEffect(
+    () =>
+      spring.on('change', (v) => {
+        if (ref.current) ref.current.textContent = usd(Math.abs(v - value) < 0.005 ? value : Math.round(v))
+      }),
+    [spring, value],
+  )
+  return (
+    <span ref={ref} className={cn('num', className)}>
+      {usd(value)}
+    </span>
+  )
+}
 
 export function Kbd({ children, className }: { children: ReactNode; className?: string }) {
   return <kbd className={cn('kbd', className)}>{children}</kbd>
@@ -48,7 +76,7 @@ export function SensoChip({ pct, pending, className }: { pct: number | null | un
         )}
       >
         <ShieldCheck size={12} strokeWidth={2} aria-hidden />
-        Checking with Senso
+        Checking with Senso…
       </span>
     )
   return (
@@ -81,6 +109,8 @@ export function ProductPhoto({ src, alt, className }: { src: string; alt: string
       <img
         src={src}
         alt={alt}
+        width={400}
+        height={400}
         decoding="async"
         referrerPolicy="no-referrer"
         className="h-full w-full object-contain mix-blend-multiply"

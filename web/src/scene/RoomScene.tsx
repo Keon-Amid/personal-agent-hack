@@ -14,6 +14,9 @@ import { useModelManifest } from '../room3d/Model'
 
 const MODELS = '/models/'
 
+// dev only: lets a screenshot script drive the live store (window.__app.getState().select('sofa'))
+if (import.meta.env.DEV) (window as unknown as { __app?: typeof useApp }).__app = useApp
+
 const CURB = 0.13 // height a wall is cut down to when it stands between you and the room (m)
 const CUT = 2.25 // every wall is sectioned here, like an architect's model: above the TV, below the ceiling
 const FOV = 34
@@ -205,7 +208,7 @@ function Rig({ shell, layout, hero, plan }: { shell: Shell; layout: LayoutDetail
       const big = Math.max(item.dims_in.w, item.dims_in.d, item.dims_in.h ?? 0) * IN
       const room = pose(useApp.getState().camera)
       const roomDist = room.pos.distanceTo(room.tgt)
-      const dist = Math.min(roomDist * 0.8, Math.max(5.2, big * 3.1))
+      const dist = Math.min(roomDist * 0.93, Math.max(8.6, big * 5.2))
       c.moveTo(pl.x_in * IN, Math.min(((item.dims_in.h ?? 20) * IN) / 2, 0.6), pl.z_in * IN, !STILL)
       c.dollyTo(dist, !STILL)
       focused.current = true

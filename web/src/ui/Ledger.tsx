@@ -108,7 +108,7 @@ function RowView({ row, start, open, onToggle }: { row: Row; start: string; open
       >
         <Icon size={11} strokeWidth={2.2} aria-hidden />
       </span>
-      <button type="button" onClick={onToggle} aria-expanded={open} className="block w-full rounded-xs text-left">
+      <button type="button" onClick={onToggle} aria-expanded={open} className="group/row block w-full rounded-xs text-left">
         <span className="flex items-baseline justify-between gap-2">
           <span
             className={cn(
@@ -122,7 +122,13 @@ function RowView({ row, start, open, onToggle }: { row: Row; start: string; open
           </span>
           <span className="num shrink-0 text-2xs text-fg-3">{row.r.source.kind === 'you' ? clock(row.r.ts).slice(0, 5) : sinceStart(row.r.ts, start)}</span>
         </span>
-        <span className={cn('mt-0.5 block text-xs leading-relaxed text-fg-2', !open && 'line-clamp-2', row.minor && 'text-fg-3')}>
+        <span
+          className={cn(
+            'mt-0.5 block text-xs leading-relaxed text-fg-2 transition-colors duration-150 group-hover/row:text-fg',
+            !open && 'line-clamp-2',
+            row.minor && 'text-fg-3',
+          )}
+        >
           <span className="text-fg-3">{row.source}. </span>
           {row.r.why}
         </span>
@@ -157,7 +163,7 @@ function SlotHeader({ slot, item, phase, active }: { slot: string; item: PlanIte
           <span className="truncate text-sm font-semibold text-fg">{item ? fam : slotLabel(slot)}</span>
           {item && <span className="num text-xs text-fg-2">{usd(item.price_usd)}</span>}
         </span>
-        <span className="block truncate text-xs text-fg-3">{item ? `${slotLabel(slot)}, ${rest.replace(/^[^,]*,\s*/, '')}` : 'Looking through the catalog'}</span>
+        <span className="block truncate text-xs text-fg-3">{item ? `${slotLabel(slot)}, ${rest.replace(/^[^,]*,\s*/, '')}` : 'Looking through the catalog…'}</span>
       </span>
       {phase === 'in_cart' || phase === 'verified' ? (
         <ShieldCheck size={15} strokeWidth={2} className="shrink-0 text-fits" aria-label="Verified by Senso" />
@@ -240,7 +246,7 @@ export default function Ledger() {
           const el = e.currentTarget
           stick.current = el.scrollHeight - el.scrollTop - el.clientHeight < 48
         }}
-        className="min-h-0 flex-1 overflow-y-auto px-4 pb-4 pt-3"
+        className="min-h-0 flex-1 overflow-y-auto overscroll-contain px-4 pb-4 pt-3"
       >
         {groups.map((g, gi) => {
           const rows = details ? g.rows : g.rows.filter((r) => !r.minor)

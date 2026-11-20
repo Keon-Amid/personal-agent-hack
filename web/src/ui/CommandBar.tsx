@@ -6,6 +6,7 @@ import { cn, slotLabel, usd } from '../lib/format'
 import { skipRun, startRun } from '../run'
 import { useApp } from '../store'
 import { Kbd } from './bits'
+import { Tip } from './tooltip'
 
 const INPUT_ID = 'command-input'
 export const focusCommand = () => {
@@ -35,6 +36,8 @@ function Budget() {
         <input
           ref={ref}
           aria-label="Budget in dollars"
+          name="budget"
+          autoComplete="off"
           inputMode="numeric"
           value={draft}
           onChange={(e) => setDraft(e.target.value)}
@@ -102,12 +105,15 @@ export default function CommandBar() {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 14, left, right }}
-      animate={{ opacity: 1, y: 0, left, right }}
+      initial={{ opacity: 0, y: 14, x: (left - right) / 2 }}
+      animate={{ opacity: 1, y: 0, x: (left - right) / 2 }}
       transition={{ type: 'spring', stiffness: 380, damping: 36 }}
-      className="pointer-events-none absolute bottom-4 z-20 flex justify-center px-3"
+      className="pointer-events-none absolute inset-x-0 bottom-4 z-20 flex justify-center px-3"
     >
-      <div className="glass pointer-events-auto w-full max-w-[660px] rounded-lg">
+      <div
+        className="glass pointer-events-auto w-full rounded-lg transition-shadow duration-150 focus-within:ring-1 focus-within:ring-ice/45"
+        style={{ maxWidth: `min(660px, calc(100vw - ${left + right + 24}px))` }}
+      >
         {stage === 'ready' && (
           <form
             onSubmit={(e) => {
@@ -120,7 +126,8 @@ export default function CommandBar() {
               id={INPUT_ID}
               value={text}
               onChange={(e) => setText(e.target.value)}
-              placeholder="Describe the room you want"
+              name="style"
+              placeholder="Describe the room you want…"
               aria-label="Describe the room you want"
               autoComplete="off"
               spellCheck={false}
@@ -144,7 +151,7 @@ export default function CommandBar() {
             </span>
             <div className="min-w-0 flex-1" role="status" aria-live="polite">
               <div className="truncate text-base text-fg">
-                {activeSlot ? `Working on the ${slotLabel(activeSlot).toLowerCase()}` : 'Reading the room'}
+                {activeSlot ? `Working on the ${slotLabel(activeSlot).toLowerCase()}…` : 'Reading the room…'}
               </div>
               <div className="num text-xs text-fg-3">
                 {inCart} of {total} in the cart, {audit.length} steps logged
@@ -184,15 +191,16 @@ export default function CommandBar() {
               </div>
             </div>
             <Budget />
-            <button
-              type="button"
-              onClick={() => useApp.setState({ stage: 'ready', selectedSlot: null, cartOpen: false })}
-              className="btn btn-ghost h-9 w-9 px-0"
-              title="Describe it again"
-              aria-label="Describe it again"
-            >
-              <RotateCcw size={14} strokeWidth={1.9} />
-            </button>
+            <Tip label="Describe it again" side="top">
+              <button
+                type="button"
+                onClick={() => useApp.setState({ stage: 'ready', selectedSlot: null, cartOpen: false })}
+                className="btn btn-ghost h-9 w-9 px-0"
+                aria-label="Describe it again"
+              >
+                <RotateCcw size={14} strokeWidth={1.9} />
+              </button>
+            </Tip>
             <button type="button" onClick={() => useApp.getState().setCartOpen(true)} className="btn btn-primary h-9">
               <ShoppingBag size={14} strokeWidth={2} aria-hidden />
               Review the cart

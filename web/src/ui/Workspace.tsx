@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { AnimatePresence } from 'motion/react'
+import { AnimatePresence, MotionConfig } from 'motion/react'
 import { useParams, useSearchParams } from 'react-router'
 import RoomScene from '../scene/RoomScene'
 import { demoRoomForPlan, planById } from '../data'
@@ -12,6 +12,7 @@ import CommandBar, { focusCommand } from './CommandBar'
 import CartSheet from './CartSheet'
 import StartScreen from './StartScreen'
 import ReadingCard from './ReadingCard'
+import { TipProvider } from './tooltip'
 
 /**
  * Deep links. /plan/<id> opens a recorded plan (the agent links here).
@@ -87,8 +88,13 @@ export default function Workspace() {
   const selected = useApp((s) => s.selectedSlot)
   const cartOpen = useApp((s) => s.cartOpen)
 
+  const title = useApp((s) => (s.plan ? (demoRoomForPlan(s.plan.plan_id)?.title ?? 'Your room') : null))
+
   return (
+    <MotionConfig reducedMotion="user">
+    <TipProvider>
     <div className="fixed inset-0 overflow-hidden bg-bg">
+      {title && <h1 className="sr-only">Fits: {title}</h1>}
       {/* The desk the model sits on: a soft pool of light, darker toward the edges. */}
       <div
         aria-hidden
@@ -111,5 +117,7 @@ export default function Workspace() {
         </>
       )}
     </div>
+    </TipProvider>
+    </MotionConfig>
   )
 }

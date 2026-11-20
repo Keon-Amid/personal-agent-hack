@@ -5,8 +5,8 @@ import { splitName, usd } from '../lib/format'
 import type { Option } from '../types'
 
 const W = 344
-const H = 196
-const M = { top: 14, right: 16, bottom: 30, left: 34 }
+const H = 206
+const M = { top: 26, right: 16, bottom: 30, left: 34 }
 const SURFACE = '#191a1e'
 
 const niceStep = (span: number) => {
@@ -71,11 +71,11 @@ export default function AltChart({
             {t === 0 ? '$0' : `$${t >= 1000 ? `${(t / 1000).toFixed(t % 1000 === 0 ? 0 : 1)}k` : t}`}
           </text>
         ))}
-        <text x={M.left - 26} y={M.top - 4} fontSize={10} fill="#8b8882">
-          Rating
+        <text x={0} y={10} fontSize={10} fill="#8b8882">
+          Customer rating, out of 5
         </text>
-        <text x={W - M.right} y={H - 2} textAnchor="end" fontSize={10} fill="#8b8882">
-          Price
+        <text x={W - M.right} y={10} textAnchor="end" fontSize={10} fill="#8b8882">
+          by price
         </text>
 
         {frontier.length > 1 && (
@@ -131,8 +131,8 @@ export default function AltChart({
 
         {frontier[0] && (
           <text
-            x={x(frontier[0].price_usd) + r(frontier[0].review_count) + 6}
-            y={y(frontier[0].rating) + 14}
+            x={x(frontier[0].price_usd) - 4}
+            y={y(frontier[0].rating) + 22}
             fontSize={10}
             fill="#aeaaa3"
           >
