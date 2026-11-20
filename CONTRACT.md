@@ -150,3 +150,31 @@ One backend, two front doors. The tools enforce the rules; the model only orders
 - **Plan** = `contracts/plan.live.json` shape: `plan_id, plan_url, room, style, items[] (slot, product, style rank/scores,
   fit {verdict, results}, senso {check_id, accuracy_pct, claims}, why, why_source, rejected[]), cart {items, total_usd,
   delivery_note, no_purchase: true}, audit[]`. Plans persist as JSON in `~/.cache/room-furnisher/plans/` (shared across processes).
+
+### Scanned room + rearranging: `fit/scan.py`, `fit/layout.py` (owner: alistair) — DRAFT, confirm
+`assets/room_scan_roomplan.glb` is a Polycam **Floorplan** (Apple RoomPlan) scan of the room we're in: every wall, the
+door and each piece of furniture is its own named object (`Wall_0`, `Door_0`, `table_other_rect_0`,
+`chair_dining_four_back_arms_1`, `television_0`, ...), in meters, Y up. Keon can `useGLTF` it and look objects up by name.
+
+`fit.scan.load_scan(path)` → room model, inches, floor plane (x, z), item centres:
+```json
+{"walls": [{"id": "Wall_4", "a": [-96.9, 69.7], "b": [97.6, 69.7], "length_in": 194.5}],
+ "doors": [{"id": "Door_0", "center": [-96.9, -51.8], "width_in": 32.0, "height_in": 96.8, "axis": "z", "into_room": [1, 0]}],
+ "items": [{"id": "table_other_rect_0", "label": "table_other_rect", "category": "table", "x_in": 21.9, "z_in": 6.2,
+            "w_in": 90.7, "d_in": 44.5, "h_in": 29.8, "bottom_in": 0.4, "rotation": 0, "kind": "existing", "on_floor": true}],
+ "outline": [[97.6, -55.7], [97.6, 69.7], [-96.9, 69.7], [-96.9, -74.0], [49.0, -74.0], [49.0, -55.7]]}
+```
+Our room: L-shaped, walls 194.5 / 146 / 143.7 / 125.4 in + a 48.6 x 18.3 in notch; door 32 x 97 in; a 91 x 45 in
+table, 2 dining chairs, a swivel chair, a wall-mounted TV.
+
+`fit.layout` (positions = item centre in inches, rotation 0/90/180/270):
+- `layout_from_scan(room)` → the scanned furniture as a layout
+- `add_product(layout, product, x_in, z_in, rotation)` → add an IKEA product (`kind: "new"`)
+- `move(room, layout, item_id, x_in, z_in, rotation)` → `(new_layout, {item_id: [FitResult]})` — call on every drag
+- `check_layout(room, layout)` → `{item_id: [FitResult]}`; checks `in_room`, `overlap`, `door_swing`, `clearance`
+- `find_spot(room, layout, product)` → `{"x_in", "z_in", "rotation", "wall_gap_in", "results"}` or `None`:
+  a spot where the product and every existing item still pass, closest to a wall
+Rules: chairs may tuck under tables, anything may stand on a rug, rugs keep 6 in from walls, wall-mounted items
+(bottom > 24 in) skip floor checks, `clearance` < 18 in → `unsure`. Real results: KIVIK at the door → "blocks the 32 in
+door swing" + "corner outside the walls"; table pushed back → hits the L-shape notch; `find_spot(KIVIK)` → flush on
+the 146 in wall.
