@@ -91,6 +91,10 @@ text→photo around 0–0.1. Show rank (and the score) in the audit trail, not a
 ```
 Cost: 2–3 SIE calls per category (~3 credits for the rerank). ~2–5 s.
 
+**Whole room:** call `R = sie.analyze_room(room_photo=bytes)` once (2 calls: embed + style labels), then
+`sie.style_match(products, slot, emb, room=R)` per slot (1 rerank call each). Real run, 5 living-room slots from one
+IKEA room photo: 4.7 s total, detected "dark modern".
+
 ### Pick one product per slot: `fit.pick.pick(options, style_match_result, budget_usd=None)` (owner: alistair) — DRAFT
 Walks Superlinked's style ranking best-first; picks the first product that fits (and is within budget). Everything
 ranked above it is rejected with the reason. Returns `{"slot", "picked": Option + style, "rejected": [...],
@@ -98,5 +102,8 @@ ranked above it is rejected with the reason. Returns `{"slot", "picked": Option 
 ranked/rejected/picked, `status`, `source`, `why`). Example `why` lines from a real run:
 - `rejected` KIVIK: `style #1 of 7 (photo #1 0.062, text #3 0.995); no_fit: width 89.75 in > 88 in (user)`
 - `picked` GLOSTAD: `style #3 of 7 (photo #2 0.057, text #4 0.966); fits; $199, 4.0★ (90 reviews), best value`
+
+**Swap:** `pick(options, style, budget_usd, exclude=[product_ids already swapped away])` → the next style match that
+fits; the excluded ones are logged as `swapped_out`. Reuse the same `style_match` result, so a swap makes no SIE call.
 
 Senso's fact-check (brendan) runs on the picked item's claim after this.

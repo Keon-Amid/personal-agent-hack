@@ -12,13 +12,20 @@ from __future__ import annotations
 from .checks import FITS
 
 
-def pick(opts: list[dict], style: dict, budget_usd: float | None = None) -> dict:
+def pick(opts: list[dict], style: dict, budget_usd: float | None = None,
+         exclude: list[str] | tuple = ()) -> dict:
+    """`exclude`: product ids the person already swapped away; skipped and logged as "swapped_out"."""
     by_id = {o["id"]: o for o in opts}
     src = style["source"]
     rejected, chosen = [], None
     for s in style["ranked"]:
         o = by_id.get(s["id"])
         if o is None:
+            continue
+        if o["id"] in exclude:
+            rejected.append({"id": o["id"], "name": o["name"], "style_rank": s["style_rank"],
+                             "status": "swapped_out", "why": "swapped out by the person",
+                             "style_why": f'style #{s["style_rank"]} of {len(style["ranked"])}'})
             continue
         style_why = (f'style #{s["style_rank"]} of {len(style["ranked"])} '
                      f'(photo #{s["photo_rank"]} {s["photo_score"]:.3f}, text #{s["text_rank"]} {s["text_score"]:.3f})')

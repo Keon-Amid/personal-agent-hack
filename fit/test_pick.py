@@ -33,6 +33,12 @@ class Pick(unittest.TestCase):
         self.assertEqual(r["picked"]["id"], "b")
         self.assertIn("over budget: $900 > $500", r["rejected"][0]["why"])
 
+    def test_swap_takes_next_that_fits(self):
+        opts = [opt("kivik", "no_fit"), opt("gull"), opt("glo")]
+        r = pick(opts, style("kivik", "gull", "glo"), exclude=["gull"])
+        self.assertEqual(r["picked"]["id"], "glo")
+        self.assertEqual([x["status"] for x in r["rejected"]], ["no_fit", "swapped_out"])
+
     def test_nothing_fits(self):
         r = pick([opt("a", "no_fit")], style("a"))
         self.assertIsNone(r["picked"])

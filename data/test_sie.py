@@ -58,6 +58,15 @@ class StyleMatch(unittest.TestCase):
         self.assertEqual(r["style_text"], f"{sie.STYLES[1]} style living room")
         self.assertEqual(r["ranked"][0]["id"], "a")
 
+    def test_shared_room_skips_room_calls(self):
+        room = {"vec": [1, 0], "style_text": "warm minimal style living room", "detected_style": [{"style": "x"}]}
+        with mock.patch.object(sie, "query_photo") as qp, mock.patch.object(sie, "encode") as enc, \
+                mock.patch.object(sie, "score", return_value={"a": 0.5, "b": 0.1}):
+            r = sie.style_match(PRODUCTS, "sofa", EMB, room=room)
+        qp.assert_not_called()
+        enc.assert_not_called()
+        self.assertEqual(r["detected_style"], [{"style": "x"}])
+
     def test_needs_input(self):
         with self.assertRaises(ValueError):
             sie.style_match(PRODUCTS, "sofa", EMB)

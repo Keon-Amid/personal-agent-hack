@@ -129,8 +129,26 @@ def detect_style(room_vec: list[float], styles: list[str] = STYLES) -> list[dict
     return sorted(out, key=lambda o: -o["score"])
 
 
+def analyze_room(room_photo: bytes | None = None, style_text: str | None = None) -> dict:
+    """Do the room's Superlinked calls once, then pass the result to style_match for every slot.
+
+    Returns {"vec", "style_text", "detected_style"}: 2 API calls for a photo (embed + style labels), 1 for text.
+    """
+    if room_photo is not None:
+        vec = query_photo(room_photo)
+        detected = None
+        if not style_text:
+            detected = detect_style(vec)
+            style_text = f"{detected[0]['style']} style living room"
+        return {"vec": vec, "style_text": style_text, "detected_style": detected}
+    if style_text:
+        return {"vec": query_text(style_text), "style_text": style_text, "detected_style": None}
+    raise ValueError("need room_photo or style_text")
+
+
 def style_match(products: list[dict], category: str, emb: dict,
-                room_photo: bytes | None = None, style_text: str | None = None) -> dict:
+                room_photo: bytes | None = None, style_text: str | None = None,
+                room: dict | None = None) -> dict:
     """The full Superlinked style step for one category.
 
     1. Room photo -> SigLIP vector -> detected style (if no style_text given).
@@ -138,17 +156,10 @@ def style_match(products: list[dict], category: str, emb: dict,
     3. Text match: Superlinked reranker over IKEA's descriptions vs the style text.
     4. Fuse the two rankings with reciprocal rank fusion, so neither score scale dominates.
     Every product gets both ranks and scores, ready for the audit trail.
+    Pass `room=analyze_room(...)` to reuse one room analysis across slots (then only the rerank call is made).
     """
-    detected = None
-    if room_photo is not None:
-        q = query_photo(room_photo)
-        if not style_text:
-            detected = detect_style(q)
-            style_text = f"{detected[0]['style']} style living room"
-    elif style_text:
-        q = query_text(style_text)
-    else:
-        raise ValueError("need room_photo or style_text")
+    room = room or analyze_room(room_photo, style_text)
+    q, style_text, detected = room["vec"], room["style_text"], room["detected_style"]
     by_photo = rank(products, category, q, emb)
     by_text = rerank(products, category, style_text)
     pr = {o["id"]: (i + 1, o["style_score"]) for i, o in enumerate(by_photo)}
