@@ -13,7 +13,10 @@ async function addToBag(qty) {
   let inc, add;
   for (let i = 0; i < 20 && !(inc && add); i++) {
     inc = document.querySelector('button[aria-label="Increase quantity"]');
-    add = [...document.querySelectorAll("button")].find((b) => b.innerText.trim() === "Add to bag");
+    // A page with a "Complete with" add-on has two "Add to bag" buttons and the add-on's comes first.
+    // The product's own button is the full-width one (pipf-btn--fluid); else take the last.
+    const adds = [...document.querySelectorAll("button")].filter((b) => b.innerText.trim() === "Add to bag");
+    add = adds.find((b) => /fluid/.test(b.className)) || adds[adds.length - 1];
     if (!(inc && add)) await sleep(500);
   }
   if (!add) return { ok: false, error: "add button not found (out of stock or page changed)", url: location.href };

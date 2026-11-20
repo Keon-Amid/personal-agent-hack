@@ -56,7 +56,7 @@ export interface AppState {
   /** The recorded plan this room came from: its measurements, and the alternatives generated for it. */
   roomPlanId: string | null
 
-  openRoom: (o: { plan: Plan; modelUrl: string | null; modelLabel: string | null }) => void
+  openRoom: (o: { plan: Plan; modelUrl: string | null; modelLabel: string | null; roomPlanId?: string | null }) => void
   setRoom: (room: RoomModel | null) => void
   roomReady: () => void
   startRun: () => void
@@ -145,13 +145,13 @@ function fold(s: AppState, r: AuditRecord): Partial<AppState> {
 export const useApp = create<AppState>((set, get) => ({
   ...blank,
 
-  openRoom: ({ plan, modelUrl, modelLabel }) =>
+  openRoom: ({ plan, modelUrl, modelLabel, roomPlanId }) =>
     // The start screen already shows the demo scan; if it's the same model, keep what the scene measured.
     set((s) => ({
       ...blank,
       modelStyle: s.modelStyle,
       server: s.server,
-      roomPlanId: s.roomPlanId && plan.plan_id !== s.roomPlanId && !s.plan ? s.roomPlanId : plan.plan_id,
+      roomPlanId: roomPlanId ?? plan.plan_id,
       stage: 'reading',
       plan,
       modelUrl,

@@ -103,7 +103,10 @@ export function cancelRun() {
  * Open a plan the agent server made (the agent's own link, /plan/<id>). Shows what exists so far and keeps
  * following it while the agent is still working. Returns false if the server has no such plan.
  */
-export async function openServerPlan(planId: string, pick: (plan: Plan) => { modelUrl: string | null; modelLabel: string | null }): Promise<boolean> {
+export async function openServerPlan(
+  planId: string,
+  pick: (plan: Plan) => { modelUrl: string | null; modelLabel: string | null; roomPlanId?: string | null },
+): Promise<boolean> {
   let first: LivePlan | null
   try {
     first = await fetchPlan(planId)

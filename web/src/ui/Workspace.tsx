@@ -28,10 +28,10 @@ function useDeepLink() {
       void openServerPlan(id, (p) => {
         const sameRoom = demoRooms.find((r) => {
           const rp = planById[r.planId]
-          return rp && Math.abs(rp.room.wall.value_in - p.room.wall.value_in) < 4 && Math.abs(rp.room.depth.value_in - p.room.depth.value_in) < 4
+          // The same room measured two ways (tape, scan) differs by a few inches.
+          return rp && Math.abs(rp.room.wall.value_in - p.room.wall.value_in) < 8 && Math.abs(rp.room.depth.value_in - p.room.depth.value_in) < 8
         })
-        if (sameRoom) useApp.setState({ roomPlanId: sameRoom.planId })
-        return { modelUrl: sameRoom?.modelUrl ?? null, modelLabel: sameRoom?.modelLabel ?? null }
+        return { modelUrl: sameRoom?.modelUrl ?? null, modelLabel: sameRoom?.modelLabel ?? null, roomPlanId: sameRoom?.planId ?? null }
       })
       return
     }
