@@ -162,7 +162,8 @@ def _records_for(event: dict, calls: dict) -> list[dict]:
 
 
 def run_agent(room_input: dict, photo_b64: str | None = None, style_text: str | None = None,
-              budget_usd: float | None = None, on_event: Callable[[dict], None] | None = None) -> dict:
+              budget_usd: float | None = None, on_event: Callable[[dict], None] | None = None,
+              scan_path: str | None = None, scan_wall: str | None = None) -> dict:
     """Furnish a room end to end and return the Plan (agent.tools.get_plan).
 
     room_input: exact inches the person measured, {"wall", "depth", "door_width", "door_height"} (any subset;
@@ -181,7 +182,10 @@ def run_agent(room_input: dict, photo_b64: str | None = None, style_text: str | 
             except Exception:  # a broken listener must not kill the run
                 pass
 
-    tools.analyze_room(pid, photo_b64=photo_b64, style_text=style_text, exact=_exact(room_input))
+    out = tools.analyze_room(pid, photo_b64=photo_b64, style_text=style_text, exact=_exact(room_input),
+                             scan_path=scan_path, scan_wall=scan_wall)
+    if not out.get("ok", True):
+        raise AgentError(out.get("error", "analyze_room failed"), pid)
 
     cmd = build_command(build_prompt(pid, budget_usd))
     emit(audit("agent", source={"kind": "template"}, decision="start Claude Code agent",

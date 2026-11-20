@@ -167,7 +167,7 @@ def _from_photo(photo: bytes) -> tuple[dict, dict, str]:
 
 
 def estimate(photo_bytes: bytes | None = None, exact: dict | None = None, scan_bytes: bytes | None = None,
-             scan_name: str = "scan.obj") -> tuple[dict, list[dict]]:
+             scan_name: str = "scan.obj", scan_wall: str | None = None) -> tuple[dict, list[dict]]:
     """Room measurements -> (fit.options.room(...), [AuditRecord]).
 
     exact: {"wall", "depth", "door_width", "door_height"} in inches, typed by the person; each becomes
@@ -192,7 +192,11 @@ def estimate(photo_bytes: bytes | None = None, exact: dict | None = None, scan_b
             res = room_scan.scan(scan_bytes, scan_name)
         except room_scan.ScanError as e:
             raise ValueError(f"couldn't read the room scan ({e})") from None
-        got = {k: v for k, v in room_scan.to_measurements(res).items() if k in missing}
+        try:
+            scanned = room_scan.to_measurements(res, scan_wall)
+        except room_scan.ScanError as e:
+            raise ValueError(str(e)) from None
+        got = {k: v for k, v in scanned.items() if k in missing}
         if "door_width" in got and "door_height" not in got and "door_height" in missing and photo_bytes is None:
             got["door_height"] = measurement(DOOR_HEIGHT_IN, DOOR_HEIGHT_ERR_IN, "estimated:standard_door")
         m.update(got)

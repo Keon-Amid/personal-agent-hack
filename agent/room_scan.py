@@ -138,12 +138,94 @@ def _parse_ply(data: bytes):
     return verts, faces
 
 
+_GLB_COMP = {5120: "b", 5121: "B", 5122: "h", 5123: "H", 5125: "I", 5126: "f"}
+
+
+def _mat_mul(a, b):
+    return [sum(a[r + 4 * k] * b[k + 4 * c] for k in range(4)) for c in range(4) for r in range(4)]
+
+
+def _node_matrix(n):
+    """Column-major 4x4 for a glTF node (matrix, or T * R * S)."""
+    if "matrix" in n:
+        return list(n["matrix"])
+    tx, ty, tz = n.get("translation", (0, 0, 0))
+    x, y, z, w = n.get("rotation", (0, 0, 0, 1))
+    sx, sy, sz = n.get("scale", (1, 1, 1))
+    r = [1 - 2 * (y * y + z * z), 2 * (x * y + z * w), 2 * (x * z - y * w), 0,
+         2 * (x * y - z * w), 1 - 2 * (x * x + z * z), 2 * (y * z + x * w), 0,
+         2 * (x * z + y * w), 2 * (y * z - x * w), 1 - 2 * (x * x + y * y), 0,
+         0, 0, 0, 1]
+    s = [sx, 0, 0, 0, 0, sy, 0, 0, 0, 0, sz, 0, 0, 0, 0, 1]
+    t = [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, tx, ty, tz, 1]
+    return _mat_mul(t, _mat_mul(r, s))
+
+
+def _parse_glb(data: bytes) -> tuple[list, list]:
+    """Binary glTF 2.0 (e.g. an iPhone LiDAR export): every triangle primitive, world transforms applied.
+    Uncompressed only: Draco / meshopt compressed files raise ScanError."""
+    _, version, _ = struct.unpack_from("<4sII", data, 0)
+    if version != 2:
+        raise ScanError(f"GLB version {version}; only glTF 2.0 is supported")
+    off, js, binc = 12, None, b""
+    while off + 8 <= len(data):
+        clen, ctype = struct.unpack_from("<I4s", data, off)
+        chunk = data[off + 8: off + 8 + clen]
+        if ctype == b"JSON":
+            js = json.loads(chunk)
+        elif ctype == b"BIN\x00":
+            binc = chunk
+        off += 8 + clen
+    if js is None:
+        raise ScanError("GLB has no JSON chunk")
+    used = set(js.get("extensionsRequired", [])) | set(js.get("extensionsUsed", []))
+    if used & {"KHR_draco_mesh_compression", "EXT_meshopt_compression"}:
+        raise ScanError(f"GLB is compressed ({sorted(used)}); re-export it uncompressed, or as OBJ/PLY")
+
+    def read(ai):
+        a = js["accessors"][ai]
+        bv = js["bufferViews"][a["bufferView"]]
+        fmt = _GLB_COMP[a["componentType"]]
+        n = {"SCALAR": 1, "VEC2": 2, "VEC3": 3, "VEC4": 4}[a["type"]]
+        size = struct.calcsize("<" + fmt)
+        stride = bv.get("byteStride") or size * n
+        base = bv.get("byteOffset", 0) + a.get("byteOffset", 0)
+        return [struct.unpack_from("<" + fmt * n, binc, base + i * stride) for i in range(a["count"])]
+
+    verts, faces = [], []
+
+    def walk(ni, parent):
+        node = js["nodes"][ni]
+        m = _mat_mul(parent, _node_matrix(node))
+        if "mesh" in node:
+            for prim in js["meshes"][node["mesh"]]["primitives"]:
+                if prim.get("mode", 4) != 4 or "POSITION" not in prim["attributes"]:
+                    continue
+                base = len(verts)
+                for x, y, z in read(prim["attributes"]["POSITION"]):
+                    verts.append((m[0] * x + m[4] * y + m[8] * z + m[12],
+                                  m[1] * x + m[5] * y + m[9] * z + m[13],
+                                  m[2] * x + m[6] * y + m[10] * z + m[14]))
+                idx = [i[0] for i in read(prim["indices"])] if "indices" in prim else list(range(len(verts) - base))
+                faces.extend((base + idx[k], base + idx[k + 1], base + idx[k + 2]) for k in range(0, len(idx) - 2, 3))
+        for c in node.get("children", []):
+            walk(c, m)
+
+    ident = [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1]
+    scene = js["scenes"][js.get("scene", 0)] if js.get("scenes") else {"nodes": list(range(len(js.get("nodes", []))))}
+    for ni in scene["nodes"]:
+        walk(ni, ident)
+    return verts, faces
+
+
 def load_mesh(data: bytes, name: str = "") -> tuple[list, list]:
     """(vertices [(x, y, z)], triangles [(i, j, k)]) from OBJ or PLY bytes. Triangles may be empty (point cloud)."""
     if data[:3] == b"ply":
         verts, faces = _parse_ply(data)
-    elif name.lower().endswith((".usdz", ".usd", ".usdc", ".glb", ".gltf")):
-        raise ScanError(f"{name}: export the scan as OBJ or PLY (USDZ/GLB aren't readable without extra libraries)")
+    elif data[:4] == b"glTF":
+        verts, faces = _parse_glb(data)
+    elif name.lower().endswith((".usdz", ".usd", ".usdc", ".gltf")):
+        raise ScanError(f"{name}: export the scan as GLB, OBJ or PLY (USDZ and text glTF aren't readable here)")
     else:
         verts, faces = _parse_obj(data.decode("utf-8", errors="replace"))
     if len(verts) < 100:
@@ -660,12 +742,17 @@ def _find_doors(poly, pts, ox, oy, tol=0.12, step=0.05):
     return out
 
 
-def to_measurements(res: dict) -> dict:
-    """{key: fit.measurement} for the keys the scan measured (wall, depth, and door_width/height if a door was found)."""
+def to_measurements(res: dict, wall_id: str | None = None) -> dict:
+    """{key: fit.measurement} for the keys the scan measured (wall, depth, and door_width/height if a door was found).
+    wall_id picks the wall section the furniture goes against (e.g. "w7"); default is the longest wall."""
     from fit.checks import measurement
     e = res["error_in"]
-    longest = next(w for w in res["walls"] if w["id"] == res["longest_wall"])
-    m = {"wall": measurement(longest["length_in"], e, "scanned:lidar"),
+    wid = wall_id or res["longest_wall"]
+    chosen = next((w for w in res["walls"] if w["id"] == wid), None)
+    if chosen is None:
+        raise ScanError(f"no wall {wid!r} in the scan; walls are " + ", ".join(
+            f'{w["id"]} {w["length_in"]:g} in' for w in res["walls"]))
+    m = {"wall": measurement(chosen["length_in"], e, "scanned:lidar"),
          "depth": measurement(res["depth_in"], e, "scanned:lidar")}
     doors = sorted((d for d in res["doors"] if d["kind"] == "door"), key=lambda d: d["width_in"])
     if doors:

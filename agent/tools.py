@@ -17,6 +17,7 @@ import base64
 import binascii
 import importlib
 import json
+import os
 from functools import lru_cache
 from pathlib import Path
 
@@ -246,7 +247,7 @@ def _run_pick(plan_id: str, slot: str, budget_usd: float | None, swapping: bool)
 
 
 def analyze_room(plan_id: str, photo_b64: str | None = None, style_text: str | None = None,
-                 exact: dict | None = None) -> dict:
+                 exact: dict | None = None, scan_path: str | None = None, scan_wall: str | None = None) -> dict:
     """Set the room's measurements and style on the plan.
 
     photo_b64: base64 room photo; used for Superlinked room-style detection (data.sie.analyze_room) and, when
@@ -275,7 +276,20 @@ def analyze_room(plan_id: str, photo_b64: str | None = None, style_text: str | N
 
     room = dict(plan.get("room") or {})
     records: list[dict] = []
-    if photo is not None and len(exact) < len(ROOM_KEYS):
+    if scan_path and len(exact) < len(ROOM_KEYS):
+        # LiDAR scan (GLB/OBJ/PLY on this machine): measures wall (longest, or scan_wall), depth and any open door.
+        # Precedence per key: exact > scan > photo; agent.room.estimate applies it and writes the audit records.
+        try:
+            with open(scan_path, "rb") as fh:
+                est, est_records = _room_estimator().estimate(photo, exact, scan_bytes=fh.read(),
+                                                              scan_name=os.path.basename(scan_path),
+                                                              scan_wall=scan_wall)
+        except Exception as e:
+            return _refuse(plan, "estimate_room", f"room scan failed: {type(e).__name__}: {e}")
+        room.update({k: est[k] for k in ROOM_KEYS if isinstance(est.get(k), dict)})
+        records.extend(est_records)
+        exact = {}
+    if photo is not None and len(exact) < len(ROOM_KEYS) and not scan_path:
         # agent.room.estimate(photo, exact) -> (room, [AuditRecord]); exact values (source user) override the
         # photo estimate key by key, and it writes its own estimate_room records.
         try:
@@ -538,6 +552,8 @@ TOOL_SPECS: list[dict] = [
          "exact": {"type": ["object", "null"], "description": "Exact inches the person measured.",
                    "properties": {k: {"type": "number"} for k in ("wall", "depth", "door_width", "door_height")},
                    "additionalProperties": False},
+         "scan_path": {"type": ["string", "null"], "description": "Path to a LiDAR room scan (GLB/OBJ/PLY) on this machine."},
+         "scan_wall": {"type": ["string", "null"], "description": "Scan wall id the furniture goes against (default: longest)."},
      }, ["plan_id"])},
     {"name": "style_match",
      "description": "Rank the products for one slot by how well they match the room's style (Superlinked).",
