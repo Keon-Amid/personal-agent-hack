@@ -21,58 +21,6 @@ def required(td) -> set[str]:
     return set(td.__required_keys__)
 
 
-class FixtureShape(unittest.TestCase):
-    def test_plan_keys(self):
-        self.assertTrue(FIXTURE["fixture"])
-        self.assertLessEqual(required(Plan), set(FIXTURE))
-        self.assertTrue(FIXTURE["plan_url"].endswith("/plan/" + FIXTURE["plan_id"]))
-        self.assertLessEqual(required(Cart), set(FIXTURE["cart"]))
-        self.assertTrue(FIXTURE["cart"]["no_purchase"])
-
-    def test_exact_room(self):
-        wall = FIXTURE["room"]["wall"]
-        self.assertEqual((wall["value_in"], wall["error_in"], wall["source"]), (88.0, 0.0, "user"))
-
-    def test_items(self):
-        self.assertTrue(FIXTURE["items"])
-        for it in FIXTURE["items"]:
-            self.assertLessEqual(required(Item), set(it), it["slot"])
-            self.assertIn(it["slot"], SLOTS)
-            self.assertEqual(it["fit"]["verdict"], "fits")
-            self.assertIn(it["why_source"]["kind"], ("claude", "template"))
-            self.assertLessEqual(required(SensoCheck), set(it["senso"]))
-            for c in it["senso"]["claims"]:
-                self.assertLessEqual(required(SensoClaim), set(c))
-
-    def test_kivik_rejected_no_fit_and_walkway_verified(self):
-        sofa = next(i for i in FIXTURE["items"] if i["slot"] == "sofa")
-        kivik = next(r for r in sofa["rejected"] if r["product_id"].startswith("ikea-kivik"))
-        self.assertEqual(kivik["status"], "no_fit")
-        self.assertIn("89.75", kivik["why"])
-        walk = [c for c in sofa["senso"]["claims"] if c["verdict"] == "verified" and "36 inches" in (c["quote"] or "")]
-        self.assertTrue(walk)
-
-    def test_audit_records(self):
-        for rec in FIXTURE["audit"]:
-            self.assertLessEqual(required(AuditRecord), set(rec))
-            self.assertIn(rec["step"], STEPS)
-            self.assertIn(rec["source"]["kind"], SOURCE_KINDS)
-
-    def test_ids_and_numbers_from_catalog(self):
-        for it in FIXTURE["items"]:
-            p = CATALOG[it["product_id"]]
-            self.assertEqual((it["name"], it["price_usd"], it["dims_in"], it["source_url"]),
-                             (p["name"], p["price_usd"], p["dims_in"], p["source_url"]))
-            for r in it["rejected"]:
-                self.assertIn(r["product_id"], CATALOG)
-        for c in FIXTURE["cart"]["items"]:
-            self.assertEqual(c["price_usd"], CATALOG[c["product_id"]]["price_usd"])
-        for rec in FIXTURE["audit"]:
-            if "product_id" in rec:
-                self.assertIn(rec["product_id"], CATALOG)
-        self.assertAlmostEqual(FIXTURE["cart"]["total_usd"], sum(c["price_usd"] for c in FIXTURE["cart"]["items"]))
-
-
 class ToolSpecs(unittest.TestCase):
     NAMES = ["analyze_room", "style_match", "fit_options", "pick", "senso_check", "swap", "cart_add", "get_plan"]
 

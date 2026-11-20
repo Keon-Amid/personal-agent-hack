@@ -315,8 +315,13 @@ def analyze_room(plan_id: str, photo_b64: str | None = None, style_text: str | N
     style = {"style_text": R["style_text"], "detected_style": _detected(R.get("detected_style"))} if R else None
 
     def mutate(p: dict) -> None:
-        p["room"] = room or None
+        old = {k: (p.get("room") or {}).get(k) for k in ROOM_KEYS}
+        p["room"] = {**room, "photo_url": room.get("photo_url")} if room else None
         st = p.setdefault("state", {})
+        if any(old[k] and old[k] != (room or {}).get(k) for k in ROOM_KEYS):
+            # the room changed: earlier picks and cart may no longer fit, so start the furnishing over
+            p["items"], st["shown"] = [], {}
+            p["cart"] = {**(p.get("cart") or {}), "items": [], "total_usd": 0.0}
         if R is not None:
             p["style"] = style
             st["room_analysis"] = R
@@ -415,7 +420,8 @@ def senso_check(plan_id: str, slot: str) -> dict:
         return _refuse(plan, "senso_check", f"nothing picked for {slot}: call pick first", slot)
     try:
         sn = _senso()
-        text = sn.build_claim(item)
+        from fit.claims import claim_text  # alistair's wording: the phrasing Senso actually scores (CONTRACT.md)
+        text = claim_text(_product(item["product_id"]), (item.get("fit") or {}).get("results") or [])
         res = sn.check(text, f'Does the {item["name"]} match its catalog specs and the Room Furnisher rules?')
     except Exception as e:  # never fake a check: report the failure
         return _refuse(plan, "senso_check", f"Senso check failed: {type(e).__name__}: {e}", slot,
@@ -436,7 +442,7 @@ def senso_check(plan_id: str, slot: str) -> dict:
     def mutate(p: dict) -> None:
         it = _slot_item(p, slot)
         if it and it["product_id"] == pid:  # a swap in between invalidates this check
-            it["senso"] = res
+            it["senso"] = {k: res.get(k) for k in ("check_id", "accuracy_pct", "claims")}  # contract fields only
 
     plan = _commit(plan_id, [rec], mutate)
     return {**_ids(plan), "ok": ok, "slot": slot, "product_id": pid, "senso": res}
@@ -488,8 +494,8 @@ def cart_add(plan_id: str, slot: str, why: str) -> dict:
                                      "swap it or check again", slot, product_id=item["product_id"])
     why = (why or "").strip()
     pid = item["product_id"]
-    rec = audit("cart", item_slot=slot, product_id=pid, source={"kind": "claude"}, decision="added to cart",
-                status="in_cart", why=why or "(no explanation given)")
+    rec = audit("cart", item_slot=slot, product_id=pid, source={"kind": "claude" if why else "template"},
+                decision="added to cart", status="in_cart", why=why or "(the agent gave no explanation)")
 
     def mutate(p: dict) -> None:
         it = _slot_item(p, slot)
