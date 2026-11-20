@@ -106,11 +106,18 @@ All 48 products are in the team's Senso org as one document each (status `comple
 Brendan's "Room Furnisher clearance rules" doc is the rules doc (not duplicated). Reload after catalog changes:
 `python3 agent/senso_kb.py load` (skips unchanged docs). Loading cost ~0 credits; each fact-check ~0.01.
 
-**How to word claims so Senso actually checks them** (tested live, 14:50):
-- Always name the product with its **IKEA article number** (and colour). "KIVIK box 1 is 37.5 in wide" came back
+**Use `fit.claims.claim_text(product, fit_results)` to build the text you send to Senso.** It produces, per rule the
+item was checked against: "Under our <rule> rule, <rule text>. Our catalog lists <name>, IKEA article <n>, as <fact>."
+Live test (15:05): GLOSTAD sofa 10/10 and JÄRNVÄG rug 8/8 claims scored, all `grounded`; "Our catalog lists GLOSTAD as
+84 inches wide" → `contradicts_kb`. `claims_for(...)` gives the same as `[{"rule", "text"}]` for the audit panel.
+
+**Why that wording** (tested live, 14:50–15:05):
+- Senso's `kb_accuracy` only scores claims it reads as about our org. Bare product facts ("GLOSTAD is 70 in wide")
+  come back `about_brand: false`, **not scored** (`passed: null`, no KB search). "Our catalog lists …" and "Under our
+  … rule" are scored.
+- Always name the product with its **IKEA article number**. "KIVIK box 1 is 37.5 in wide" came back
   `contradicts_kb` (Senso matched the *black* KIVIK); with "IKEA article 394.405.93" it's `grounded`.
-- Put the fact under a team rule ("Under the doorway rule, ... ships in a box 32.5 inches wide"). Bare product
-  facts are tagged `about_brand: false` and **not scored** (`passed: null`, no KB search).
+- Don't mix a fact and a rule in one sentence ("X is 70 in wide under the wall rule" → `unsupported_by_kb`).
 - Room measurements aren't in Senso, so "wider than the 30 inch door" → `unsupported_by_kb`. The fit math is the
   authority for that; Senso verifies the spec and the rule it relies on.
 - Read `claims[].passed` (true/false/null) and `claims[].bucket` (`grounded` / `contradicts_kb` / `unsupported_by_kb`
