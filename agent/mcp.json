@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "room_furnisher": {
+      "type": "stdio",
+      "command": "/Users/brendankeane/Documents/GitHub/personal-agent-hack/.venv/bin/python",
+      "args": ["-m", "agent.mcp_server"],
+      "env": {
+        "PYTHONPATH": "/Users/brendankeane/Documents/GitHub/personal-agent-hack"
+      }
+    }
+  }
+}
