@@ -57,6 +57,9 @@ Slots: `sofa`, `armchair`, `coffee_table`, `rug`, `floor_lamp`. Layout is a fixe
 ## Update 13:30
 alistair shipped `sie.style_match()` and `fit.pick.pick()` (d77ec25): real run rejects style #1 KIVIK (89.75 in > 88 in wall) and picks GLOSTAD, with audit records in our shape. A5 shrinks to glue + Claude reason + Senso check.
 
+## Update 13:30
+alistair shipped `sie.style_match()` and `fit.pick.pick()` (d77ec25): a real run rejects style #1 KIVIK (89.75 in > 88 in wall) and picks GLOSTAD, with audit records in our shape. A5 shrinks to glue + Claude reason + Senso check.
+
 ## Work packages
 
 Each package owns its files, so packages can run as parallel agents without touching the same file.
