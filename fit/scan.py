@@ -92,7 +92,7 @@ def load_scan(path: str | Path) -> dict:
             floor_y = _bbox(j, n["mesh"])[1][1]
     floor_y = 0.0 if floor_y is None else floor_y
 
-    walls, wall_segs, doors, items = [], [], [], []
+    walls, wall_segs, wall_t, doors, items = [], [], [], [], []
     for n in nodes:
         name, mesh = n.get("name") or "", n.get("mesh")
         if mesh is None:
@@ -107,6 +107,7 @@ def load_scan(path: str | Path) -> dict:
                 xc = (lo[0] + hi[0]) / 2
                 a, b = [xc, lo[2] + dx / 2], [xc, hi[2] - dx / 2]
             wall_segs.append((a, b))
+            wall_t.append(min(dx, dz))
             walls.append({"id": name, "a": [round(v * M_TO_IN, 1) for v in a], "b": [round(v * M_TO_IN, 1) for v in b],
                           "length_in": round(max(dx, dz) * M_TO_IN - min(dx, dz) * M_TO_IN, 1)})
         elif re.fullmatch(r"(Door|Opening|Window)_\d+", name):
@@ -125,7 +126,12 @@ def load_scan(path: str | Path) -> dict:
                 "h_in": round((hi[1] - lo[1]) * M_TO_IN, 1), "bottom_in": round(bottom, 1),
                 "rotation": 0, "kind": "existing", "on_floor": bottom < 6,
             })
-    outline = [[round(x * M_TO_IN, 1), round(z * M_TO_IN, 1)] for x, z in _chain(wall_segs)]
+    centre = _chain(wall_segs)
+    half_t = (sorted(wall_t)[len(wall_t) // 2] / 2) if wall_t else 0.0
+    inner = _offset_inward(centre, half_t)  # the walls' room-side faces: what furniture actually touches
+    outline = [[round(x * M_TO_IN, 1), round(z * M_TO_IN, 1)] for x, z in inner]
+    for w in walls:  # length along the room-side face (centreline length is ~1 wall thickness off)
+        w["inner_length_in"] = _inner_length(w, outline)
     # each door: which wall it sits in, and the direction into the room (sign along the wall's normal)
     for d in doors:
         cx, cz = d["center"]
@@ -135,6 +141,50 @@ def load_scan(path: str | Path) -> dict:
         d["into_room"] = [nx, nz] if point_in_poly((cx + nx * 12, cz + nz * 12), outline) else [-nx, -nz]
     return {"source": str(path), "units": "inches", "walls": walls, "doors": doors, "items": items,
             "outline": outline}
+
+
+def _offset_inward(poly: list[list[float]], h: float) -> list[list[float]]:
+    """Move every edge of a rectilinear polygon `h` towards the inside; corners = crossings of the moved edges."""
+    n = len(poly)
+    if n < 4 or h <= 0:
+        return [list(p) for p in poly]
+    lines = []  # per edge: ("x", value) for an edge at constant x, ("z", value) for constant z
+    for i in range(n):
+        (x1, z1), (x2, z2) = poly[i], poly[(i + 1) % n]
+        mx, mz = (x1 + x2) / 2, (z1 + z2) / 2
+        if abs(x1 - x2) < abs(z1 - z2):  # vertical edge (constant x)
+            s = 1 if point_in_poly((mx + 1e-3, mz), poly) else -1
+            lines.append(("x", x1 + s * h))
+        else:
+            s = 1 if point_in_poly((mx, mz + 1e-3), poly) else -1
+            lines.append(("z", z1 + s * h))
+    out = []
+    for i in range(n):
+        a, b = lines[i - 1], lines[i]
+        x = a[1] if a[0] == "x" else b[1]
+        z = a[1] if a[0] == "z" else b[1]
+        out.append([x, z])
+    return out
+
+
+def _inner_length(wall: dict, outline: list[list[float]]) -> float:
+    """Length of the inner-outline edge that runs along this wall (parallel, within one wall thickness)."""
+    (ax, az), (bx, bz) = wall["a"], wall["b"]
+    vertical = abs(ax - bx) < abs(az - bz)
+    best = None
+    for i in range(len(outline)):
+        (x1, z1), (x2, z2) = outline[i], outline[(i + 1) % len(outline)]
+        if vertical and abs(x1 - x2) < 0.5 and abs(x1 - ax) < 6:
+            overlap = min(max(z1, z2), max(az, bz)) - max(min(z1, z2), min(az, bz))
+            cand = abs(z2 - z1)
+        elif not vertical and abs(z1 - z2) < 0.5 and abs(z1 - az) < 6:
+            overlap = min(max(x1, x2), max(ax, bx)) - max(min(x1, x2), min(ax, bx))
+            cand = abs(x2 - x1)
+        else:
+            continue
+        if overlap > 0 and (best is None or overlap > best[0]):
+            best = (overlap, cand)
+    return round(best[1], 1) if best else wall["length_in"]
 
 
 def _dist_to_segment(p, a, b) -> float:

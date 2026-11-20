@@ -158,13 +158,14 @@ door and each piece of furniture is its own named object (`Wall_0`, `Door_0`, `t
 
 `fit.scan.load_scan(path)` → room model, inches, floor plane (x, z), item centres:
 ```json
-{"walls": [{"id": "Wall_4", "a": [-96.9, 69.7], "b": [97.6, 69.7], "length_in": 194.5}],
+{"walls": [{"id": "Wall_4", "a": [-96.9, 69.7], "b": [97.6, 69.7], "length_in": 194.5, "inner_length_in": 190.6}],
  "doors": [{"id": "Door_0", "center": [-96.9, -51.8], "width_in": 32.0, "height_in": 96.8, "axis": "z", "into_room": [1, 0]}],
  "items": [{"id": "table_other_rect_0", "label": "table_other_rect", "category": "table", "x_in": 21.9, "z_in": 6.2,
             "w_in": 90.7, "d_in": 44.5, "h_in": 29.8, "bottom_in": 0.4, "rotation": 0, "kind": "existing", "on_floor": true}],
- "outline": [[97.6, -55.7], [97.6, 69.7], [-96.9, 69.7], [-96.9, -74.0], [49.0, -74.0], [49.0, -55.7]]}
+ "outline": [[95.6, -53.7], [95.6, 67.7], [-95.0, 67.7], [-95.0, -72.0], [47.1, -72.0], [47.1, -53.7]]}
 ```
-Our room: L-shaped, walls 194.5 / 146 / 143.7 / 125.4 in + a 48.6 x 18.3 in notch; door 32 x 97 in; a 91 x 45 in
+`a`/`b`/`length_in` are wall centrelines; `outline` and `inner_length_in` are the room-side faces (use these for fit).
+Our room: L-shaped, interior 190.6 x 139.7 in, inner walls 190.6 / 142.1 / 139.7 / 121.4 in + a 48.5 x 18.3 in notch; door 32 x 97 in; a 91 x 45 in
 table, 2 dining chairs, a swivel chair, a wall-mounted TV.
 
 `fit.layout` (positions = item centre in inches, rotation 0/90/180/270):
