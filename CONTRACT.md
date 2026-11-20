@@ -94,6 +94,18 @@ Quality = IKEA's customer rating (`rating`, 1–5, with `review_count`). `best_v
 fitting product with 10+ reviews is both cheaper and better rated (the price/quality frontier). `why` is one line
 for the audit trail. Chart: price on x, rating on y, dot size = reviews, shape/colour = fit, line through best values.
 
+### Style match: `data/sie.py` (owner: alistair, Superlinked SIE) — DRAFT, confirm
+Every product's main IKEA photo is embedded once with `google/siglip-so400m-patch14-384` on Superlinked SIE into
+`data/style_embeddings.json` (`{"model", "input", "created_at", "vectors": {product_id: [1152 floats]}}`;
+rebuild with `python3 data/sie.py build`, needs `SIE_API_KEY`). At run time:
+- `sie.query_photo(room_photo_bytes)` or `sie.query_text("warm minimal light wood")` → query vector (1 API call)
+- `sie.rank(products, category, query_vec, emb)` → products in that category, best match first:
+```json
+{"id": "...", "name": "...", "style_score": 0.8627, "style_source": {"kind": "superlinked", "model": "google/siglip-so400m-patch14-384"}}
+```
+`style_score` is cosine similarity. **Compare scores only within one query:** photo→photo scores sit around 0.5–0.9,
+text→photo around 0–0.1. Show rank (and the score) in the audit trail, not an absolute threshold.
+
 ### Audit record (owner: brendan) — PROPOSED
 Every step appends one record; the UI renders them as a timeline and per-item panel.
 ```json
