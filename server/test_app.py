@@ -417,3 +417,16 @@ def test_bag_check_fails_on_a_price_difference_and_an_extra_item(client):
     assert p["cart"]["bag"]["price_deltas"][0]["delta_usd"] == 14
     assert [a["status"] for a in p["audit"] if a["step"] == "cart"][-1] == "bag_fail"
     assert client.post("/api/plan/nope/bag", json=bag).status_code == 404
+
+
+def test_swap_with_no_alternative_keeps_approval(client, monkeypatch):
+    """Red-team find: a swap that finds nothing leaves the cart unchanged, so the approval must stay."""
+    pid = store.new_plan()["plan_id"]
+    approval = {"approved": True, "total_usd": 10.0, "item_count": 1, "product_ids": ["x"]}
+    store.update(pid, lambda p: p["cart"].update(approval=approval))
+    monkeypatch.setattr(srv.tools, "swap", lambda p, s: {"ok": False, "picked": None,
+                                                          "error": "no other rug fits the room and matches the style"})
+    p = client.post(f"/api/plan/{pid}/swap", json={"slot": "rug"}).json()
+    assert p["cart"]["approval"] == approval
+    assert not [a for a in p["audit"] if "withdrawn" in (a.get("decision") or "")]
+    assert p["swap_result"]["swap"]["ok"] is False

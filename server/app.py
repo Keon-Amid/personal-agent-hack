@@ -225,24 +225,27 @@ def swap(pid: str, req: SwapRequest) -> dict:
     _require_finished(pid, "swap")
 
     def requested(plan: dict) -> None:
-        # The person is the actor here, not the agent: say so before tools.swap writes its own records. A swap
-        # changes the cart, so any approval is withdrawn and the person has to approve the new cart.
-        trail = plan.setdefault("audit", [])
-        trail.append(audit("swap", item_slot=req.slot, source={"kind": "template", "requested_by": "person"},
-                           decision="swap requested by the person", status="requested",
-                           why="The person clicked swap on screen."))
+        # The person is the actor here, not the agent: say so before tools.swap writes its own records.
+        plan.setdefault("audit", []).append(
+            audit("swap", item_slot=req.slot, source={"kind": "template", "requested_by": "person"},
+                  decision="swap requested by the person", status="requested",
+                  why="The person clicked swap on screen."))
+
+    def withdraw(plan: dict) -> None:
+        # Only a swap that replaced the item changes the cart; then the earlier approval no longer matches it.
         appr = plan["cart"].pop("approval", None)
         if appr and appr.get("approved"):
-            trail.append(audit("cart", item_slot=req.slot, source={"kind": "template"},
-                               decision="approval withdrawn: cart changed by swap", status="approval_withdrawn",
-                               why="The person swapped an item after approving, so the earlier approval no longer "
-                                   "matches the cart. Approve again to confirm the new cart.",
-                               input={"previous_approval": appr}))
+            plan["audit"].append(audit("cart", item_slot=req.slot, source={"kind": "template"},
+                                       decision="approval withdrawn: cart changed by swap", status="approval_withdrawn",
+                                       why="The person swapped an item after approving, so the earlier approval no "
+                                           "longer matches the cart. Approve again to confirm the new cart.",
+                                       input={"previous_approval": appr}))
 
     store.update(pid, requested)
     steps = {"swap": tools.swap(pid, req.slot)}
     picked = steps["swap"].get("picked")
     if picked:
+        store.update(pid, withdraw)
         steps["senso_check"] = tools.senso_check(pid, req.slot)
         # No why text: this swap was the person's click, not the agent's reasoning, so cart_add records it
         # with source "template" instead of claiming a Claude explanation.
