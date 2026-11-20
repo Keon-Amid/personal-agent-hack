@@ -83,14 +83,21 @@ def room_facts(room: dict) -> dict:
 def _ask(messages: list[dict], model: str) -> tuple[dict, dict]:
     """One Arcee call -> (parsed JSON, {latency_ms, tokens, cost_usd})."""
     t0 = time.monotonic()
-    out = arcee._http("/chat/completions", {"model": model, "temperature": 0, "max_tokens": 6000,
-                                            "messages": messages}, timeout=180)
+    # Reasoning models think before they answer. Seen live on Nov 20: at 6000 and at 20000 tokens,
+    # glm-5.3-flash and deepseek-v4.1-flash spent the whole limit thinking and returned an empty reply
+    # (finish_reason "length"). ARCEE_LAYOUT_MAX_TOKENS / ARCEE_LAYOUT_TIMEOUT_S raise the limits.
+    max_tokens = int(os.environ.get("ARCEE_LAYOUT_MAX_TOKENS") or 20000)
+    out = arcee._http("/chat/completions", {"model": model, "temperature": 0, "max_tokens": max_tokens,
+                                            "messages": messages},
+                      timeout=int(os.environ.get("ARCEE_LAYOUT_TIMEOUT_S") or 300))
     ms = round((time.monotonic() - t0) * 1000)
     text = (out["choices"][0]["message"].get("content") or "").strip()
     usage = out.get("usage") or {}
     tin, tout = usage.get("prompt_tokens") or 0, usage.get("completion_tokens") or 0
     price = arcee.models().get(model, {"in": 0, "out": 0})
     call = {"latency_ms": ms, "input_tokens": tin, "output_tokens": tout,
+            "reasoning_tokens": (usage.get("completion_tokens_details") or {}).get("reasoning_tokens") or 0,
+            "finish_reason": out["choices"][0].get("finish_reason"),
             "cost_usd": round(tin * price["in"] + tout * price["out"], 7)}
     m = re.search(r"\{.*\}", text, re.S)
     try:
