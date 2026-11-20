@@ -55,8 +55,10 @@ export interface AppState {
   runMode: 'mock' | 'live' | null
   /** The recorded plan this room came from: its measurements, and the alternatives generated for it. */
   roomPlanId: string | null
+  /** Where the room's scan sits on this computer, when it arrived by phone upload (the agent reads it there). */
+  scanPath: string | null
 
-  openRoom: (o: { plan: Plan; modelUrl: string | null; modelLabel: string | null; roomPlanId?: string | null }) => void
+  openRoom: (o: { plan: Plan; modelUrl: string | null; modelLabel: string | null; roomPlanId?: string | null; scanPath?: string | null }) => void
   setRoom: (room: RoomModel | null) => void
   roomReady: () => void
   startRun: () => void
@@ -107,6 +109,7 @@ const blank = {
   server: { reachable: false, ready: false, note: null } as ServerState,
   runMode: null as 'mock' | 'live' | null,
   roomPlanId: null as string | null,
+  scanPath: null as string | null,
 }
 
 /** Fold one audit record into what the room shows. This is the only place run state changes. */
@@ -145,13 +148,14 @@ function fold(s: AppState, r: AuditRecord): Partial<AppState> {
 export const useApp = create<AppState>((set, get) => ({
   ...blank,
 
-  openRoom: ({ plan, modelUrl, modelLabel, roomPlanId }) =>
+  openRoom: ({ plan, modelUrl, modelLabel, roomPlanId, scanPath }) =>
     // The start screen already shows the demo scan; if it's the same model, keep what the scene measured.
     set((s) => ({
       ...blank,
       modelStyle: s.modelStyle,
       server: s.server,
       roomPlanId: roomPlanId ?? plan.plan_id,
+      scanPath: scanPath ?? null,
       stage: 'reading',
       plan,
       modelUrl,

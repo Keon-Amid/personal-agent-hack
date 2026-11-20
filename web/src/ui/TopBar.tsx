@@ -147,6 +147,7 @@ export default function TopBar() {
   const setCartOpen = useApp((s) => s.setCartOpen)
   const placed = useApp((s) => s.placed)
   const modelLabel = useApp((s) => s.modelLabel)
+  const modelUrl = useApp((s) => s.modelUrl)
   const modelStyle = useApp((s) => s.modelStyle)
   const setModelStyle = useApp((s) => s.setModelStyle)
   const server = useApp((s) => s.server)
@@ -155,7 +156,9 @@ export default function TopBar() {
   const hasRun = stage === 'running' || stage === 'done'
   const live = hasRun ? runMode === 'live' : wantsLive(server.ready)
   const roomPlanId = useApp.getState().roomPlanId
-  const demo = demoRoomForPlan(plan.plan_id) ?? (roomPlanId ? demoRoomForPlan(roomPlanId) : undefined)
+  const known = demoRoomForPlan(plan.plan_id) ?? (roomPlanId ? demoRoomForPlan(roomPlanId) : undefined)
+  // A scan you dropped or sent from your phone is your room, not the demo room it borrows a recorded run from.
+  const demo = known && known.modelUrl === modelUrl ? known : undefined
   const inCart = plan.items.filter((i) => placed[i.slot] === 'in_cart' || (stage === 'done' && placed[i.slot]))
   const total = inCart.reduce((sum, i) => sum + (i.price_usd ?? 0), 0)
   const floorItems = room?.existing.filter((e) => e.on_floor).length ?? 0

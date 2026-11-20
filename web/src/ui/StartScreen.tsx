@@ -11,7 +11,7 @@ import { Wordmark } from './TopBar'
 
 function PhoneQr() {
   const [svg, setSvg] = useState('')
-  const url = `${window.location.origin}/upload`
+  const url = `${__LAN_ORIGIN__ ?? window.location.origin}/upload?t=${__UPLOAD_TOKEN__}`
   useEffect(() => {
     QRCode.toString(url, { type: 'svg', margin: 0, errorCorrectionLevel: 'M', color: { dark: '#eeeae3', light: '#00000000' } })
       .then(setSvg)
@@ -31,8 +31,10 @@ function PhoneQr() {
           Scan the room in Polycam on an iPhone Pro, export a .glb, then point the camera here.
         </p>
         <p className="mt-1.5 flex items-start gap-1.5 text-xs leading-relaxed text-fg-3">
-          <span className="mt-[5px] h-1.5 w-1.5 shrink-0 rounded-full bg-unsure" aria-hidden />
-          Phone upload isn't connected in this build. AirDrop the file and drop it here.
+          <span className={cn('mt-[5px] h-1.5 w-1.5 shrink-0 rounded-full', __LAN_ORIGIN__ ? 'bg-fits' : 'bg-unsure')} aria-hidden />
+          {__LAN_ORIGIN__
+            ? 'Your phone and this computer need to be on the same Wi-Fi.'
+            : 'This computer has no Wi-Fi address right now. AirDrop the file and drop it here.'}
         </p>
       </div>
     </div>
@@ -69,6 +71,30 @@ export default function StartScreen() {
   const [over, setOver] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const live = useApp((s) => wantsLive(s.server.ready))
+
+  // A scan sent from a phone (QR code) opens by itself.
+  useEffect(() => {
+    const since = Date.now()
+    const timer = setInterval(async () => {
+      try {
+        const res = await fetch('/scan-upload/latest')
+        if (!res.ok) return
+        const up = (await res.json()) as { id?: string; name?: string; at?: number; path?: string }
+        const scanRoom = demoRooms.find((r) => r.modelUrl)
+        if (!up.id || !up.at || up.at <= since || !scanRoom) return
+        clearInterval(timer)
+        openRoom({
+          plan: planById[scanRoom.planId],
+          modelUrl: `/scan-upload/file/${up.id}`,
+          modelLabel: up.name ?? 'Your scan',
+          scanPath: up.path ?? null,
+        })
+      } catch {
+        /* the dev server may be restarting */
+      }
+    }, 1500)
+    return () => clearInterval(timer)
+  }, [openRoom])
 
   // The scanned room turns slowly on the right while you decide.
   useEffect(() => {

@@ -30,7 +30,7 @@ export function startRun(styleText: string) {
   // If the server can read this room's scan, let the agent measure it (walls and the real door) and send only
   // what the person taped. Otherwise send every measurement we have.
   const demo = demoRoomForPlan(s.roomPlanId ?? base.plan_id)
-  const scanPath = api.mode === 'live' && demo?.modelUrl === s.modelUrl ? (demo?.scanPath ?? null) : null
+  const scanPath = api.mode !== 'live' ? null : (s.scanPath ?? (demo?.modelUrl === s.modelUrl ? (demo?.scanPath ?? null) : null))
   const room = scanPath
     ? { ...s.overrides }
     : {
