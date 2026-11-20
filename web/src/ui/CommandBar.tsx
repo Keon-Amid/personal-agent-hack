@@ -101,7 +101,7 @@ export default function CommandBar() {
   const inCart = plan.items.filter((i) => placed[i.slot] === 'in_cart').length
   const sum = plan.items.filter((i) => placed[i.slot]).reduce((n, i) => n + (i.price_usd ?? 0), 0)
   const claims = plan.items.reduce((n, i) => n + (placed[i.slot] && i.senso ? i.senso.claims.filter((c) => c.verdict === 'verified').length : 0), 0)
-  const rejected = plan.items.reduce((n, i) => n + (placed[i.slot] ? i.rejected.length : 0), 0)
+  const rejected = plan.items.reduce((n, i) => n + (placed[i.slot] ? (i.rejected?.length ?? 0) : 0), 0)
   const allFit = plan.items.every((i) => i.fit.verdict === 'fits')
   const over = budget !== null && sum > budget
   // Sit in the free space between the audit trail (left) and whichever side panel is open (right).

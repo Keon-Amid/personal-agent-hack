@@ -159,6 +159,10 @@ export default function CartSheet() {
             <p className="mt-1 text-xs leading-relaxed text-fg-2">
               It is in the audit trail. Nothing is ordered until you pay on IKEA.com.
             </p>
+            <p className="mt-1.5 text-xs leading-relaxed text-fg-3">
+              With Claude in Chrome connected, ask it to add this cart to your IKEA bag: it opens each page and presses
+              Add to bag, and stops before checkout.
+            </p>
           </div>
         ) : (
           <p className="mt-3 rounded-sm bg-white/4 px-2.5 py-2 text-xs leading-relaxed text-fg-2 ring-1 ring-inset ring-line">

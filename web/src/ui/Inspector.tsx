@@ -224,7 +224,7 @@ export default function Inspector() {
           </ul>
         </section>
 
-        {item.rejected.length > 0 && (
+        {(item.rejected?.length ?? 0) > 0 && (
           <>
             <div className="hairline" />
             <section className="p-4">
