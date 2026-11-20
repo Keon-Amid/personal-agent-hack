@@ -3,6 +3,7 @@ import { apiFor, type RunHandle } from './api/api'
 import { approvePlan, fetchPlan, followPlan, type LivePlan } from './api/live'
 import { probeServer } from './api/server'
 import { effective } from './lib/refit'
+import { demoRoomForPlan } from './data'
 import { useApp } from './store'
 import type { Plan } from './types'
 
@@ -26,17 +27,23 @@ export function startRun(styleText: string) {
   handle?.cancel()
   const base = s.plan
   const api = apiFor(s.server.ready)
-  const room = {
-    wall: effective(base.room, s.overrides, 'wall').value_in,
-    depth: effective(base.room, s.overrides, 'depth').value_in,
-    door_width: effective(base.room, s.overrides, 'door_width').value_in,
-    door_height: effective(base.room, s.overrides, 'door_height').value_in,
-  }
+  // If the server can read this room's scan, let the agent measure it (walls and the real door) and send only
+  // what the person taped. Otherwise send every measurement we have.
+  const demo = demoRoomForPlan(s.roomPlanId ?? base.plan_id)
+  const scanPath = api.mode === 'live' && demo?.modelUrl === s.modelUrl ? (demo?.scanPath ?? null) : null
+  const room = scanPath
+    ? { ...s.overrides }
+    : {
+        wall: effective(base.room, s.overrides, 'wall').value_in,
+        depth: effective(base.room, s.overrides, 'depth').value_in,
+        door_width: effective(base.room, s.overrides, 'door_width').value_in,
+        door_height: effective(base.room, s.overrides, 'door_height').value_in,
+      }
   s.startRun()
   // A live run is given the tape measurements, so they are part of its plan from here on.
   useApp.setState({ runError: null, runMode: api.mode, ...(api.mode === 'live' ? { overrides: {} } : {}) })
   const h = api.run(
-    { plan: base, room, styleText, budgetUsd: s.budget },
+    { plan: base, room, scanPath, styleText, budgetUsd: s.budget },
     (r) => useApp.getState().applyRecord(r),
     (plan) => useApp.setState({ plan: settle(plan, base, styleText) }),
   )
@@ -71,7 +78,7 @@ export function startReplay() {
   const base = s.plan
   s.startRun()
   useApp.setState({ runError: null, runMode: 'mock' })
-  const h = apiFor(false).run({ plan: base, room: { wall: 0, depth: 0, door_width: 0, door_height: 0 }, styleText: base.style.style_text, budgetUsd: null }, (r) =>
+  const h = apiFor(false).run({ plan: base, room: {}, styleText: base.style.style_text, budgetUsd: null }, (r) =>
     useApp.getState().applyRecord(r),
   )
   handle = h

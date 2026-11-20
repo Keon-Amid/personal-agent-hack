@@ -65,6 +65,8 @@ export interface DemoRoom {
   /** GLB to show. null = draw the room from the plan's typed measurements. */
   modelUrl: string | null
   modelLabel: string | null
+  /** Where the agent server finds the same scan (repo-relative), so a live run measures it itself. */
+  scanPath?: string
 }
 
 const SCAN_PLAN = 'bdf378ca6115' // contracts/plan.room_scan.json: the agent's run on the room we scanned
@@ -78,6 +80,7 @@ export const demoRooms: DemoRoom[] = [
     planId: SCAN_PLAN,
     modelUrl: scanUrl,
     modelLabel: 'room_scan_roomplan.glb',
+    scanPath: 'assets/room_scan_roomplan.glb',
   },
   {
     id: 'small',

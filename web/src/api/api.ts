@@ -21,7 +21,10 @@ export interface RoomInput {
 export interface RunInput {
   /** The room's recorded plan: its measurements, and (in replay) the run to play back. */
   plan: Plan
-  room: RoomInput
+  /** Measurements to send. With scanPath set, only the ones the person taped (they override the scan). */
+  room: Partial<RoomInput>
+  /** Repo-relative path of the room's scan, when the server can read it. */
+  scanPath?: string | null
   styleText: string
   budgetUsd: number | null
 }

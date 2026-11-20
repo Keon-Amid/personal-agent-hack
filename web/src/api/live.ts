@@ -1,5 +1,6 @@
 // Live mode: the team's agent server, server/app.py (see CONTRACT.md, "HTTP API").
-//   POST /api/plan  {room:{wall,depth,door_width,door_height}, style_text, budget_total_usd} -> {plan_id}
+//   POST /api/plan  {scan_path?, room:{wall,depth,door_width,door_height}, style_text, budget_total_usd} -> {plan_id}
+//     (with scan_path the agent measures the scan itself; room then carries only tape measurements, which win)
 //   GET  /api/plan/{id}  -> Plan + run:{status,error}; items[] and audit[] grow while the agent works
 //   POST /api/plan/{id}/approve -> Plan + shopping_list (no order is placed)
 // The UI polls the plan once a second and plays each new audit record as it appears.
@@ -63,7 +64,7 @@ export async function approvePlan(planId: string): Promise<LivePlan> {
 
 export const liveApi: Api = {
   mode: 'live',
-  run: ({ room, styleText, budgetUsd }, onRecord, onPlan): RunHandle => {
+  run: ({ room, scanPath, styleText, budgetUsd }, onRecord, onPlan): RunHandle => {
     let inner: RunHandle | null = null
     let cancelled = false
     const done = (async (): Promise<Plan | null> => {
@@ -71,7 +72,7 @@ export const liveApi: Api = {
         method: 'POST',
         headers: { 'content-type': 'application/json' },
         // The budget chip is a budget for the whole room, which the agent calls budget_total_usd.
-        body: JSON.stringify({ room, style_text: styleText, budget_total_usd: budgetUsd }),
+        body: JSON.stringify({ room, ...(scanPath ? { scan_path: scanPath } : {}), style_text: styleText, budget_total_usd: budgetUsd }),
       })
       if (!res.ok) throw new Error(await problem(res))
       const { plan_id } = (await res.json()) as { plan_id: string }
