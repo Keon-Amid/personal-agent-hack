@@ -1,0 +1,1975 @@
+{
+ "plan_id": "70f723848ba7",
+ "plan_url": "http://localhost:5173/plan/70f723848ba7",
+ "room": {
+  "wall": {
+   "value_in": 163.2,
+   "error_in": 1.0,
+   "source": "scanned:roomplan"
+  },
+  "depth": {
+   "value_in": 142.8,
+   "error_in": 1.0,
+   "source": "scanned:roomplan"
+  },
+  "door_width": {
+   "value_in": 35.0,
+   "error_in": 1.0,
+   "source": "scanned:roomplan"
+  },
+  "door_height": {
+   "value_in": 94.6,
+   "error_in": 1.0,
+   "source": "scanned:roomplan"
+  },
+  "photo_url": null
+ },
+ "style": {
+  "style_text": "warm minimal living room, light oak and linen, easy to clean",
+  "detected_style": null
+ },
+ "items": [
+  {
+   "slot": "sofa",
+   "product_id": "ikea-gullvalla-sofa-silkeryd-dark-gray-beige-70618503",
+   "name": "GULLVALLA Sofa - Silkeryd dark gray-beige",
+   "price_usd": 449.0,
+   "dims_in": {
+    "w": 71.625,
+    "d": 32.625,
+    "h": 30.75
+   },
+   "image_url": "https://www.ikea.com/us/en/images/products/gullvalla-sofa-silkeryd-dark-gray-beige__1578444_pe1034087_s5.jpg",
+   "source_url": "https://www.ikea.com/us/en/p/gullvalla-sofa-silkeryd-dark-gray-beige-70618503/",
+   "style": {
+    "rank": 2,
+    "fused": 0.031281,
+    "photo_score": 0.0784,
+    "text_score": 0.0485,
+    "product_styles": [
+     "warm minimal",
+     "scandinavian",
+     "traditional"
+    ]
+   },
+   "fit": {
+    "verdict": "fits",
+    "results": [
+     {
+      "check": "wall",
+      "verdict": "fits",
+      "math": "width 71.625 in ≤ 163.2 in ±1 (scanned:roomplan)",
+      "need_in": 71.62,
+      "available": {
+       "value_in": 163.2,
+       "error_in": 1.0,
+       "source": "scanned:roomplan"
+      },
+      "margin_in": 91.57
+     },
+     {
+      "check": "floor",
+      "verdict": "fits",
+      "math": "depth 32.625 in + walkway 36 in = 68.625 in ≤ 142.8 in ±1 (scanned:roomplan)",
+      "need_in": 68.62,
+      "available": {
+       "value_in": 142.8,
+       "error_in": 1.0,
+       "source": "scanned:roomplan"
+      },
+      "margin_in": 74.18
+     },
+     {
+      "check": "doorway_width",
+      "verdict": "fits",
+      "math": "box 1/1 smallest side 13.75 in ≤ 35 in ±1 (scanned:roomplan)",
+      "need_in": 13.75,
+      "available": {
+       "value_in": 35.0,
+       "error_in": 1.0,
+       "source": "scanned:roomplan"
+      },
+      "margin_in": 21.25
+     },
+     {
+      "check": "doorway_height",
+      "verdict": "fits",
+      "math": "box 1/1 middle side 25.5 in ≤ 94.6 in ±1 (scanned:roomplan)",
+      "need_in": 25.5,
+      "available": {
+       "value_in": 94.6,
+       "error_in": 1.0,
+       "source": "scanned:roomplan"
+      },
+      "margin_in": 69.1
+     }
+    ]
+   },
+   "senso": {
+    "check_id": "49b51780-0a55-4b31-b59a-4962225cae00",
+    "accuracy_pct": 100.0,
+    "claims": [
+     {
+      "claim": "Brendan's Org's wall-fit rule requires a piece placed against a wall to be no wider than that wall.",
+      "verdict": "verified",
+      "quote": "- Wall fit: a piece placed against a wall must be no wider than that wall."
+     },
+     {
+      "claim": "The GULLVALLA Sofa - Silkeryd dark gray-beige is 71.625 inches wide.",
+      "verdict": "verified",
+      "quote": "Size: width 71.625 in, depth 32.625 in, height 30.75 in."
+     },
+     {
+      "claim": "Brendan's Org's walkway rule requires at least 36 inches of clear walkway in front of any furniture placed against a wall.",
+      "verdict": "verified",
+      "quote": "- Walkway: keep at least 36 inches of clear walkway in front of any furniture placed against a wall."
+     },
+     {
+      "claim": "The GULLVALLA Sofa - Silkeryd dark gray-beige is 32.625 inches deep.",
+      "verdict": "verified",
+      "quote": "Size: width 71.625 in, depth 32.625 in, height 30.75 in."
+     },
+     {
+      "claim": "Brendan's Org's doorway rule requires every shipping box (package) to fit through the room's doorway.",
+      "verdict": "verified",
+      "quote": "- Doorway: every shipping box (package) must fit through the room's doorway, by its two smallest dimensions against the door width and height."
+     },
+     {
+      "claim": "The GULLVALLA Sofa - Silkeryd dark gray-beige ships in 1 box(es).",
+      "verdict": "verified",
+      "quote": "Ships in 1 package(s): box 1: 25.5 in wide x 67.5 in long x 13.75 in high."
+     },
+     {
+      "claim": "The GULLVALLA Sofa - Silkeryd dark gray-beige's box 1 is 25.5 inches wide.",
+      "verdict": "verified",
+      "quote": "Ships in 1 package(s): box 1: 25.5 in wide x 67.5 in long x 13.75 in high."
+     },
+     {
+      "claim": "The GULLVALLA Sofa - Silkeryd dark gray-beige's box 1 is 67.5 inches long.",
+      "verdict": "verified",
+      "quote": "Ships in 1 package(s): box 1: 25.5 in wide x 67.5 in long x 13.75 in high."
+     },
+     {
+      "claim": "The GULLVALLA Sofa - Silkeryd dark gray-beige is listed at $449 on the IKEA US page.",
+      "verdict": "not_verifiable",
+      "quote": null
+     }
+    ]
+   },
+   "why": "The GULLVALLA Sofa ($449) is the #2 style match for your warm minimal room, and at 71.6 in wide it leaves 91.6 in of wall to spare, with its width, depth and box size verified by Senso.",
+   "why_source": {
+    "kind": "claude"
+   },
+   "rejected": [
+    {
+     "product_id": "ikea-lillesater-sofa-axvall-off-white-40619085",
+     "name": "LILLESÄTER Sofa - Axvall off-white",
+     "status": "rejected",
+     "why": "over budget: $999 > $450"
+    }
+   ]
+  },
+  {
+   "slot": "armchair",
+   "product_id": "ikea-poang-armchair-birch-veneer-knisa-light-beige-59305928",
+   "name": "POÄNG Armchair - birch veneer/Knisa light beige",
+   "price_usd": 149.0,
+   "dims_in": {
+    "w": 26.75,
+    "d": 32.25,
+    "h": 39.375
+   },
+   "image_url": "https://www.ikea.com/us/en/images/products/poaeng-armchair-birch-veneer-knisa-light-beige__0571500_pe666933_s5.jpg",
+   "source_url": "https://www.ikea.com/us/en/p/poaeng-armchair-birch-veneer-knisa-light-beige-s59305928/",
+   "style": {
+    "rank": 1,
+    "fused": 0.032018,
+    "photo_score": 0.0933,
+    "text_score": 0.0808,
+    "product_styles": [
+     "warm minimal",
+     "scandinavian",
+     "traditional"
+    ]
+   },
+   "fit": {
+    "verdict": "fits",
+    "results": [
+     {
+      "check": "wall",
+      "verdict": "fits",
+      "math": "width 26.75 in ≤ 163.2 in ±1 (scanned:roomplan)",
+      "need_in": 26.75,
+      "available": {
+       "value_in": 163.2,
+       "error_in": 1.0,
+       "source": "scanned:roomplan"
+      },
+      "margin_in": 136.45
+     },
+     {
+      "check": "floor",
+      "verdict": "fits",
+      "math": "depth 32.25 in + walkway 36 in = 68.25 in ≤ 142.8 in ±1 (scanned:roomplan)",
+      "need_in": 68.25,
+      "available": {
+       "value_in": 142.8,
+       "error_in": 1.0,
+       "source": "scanned:roomplan"
+      },
+      "margin_in": 74.55
+     },
+     {
+      "check": "doorway_width",
+      "verdict": "fits",
+      "math": "box 1/2 smallest side 2.75 in ≤ 35 in ±1 (scanned:roomplan)",
+      "need_in": 2.75,
+      "available": {
+       "value_in": 35.0,
+       "error_in": 1.0,
+       "source": "scanned:roomplan"
+      },
+      "margin_in": 32.25
+     },
+     {
+      "check": "doorway_height",
+      "verdict": "fits",
+      "math": "box 1/2 middle side 26.25 in ≤ 94.6 in ±1 (scanned:roomplan)",
+      "need_in": 26.25,
+      "available": {
+       "value_in": 94.6,
+       "error_in": 1.0,
+       "source": "scanned:roomplan"
+      },
+      "margin_in": 68.35
+     },
+     {
+      "check": "doorway_width",
+      "verdict": "fits",
+      "math": "box 2/2 smallest side 9.75 in ≤ 35 in ±1 (scanned:roomplan)",
+      "need_in": 9.75,
+      "available": {
+       "value_in": 35.0,
+       "error_in": 1.0,
+       "source": "scanned:roomplan"
+      },
+      "margin_in": 25.25
+     },
+     {
+      "check": "doorway_height",
+      "verdict": "fits",
+      "math": "box 2/2 middle side 9.75 in ≤ 94.6 in ±1 (scanned:roomplan)",
+      "need_in": 9.75,
+      "available": {
+       "value_in": 94.6,
+       "error_in": 1.0,
+       "source": "scanned:roomplan"
+      },
+      "margin_in": 84.85
+     }
+    ]
+   },
+   "senso": {
+    "check_id": "6e4781c1-8d8f-46dd-b8dc-51b76098098a",
+    "accuracy_pct": 100.0,
+    "claims": [
+     {
+      "claim": "Brendan's Org's wall-fit rule requires a piece placed against a wall to be no wider than that wall.",
+      "verdict": "verified",
+      "quote": "- Wall fit: a piece placed against a wall must be no wider than that wall."
+     },
+     {
+      "claim": "The POÄNG Armchair - birch veneer/Knisa light beige, IKEA article 593.059.28, is 26.75 inches wide according to Brendan's Org's catalog.",
+      "verdict": "verified",
+      "quote": "Size: width 26.75 in, depth 32.25 in, height 39.375 in."
+     },
+     {
+      "claim": "Brendan's Org's walkway rule requires at least 36 inches of clear walkway in front of any furniture placed against a wall.",
+      "verdict": "verified",
+      "quote": "- Walkway: keep at least 36 inches of clear walkway in front of any furniture placed against a wall."
+     },
+     {
+      "claim": "The POÄNG Armchair - birch veneer/Knisa light beige, IKEA article 593.059.28, is 32.25 inches deep according to Brendan's Org's catalog.",
+      "verdict": "verified",
+      "quote": "Size: width 26.75 in, depth 32.25 in, height 39.375 in."
+     },
+     {
+      "claim": "Brendan's Org's doorway rule requires every shipping box (package) to fit through the room's doorway.",
+      "verdict": "verified",
+      "quote": "- Doorway: every shipping box (package) must fit through the room's doorway, by its two smallest dimensions against the door width and height."
+     },
+     {
+      "claim": "The POÄNG Armchair - birch veneer/Knisa light beige, IKEA article 593.059.28, ships in 2 box(es) according to Brendan's Org's catalog.",
+      "verdict": "verified",
+      "quote": "Ships in 2 package(s): box 1: 26.25 in wide x 29 in long x 2.75 in high; box 2: 9.75 in wide x 23.25 in long x 9.75 in high."
+     },
+     {
+      "claim": "The first shipping box for the POÄNG Armchair - birch veneer/Knisa light beige, IKEA article 593.059.28, is 26.25 inches wide.",
+      "verdict": "verified",
+      "quote": "Ships in 2 package(s): box 1: 26.25 in wide x 29 in long x 2.75 in high; box 2: 9.75 in wide x 23.25 in long x 9.75 in high."
+     },
+     {
+      "claim": "The first shipping box for the POÄNG Armchair - birch veneer/Knisa light beige, IKEA article 593.059.28, is 29 inches long.",
+      "verdict": "verified",
+      "quote": "Ships in 2 package(s): box 1: 26.25 in wide x 29 in long x 2.75 in high; box 2: 9.75 in wide x 23.25 in long x 9.75 in high."
+     },
+     {
+      "claim": "The first shipping box for the POÄNG Armchair - birch veneer/Knisa light beige, IKEA article 593.059.28, is 2.75 inches high.",
+      "verdict": "verified",
+      "quote": "Ships in 2 package(s): box 1: 26.25 in wide x 29 in long x 2.75 in high; box 2: 9.75 in wide x 23.25 in long x 9.75 in high."
+     },
+     {
+      "claim": "The second shipping box for the POÄNG Armchair - birch veneer/Knisa light beige, IKEA article 593.059.28, is 9.75 inches wide.",
+      "verdict": "verified",
+      "quote": "Ships in 2 package(s): box 1: 26.25 in wide x 29 in long x 2.75 in high; box 2: 9.75 in wide x 23.25 in long x 9.75 in high."
+     },
+     {
+      "claim": "The second shipping box for the POÄNG Armchair - birch veneer/Knisa light beige, IKEA article 593.059.28, is 23.25 inches long.",
+      "verdict": "verified",
+      "quote": "Ships in 2 package(s): box 1: 26.25 in wide x 29 in long x 2.75 in high; box 2: 9.75 in wide x 23.25 in long x 9.75 in high."
+     },
+     {
+      "claim": "The POÄNG Armchair - birch veneer/Knisa light beige, IKEA article 593.059.28, is listed at $149 on the IKEA US page according to Brendan's Org's catalog.",
+      "verdict": "verified",
+      "quote": "Price on the IKEA US page on 2026-11-20: $149."
+     }
+    ]
+   },
+   "why": "The POÄNG Armchair in birch veneer and light beige is the #1 style match for your room at $149 (price verified by Senso), and at 26.75 in wide it leaves 136 in of wall free.",
+   "why_source": {
+    "kind": "claude"
+   },
+   "rejected": []
+  },
+  {
+   "slot": "coffee_table",
+   "product_id": "ikea-vittsjo-coffee-table-black-brown-glass-29-1-2-80213309",
+   "name": "VITTSJÖ Coffee table - black-brown/glass 29 1/2 \"",
+   "price_usd": 99.99,
+   "dims_in": {
+    "w": 29.5,
+    "d": 29.5,
+    "h": 17.75
+   },
+   "image_url": "https://www.ikea.com/us/en/images/products/vittsjoe-coffee-table-black-brown-glass__0135348_pe292039_s5.jpg",
+   "source_url": "https://www.ikea.com/us/en/p/vittsjoe-coffee-table-black-brown-glass-80213309/",
+   "style": {
+    "rank": 1,
+    "fused": 0.032266,
+    "photo_score": 0.0619,
+    "text_score": 0.5454,
+    "product_styles": [
+     "dark modern",
+     "warm minimal",
+     "industrial"
+    ]
+   },
+   "fit": {
+    "verdict": "fits",
+    "results": [
+     {
+      "check": "wall",
+      "verdict": "fits",
+      "math": "width 29.5 in ≤ 163.2 in ±1 (scanned:roomplan)",
+      "need_in": 29.5,
+      "available": {
+       "value_in": 163.2,
+       "error_in": 1.0,
+       "source": "scanned:roomplan"
+      },
+      "margin_in": 133.7
+     },
+     {
+      "check": "floor",
+      "verdict": "fits",
+      "math": "depth 29.5 in + walkway 36 in = 65.5 in ≤ 142.8 in ±1 (scanned:roomplan)",
+      "need_in": 65.5,
+      "available": {
+       "value_in": 142.8,
+       "error_in": 1.0,
+       "source": "scanned:roomplan"
+      },
+      "margin_in": 77.3
+     },
+     {
+      "check": "doorway_width",
+      "verdict": "fits",
+      "math": "box 1/1 smallest side 1.75 in ≤ 35 in ±1 (scanned:roomplan)",
+      "need_in": 1.75,
+      "available": {
+       "value_in": 35.0,
+       "error_in": 1.0,
+       "source": "scanned:roomplan"
+      },
+      "margin_in": 33.25
+     },
+     {
+      "check": "doorway_height",
+      "verdict": "fits",
+      "math": "box 1/1 middle side 30.25 in ≤ 94.6 in ±1 (scanned:roomplan)",
+      "need_in": 30.25,
+      "available": {
+       "value_in": 94.6,
+       "error_in": 1.0,
+       "source": "scanned:roomplan"
+      },
+      "margin_in": 64.35
+     }
+    ]
+   },
+   "senso": {
+    "check_id": "d2119737-512c-4084-ba87-81944c5b8f00",
+    "accuracy_pct": 100.0,
+    "claims": [
+     {
+      "claim": "Brendan's Org's wall-fit rule requires a piece placed against a wall to be no wider than that wall.",
+      "verdict": "verified",
+      "quote": "- Wall fit: a piece placed against a wall must be no wider than that wall."
+     },
+     {
+      "claim": "The VITTSJÖ Coffee table - black-brown/glass 29 1/2 \", IKEA article 802.133.09, is 29.5 inches wide according to Brendan's Org's catalog.",
+      "verdict": "verified",
+      "quote": "Size: width 29.5 in, depth 29.5 in, height 17.75 in."
+     },
+     {
+      "claim": "Brendan's Org's walkway rule requires at least 36 inches of clear walkway in front of any furniture placed against a wall.",
+      "verdict": "verified",
+      "quote": "- Walkway: keep at least 36 inches of clear walkway in front of any furniture placed against a wall."
+     },
+     {
+      "claim": "The VITTSJÖ Coffee table - black-brown/glass 29 1/2 \", IKEA article 802.133.09, is 29.5 inches deep according to Brendan's Org's catalog.",
+      "verdict": "verified",
+      "quote": "Size: width 29.5 in, depth 29.5 in, height 17.75 in."
+     },
+     {
+      "claim": "Brendan's Org's doorway rule requires every shipping box (package) to fit through the room's doorway.",
+      "verdict": "verified",
+      "quote": "- Doorway: every shipping box (package) must fit through the room's doorway, by its two smallest dimensions against the door width and height."
+     },
+     {
+      "claim": "The VITTSJÖ Coffee table - black-brown/glass 29 1/2 \", IKEA article 802.133.09, ships in 1 box(es) according to Brendan's Org's catalog.",
+      "verdict": "verified",
+      "quote": "Ships in 1 package(s): box 1: 30.25 in wide x 30.75 in long x 1.75 in high."
+     },
+     {
+      "claim": "Box 1 for the VITTSJÖ Coffee table - black-brown/glass 29 1/2 \", IKEA article 802.133.09, is 30.25 inches wide according to Brendan's Org's catalog.",
+      "verdict": "verified",
+      "quote": "Ships in 1 package(s): box 1: 30.25 in wide x 30.75 in long x 1.75 in high."
+     },
+     {
+      "claim": "Box 1 for the VITTSJÖ Coffee table - black-brown/glass 29 1/2 \", IKEA article 802.133.09, is 30.75 inches long according to Brendan's Org's catalog.",
+      "verdict": "verified",
+      "quote": "Ships in 1 package(s): box 1: 30.25 in wide x 30.75 in long x 1.75 in high."
+     },
+     {
+      "claim": "Box 1 for the VITTSJÖ Coffee table - black-brown/glass 29 1/2 \", IKEA article 802.133.09, is 1.75 inches high according to Brendan's Org's catalog.",
+      "verdict": "verified",
+      "quote": "Ships in 1 package(s): box 1: 30.25 in wide x 30.75 in long x 1.75 in high."
+     },
+     {
+      "claim": "The VITTSJÖ Coffee table - black-brown/glass 29 1/2 \", IKEA article 802.133.09, is listed at $99.99 on the IKEA US page according to Brendan's Org's catalog.",
+      "verdict": "verified",
+      "quote": "Price on the IKEA US page on 2026-11-20: $99.99."
+     }
+    ]
+   },
+   "why": "The VITTSJÖ Coffee table ($99.99, price verified by Senso) is the #1 style match, and at 29.5 × 29.5 in it still leaves the 36 in walkway with 77.3 in to spare.",
+   "why_source": {
+    "kind": "claude"
+   },
+   "rejected": []
+  },
+  {
+   "slot": "rug",
+   "product_id": "ikea-ridstig-rug-10603335",
+   "name": "RIDSTIG Rug, flatwoven - off-white/green 6 ' 7 \"x9 ' 10 \"",
+   "price_usd": 99.99,
+   "dims_in": {
+    "w": 79.0,
+    "d": 118.0,
+    "h": null
+   },
+   "image_url": "https://www.ikea.com/us/en/images/products/ridstig-rug-flatwoven-off-white-green__1377922_pe961027_s5.jpg",
+   "source_url": "https://www.ikea.com/us/en/p/ridstig-rug-flatwoven-off-white-green-10603335/",
+   "style": {
+    "rank": 1,
+    "fused": 0.032266,
+    "photo_score": 0.0645,
+    "text_score": 0.2939,
+    "product_styles": [
+     "warm minimal",
+     "scandinavian",
+     "traditional"
+    ]
+   },
+   "fit": {
+    "verdict": "fits",
+    "results": [
+     {
+      "check": "rug_width",
+      "verdict": "fits",
+      "math": "rug 118 in + 2 x 6 in margin (turned 90°) = 130 in ≤ 163.2 in ±1 (scanned:roomplan)",
+      "need_in": 130.0,
+      "available": {
+       "value_in": 163.2,
+       "error_in": 1.0,
+       "source": "scanned:roomplan"
+      },
+      "margin_in": 33.2
+     },
+     {
+      "check": "rug_depth",
+      "verdict": "fits",
+      "math": "rug 79 in + 2 x 6 in margin (turned 90°) = 91 in ≤ 142.8 in ±1 (scanned:roomplan)",
+      "need_in": 91.0,
+      "available": {
+       "value_in": 142.8,
+       "error_in": 1.0,
+       "source": "scanned:roomplan"
+      },
+      "margin_in": 51.8
+     },
+     {
+      "check": "doorway_width",
+      "verdict": "fits",
+      "math": "box 1/1 smallest side 5 in ≤ 35 in ±1 (scanned:roomplan)",
+      "need_in": 5.0,
+      "available": {
+       "value_in": 35.0,
+       "error_in": 1.0,
+       "source": "scanned:roomplan"
+      },
+      "margin_in": 30.0
+     },
+     {
+      "check": "doorway_height",
+      "verdict": "fits",
+      "math": "box 1/1 middle side 20.75 in ≤ 94.6 in ±1 (scanned:roomplan)",
+      "need_in": 20.75,
+      "available": {
+       "value_in": 94.6,
+       "error_in": 1.0,
+       "source": "scanned:roomplan"
+      },
+      "margin_in": 73.85
+     }
+    ]
+   },
+   "senso": {
+    "check_id": "e31e9b1b-a371-4a10-ab1e-8c5d7e4e736d",
+    "accuracy_pct": 100.0,
+    "claims": [
+     {
+      "claim": "Brendan's Org's rug rule requires a rug to be kept at least 6 inches from every wall.",
+      "verdict": "verified",
+      "quote": "- Rugs: a rug edge must be at least 6 inches from every wall."
+     },
+     {
+      "claim": "The RIDSTIG Rug, flatwoven - off-white/green 6 ' 7 \"x9 ' 10 \", IKEA article 106.033.35, is listed as 79 inches wide.",
+      "verdict": "verified",
+      "quote": "Size: width 79 in, depth 118 in, height unknown."
+     },
+     {
+      "claim": "The RIDSTIG Rug, flatwoven - off-white/green 6 ' 7 \"x9 ' 10 \", IKEA article 106.033.35, is listed as 118 inches long.",
+      "verdict": "verified",
+      "quote": "Size: width 79 in, depth 118 in, height unknown."
+     },
+     {
+      "claim": "Brendan's Org's doorway rule requires every shipping box (package) to fit through the room's doorway.",
+      "verdict": "verified",
+      "quote": "- Doorway: every shipping box (package) must fit through the room's doorway, by its two smallest dimensions against the door width and height."
+     },
+     {
+      "claim": "The RIDSTIG Rug, flatwoven - off-white/green 6 ' 7 \"x9 ' 10 \", IKEA article 106.033.35, is listed as shipping in 1 box(es).",
+      "verdict": "verified",
+      "quote": "Ships in 1 package(s): box 1: 20.75 in wide x 20.75 in long x 5 in high."
+     },
+     {
+      "claim": "Box 1 for the RIDSTIG Rug, flatwoven - off-white/green 6 ' 7 \"x9 ' 10 \", IKEA article 106.033.35, is listed as 20.75 inches wide.",
+      "verdict": "verified",
+      "quote": "Ships in 1 package(s): box 1: 20.75 in wide x 20.75 in long x 5 in high."
+     },
+     {
+      "claim": "Box 1 for the RIDSTIG Rug, flatwoven - off-white/green 6 ' 7 \"x9 ' 10 \", IKEA article 106.033.35, is listed as 5 inches high.",
+      "verdict": "verified",
+      "quote": "Ships in 1 package(s): box 1: 20.75 in wide x 20.75 in long x 5 in high."
+     },
+     {
+      "claim": "The RIDSTIG Rug, flatwoven - off-white/green 6 ' 7 \"x9 ' 10 \", IKEA article 106.033.35, is listed at $99.99 on the IKEA US page.",
+      "verdict": "verified",
+      "quote": "Price on the IKEA US page on 2026-11-20: $99.99."
+     }
+    ]
+   },
+   "why": "The RIDSTIG flatwoven rug (6'7\"x9'10\", $99.99, price verified by Senso) is the #1 style match, and it stays more than 6 in from every wall with 33.2 in to spare.",
+   "why_source": {
+    "kind": "claude"
+   },
+   "rejected": []
+  },
+  {
+   "slot": "floor_lamp",
+   "product_id": "ikea-okensand-floor-lamp-beech-white-90541536",
+   "name": "ÖKENSAND Floor lamp - beech/white",
+   "price_usd": 89.99,
+   "dims_in": {
+    "w": 19.0,
+    "d": 19.0,
+    "h": 61.0
+   },
+   "image_url": "https://www.ikea.com/us/en/images/products/oekensand-floor-lamp-beech-white__1187892_pe899535_s5.jpg",
+   "source_url": "https://www.ikea.com/us/en/p/oekensand-floor-lamp-beech-white-90541536/",
+   "style": {
+    "rank": 1,
+    "fused": 0.032522,
+    "photo_score": 0.0866,
+    "text_score": 0.9295,
+    "product_styles": [
+     "scandinavian",
+     "warm minimal",
+     "mid-century modern"
+    ]
+   },
+   "fit": {
+    "verdict": "fits",
+    "results": [
+     {
+      "check": "wall",
+      "verdict": "fits",
+      "math": "width 19 in ≤ 163.2 in ±1 (scanned:roomplan)",
+      "need_in": 19.0,
+      "available": {
+       "value_in": 163.2,
+       "error_in": 1.0,
+       "source": "scanned:roomplan"
+      },
+      "margin_in": 144.2
+     },
+     {
+      "check": "floor",
+      "verdict": "fits",
+      "math": "depth 19 in + walkway 36 in = 55 in ≤ 142.8 in ±1 (scanned:roomplan)",
+      "need_in": 55.0,
+      "available": {
+       "value_in": 142.8,
+       "error_in": 1.0,
+       "source": "scanned:roomplan"
+      },
+      "margin_in": 87.8
+     },
+     {
+      "check": "doorway_width",
+      "verdict": "fits",
+      "math": "box 1/1 smallest side 1.75 in ≤ 35 in ±1 (scanned:roomplan)",
+      "need_in": 1.75,
+      "available": {
+       "value_in": 35.0,
+       "error_in": 1.0,
+       "source": "scanned:roomplan"
+      },
+      "margin_in": 33.25
+     },
+     {
+      "check": "doorway_height",
+      "verdict": "fits",
+      "math": "box 1/1 middle side 13.75 in ≤ 94.6 in ±1 (scanned:roomplan)",
+      "need_in": 13.75,
+      "available": {
+       "value_in": 94.6,
+       "error_in": 1.0,
+       "source": "scanned:roomplan"
+      },
+      "margin_in": 80.85
+     }
+    ]
+   },
+   "senso": {
+    "check_id": "8e924348-2f3c-4561-a874-8d55957837f3",
+    "accuracy_pct": 100.0,
+    "claims": [
+     {
+      "claim": "Under the Room Furnisher wall-fit rule, a piece placed against a wall must be no wider than that wall.",
+      "verdict": "not_verifiable",
+      "quote": null
+     },
+     {
+      "claim": "The ÖKENSAND Floor lamp - beech/white, IKEA article 905.415.36, is 19 inches wide according to Brendan's Org's catalog.",
+      "verdict": "verified",
+      "quote": "Size: width 19 in, depth 19 in, height 61 in."
+     },
+     {
+      "claim": "Under the Room Furnisher walkway rule, at least 36 inches of clear walkway is kept in front of any furniture placed against a wall.",
+      "verdict": "not_verifiable",
+      "quote": null
+     },
+     {
+      "claim": "The ÖKENSAND Floor lamp - beech/white, IKEA article 905.415.36, is 19 inches deep according to Brendan's Org's catalog.",
+      "verdict": "verified",
+      "quote": "Size: width 19 in, depth 19 in, height 61 in."
+     },
+     {
+      "claim": "Under the Room Furnisher doorway rule, every shipping box (package) must fit through the room's doorway.",
+      "verdict": "not_verifiable",
+      "quote": null
+     },
+     {
+      "claim": "The ÖKENSAND Floor lamp - beech/white, IKEA article 905.415.36, ships in 1 box.",
+      "verdict": "verified",
+      "quote": "Ships in 1 package(s): box 1: 13.75 in wide x 26.75 in long x 1.75 in high."
+     },
+     {
+      "claim": "The ÖKENSAND Floor lamp - beech/white, IKEA article 905.415.36, shipping box 1 is 13.75 inches wide.",
+      "verdict": "verified",
+      "quote": "Ships in 1 package(s): box 1: 13.75 in wide x 26.75 in long x 1.75 in high."
+     },
+     {
+      "claim": "The ÖKENSAND Floor lamp - beech/white, IKEA article 905.415.36, shipping box 1 is 26.75 inches long.",
+      "verdict": "verified",
+      "quote": "Ships in 1 package(s): box 1: 13.75 in wide x 26.75 in long x 1.75 in high."
+     },
+     {
+      "claim": "The ÖKENSAND Floor lamp - beech/white, IKEA article 905.415.36, shipping box 1 is 1.75 inches high.",
+      "verdict": "verified",
+      "quote": "Ships in 1 package(s): box 1: 13.75 in wide x 26.75 in long x 1.75 in high."
+     },
+     {
+      "claim": "The ÖKENSAND Floor lamp - beech/white, IKEA article 905.415.36, is listed at $89.99 on the IKEA US page.",
+      "verdict": "verified",
+      "quote": "Price on the IKEA US page on 2026-11-20: $89.99."
+     }
+    ]
+   },
+   "why": "The ÖKENSAND Floor lamp in beech and white ($89.99, price verified by Senso) is the #1 style match, and its 19 × 19 in footprint leaves the 36 in walkway with 87.8 in to spare.",
+   "why_source": {
+    "kind": "claude"
+   },
+   "rejected": []
+  }
+ ],
+ "cart": {
+  "items": [
+   {
+    "product_id": "ikea-gullvalla-sofa-silkeryd-dark-gray-beige-70618503",
+    "name": "GULLVALLA Sofa - Silkeryd dark gray-beige",
+    "price_usd": 449.0,
+    "source_url": "https://www.ikea.com/us/en/p/gullvalla-sofa-silkeryd-dark-gray-beige-70618503/"
+   },
+   {
+    "product_id": "ikea-poang-armchair-birch-veneer-knisa-light-beige-59305928",
+    "name": "POÄNG Armchair - birch veneer/Knisa light beige",
+    "price_usd": 149.0,
+    "source_url": "https://www.ikea.com/us/en/p/poaeng-armchair-birch-veneer-knisa-light-beige-s59305928/"
+   },
+   {
+    "product_id": "ikea-vittsjo-coffee-table-black-brown-glass-29-1-2-80213309",
+    "name": "VITTSJÖ Coffee table - black-brown/glass 29 1/2 \"",
+    "price_usd": 99.99,
+    "source_url": "https://www.ikea.com/us/en/p/vittsjoe-coffee-table-black-brown-glass-80213309/"
+   },
+   {
+    "product_id": "ikea-ridstig-rug-10603335",
+    "name": "RIDSTIG Rug, flatwoven - off-white/green 6 ' 7 \"x9 ' 10 \"",
+    "price_usd": 99.99,
+    "source_url": "https://www.ikea.com/us/en/p/ridstig-rug-flatwoven-off-white-green-10603335/"
+   },
+   {
+    "product_id": "ikea-okensand-floor-lamp-beech-white-90541536",
+    "name": "ÖKENSAND Floor lamp - beech/white",
+    "price_usd": 89.99,
+    "source_url": "https://www.ikea.com/us/en/p/oekensand-floor-lamp-beech-white-90541536/"
+   }
+  ],
+  "total_usd": 887.97,
+  "delivery_note": "IKEA home delivery from $29",
+  "no_purchase": true
+ },
+ "audit": [
+  {
+   "ts": "2026-11-21T01:29:19Z",
+   "step": "agent",
+   "source": {
+    "kind": "template",
+    "set_by": "person"
+   },
+   "decision": "budget set",
+   "why": "The person's budget: total $900; enforced by pick, swap and cart_add",
+   "input": {
+    "total_usd": 900.0,
+    "per_item_usd": null
+   },
+   "status": "set"
+  },
+  {
+   "ts": "2026-11-21T01:29:19Z",
+   "step": "estimate_room",
+   "source": {
+    "kind": "lidar_scan",
+    "reader": "fit.scan (RoomPlan)",
+    "file": "assets/room_scan_1120.glb",
+    "walls": [
+     {
+      "id": "Wall_0",
+      "inner_length_in": 163.2
+     },
+     {
+      "id": "Wall_1",
+      "inner_length_in": 163.2
+     },
+     {
+      "id": "Wall_2",
+      "inner_length_in": 142.8
+     },
+     {
+      "id": "Wall_3",
+      "inner_length_in": 142.8
+     }
+    ],
+    "doors": [
+     {
+      "id": "Door_0",
+      "kind": "door",
+      "center": [
+       -73.3,
+       57.9
+      ],
+      "width_in": 35.0,
+      "height_in": 94.6,
+      "axis": "z",
+      "wall": "Wall_1",
+      "into_room": [
+       1,
+       0
+      ]
+     },
+     {
+      "id": "Window_0",
+      "kind": "window",
+      "center": [
+       -73.3,
+       3.6
+      ],
+      "width_in": 70.0,
+      "height_in": 95.6,
+      "axis": "z",
+      "wall": "Wall_1",
+      "into_room": [
+       1,
+       0
+      ]
+     }
+    ],
+    "existing_items": [
+     {
+      "id": "television_0",
+      "category": "television",
+      "w_in": 44.8,
+      "d_in": 3.9
+     },
+     {
+      "id": "table_other_rect_0",
+      "category": "table",
+      "w_in": 46.8,
+      "d_in": 88.3
+     },
+     {
+      "id": "chair_other_four_back_no_0",
+      "category": "armchair",
+      "w_in": 29.4,
+      "d_in": 29.0
+     },
+     {
+      "id": "chair_other_four_back_no_1",
+      "category": "armchair",
+      "w_in": 23.5,
+      "d_in": 20.2
+     },
+     {
+      "id": "chair_dining_four_back_arms_0",
+      "category": "dining_chair",
+      "w_in": 22.1,
+      "d_in": 20.1
+     },
+     {
+      "id": "chair_swivel_star_back_arms_0",
+      "category": "desk_chair",
+      "w_in": 22.7,
+      "d_in": 25.5
+     },
+     {
+      "id": "chair_dining_four_back_arms_1",
+      "category": "dining_chair",
+      "w_in": 22.1,
+      "d_in": 20.1
+     }
+    ]
+   },
+   "decision": "scanned room: wall 163.2 ±1 in (scanned:roomplan), depth 142.8 ±1 in (scanned:roomplan), door_width 35 ±1 in (scanned:roomplan), door_height 94.6 ±1 in (scanned:roomplan)",
+   "why": "RoomPlan scan with 4 named walls, 2 door(s), 7 existing items. Wall = Wall_0 (inner face); depth = inner extent out from it; door = narrowest door.",
+   "input": {
+    "scan": "assets/room_scan_1120.glb",
+    "scan_wall": "Wall_0",
+    "exact": []
+   },
+   "status": "measured"
+  },
+  {
+   "ts": "2026-11-21T01:29:20Z",
+   "step": "estimate_room",
+   "source": {
+    "kind": "superlinked",
+    "detected": null
+   },
+   "decision": "style: warm minimal living room, light oak and linen, easy to clean",
+   "why": "from the person's words",
+   "input": {
+    "photo": false,
+    "style_text": "warm minimal living room, light oak and linen, easy to clean"
+   }
+  },
+  {
+   "ts": "2026-11-21T01:29:20Z",
+   "step": "agent",
+   "source": {
+    "kind": "template"
+   },
+   "decision": "start Claude Code agent",
+   "why": "Headless Claude Code with only the room_furnisher tools; the tools enforce fit and Senso checks.",
+   "input": {
+    "tools": "mcp__room_furnisher__*",
+    "budget_usd": null
+   },
+   "status": "started"
+  },
+  {
+   "ts": "2026-11-21T01:29:25Z",
+   "step": "agent",
+   "source": {
+    "kind": "claude",
+    "via": "claude_code",
+    "model": "claude-opus-5-5"
+   },
+   "decision": "call style_match",
+   "why": "The model chose to call style_match for sofa",
+   "input": {
+    "plan_id": "70f723848ba7",
+    "slot": "sofa"
+   },
+   "status": "called",
+   "item_slot": "sofa"
+  },
+  {
+   "ts": "2026-11-21T01:29:25Z",
+   "step": "agent",
+   "source": {
+    "kind": "claude",
+    "via": "claude_code",
+    "model": "claude-opus-5-5"
+   },
+   "decision": "call fit_options",
+   "why": "The model chose to call fit_options for sofa",
+   "input": {
+    "plan_id": "70f723848ba7",
+    "slot": "sofa"
+   },
+   "status": "called",
+   "item_slot": "sofa"
+  },
+  {
+   "ts": "2026-11-21T01:29:26Z",
+   "step": "rank",
+   "source": {
+    "kind": "superlinked",
+    "embed_model": "google/siglip-so400m-patch14-384",
+    "rerank_model": "Qwen/Qwen3-Reranker-4B",
+    "fusion": "reciprocal rank fusion, k=60"
+   },
+   "decision": "ranked by style",
+   "why": "12 sofa products ranked against \"warm minimal living room, light oak and linen, easy to clean\"; #1 LILLESÄTER Sofa - Axvall off-white",
+   "item_slot": "sofa",
+   "input": "warm minimal living room, light oak and linen, easy to clean"
+  },
+  {
+   "ts": "2026-11-21T01:29:26Z",
+   "step": "rank",
+   "source": {
+    "kind": "fit"
+   },
+   "decision": "fit checked",
+   "why": "12 sofa products: 12 fit, 0 unsure, 0 no_fit; best value: GLOSTAD Sofa - Knisa dark gray, SALTMYRAN Sofa - Öreryd blue, GULLVALLA Sofa - Silkeryd dark gray-beige",
+   "item_slot": "sofa",
+   "input": {
+    "wall": {
+     "value_in": 163.2,
+     "error_in": 1.0,
+     "source": "scanned:roomplan"
+    },
+    "depth": {
+     "value_in": 142.8,
+     "error_in": 1.0,
+     "source": "scanned:roomplan"
+    },
+    "door_width": {
+     "value_in": 35.0,
+     "error_in": 1.0,
+     "source": "scanned:roomplan"
+    },
+    "door_height": {
+     "value_in": 94.6,
+     "error_in": 1.0,
+     "source": "scanned:roomplan"
+    }
+   }
+  },
+  {
+   "ts": "2026-11-21T01:29:29Z",
+   "step": "agent",
+   "source": {
+    "kind": "claude",
+    "via": "claude_code",
+    "model": "claude-opus-5-5"
+   },
+   "decision": "call pick",
+   "why": "The model chose to call pick for sofa",
+   "input": {
+    "plan_id": "70f723848ba7",
+    "slot": "sofa",
+    "budget_usd": 450
+   },
+   "status": "called",
+   "item_slot": "sofa"
+  },
+  {
+   "ts": "2026-11-21T01:29:29Z",
+   "step": "rank",
+   "source": {
+    "kind": "superlinked",
+    "embed_model": "google/siglip-so400m-patch14-384",
+    "rerank_model": "Qwen/Qwen3-Reranker-4B",
+    "fusion": "reciprocal rank fusion, k=60",
+    "detected_style": null
+   },
+   "decision": "ranked",
+   "why": "12 sofa products ranked by style",
+   "item_slot": "sofa",
+   "input": "warm minimal living room, light oak and linen, easy to clean"
+  },
+  {
+   "ts": "2026-11-21T01:29:29Z",
+   "step": "pick",
+   "source": {
+    "kind": "superlinked",
+    "embed_model": "google/siglip-so400m-patch14-384",
+    "rerank_model": "Qwen/Qwen3-Reranker-4B",
+    "fusion": "reciprocal rank fusion, k=60"
+   },
+   "decision": "rejected",
+   "why": "style #1 of 12 (photo #4 0.058, text #2 0.234); over budget: $999 > $450",
+   "item_slot": "sofa",
+   "product_id": "ikea-lillesater-sofa-axvall-off-white-40619085",
+   "status": "rejected"
+  },
+  {
+   "ts": "2026-11-21T01:29:29Z",
+   "step": "pick",
+   "source": {
+    "kind": "superlinked",
+    "embed_model": "google/siglip-so400m-patch14-384",
+    "rerank_model": "Qwen/Qwen3-Reranker-4B",
+    "fusion": "reciprocal rank fusion, k=60",
+    "url": "https://www.ikea.com/us/en/p/gullvalla-sofa-silkeryd-dark-gray-beige-70618503/"
+   },
+   "decision": "picked",
+   "why": "style #2 of 12 (photo #2 0.078, text #6 0.049); fits; $449, 4.6★ (20 reviews), best value",
+   "item_slot": "sofa",
+   "product_id": "ikea-gullvalla-sofa-silkeryd-dark-gray-beige-70618503",
+   "status": "fits"
+  },
+  {
+   "ts": "2026-11-21T01:29:31Z",
+   "step": "agent",
+   "source": {
+    "kind": "claude",
+    "via": "claude_code",
+    "model": "claude-opus-5-5"
+   },
+   "decision": "call senso_check",
+   "why": "The model chose to call senso_check for sofa",
+   "input": {
+    "plan_id": "70f723848ba7",
+    "slot": "sofa"
+   },
+   "status": "called",
+   "item_slot": "sofa"
+  },
+  {
+   "ts": "2026-11-21T01:29:31Z",
+   "step": "senso_check",
+   "source": {
+    "kind": "senso",
+    "check_id": "49b51780-0a55-4b31-b59a-4962225cae00"
+   },
+   "decision": "passed",
+   "why": "8 verified, 1 not_verifiable; accuracy 100.0%",
+   "item_slot": "sofa",
+   "product_id": "ikea-gullvalla-sofa-silkeryd-dark-gray-beige-70618503",
+   "input": "Under our wall-fit rule, a piece placed against a wall must be no wider than that wall. Our catalog lists the GULLVALLA Sofa - Silkeryd dark gray-beige, IKEA article 706.185.03, as 71.625 inches wide. Under our walkway rule, at least 36 inches of clear walkway is kept in front of any furniture placed against a wall. Our catalog lists the GULLVALLA Sofa - Silkeryd dark gray-beige, IKEA article 706.185.03, as 32.625 inches deep. Under our doorway rule, every shipping box (package) must fit through the room's doorway. Our catalog lists the GULLVALLA Sofa - Silkeryd dark gray-beige, IKEA article 706.185.03, as shipping in 1 box(es): box 1 as 25.5 inches wide, 67.5 inches long and 13.75 inches high. Our catalog lists the GULLVALLA Sofa - Silkeryd dark gray-beige, IKEA article 706.185.03, at $449 on the IKEA US page.",
+   "status": "verified"
+  },
+  {
+   "ts": "2026-11-21T01:29:34Z",
+   "step": "agent",
+   "source": {
+    "kind": "claude",
+    "via": "claude_code",
+    "model": "claude-opus-5-5"
+   },
+   "decision": "call cart_add",
+   "why": "The model chose to call cart_add for sofa",
+   "input": {
+    "plan_id": "70f723848ba7",
+    "slot": "sofa",
+    "why": "The GULLVALLA Sofa ($449) is the #2 style match for your warm minimal room, and at 71.6 in wide it leaves 91.6 in of wall to spare, with its width, depth and box size verified by Senso."
+   },
+   "status": "called",
+   "item_slot": "sofa"
+  },
+  {
+   "ts": "2026-11-21T01:29:34Z",
+   "step": "cart",
+   "source": {
+    "kind": "claude"
+   },
+   "decision": "added to cart",
+   "why": "The GULLVALLA Sofa ($449) is the #2 style match for your warm minimal room, and at 71.6 in wide it leaves 91.6 in of wall to spare, with its width, depth and box size verified by Senso.",
+   "item_slot": "sofa",
+   "product_id": "ikea-gullvalla-sofa-silkeryd-dark-gray-beige-70618503",
+   "status": "in_cart"
+  },
+  {
+   "ts": "2026-11-21T01:29:35Z",
+   "step": "agent",
+   "source": {
+    "kind": "claude",
+    "via": "claude_code",
+    "model": "claude-opus-5-5"
+   },
+   "decision": "call style_match",
+   "why": "The model chose to call style_match for armchair",
+   "input": {
+    "plan_id": "70f723848ba7",
+    "slot": "armchair"
+   },
+   "status": "called",
+   "item_slot": "armchair"
+  },
+  {
+   "ts": "2026-11-21T01:29:35Z",
+   "step": "rank",
+   "source": {
+    "kind": "superlinked",
+    "embed_model": "google/siglip-so400m-patch14-384",
+    "rerank_model": "Qwen/Qwen3-Reranker-4B",
+    "fusion": "reciprocal rank fusion, k=60"
+   },
+   "decision": "ranked by style",
+   "why": "9 armchair products ranked against \"warm minimal living room, light oak and linen, easy to clean\"; #1 POÄNG Armchair - birch veneer/Knisa light beige",
+   "item_slot": "armchair",
+   "input": "warm minimal living room, light oak and linen, easy to clean"
+  },
+  {
+   "ts": "2026-11-21T01:29:35Z",
+   "step": "agent",
+   "source": {
+    "kind": "claude",
+    "via": "claude_code",
+    "model": "claude-opus-5-5"
+   },
+   "decision": "call fit_options",
+   "why": "The model chose to call fit_options for armchair",
+   "input": {
+    "plan_id": "70f723848ba7",
+    "slot": "armchair"
+   },
+   "status": "called",
+   "item_slot": "armchair"
+  },
+  {
+   "ts": "2026-11-21T01:29:35Z",
+   "step": "rank",
+   "source": {
+    "kind": "fit"
+   },
+   "decision": "fit checked",
+   "why": "9 armchair products: 9 fit, 0 unsure, 0 no_fit; best value: POÄNG Armchair - birch veneer/Knisa light beige",
+   "item_slot": "armchair",
+   "input": {
+    "wall": {
+     "value_in": 163.2,
+     "error_in": 1.0,
+     "source": "scanned:roomplan"
+    },
+    "depth": {
+     "value_in": 142.8,
+     "error_in": 1.0,
+     "source": "scanned:roomplan"
+    },
+    "door_width": {
+     "value_in": 35.0,
+     "error_in": 1.0,
+     "source": "scanned:roomplan"
+    },
+    "door_height": {
+     "value_in": 94.6,
+     "error_in": 1.0,
+     "source": "scanned:roomplan"
+    }
+   }
+  },
+  {
+   "ts": "2026-11-21T01:29:40Z",
+   "step": "agent",
+   "source": {
+    "kind": "claude",
+    "via": "claude_code",
+    "model": "claude-opus-5-5"
+   },
+   "decision": "call pick",
+   "why": "The model chose to call pick for armchair",
+   "input": {
+    "plan_id": "70f723848ba7",
+    "slot": "armchair",
+    "budget_usd": 150
+   },
+   "status": "called",
+   "item_slot": "armchair"
+  },
+  {
+   "ts": "2026-11-21T01:29:40Z",
+   "step": "rank",
+   "source": {
+    "kind": "superlinked",
+    "embed_model": "google/siglip-so400m-patch14-384",
+    "rerank_model": "Qwen/Qwen3-Reranker-4B",
+    "fusion": "reciprocal rank fusion, k=60",
+    "detected_style": null
+   },
+   "decision": "ranked",
+   "why": "9 armchair products ranked by style",
+   "item_slot": "armchair",
+   "input": "warm minimal living room, light oak and linen, easy to clean"
+  },
+  {
+   "ts": "2026-11-21T01:29:40Z",
+   "step": "pick",
+   "source": {
+    "kind": "superlinked",
+    "embed_model": "google/siglip-so400m-patch14-384",
+    "rerank_model": "Qwen/Qwen3-Reranker-4B",
+    "fusion": "reciprocal rank fusion, k=60",
+    "url": "https://www.ikea.com/us/en/p/poaeng-armchair-birch-veneer-knisa-light-beige-s59305928/"
+   },
+   "decision": "picked",
+   "why": "style #1 of 9 (photo #1 0.093, text #4 0.081); fits; $149, 4.5★ (1369 reviews), best value",
+   "item_slot": "armchair",
+   "product_id": "ikea-poang-armchair-birch-veneer-knisa-light-beige-59305928",
+   "status": "fits"
+  },
+  {
+   "ts": "2026-11-21T01:29:40Z",
+   "step": "agent",
+   "source": {
+    "kind": "claude",
+    "via": "claude_code",
+    "model": "claude-opus-5-5"
+   },
+   "decision": "call style_match",
+   "why": "The model chose to call style_match for coffee_table",
+   "input": {
+    "plan_id": "70f723848ba7",
+    "slot": "coffee_table"
+   },
+   "status": "called",
+   "item_slot": "coffee_table"
+  },
+  {
+   "ts": "2026-11-21T01:29:41Z",
+   "step": "rank",
+   "source": {
+    "kind": "superlinked",
+    "embed_model": "google/siglip-so400m-patch14-384",
+    "rerank_model": "Qwen/Qwen3-Reranker-4B",
+    "fusion": "reciprocal rank fusion, k=60"
+   },
+   "decision": "ranked by style",
+   "why": "9 coffee_table products ranked against \"warm minimal living room, light oak and linen, easy to clean\"; #1 VITTSJÖ Coffee table - black-brown/glass 29 1/2 \"",
+   "item_slot": "coffee_table",
+   "input": "warm minimal living room, light oak and linen, easy to clean"
+  },
+  {
+   "ts": "2026-11-21T01:29:41Z",
+   "step": "agent",
+   "source": {
+    "kind": "claude",
+    "via": "claude_code",
+    "model": "claude-opus-5-5"
+   },
+   "decision": "call fit_options",
+   "why": "The model chose to call fit_options for coffee_table",
+   "input": {
+    "plan_id": "70f723848ba7",
+    "slot": "coffee_table"
+   },
+   "status": "called",
+   "item_slot": "coffee_table"
+  },
+  {
+   "ts": "2026-11-21T01:29:41Z",
+   "step": "rank",
+   "source": {
+    "kind": "fit"
+   },
+   "decision": "fit checked",
+   "why": "9 coffee_table products: 9 fit, 0 unsure, 0 no_fit; best value: LACK Coffee table - black-brown 46 1/2x30 3/4 \", VITTSJÖ Coffee table - black-brown/glass 29 1/2 \", TORSJÖ Coffee table - gold effect/glass 34 5/8 \"",
+   "item_slot": "coffee_table",
+   "input": {
+    "wall": {
+     "value_in": 163.2,
+     "error_in": 1.0,
+     "source": "scanned:roomplan"
+    },
+    "depth": {
+     "value_in": 142.8,
+     "error_in": 1.0,
+     "source": "scanned:roomplan"
+    },
+    "door_width": {
+     "value_in": 35.0,
+     "error_in": 1.0,
+     "source": "scanned:roomplan"
+    },
+    "door_height": {
+     "value_in": 94.6,
+     "error_in": 1.0,
+     "source": "scanned:roomplan"
+    }
+   }
+  },
+  {
+   "ts": "2026-11-21T01:29:43Z",
+   "step": "agent",
+   "source": {
+    "kind": "claude",
+    "via": "claude_code",
+    "model": "claude-opus-5-5"
+   },
+   "decision": "said",
+   "why": "Sofa is in the cart ($449). Now fact-checking the armchair, then I'll do the coffee table, rug and lamp."
+  },
+  {
+   "ts": "2026-11-21T01:29:44Z",
+   "step": "agent",
+   "source": {
+    "kind": "claude",
+    "via": "claude_code",
+    "model": "claude-opus-5-5"
+   },
+   "decision": "call senso_check",
+   "why": "The model chose to call senso_check for armchair",
+   "input": {
+    "plan_id": "70f723848ba7",
+    "slot": "armchair"
+   },
+   "status": "called",
+   "item_slot": "armchair"
+  },
+  {
+   "ts": "2026-11-21T01:29:44Z",
+   "step": "senso_check",
+   "source": {
+    "kind": "senso",
+    "check_id": "6e4781c1-8d8f-46dd-b8dc-51b76098098a"
+   },
+   "decision": "passed",
+   "why": "12 verified; accuracy 100.0%",
+   "item_slot": "armchair",
+   "product_id": "ikea-poang-armchair-birch-veneer-knisa-light-beige-59305928",
+   "input": "Under our wall-fit rule, a piece placed against a wall must be no wider than that wall. Our catalog lists the POÄNG Armchair - birch veneer/Knisa light beige, IKEA article 593.059.28, as 26.75 inches wide. Under our walkway rule, at least 36 inches of clear walkway is kept in front of any furniture placed against a wall. Our catalog lists the POÄNG Armchair - birch veneer/Knisa light beige, IKEA article 593.059.28, as 32.25 inches deep. Under our doorway rule, every shipping box (package) must fit through the room's doorway. Our catalog lists the POÄNG Armchair - birch veneer/Knisa light beige, IKEA article 593.059.28, as shipping in 2 box(es): box 1 as 26.25 inches wide, 29 inches long and 2.75 inches high; box 2 as 9.75 inches wide, 23.25 inches long and 9.75 inches high. Our catalog lists the POÄNG Armchair - birch veneer/Knisa light beige, IKEA article 593.059.28, at $149 on the IKEA US page.",
+   "status": "verified"
+  },
+  {
+   "ts": "2026-11-21T01:29:47Z",
+   "step": "agent",
+   "source": {
+    "kind": "claude",
+    "via": "claude_code",
+    "model": "claude-opus-5-5"
+   },
+   "decision": "call cart_add",
+   "why": "The model chose to call cart_add for armchair",
+   "input": {
+    "plan_id": "70f723848ba7",
+    "slot": "armchair",
+    "why": "The POÄNG Armchair in birch veneer and light beige is the #1 style match for your room at $149 (price verified by Senso), and at 26.75 in wide it leaves 136 in of wall free."
+   },
+   "status": "called",
+   "item_slot": "armchair"
+  },
+  {
+   "ts": "2026-11-21T01:29:47Z",
+   "step": "cart",
+   "source": {
+    "kind": "claude"
+   },
+   "decision": "added to cart",
+   "why": "The POÄNG Armchair in birch veneer and light beige is the #1 style match for your room at $149 (price verified by Senso), and at 26.75 in wide it leaves 136 in of wall free.",
+   "item_slot": "armchair",
+   "product_id": "ikea-poang-armchair-birch-veneer-knisa-light-beige-59305928",
+   "status": "in_cart"
+  },
+  {
+   "ts": "2026-11-21T01:29:47Z",
+   "step": "agent",
+   "source": {
+    "kind": "claude",
+    "via": "claude_code",
+    "model": "claude-opus-5-5"
+   },
+   "decision": "call pick",
+   "why": "The model chose to call pick for coffee_table",
+   "input": {
+    "plan_id": "70f723848ba7",
+    "slot": "coffee_table",
+    "budget_usd": 100
+   },
+   "status": "called",
+   "item_slot": "coffee_table"
+  },
+  {
+   "ts": "2026-11-21T01:29:47Z",
+   "step": "rank",
+   "source": {
+    "kind": "superlinked",
+    "embed_model": "google/siglip-so400m-patch14-384",
+    "rerank_model": "Qwen/Qwen3-Reranker-4B",
+    "fusion": "reciprocal rank fusion, k=60",
+    "detected_style": null
+   },
+   "decision": "ranked",
+   "why": "9 coffee_table products ranked by style",
+   "item_slot": "coffee_table",
+   "input": "warm minimal living room, light oak and linen, easy to clean"
+  },
+  {
+   "ts": "2026-11-21T01:29:47Z",
+   "step": "pick",
+   "source": {
+    "kind": "superlinked",
+    "embed_model": "google/siglip-so400m-patch14-384",
+    "rerank_model": "Qwen/Qwen3-Reranker-4B",
+    "fusion": "reciprocal rank fusion, k=60",
+    "url": "https://www.ikea.com/us/en/p/vittsjoe-coffee-table-black-brown-glass-80213309/"
+   },
+   "decision": "picked",
+   "why": "style #1 of 9 (photo #3 0.062, text #1 0.545); fits; $99.99, 4.7★ (734 reviews), best value",
+   "item_slot": "coffee_table",
+   "product_id": "ikea-vittsjo-coffee-table-black-brown-glass-29-1-2-80213309",
+   "status": "fits"
+  },
+  {
+   "ts": "2026-11-21T01:29:50Z",
+   "step": "agent",
+   "source": {
+    "kind": "claude",
+    "via": "claude_code",
+    "model": "claude-opus-5-5"
+   },
+   "decision": "call senso_check",
+   "why": "The model chose to call senso_check for coffee_table",
+   "input": {
+    "plan_id": "70f723848ba7",
+    "slot": "coffee_table"
+   },
+   "status": "called",
+   "item_slot": "coffee_table"
+  },
+  {
+   "ts": "2026-11-21T01:29:50Z",
+   "step": "senso_check",
+   "source": {
+    "kind": "senso",
+    "check_id": "d2119737-512c-4084-ba87-81944c5b8f00"
+   },
+   "decision": "passed",
+   "why": "10 verified; accuracy 100.0%",
+   "item_slot": "coffee_table",
+   "product_id": "ikea-vittsjo-coffee-table-black-brown-glass-29-1-2-80213309",
+   "input": "Under our wall-fit rule, a piece placed against a wall must be no wider than that wall. Our catalog lists the VITTSJÖ Coffee table - black-brown/glass 29 1/2 \", IKEA article 802.133.09, as 29.5 inches wide. Under our walkway rule, at least 36 inches of clear walkway is kept in front of any furniture placed against a wall. Our catalog lists the VITTSJÖ Coffee table - black-brown/glass 29 1/2 \", IKEA article 802.133.09, as 29.5 inches deep. Under our doorway rule, every shipping box (package) must fit through the room's doorway. Our catalog lists the VITTSJÖ Coffee table - black-brown/glass 29 1/2 \", IKEA article 802.133.09, as shipping in 1 box(es): box 1 as 30.25 inches wide, 30.75 inches long and 1.75 inches high. Our catalog lists the VITTSJÖ Coffee table - black-brown/glass 29 1/2 \", IKEA article 802.133.09, at $99.99 on the IKEA US page.",
+   "status": "verified"
+  },
+  {
+   "ts": "2026-11-21T01:29:50Z",
+   "step": "agent",
+   "source": {
+    "kind": "claude",
+    "via": "claude_code",
+    "model": "claude-opus-5-5"
+   },
+   "decision": "call style_match",
+   "why": "The model chose to call style_match for rug",
+   "input": {
+    "plan_id": "70f723848ba7",
+    "slot": "rug"
+   },
+   "status": "called",
+   "item_slot": "rug"
+  },
+  {
+   "ts": "2026-11-21T01:29:51Z",
+   "step": "agent",
+   "source": {
+    "kind": "claude",
+    "via": "claude_code",
+    "model": "claude-opus-5-5"
+   },
+   "decision": "call fit_options",
+   "why": "The model chose to call fit_options for rug",
+   "input": {
+    "plan_id": "70f723848ba7",
+    "slot": "rug"
+   },
+   "status": "called",
+   "item_slot": "rug"
+  },
+  {
+   "ts": "2026-11-21T01:29:51Z",
+   "step": "rank",
+   "source": {
+    "kind": "superlinked",
+    "embed_model": "google/siglip-so400m-patch14-384",
+    "rerank_model": "Qwen/Qwen3-Reranker-4B",
+    "fusion": "reciprocal rank fusion, k=60"
+   },
+   "decision": "ranked by style",
+   "why": "12 rug products ranked against \"warm minimal living room, light oak and linen, easy to clean\"; #1 RIDSTIG Rug, flatwoven - off-white/green 6 ' 7 \"x9 ' 10 \"",
+   "item_slot": "rug",
+   "input": "warm minimal living room, light oak and linen, easy to clean"
+  },
+  {
+   "ts": "2026-11-21T01:29:51Z",
+   "step": "rank",
+   "source": {
+    "kind": "fit"
+   },
+   "decision": "fit checked",
+   "why": "12 rug products: 12 fit, 0 unsure, 0 no_fit; best value: STARREKLINTE Rug, flatwoven - natural/black 3 ' 11 \"x5 ' 11 \", ÄRENDE Rug, high pile - gray 5 ' 3 \"x7 ' 7 \", LOKALTÅG Rug, low pile - beige/gray 5 ' 3 \"x7 ' 7 \", MARKBLÅMME Rug, low pile - multicolor/check pattern 5 ' 3 \"x7 ' 7 \", GREJSIMOJS Rug, high pile - green 5 ' 0 \"x7 ' 1 \"",
+   "item_slot": "rug",
+   "input": {
+    "wall": {
+     "value_in": 163.2,
+     "error_in": 1.0,
+     "source": "scanned:roomplan"
+    },
+    "depth": {
+     "value_in": 142.8,
+     "error_in": 1.0,
+     "source": "scanned:roomplan"
+    },
+    "door_width": {
+     "value_in": 35.0,
+     "error_in": 1.0,
+     "source": "scanned:roomplan"
+    },
+    "door_height": {
+     "value_in": 94.6,
+     "error_in": 1.0,
+     "source": "scanned:roomplan"
+    }
+   }
+  },
+  {
+   "ts": "2026-11-21T01:29:55Z",
+   "step": "agent",
+   "source": {
+    "kind": "claude",
+    "via": "claude_code",
+    "model": "claude-opus-5-5"
+   },
+   "decision": "call cart_add",
+   "why": "The model chose to call cart_add for coffee_table",
+   "input": {
+    "plan_id": "70f723848ba7",
+    "slot": "coffee_table",
+    "why": "The VITTSJÖ Coffee table ($99.99, price verified by Senso) is the #1 style match, and at 29.5 × 29.5 in it still leaves the 36 in walkway with 77.3 in to spare."
+   },
+   "status": "called",
+   "item_slot": "coffee_table"
+  },
+  {
+   "ts": "2026-11-21T01:29:55Z",
+   "step": "cart",
+   "source": {
+    "kind": "claude"
+   },
+   "decision": "added to cart",
+   "why": "The VITTSJÖ Coffee table ($99.99, price verified by Senso) is the #1 style match, and at 29.5 × 29.5 in it still leaves the 36 in walkway with 77.3 in to spare.",
+   "item_slot": "coffee_table",
+   "product_id": "ikea-vittsjo-coffee-table-black-brown-glass-29-1-2-80213309",
+   "status": "in_cart"
+  },
+  {
+   "ts": "2026-11-21T01:29:55Z",
+   "step": "agent",
+   "source": {
+    "kind": "claude",
+    "via": "claude_code",
+    "model": "claude-opus-5-5"
+   },
+   "decision": "call pick",
+   "why": "The model chose to call pick for rug",
+   "input": {
+    "plan_id": "70f723848ba7",
+    "slot": "rug",
+    "budget_usd": 100
+   },
+   "status": "called",
+   "item_slot": "rug"
+  },
+  {
+   "ts": "2026-11-21T01:29:55Z",
+   "step": "rank",
+   "source": {
+    "kind": "superlinked",
+    "embed_model": "google/siglip-so400m-patch14-384",
+    "rerank_model": "Qwen/Qwen3-Reranker-4B",
+    "fusion": "reciprocal rank fusion, k=60",
+    "detected_style": null
+   },
+   "decision": "ranked",
+   "why": "12 rug products ranked by style",
+   "item_slot": "rug",
+   "input": "warm minimal living room, light oak and linen, easy to clean"
+  },
+  {
+   "ts": "2026-11-21T01:29:55Z",
+   "step": "pick",
+   "source": {
+    "kind": "superlinked",
+    "embed_model": "google/siglip-so400m-patch14-384",
+    "rerank_model": "Qwen/Qwen3-Reranker-4B",
+    "fusion": "reciprocal rank fusion, k=60",
+    "url": "https://www.ikea.com/us/en/p/ridstig-rug-flatwoven-off-white-green-10603335/"
+   },
+   "decision": "picked",
+   "why": "style #1 of 12 (photo #1 0.065, text #3 0.294); fits; $99.99, 3.6★ (33 reviews), not the best value",
+   "item_slot": "rug",
+   "product_id": "ikea-ridstig-rug-10603335",
+   "status": "fits"
+  },
+  {
+   "ts": "2026-11-21T01:29:58Z",
+   "step": "agent",
+   "source": {
+    "kind": "claude",
+    "via": "claude_code",
+    "model": "claude-opus-5-5"
+   },
+   "decision": "call senso_check",
+   "why": "The model chose to call senso_check for rug",
+   "input": {
+    "plan_id": "70f723848ba7",
+    "slot": "rug"
+   },
+   "status": "called",
+   "item_slot": "rug"
+  },
+  {
+   "ts": "2026-11-21T01:29:58Z",
+   "step": "senso_check",
+   "source": {
+    "kind": "senso",
+    "check_id": "e31e9b1b-a371-4a10-ab1e-8c5d7e4e736d"
+   },
+   "decision": "passed",
+   "why": "8 verified; accuracy 100.0%",
+   "item_slot": "rug",
+   "product_id": "ikea-ridstig-rug-10603335",
+   "input": "Under our rug rule, a rug is kept at least 6 inches from every wall. Our catalog lists the RIDSTIG Rug, flatwoven - off-white/green 6 ' 7 \"x9 ' 10 \", IKEA article 106.033.35, as 79 inches wide and 118 inches long. Under our doorway rule, every shipping box (package) must fit through the room's doorway. Our catalog lists the RIDSTIG Rug, flatwoven - off-white/green 6 ' 7 \"x9 ' 10 \", IKEA article 106.033.35, as shipping in 1 box(es): box 1 as 20.75 inches wide, 20.75 inches long and 5 inches high. Our catalog lists the RIDSTIG Rug, flatwoven - off-white/green 6 ' 7 \"x9 ' 10 \", IKEA article 106.033.35, at $99.99 on the IKEA US page.",
+   "status": "verified"
+  },
+  {
+   "ts": "2026-11-21T01:29:58Z",
+   "step": "agent",
+   "source": {
+    "kind": "claude",
+    "via": "claude_code",
+    "model": "claude-opus-5-5"
+   },
+   "decision": "call style_match",
+   "why": "The model chose to call style_match for floor_lamp",
+   "input": {
+    "plan_id": "70f723848ba7",
+    "slot": "floor_lamp"
+   },
+   "status": "called",
+   "item_slot": "floor_lamp"
+  },
+  {
+   "ts": "2026-11-21T01:29:59Z",
+   "step": "rank",
+   "source": {
+    "kind": "superlinked",
+    "embed_model": "google/siglip-so400m-patch14-384",
+    "rerank_model": "Qwen/Qwen3-Reranker-4B",
+    "fusion": "reciprocal rank fusion, k=60"
+   },
+   "decision": "ranked by style",
+   "why": "8 floor_lamp products ranked against \"warm minimal living room, light oak and linen, easy to clean\"; #1 ÖKENSAND Floor lamp - beech/white",
+   "item_slot": "floor_lamp",
+   "input": "warm minimal living room, light oak and linen, easy to clean"
+  },
+  {
+   "ts": "2026-11-21T01:29:59Z",
+   "step": "agent",
+   "source": {
+    "kind": "claude",
+    "via": "claude_code",
+    "model": "claude-opus-5-5"
+   },
+   "decision": "call fit_options",
+   "why": "The model chose to call fit_options for floor_lamp",
+   "input": {
+    "plan_id": "70f723848ba7",
+    "slot": "floor_lamp"
+   },
+   "status": "called",
+   "item_slot": "floor_lamp"
+  },
+  {
+   "ts": "2026-11-21T01:29:59Z",
+   "step": "rank",
+   "source": {
+    "kind": "fit"
+   },
+   "decision": "fit checked",
+   "why": "8 floor_lamp products: 8 fit, 0 unsure, 0 no_fit; best value: BARLAST Floor lamp - black/white 59 \", RINGSTA / SKAFTET Floor lamp - white/nickel plated, LAUTERS Floor lamp - ash/white",
+   "item_slot": "floor_lamp",
+   "input": {
+    "wall": {
+     "value_in": 163.2,
+     "error_in": 1.0,
+     "source": "scanned:roomplan"
+    },
+    "depth": {
+     "value_in": 142.8,
+     "error_in": 1.0,
+     "source": "scanned:roomplan"
+    },
+    "door_width": {
+     "value_in": 35.0,
+     "error_in": 1.0,
+     "source": "scanned:roomplan"
+    },
+    "door_height": {
+     "value_in": 94.6,
+     "error_in": 1.0,
+     "source": "scanned:roomplan"
+    }
+   }
+  },
+  {
+   "ts": "2026-11-21T01:30:03Z",
+   "step": "agent",
+   "source": {
+    "kind": "claude",
+    "via": "claude_code",
+    "model": "claude-opus-5-5"
+   },
+   "decision": "call cart_add",
+   "why": "The model chose to call cart_add for rug",
+   "input": {
+    "plan_id": "70f723848ba7",
+    "slot": "rug",
+    "why": "The RIDSTIG flatwoven rug (6'7\"x9'10\", $99.99, price verified by Senso) is the #1 style match, and it stays more than 6 in from every wall with 33.2 in to spare."
+   },
+   "status": "called",
+   "item_slot": "rug"
+  },
+  {
+   "ts": "2026-11-21T01:30:03Z",
+   "step": "cart",
+   "source": {
+    "kind": "claude"
+   },
+   "decision": "added to cart",
+   "why": "The RIDSTIG flatwoven rug (6'7\"x9'10\", $99.99, price verified by Senso) is the #1 style match, and it stays more than 6 in from every wall with 33.2 in to spare.",
+   "item_slot": "rug",
+   "product_id": "ikea-ridstig-rug-10603335",
+   "status": "in_cart"
+  },
+  {
+   "ts": "2026-11-21T01:30:04Z",
+   "step": "agent",
+   "source": {
+    "kind": "claude",
+    "via": "claude_code",
+    "model": "claude-opus-5-5"
+   },
+   "decision": "call pick",
+   "why": "The model chose to call pick for floor_lamp",
+   "input": {
+    "plan_id": "70f723848ba7",
+    "slot": "floor_lamp",
+    "budget_usd": 102
+   },
+   "status": "called",
+   "item_slot": "floor_lamp"
+  },
+  {
+   "ts": "2026-11-21T01:30:04Z",
+   "step": "rank",
+   "source": {
+    "kind": "superlinked",
+    "embed_model": "google/siglip-so400m-patch14-384",
+    "rerank_model": "Qwen/Qwen3-Reranker-4B",
+    "fusion": "reciprocal rank fusion, k=60",
+    "detected_style": null
+   },
+   "decision": "ranked",
+   "why": "8 floor_lamp products ranked by style",
+   "item_slot": "floor_lamp",
+   "input": "warm minimal living room, light oak and linen, easy to clean"
+  },
+  {
+   "ts": "2026-11-21T01:30:04Z",
+   "step": "pick",
+   "source": {
+    "kind": "superlinked",
+    "embed_model": "google/siglip-so400m-patch14-384",
+    "rerank_model": "Qwen/Qwen3-Reranker-4B",
+    "fusion": "reciprocal rank fusion, k=60",
+    "url": "https://www.ikea.com/us/en/p/oekensand-floor-lamp-beech-white-90541536/"
+   },
+   "decision": "picked",
+   "why": "style #1 of 8 (photo #2 0.087, text #1 0.929); fits; $89.99, 4.7★ (337 reviews), not the best value",
+   "item_slot": "floor_lamp",
+   "product_id": "ikea-okensand-floor-lamp-beech-white-90541536",
+   "status": "fits"
+  },
+  {
+   "ts": "2026-11-21T01:30:06Z",
+   "step": "agent",
+   "source": {
+    "kind": "claude",
+    "via": "claude_code",
+    "model": "claude-opus-5-5"
+   },
+   "decision": "said",
+   "why": "Four items are in the cart ($797.98). Now fact-checking and adding the last one, the floor lamp."
+  },
+  {
+   "ts": "2026-11-21T01:30:06Z",
+   "step": "agent",
+   "source": {
+    "kind": "claude",
+    "via": "claude_code",
+    "model": "claude-opus-5-5"
+   },
+   "decision": "call senso_check",
+   "why": "The model chose to call senso_check for floor_lamp",
+   "input": {
+    "plan_id": "70f723848ba7",
+    "slot": "floor_lamp"
+   },
+   "status": "called",
+   "item_slot": "floor_lamp"
+  },
+  {
+   "ts": "2026-11-21T01:30:06Z",
+   "step": "senso_check",
+   "source": {
+    "kind": "senso",
+    "check_id": "8e924348-2f3c-4561-a874-8d55957837f3"
+   },
+   "decision": "passed",
+   "why": "7 verified, 3 not_verifiable; accuracy 100.0%",
+   "item_slot": "floor_lamp",
+   "product_id": "ikea-okensand-floor-lamp-beech-white-90541536",
+   "input": "Under our wall-fit rule, a piece placed against a wall must be no wider than that wall. Our catalog lists the ÖKENSAND Floor lamp - beech/white, IKEA article 905.415.36, as 19 inches wide. Under our walkway rule, at least 36 inches of clear walkway is kept in front of any furniture placed against a wall. Our catalog lists the ÖKENSAND Floor lamp - beech/white, IKEA article 905.415.36, as 19 inches deep. Under our doorway rule, every shipping box (package) must fit through the room's doorway. Our catalog lists the ÖKENSAND Floor lamp - beech/white, IKEA article 905.415.36, as shipping in 1 box(es): box 1 as 13.75 inches wide, 26.75 inches long and 1.75 inches high. Our catalog lists the ÖKENSAND Floor lamp - beech/white, IKEA article 905.415.36, at $89.99 on the IKEA US page.",
+   "status": "verified"
+  },
+  {
+   "ts": "2026-11-21T01:30:10Z",
+   "step": "agent",
+   "source": {
+    "kind": "claude",
+    "via": "claude_code",
+    "model": "claude-opus-5-5"
+   },
+   "decision": "call cart_add",
+   "why": "The model chose to call cart_add for floor_lamp",
+   "input": {
+    "plan_id": "70f723848ba7",
+    "slot": "floor_lamp",
+    "why": "The ÖKENSAND Floor lamp in beech and white ($89.99, price verified by Senso) is the #1 style match, and its 19 × 19 in footprint leaves the 36 in walkway with 87.8 in to spare."
+   },
+   "status": "called",
+   "item_slot": "floor_lamp"
+  },
+  {
+   "ts": "2026-11-21T01:30:10Z",
+   "step": "cart",
+   "source": {
+    "kind": "claude"
+   },
+   "decision": "added to cart",
+   "why": "The ÖKENSAND Floor lamp in beech and white ($89.99, price verified by Senso) is the #1 style match, and its 19 × 19 in footprint leaves the 36 in walkway with 87.8 in to spare.",
+   "item_slot": "floor_lamp",
+   "product_id": "ikea-okensand-floor-lamp-beech-white-90541536",
+   "status": "in_cart"
+  },
+  {
+   "ts": "2026-11-21T01:30:12Z",
+   "step": "agent",
+   "source": {
+    "kind": "claude",
+    "via": "claude_code",
+    "model": "claude-opus-5-5"
+   },
+   "decision": "call get_plan",
+   "why": "The model chose to call get_plan",
+   "input": {
+    "plan_id": "70f723848ba7"
+   },
+   "status": "called"
+  },
+  {
+   "ts": "2026-11-21T01:30:21Z",
+   "step": "agent",
+   "source": {
+    "kind": "claude",
+    "via": "claude_code",
+    "model": "claude-opus-5-5"
+   },
+   "decision": "said",
+   "why": "I filled all five slots and the cart totals **$887.97**, which is $12.03 under the $900 budget. Nothing was bought; it's only a cart.\n\n- **In the cart:** GULLVALLA sofa $449 · POÄNG armchair $149 · VITTSJÖ coffee table $99.99 · RIDSTIG rug $99.99 · ÖKENSAND floor lamp $89.99. Delivery from $29 is extra.\n- **Checks:** every piece fits the wall, the 36 in walkway and the doorway, and every Senso check passed, so I didn't need any swaps.\n- **Two gaps in Senso's checks:** it couldn't confirm the sofa's $449 price, and it couldn't confirm the wall, walkway and doorway rules when it checked the lamp. The tools still marked both as passed.\n- **Empty slots:** none. All items except the sofa are the top style match. The top sofa, LILLESÄTER at $999, was over the $450 I set aside for it, so the sofa is the #2 match.\n- **Open the room in 3D:** http://localhost:5173/plan/70f723848ba7\n\n**From the team channel:** Keon is blocked on you. Every request gets the same five living-room slots, so asking for a bedroom or a TV never picks a bed, dresser or TV bench, even though the catalog has them. Keon asked whether the agent could choose 3–6 slots from what the person says. That's your area; I haven't changed anything."
+  },
+  {
+   "ts": "2026-11-21T01:30:21Z",
+   "step": "agent",
+   "source": {
+    "kind": "template"
+   },
+   "decision": "agent finished",
+   "why": "Claude Code finished; see the tool records above for every decision.",
+   "input": {
+    "num_turns": 27,
+    "duration_ms": 59720
+   },
+   "status": "done"
+  }
+ ],
+ "budget": {
+  "total_usd": 900.0,
+  "per_item_usd": null
+ }
+}

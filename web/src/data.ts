@@ -2,6 +2,7 @@
 import type { Option, Plan, Product, WhyAlternative } from './types'
 import productsFile from '@repo/data/products.json'
 import scanUrl from '@repo/assets/room_scan_roomplan.glb?url'
+import scan1120Url from '@repo/assets/room_scan_1120.glb?url'
 
 const planFiles = import.meta.glob<Plan>('@repo/contracts/plan.*.json', { eager: true, import: 'default' })
 const optionFiles = import.meta.glob<Record<string, Option[]>>('./fixtures/options.*.json', {
@@ -70,6 +71,7 @@ export interface DemoRoom {
 }
 
 const SCAN_PLAN = '35291cb16052' // contracts/plan.roomplan.json: the agent's run on the Floorplan scan (real 32 in door)
+const SCAN_1120_PLAN = '70f723848ba7' // contracts/plan.room_1120.json: live run on the 11/20 RoomPlan scan (35 in door)
 const TYPED_PLAN = '1f4ade193dee' // contracts/plan.live.json: typed measurements, 88 in wall
 
 export const demoRooms: DemoRoom[] = [
@@ -81,6 +83,15 @@ export const demoRooms: DemoRoom[] = [
     modelUrl: scanUrl,
     modelLabel: 'room_scan_roomplan.glb',
     scanPath: 'assets/room_scan_roomplan.glb',
+  },
+  {
+    id: 'room1120',
+    title: 'Scanned room, Nov 20',
+    note: 'iPhone LiDAR scan',
+    planId: SCAN_1120_PLAN,
+    modelUrl: scan1120Url,
+    modelLabel: 'room_scan_1120.glb',
+    scanPath: 'assets/room_scan_1120.glb',
   },
   {
     id: 'small',
