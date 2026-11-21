@@ -1,12 +1,12 @@
 # Submission draft (for the tokens& form) — EDIT BEFORE SENDING
 
-Draft by alistair's agent, 15:30. Every number below comes from a saved run file in this repo (named next to it).
+Draft by alistair's agent, updated 16:00. Every number below comes from a saved run file in this repo (named next to it).
 **TO DECIDE (humans):** the person, the one real number, the project name. Lines marked ✏️ need you.
 
 ---
 
-## Project name ✏️
-Room Furnisher *(working name)*
+## Project name
+**Fits** (the app's name: "Furnish a room with things that fit")
 
 ## One-line pitch ✏️
 Scan or photograph your room; an agent picks real IKEA furniture that **provably fits**, checks every claim with Senso,
@@ -31,8 +31,13 @@ A personal shopping agent that runs on its own, not a chat window:
    "too close to call" asks the person to measure that one thing.
 5. **Audit trail:** every step is a record with its source (fit math, Superlinked score, Senso verdict, Claude's or
    Arcee's reason) shown in the UI timeline; rejected items show as red ghosts with the math.
-6. **Action:** a real cart of IKEA links with totals, approved by the person. Checkout is MOCKED (no purchase is made).
+6. **Action:** the person approves the cart; approval re-checks every item's **live IKEA price** (a moved price is shown
+   and re-approved). Then `scripts/ikea_checkout.py` fills a **real IKEA bag** in a visible Chrome window and checks it
+   against the cart: live PASS, 5 items, IKEA total \$887.97 = cart. It stops at IKEA's bag page: nothing is bought.
+   Scans can come straight from a phone: scan the QR code, upload the Polycam .glb, the laptop opens it in ~2 s.
 7. **Budget is enforced by the tools**, not the prompt: picks can't exceed it and the cart refuses anything that would.
+8. **Layout keeps the way in clear:** new furniture stays out of the door's walkway (door width + 12 in each side, 48 in
+   deep), the sofa avoids the door wall, and armchairs and lamps take the side away from the door.
 
 ### Real results (from run files)
 | Run | What happened | File |
@@ -70,21 +75,23 @@ Plus the live run in the app (88 in wall, $1,000 budget): GULLVALLA and SALTSJÖ
   only, with cost and latency recorded (`agent/arcee.py`). Cost/quality frontier over 6 models × 5 real picks
   (`contracts/arcee_pareto.json`): **zai-org/glm-5.3-flash at \$0.00023 per item, 2.4 s, no invented numbers in 5/5**,
   vs moonshotai/kimi-k3 at \$0.0083 per item (36× the cost), 9.1 s.
-- *(Amplitude: ✏️ only if Keon's events land.)*
 
 ## Other tools
 Claude (agent reasoning, Claude Code headless + MCP server so anyone's Claude can use the tools), React + Vite + React
 Three Fiber, FastAPI, Polycam (RoomPlan scan), Hyper3D Rodin (3D models from IKEA photos, 25 models), Blender (renders).
 
-## Honest limits ✏️ (say these out loud)
-- Checkout is MOCKED: the cart is IKEA links; nothing is bought.
+## Honest limits (say these out loud)
+- Nothing is bought: we fill a real IKEA bag and stop at IKEA's bag page; payment is the person's step.
 - IKEA US shows no delivery dates, so none are shown.
 - 3D models are AI-generated from IKEA photos and stretched to the listed size; rugs are flat boxes.
-- Arcee's "quality" score is judge-free (no invented numbers, names price and fit); it penalises correct arithmetic.
+- Arcee's "quality" score is judge-free (no invented numbers, names price and fit); it penalises correct arithmetic,
+  and glm-5.3 / kimi sometimes hit the 900-token cap, so the frontier understates the bigger models.
+- The app's 3D layout treats the scanned furniture as things you'd clear out (drawn as ghosts); fit.layout's own
+  checks do count it.
 
 ## Team ✏️
 Keon Amid, Brendan, Alistair Clark, Kyle Coogan — emails: ✏️
 
 ## Links ✏️
-- Repo: https://github.com/Keon-Amid/personal-agent-hack (must be public)
+- Repo: https://github.com/Keon-Amid/personal-agent-hack (public since 15:48)
 - Demo video: ✏️
