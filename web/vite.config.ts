@@ -23,6 +23,10 @@ export default defineConfig({
     host: true,
     fs: { allow: ['..'] },
     // The agent server (server/app.py). Point API_TARGET at a teammate's machine to use theirs.
-    proxy: { '/api': { target: process.env.API_TARGET ?? 'http://localhost:8000', changeOrigin: true } },
+    proxy: {
+      '/api': { target: process.env.API_TARGET ?? 'http://localhost:8000', changeOrigin: true },
+      // IKEA product photos, same-origin, so the 3D room can read their pixels (rug textures, lamp cut-outs).
+      '/ikea-img': { target: 'https://www.ikea.com', changeOrigin: true, rewrite: (p) => p.replace(/^\/ikea-img/, '') },
+    },
   },
 })

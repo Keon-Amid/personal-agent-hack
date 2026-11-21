@@ -504,11 +504,17 @@ function RoomContents({ shell, plan, hero }: { shell: Shell; plan: Plan | null; 
         plan?.items
           .filter((i) => placed[i.slot] && layout.placements[i.slot])
           .map((item) => {
-            const e = photoStyle ? manifest[item.product_id] : undefined
+            const found = photoStyle ? manifest[item.product_id] : undefined
+            // A lamp model that had to be stretched a lot to reach the listed size looks wrong (thin, tall items
+            // are the weak case for image-to-3D); the photo cut-out is truer.
+            const s = (found as { stretch_w_d_h?: number[] } | undefined)?.stretch_w_d_h
+            const lamp = /lamp/.test(item.slot)
+            const e = found && lamp && s && s.some((v) => v > 1.3 || v < 0.75) ? undefined : found
             return (
             <Piece
               key={`${item.slot}:${item.product_id}`}
               photo={e ? { url: MODELS + e.file, rotY: ((e.rot_y_deg ?? 0) * Math.PI) / 180 } : null}
+              photoStyle={photoStyle}
               item={item}
               placement={layout.placements[item.slot]}
               phase={placed[item.slot]}

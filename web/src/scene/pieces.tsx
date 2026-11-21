@@ -1,7 +1,7 @@
 // New furniture, the rejected "ghost", and the drafting marks around them (frames, dimension callouts).
 import { Component, Suspense, useCallback, useEffect, useMemo, useRef, useState, type CSSProperties, type ReactNode, type RefObject } from 'react'
 import { useFrame } from '@react-three/fiber'
-import { Html, Line, useGLTF } from '@react-three/drei'
+import { Billboard, Html, Line, useGLTF } from '@react-three/drei'
 import * as THREE from 'three'
 import type { Dims, Placement, PlanItem } from '../types'
 import { productById } from '../data'
@@ -10,6 +10,7 @@ import { inches } from '../lib/format'
 import { COLORS, IN, STILL } from './roomModel'
 import { categoryOf } from './layout'
 import { Shape } from './shapes'
+import { cutout, rugTexture, type Cutout } from './photos'
 
 /** DOM layer over the canvas that <Html> labels portal into (see RoomScene). */
 export const overlayRef: { current: HTMLDivElement | null } = { current: null }
@@ -309,6 +310,39 @@ function PhotoModel({
   return <primitive object={built.holder} />
 }
 
+/**
+ * A product with no usable 3D model, shown as its own IKEA photo (white backdrop removed) standing at its real
+ * height and turning to face the camera. Used for lamps, where a generic shape reads as the wrong product.
+ */
+function PhotoCutout({ cut, h, register }: { cut: Cutout; h: number; register: (m: THREE.Material[]) => void }) {
+  const mat = useMemo(
+    () =>
+      new THREE.MeshBasicMaterial({
+        map: cut.texture,
+        transparent: true,
+        alphaTest: 0.35,
+        side: THREE.DoubleSide,
+        toneMapped: false,
+      }),
+    [cut],
+  )
+  useEffect(() => {
+    register([mat])
+    return () => {
+      register([])
+      mat.dispose()
+    }
+  }, [mat, register])
+  const pw = h * cut.aspect
+  return (
+    <Billboard position={[0, h / 2, 0]} lockX lockZ>
+      <mesh material={mat} renderOrder={12}>
+        <planeGeometry args={[pw, h]} />
+      </mesh>
+    </Billboard>
+  )
+}
+
 class ModelBoundary extends Component<{ fallback: ReactNode; children: ReactNode }, { failed: boolean }> {
   state = { failed: false }
   static getDerivedStateFromError() {
@@ -332,6 +366,7 @@ export function Piece({
   hovered,
   interactive,
   photo,
+  photoStyle = false,
 }: {
   item: PlanItem
   placement: Placement
@@ -341,6 +376,8 @@ export function Piece({
   interactive: boolean
   /** the product's own 3D model, when it has one and the person wants photo models */
   photo?: PhotoEntry | null
+  /** the person wants photo models: rugs wear their IKEA photo, model-less lamps stand as a photo cut-out */
+  photoStyle?: boolean
 }) {
   const product = productById[item.product_id]
   const category = categoryOf(item)
@@ -359,6 +396,40 @@ export function Piece({
     return { main, dark, pre, bad }
   }, [product?.color, category])
   useEffect(() => () => Object.values(mats).forEach((m) => m.dispose()), [mats])
+
+  // A rug's colour and pattern are the point of it: lay its IKEA photo on the top face.
+  const imageUrl = product?.image_url ?? item.image_url
+  useEffect(() => {
+    if (category !== 'rug' || !imageUrl) return
+    let live = true
+    if (!photoStyle) {
+      mats.main.map = null
+      mats.main.color.copy(clayFor(product?.color, 0.2))
+      mats.main.needsUpdate = true
+      return
+    }
+    void rugTexture(imageUrl, w, d).then((t) => {
+      if (!live || !t) return
+      mats.main.map = t
+      mats.main.color.set('#ffffff')
+      mats.main.needsUpdate = true
+    })
+    return () => {
+      live = false
+    }
+  }, [category, imageUrl, photoStyle, mats, w, d, product?.color])
+
+  const isLamp = category === 'floor_lamp' || category === 'table_lamp'
+  const [cut, setCut] = useState<Cutout | null>(null)
+  useEffect(() => {
+    setCut(null)
+    if (!isLamp || !photoStyle || photo || !imageUrl) return
+    let live = true
+    void cutout(imageUrl).then((c) => live && setCut(c))
+    return () => {
+      live = false
+    }
+  }, [isLamp, photoStyle, photo, imageUrl])
 
   const photoMats = useRef<THREE.Material[]>([])
   const register = useCallback((m: THREE.Material[]) => {
@@ -446,6 +517,8 @@ export function Piece({
         </group>
         {noFit ? (
           <Shape category={category} w={w} d={d} h={h} mat={mats.bad} ro={30} shadow={false} />
+        ) : cut ? (
+          <PhotoCutout cut={cut} h={h} register={register} />
         ) : photo ? (
           <ModelBoundary fallback={clay}>
             <Suspense fallback={clay}>
