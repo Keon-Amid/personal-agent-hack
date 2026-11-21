@@ -4,7 +4,24 @@ Spoken word for word. **[DO]** = what the driver clicks. Times are cumulative (s
 Every number is from a run file or a live run today (sources at the bottom). ✏️ = humans fill before going on.
 Run sheet, roles, preflight and fallbacks: `docs/DEMO.md`.
 
+## Short script (3:00, use this one)
+| Time | Do | Say |
+|---|---|---|
+| 0:00 | Start screen | Furniture bought online often doesn't fit. You find out when it arrives. **Fits** is a shopping agent that proves furniture fits your room before you buy, then fills your real IKEA bag. |
+| 0:15 | QR → send scan → room opens | We scanned this room with an iPhone: every wall, the door, the furniture already here. 190.6 by 139.7 inches, door 32 inches, accurate to one inch. |
+| 0:35 | Style → budget 900 → Furnish | I enter a style and a budget of $900, then press Furnish. That's all I do. |
+| 0:50 | Trail streams | Claude runs on its own and calls our tools one step at a time. The tools hold the rules: the agent cannot add an item that doesn't fit, isn't verified, or is over budget. Every step appears on the left with its source. |
+| 1:10 | "Ranked the catalog by style" | Superlinked ranks 102 real IKEA products by style. It compares product photos and reads IKEA's descriptions; the two rankings are combined. |
+| 1:25 | Red "Rejected" row → click sofa | This sofa was rejected: over budget, with the reason shown. The chosen sofa is 71.6 inches wide on a 190.6-inch wall. Its shipping box is 13.75 inches against a 32-inch door. We check every box. |
+| 1:45 | "Verified by Senso" + claims | Senso checks every claim against our knowledge base of product specs and room rules. Width, wall rule, walkway rule: verified. No item enters the cart without this check. |
+| 2:05 | Arcee explanation | An Arcee open model writes a second explanation. It costs $0.00023 per item. |
+| 2:15 | Review the cart → Approve | Five pieces, $887.97, under budget. On approval, it re-checks every price live on IKEA. |
+| 2:25 | `scripts/ikea_checkout.py <plan_id>` → back to cart | Now it adds all five items to a real IKEA bag on ikea.com and reads it back: IKEA's total is $887.97. It matches. You pay. The agent never does. |
+| 2:45 | Close | We tested the rules: too wide, too big for the door, over budget, a false fact. All blocked. Six of six. **Fits.** Furniture that's proven to fit, with a reason for every choice. |
+
 ---
+
+## Long version
 
 ## 0:00 — Cold open (no slides, the app is already on the start screen)
 
