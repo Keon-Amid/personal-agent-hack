@@ -22,9 +22,9 @@ from functools import lru_cache
 from pathlib import Path
 
 from . import store
-from .types import audit
+from .types import ALLOWED_SLOTS, audit
 
-SLOT_ENUM = ["sofa", "armchair", "coffee_table", "rug", "floor_lamp"]
+SLOT_ENUM = list(ALLOWED_SLOTS)  # any catalog category; choose_slots records which ones this plan furnishes
 ROOM_KEYS = ("wall", "depth", "door_width", "door_height")
 REPO = Path(__file__).resolve().parent.parent
 
@@ -608,6 +608,26 @@ def set_budget(plan_id: str, total_usd: float | None = None, per_item_usd: float
     return {**_ids(plan), "ok": True, "budget": plan.get("budget"), "spent_usd": spent, **warn}
 
 
+def choose_slots(plan_id: str, slots: list[str], why: str) -> dict:
+    """Record which pieces of furniture this plan furnishes, chosen from the person's words (1-6 catalog categories,
+    in the order to furnish them). Audits step "agent", decision "slots chosen", source claude.
+    Returns {plan_id, plan_url, ok, slots} or {ok: False, error} for an unknown, repeated or empty list."""
+    plan = _load(plan_id)
+    slots = [str(x).strip() for x in (slots or [])]
+    bad = [x for x in slots if x not in ALLOWED_SLOTS]
+    if bad or not slots or len(slots) > 6 or len(set(slots)) != len(slots):
+        why_bad = (f"unknown slots {bad}" if bad else "choose 1 to 6 different slots")
+        return _refuse(plan, "agent", f"{why_bad}; allowed: {list(ALLOWED_SLOTS)}")
+    rec = audit("agent", source={"kind": "claude"}, decision="slots chosen", status="ok",
+                input={"slots": slots}, why=(why or "").strip() or "(the agent gave no reason)")
+
+    def mutate(p: dict) -> None:
+        p["slots"] = slots
+
+    plan = _commit(plan_id, [rec], mutate)
+    return {**_ids(plan), "ok": True, "slots": slots}
+
+
 def get_plan(plan_id: str) -> dict:
     """Return the whole plan (room, style, items, cart, audit) without plan["state"]. Not audited."""
     plan = _load(plan_id)
@@ -637,6 +657,14 @@ TOOL_SPECS: list[dict] = [
          "scan_path": {"type": ["string", "null"], "description": "Path to a LiDAR room scan (GLB/OBJ/PLY) on this machine."},
          "scan_wall": {"type": ["string", "null"], "description": "Scan wall id the furniture goes against (default: longest)."},
      }, ["plan_id"])},
+    {"name": "choose_slots",
+     "description": "Choose which pieces of furniture to furnish, from the person's words: 1-6 slots from the "
+                    "allowed list, in the order to furnish them, with one sentence on why. Call it first.",
+     "input_schema": _schema({**_PLAN,
+                              "slots": {"type": "array", "items": {"type": "string", "enum": SLOT_ENUM},
+                                        "minItems": 1, "maxItems": 6, "description": "Slots in order."},
+                              "why": {"type": "string", "description": "One sentence: why these pieces."}},
+                             ["plan_id", "slots", "why"])},
     {"name": "style_match",
      "description": "Rank the products for one slot by how well they match the room's style (Superlinked).",
      "input_schema": _schema({**_PLAN, **_SLOT}, ["plan_id", "slot"])},

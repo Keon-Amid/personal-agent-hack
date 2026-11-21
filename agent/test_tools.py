@@ -269,7 +269,7 @@ class ToolsTest(unittest.TestCase):
         self.assertFalse(out["ok"])
         self.assertIn("analyze_room", out["error"])
         with self.assertRaises(ValueError):
-            tools.pick(self.pid, "bed")
+            tools.pick(self.pid, "piano")  # not a catalog category
         with self.assertRaises(ValueError):
             tools.get_plan("nope")
         self.exact_room()
@@ -294,3 +294,38 @@ class ToolsTest(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class ChooseSlotsTest(unittest.TestCase):
+    """Keon's ask: the agent picks the pieces from the person's words; SLOTS stays the default."""
+
+    def setUp(self):
+        import tempfile, os
+        self._d = tempfile.TemporaryDirectory()
+        os.environ["ROOM_FURNISHER_PLANS_DIR"] = self._d.name
+        from agent import store
+        self.pid = store.new_plan()["plan_id"]
+
+    def tearDown(self):
+        self._d.cleanup()
+
+    def test_bedroom_slots_recorded_and_audited(self):
+        out = tools.choose_slots(self.pid, ["bed", "nightstand", "dresser", "rug", "table_lamp"], "they asked for a bedroom")
+        self.assertTrue(out["ok"])
+        plan = tools.get_plan(self.pid)
+        self.assertEqual(plan["slots"], ["bed", "nightstand", "dresser", "rug", "table_lamp"])
+        rec = plan["audit"][-1]
+        self.assertEqual((rec["step"], rec["decision"], rec["source"]["kind"]), ("agent", "slots chosen", "claude"))
+
+    def test_bad_slot_lists_refused(self):
+        for bad in (["piano"], [], ["bed", "bed"], ["sofa"] * 0 + list(tools.SLOT_ENUM[:7])):
+            self.assertFalse(tools.choose_slots(self.pid, bad, "x")["ok"], bad)
+        self.assertNotIn("slots", tools.get_plan(self.pid))
+
+    def test_prompt_carries_the_request_and_default(self):
+        from agent.agent import build_prompt
+        p = build_prompt(self.pid, None, None, request="cozy bedroom with a TV")
+        self.assertIn('"cozy bedroom with a TV"', p)
+        self.assertIn("choose_slots", p)
+        self.assertIn("sofa, armchair, coffee_table, rug, floor_lamp", p)  # the living-room default is unchanged
+        self.assertNotIn("{{", p)

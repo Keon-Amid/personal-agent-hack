@@ -70,15 +70,19 @@ def mcp_config() -> dict:
     return cfg
 
 
-def build_prompt(plan_id: str, budget_usd: float | None, budget_total_usd: float | None = None) -> str:
-    text = PROMPT.read_text().replace("{{plan_id}}", plan_id)
+def build_prompt(plan_id: str, budget_usd: float | None, budget_total_usd: float | None = None,
+                 request: str | None = None) -> str:
+    from .types import ALLOWED_SLOTS
+    req = (request or "").strip().replace('"', "'") or "(no words given: the style comes from the room photo)"
+    text = (PROMPT.read_text().replace("{{plan_id}}", plan_id).replace("{{request}}", req)
+            .replace("{{allowed_slots}}", ", ".join(ALLOWED_SLOTS)))
     lines = []
     if budget_usd is not None:
         b = f"{float(budget_usd):g}"
         lines.append(f"The person's budget is ${b} per item: pass budget_usd={b} to every pick.")
     if budget_total_usd is not None:
         t = f"{float(budget_total_usd):g}"
-        lines.append(f"The person's total budget is ${t} for the whole room. Split it across the five slots before "
+        lines.append(f"The person's total budget is ${t} for the whole room. Split it across the slots you chose before "
                      f"picking (a sofa needs the biggest share, a lamp the smallest) and pass each slot's share as "
                      f"budget_usd, so a big early pick doesn't leave nothing for the rest.")
     if lines:
@@ -201,7 +205,7 @@ def run_agent(room_input: dict, photo_b64: str | None = None, style_text: str | 
     if not out.get("ok", True):
         raise AgentError(out.get("error", "analyze_room failed"), pid)
 
-    cmd = build_command(build_prompt(pid, budget_usd, budget_total_usd))
+    cmd = build_command(build_prompt(pid, budget_usd, budget_total_usd, request=style_text))
     emit(audit("agent", source={"kind": "template"}, decision="start Claude Code agent",
                input={"tools": ALLOWED_TOOLS, "budget_usd": budget_usd},
                why="Headless Claude Code with only the room_furnisher tools; the tools enforce fit and Senso checks.",

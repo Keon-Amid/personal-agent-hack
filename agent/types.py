@@ -6,7 +6,10 @@ TypedDicts are documentation plus editor help; at runtime a Plan is a plain JSON
 from datetime import datetime, timezone
 from typing import Any, Literal, NotRequired, TypedDict
 
-SLOTS = ("sofa", "armchair", "coffee_table", "rug", "floor_lamp")
+SLOTS = ("sofa", "armchair", "coffee_table", "rug", "floor_lamp")  # default living-room set
+# Every catalog category the agent may furnish; choose_slots picks 1-6 of these from the person's words.
+ALLOWED_SLOTS = ("sofa", "armchair", "coffee_table", "side_table", "rug", "floor_lamp", "table_lamp", "tv_bench",
+                 "bookcase", "desk", "dining_table", "dining_chair", "bed", "nightstand", "dresser", "wardrobe")
 STEPS = ("estimate_room", "rank", "pick", "senso_check", "swap", "cart", "agent")
 SOURCE_KINDS = ("photo", "catalog", "fit", "superlinked", "senso", "claude", "template", "arcee")
 DELIVERY_NOTE = "IKEA home delivery from $29"

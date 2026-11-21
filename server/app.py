@@ -52,7 +52,7 @@ load_dotenv()
 
 from agent import agent as agent_mod  # noqa: E402  (after .env, so the agent's child process sees the keys)
 from agent import bag_reconcile, quiz, store, tools  # noqa: E402
-from agent.types import DELIVERY_NOTE, SLOTS, audit, now_ts  # noqa: E402
+from agent.types import ALLOWED_SLOTS, DELIVERY_NOTE, audit, now_ts  # noqa: E402
 from data import fetch_ikea  # noqa: E402
 
 app = FastAPI(title="Room Furnisher API")
@@ -220,8 +220,8 @@ _SWAP_CART_WHY = "Added after the person's swap; it passed its Senso check."
 
 @app.post("/api/plan/{pid}/swap")
 def swap(pid: str, req: SwapRequest) -> dict:
-    if req.slot not in SLOTS:
-        raise HTTPException(400, f"slot must be one of {list(SLOTS)}")
+    if req.slot not in ALLOWED_SLOTS:
+        raise HTTPException(400, f"slot must be one of {list(ALLOWED_SLOTS)}")
     _require_finished(pid, "swap")
 
     def requested(plan: dict) -> None:

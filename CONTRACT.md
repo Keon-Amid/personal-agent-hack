@@ -188,6 +188,14 @@ One backend, two front doors. The tools enforce the rules; the model only orders
     page that loaded but listed no price) is `check_failed` and does not block. `cart.approval` gains `live_check: "all_same" | "partial"` and `checked_at`.
   - `GET /api/quiz` → `agent/quiz.json`. `POST /api/quiz/score` `{answers: {question_id: option_id}}` → `quiz.score(...)` plus
     `catalog_support`. `GET /api/health` → `{claude_code, superlinked_key, senso_key, runs: {running, max}}` (booleans, never keys).
+- **Slots chosen from the person's words (keon's ask):** the agent's first call is `choose_slots(plan_id, slots, why)`:
+  1-6 of `agent.types.ALLOWED_SLOTS` (sofa, armchair, coffee_table, side_table, rug, floor_lamp, table_lamp, tv_bench,
+  bookcase, desk, dining_table, dining_chair, bed, nightstand, dresser, wardrobe), stored as `plan.slots`, audited
+  (step `agent`, decision "slots chosen", source claude). A style-only or living-room request keeps `SLOTS`
+  (sofa, armchair, coffee_table, rug, floor_lamp). The request text reaches the agent via run_agent's `style_text`.
+  Every slot tool and `POST /api/plan/{id}/swap` accept any allowed slot. Live: "cozy bedroom with a TV" → bed,
+  nightstand, dresser, rug, table_lamp, tv_bench, all fit + Senso 100%, $1,348.95 (`contracts/plan.bedroom_1120.json`);
+  "warm minimal living room" → the default 5.
 - **Tools** (`agent.tools`, also served by the MCP server): `create_plan`, `analyze_room`, `style_match`, `fit_options`, `pick`,
   `senso_check`, `swap`, `cart_add`, `get_plan`. `pick` only returns items that fit; `cart_add` refuses an item without a
   Senso check that has ≥1 verified claim and no conflict; every tool appends its own audit record and returns `plan_url`.
